@@ -26,7 +26,7 @@ const Navbar = () => {
 		{ label: "ChatMaestro", href: "/chats" },
 		{ label: "Library", href: "/mylibrary" },
 		{ label: "Role Play", href: "/roleplay" },
-		{ label: "Help", href: "/test" },
+		{ label: "Help", href: "/help" },
 	];
 
 	return (

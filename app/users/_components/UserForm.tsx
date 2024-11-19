@@ -1,8 +1,10 @@
 "use client";
+import axios from "axios";
 import { userSchema } from "@/app/validationSchemas";
-import { Flex } from "@radix-ui/themes";
+import { Container, Flex } from "@radix-ui/themes";
 import { Field, Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
+import { SiAxios } from "react-icons/si";
 import { z } from "zod";
 
 interface User {
@@ -10,7 +12,7 @@ interface User {
 	firstName: string;
 	lastName: string;
 	email: string;
-	roles: Role[];
+	roleIds: Role[];
 	regionId: string;
 	jobTitleId: string;
 	languageId: string;
@@ -43,44 +45,41 @@ type UserFormData = z.infer<typeof userSchema>;
 
 const UserForm = ({
 	user,
-	roles,
 	businessUnits,
 	languages,
 	regions,
 	jobTitles,
+	roles,
 }: {
 	user?: User;
-	roles: Role[];
 	businessUnits: BusinessUnit[];
 	languages: Language[];
 	regions: Region[];
 	jobTitles: JobTitle[];
+	roles: Role[];
 }) => {
 	const router = useRouter();
-	console.log(businessUnits);
+	const initialValues = {
+		firstName: user?.firstName || "",
+		lastName: "",
+		email: "",
+		regionId: "",
+		languageId: "",
+		businessUnitId: "",
+		jobTitleId: "",
+		roleIds: [],
+	};
+	console.log(user);
 	return (
-		<div>
+		<Container>
 			<Formik
-				initialValues={{
-					firstName: "",
-					lastName: "",
-					email: "",
-					regionId: "",
-					languageId: "",
-					businessUnitId: "",
-					jobTitleId: "",
-					roleIds: [],
-				}}
-				onSubmit={async (values) => {
+				initialValues={initialValues}
+				onSubmit={(values) => {
 					console.log(JSON.stringify(values));
-					await fetch("https://sviluppo4.arsdue.com/users", {
-						mode: "no-cors",
-						method: "POST",
+					axios.post("https://sviluppo4.arsdue.com/users/", values, {
 						headers: {
-							Accept: "application/json",
-							"Content-type": "application/json",
+							"Content-Type": "application/json",
 						},
-						body: JSON.stringify(values),
 					});
 				}}
 			>
@@ -103,8 +102,9 @@ const UserForm = ({
 					</Flex>
 					<Flex>
 						<div>
-							<label htmlFor="businessUnit">Business Unit</label>
-							<Field as="select" name="businessUnitId">
+							<label htmlFor="businessUnitId">Business Unit</label>
+							<Field as="select" name="businessUnitId" id="businessUnitId">
+								<option>Select an option</option>
 								{businessUnits.map((bu) => (
 									<option key={bu.id} value={bu.id}>
 										{bu.name}
@@ -116,7 +116,7 @@ const UserForm = ({
 					<Flex>
 						<div>
 							<label htmlFor="regionId">Region</label>
-							<Field as="select" name="regionId">
+							<Field as="select" name="regionId" id="regionId">
 								{regions.map((region) => (
 									<option key={region.id} value={region.id}>
 										{region.name}
@@ -128,7 +128,7 @@ const UserForm = ({
 					<Flex>
 						<div>
 							<label htmlFor="languageId">Language</label>
-							<Field as="select" name="languageId">
+							<Field as="select" name="languageId" id="languageId">
 								{languages.map((language) => (
 									<option key={language.id} value={language.id}>
 										{language.name}
@@ -139,8 +139,8 @@ const UserForm = ({
 					</Flex>
 					<Flex>
 						<div>
-							<label htmlFor="jobTitle">Job Title</label>
-							<Field as="select" name="jobTitleId">
+							<label htmlFor="jobTitleId">Job Title</label>
+							<Field as="select" name="jobTitleId" id="jobTitleId">
 								{jobTitles.map((jobTitle) => (
 									<option key={jobTitle.id} value={jobTitle.id}>
 										{jobTitle.name}
@@ -152,8 +152,13 @@ const UserForm = ({
 					<div role="group" aria-labelledby="checkbox-group">
 						{roles.map((role, index) => (
 							<div key={index}>
-								<label htmlFor="roleUser">
-									<Field type="checkbox" name="roleIds" value={role.id} />{" "}
+								<label htmlFor="roleIds">
+									<Field
+										type="checkbox"
+										name="roleIds"
+										value={role.id}
+										id="roleIds"
+									/>{" "}
 									{role.name}
 								</label>
 							</div>
@@ -166,7 +171,7 @@ const UserForm = ({
 					</div>
 				</Form>
 			</Formik>
-		</div>
+		</Container>
 	);
 };
 

@@ -41,11 +41,7 @@ type Role = {
 	name: string;
 };
 
-interface Props {
-	params: { id: string };
-}
-
-const UserPage = async ({ params }: Props) => {
+const UserPage = async ({ params }: { params: { id: string } }) => {
 	const id = params.id;
 	let data = await fetch("https://sviluppo4.arsdue.com/users/" + id);
 	let user: User = await data.json();

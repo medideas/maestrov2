@@ -1,13 +1,9 @@
+import { Flex } from "@radix-ui/themes";
 import React from "react";
-import UserForm from "../../_components/UserForm";
-import { Flex, Heading } from "@radix-ui/themes";
-import { notFound, useSearchParams } from "next/navigation";
+import UserForm from "../_components/UserForm";
 
-const EditUserPage = async ({ params }: { params: { id: string } }) => {
-	let id = params.id;
-	var data = await fetch("https://sviluppo4.arsdue.com/users" + id);
-	const user = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/business-units");
+const NewUser = async () => {
+	var data = await fetch("https://sviluppo4.arsdue.com/business-units");
 	const businessUnits = await data.json();
 	data = await fetch("https://sviluppo4.arsdue.com/languages");
 	const languages = await data.json();
@@ -17,21 +13,17 @@ const EditUserPage = async ({ params }: { params: { id: string } }) => {
 	const jobTitles = await data.json();
 	data = await fetch("https://sviluppo4.arsdue.com/roles");
 	const roles = await data.json();
-
-	if (!user) notFound();
-
 	return (
-		<Flex direction="column">
-			<Heading>Edit user {user ? user.firstName : "no name found"}</Heading>
+		<Flex>
 			<UserForm
-				roles={roles}
 				businessUnits={businessUnits}
 				languages={languages}
 				regions={regions}
 				jobTitles={jobTitles}
+				roles={roles}
 			/>
 		</Flex>
 	);
 };
 
-export default EditUserPage;
+export default NewUser;
