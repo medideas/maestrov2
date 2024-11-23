@@ -3,17 +3,17 @@ import React from "react";
 import ArticleForm from "../_components/ArticleForm";
 
 const NewArticle = async () => {
-	var data = await fetch("https://sviluppo4.arsdue.com/educational-frameworks");
+	var data = await fetch(process.env.APIBASE + "/educational-frameworks");
 	const educationalFrameworks = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/educational-methodologies");
+	data = await fetch(process.env.APIBASE + "/educational-methodologies");
 	const educationalMethodolodies = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/media");
+	data = await fetch(process.env.APIBASE + "/media");
 	const medias = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/languages");
+	data = await fetch(process.env.APIBASE + "/languages");
 	const languages = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/sources");
+	data = await fetch(process.env.APIBASE + "/sources");
 	const sources = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/educational-tools");
+	data = await fetch(process.env.APIBASE + "/educational-tools");
 	const educationalTools = await data.json();
 	return (
 		<Container>

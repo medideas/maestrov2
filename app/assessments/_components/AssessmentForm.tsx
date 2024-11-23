@@ -1,95 +1,80 @@
 "use client";
-import { Button, Flex, Heading, TextField } from "@radix-ui/themes";
-import { useRouter } from "next/navigation";
+import { Button, Flex, Grid, Text } from "@radix-ui/themes";
+import { Form, Formik, Field, FieldArray } from "formik";
 import React from "react";
-import { Field, FieldArray, Form, Formik, insert } from "formik";
-import { z } from "zod";
-import { assessmentSchema } from "@/app/validationSchemas";
+import assessmentQuestions from "../../utils/assessmentQuestions";
 
-interface Props {
-	jobTitleSkills: JobTitleSkill[];
-}
-
-type JobTitleSkill = {
-	id: string;
-	skill: Skill;
-	jobTitle: JobTitle;
-	jobTitleId: string;
-	value: number;
-};
-
-type Skill = {
-	id: string;
-};
-
-type JobTitle = {
-	id: string;
-};
-
-type AssessmentResult = {
+type assessmentQuestion = {
 	jobTitleSkillId: string;
-	value: number;
+	jobTitleSkillIds: JobTitleSkillId[];
 };
 
-//DEVO SOLO RIUSCIRE A FAR ARRIVARE QUI UN ARRAY DI OBJECT FATTO DI JOBTITLESKILLIDS + VALUE DEFAULT, TANTE QUANTE SONO LE SKILLS NELLA VALUTAZIONE
-const results = [
-	{ jobTitleSkillId: "w23232323424", value: 4 },
-	{ jobTitleSkillId: "fdsfdsafdsafdasf", value: 3 },
-	{ jobTitleSkillId: "w23232sfaasfasfasf323424", value: 4 },
-];
+type JobTitleSkillId = {
+	question: string;
+	answer_1: string;
+};
 
-const AssessmentForm = ({ jobTitleSkills }: Props) => {
-	const userJobTitleId = "8183d06e-e4e5-46f1-ada9-373afc37e366";
-	const router = useRouter();
-	function setFieldValue(id: string) {
-		throw new Error("Function not implemented.");
-	}
-
+const AssessmentForm = () => {
 	return (
-		<div>
+		<Flex>
 			<Formik
 				initialValues={{
 					name: "",
-					assessmentResults: results,
+					assessmentResults: [{ jobTitleSkillId: "", value: "" }],
 				}}
-				onSubmit={async (values) => {
-					console.log(JSON.stringify(values));
-				}}
+				onSubmit={(values) => console.log(JSON.stringify(values))}
 			>
-				{(values) => (
-					<Form>
-						<Flex direction="column">
-							<div>
-								<label>Assessment name</label>
-								<Field name="name" className="border-2 mx-3" />
-							</div>
-							<div>
-								<FieldArray name="assessmentResults">
-									{({ insert, remove, push }) => (
-										<div>
-											{values.values.assessmentResults.map((results, index) => (
-												<div key={index}>
-													<Field
-														type="hidden"
-														name={`assessmentResults[${index}].jobTitleSkillId`}
-														className="border-2"
-													/>
-													<Field name={`assessmentResults[${index}].value`} />
-												</div>
-											))}
-										</div>
-									)}
-								</FieldArray>
-							</div>
-						</Flex>
-						<Button type="submit">Save assessment</Button>
-					</Form>
-				)}
+				<Form>
+					<Field name="name" />
+					{assessmentQuestions[0].jobTitleSkillIds.map((job, index) => (
+						<div key={index} className="p-4">
+							<Text weight="bold">{job.Question}</Text>
+							<Field
+								name={`assessmentResults[${index}].jobTitleSkillId`}
+								value={job.jobTitleSkillid}
+								type="hidden"
+							/>
+							<Grid columns="4">
+								<label>
+									<Field
+										name={`assessmentResults[${index}].value`}
+										type="radio"
+										value="1"
+									/>
+									{job.Answer_1}
+								</label>
+								<label>
+									<Field
+										name={`assessmentResults[${index}].value`}
+										type="radio"
+										value="2"
+									/>
+									{job.Answer_2}
+								</label>
+								<label>
+									<Field
+										name={`assessmentResults[${index}].value`}
+										type="radio"
+										value="3"
+									/>
+									{job.Answer_3}
+								</label>
+								<label>
+									<Field
+										name={`assessmentResults[${index}].value`}
+										type="radio"
+										value="4"
+									/>
+									{job.Answer_4}
+								</label>
+							</Grid>
+						</div>
+					))}
+					<Button type="submit">Save assessment</Button>
+				</Form>
 			</Formik>
-		</div>
+		</Flex>
 	);
 };
 
 export default AssessmentForm;
-
-//

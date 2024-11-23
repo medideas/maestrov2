@@ -35,12 +35,13 @@ type Article = {
 	languageId: string;
 };
 
-const ArticlePage = async ({ params }: { params: { id: string } }) => {
+const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
+	const params = await props.params;
 	const id = params.id;
-	const data = await fetch("https://sviluppo4.arsdue.com/articles/" + id);
+	const data = await fetch(process.env.APIBASE + "/articles/" + id);
 	const article = await data.json();
 	return (
-		<Container>
+		<Container my="5">
 			<Flex justify="end" mb="3">
 				<Link href="/articles">Go back to articles</Link>
 			</Flex>

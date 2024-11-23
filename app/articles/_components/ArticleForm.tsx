@@ -120,14 +120,11 @@ const ArticleForm = ({
 					formData.append("educationalToolId", values.educationalToolId);
 					formData.append("languageId", values.languageId);
 					pathname.includes("/edit")
-						? await fetch(
-								"https://sviluppo4.arsdue.com/articles/" + article?.id,
-								{
-									method: "PATCH",
-									body: formData, // Send FormData
-								}
-						  )
-						: await fetch("https://sviluppo4.arsdue.com/articles", {
+						? await fetch(process.env.APIBASE + "/articles/" + article?.id, {
+								method: "PATCH",
+								body: formData, // Send FormData
+						  })
+						: await fetch(process.env.APIBASE + "/articles", {
 								method: "POST",
 								body: formData, // Send FormData
 						  });

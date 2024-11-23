@@ -33,24 +33,22 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={"flex flex-col"}>
-				{/* <AuthProvider> */}
+			<body className={"flex flex-col m-0 p-0"}>
 				<Theme accentColor="red" radius="small" appearance="light">
 					<Navbar />
 
-					<main className="flex-auto md:p-5">{children}</main>
+					<main className="flex-auto">{children}</main>
 
 					<div className="w-[100%] bottom-0 fixed z-20">
 						<AskMaestro />
 					</div>
 
-					<Section className="bg-primary" mt="9">
+					<Section className="bg-primary">
 						<Grid columns={{ initial: "1", sm: "3" }} gap="4">
 							<Box p="5"></Box>
 						</Grid>
 					</Section>
 				</Theme>
-				{/* </AuthProvider> */}
 			</body>
 		</html>
 	);

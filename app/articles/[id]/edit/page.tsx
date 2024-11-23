@@ -2,20 +2,21 @@ import { Container, Flex, Heading } from "@radix-ui/themes";
 import React from "react";
 import ArticleForm from "../../_components/ArticleForm";
 
-const EditArticlePage = async ({ params }: { params: { id: string } }) => {
-	var data = await fetch("https://sviluppo4.arsdue.com/articles/" + params.id);
+const EditArticlePage = async (props: { params: Promise<{ id: string }> }) => {
+	const params = await props.params;
+	var data = await fetch(process.env.APIBASE + "/articles/" + params.id);
 	const article = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/educational-frameworks");
+	data = await fetch(process.env.APIBASE + "/educational-frameworks");
 	const educationalFrameworks = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/educational-methodologies");
+	data = await fetch(process.env.APIBASE + "/educational-methodologies");
 	const educationalMethodolodies = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/media");
+	data = await fetch(process.env.APIBASE + "/media");
 	const medias = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/languages");
+	data = await fetch(process.env.APIBASE + "/languages");
 	const languages = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/sources");
+	data = await fetch(process.env.APIBASE + "/sources");
 	const sources = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/educational-tools");
+	data = await fetch(process.env.APIBASE + "/educational-tools");
 	const educationalTools = await data.json();
 	return (
 		<Container>

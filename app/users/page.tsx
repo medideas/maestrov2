@@ -4,8 +4,7 @@ import UsersTable from "./UsersTable";
 import Link from "next/link";
 
 const Users = async () => {
-	// let data = await fetch("http://localhost:3000/api/users/", {cache: "no-store",});
-	let data = await fetch("https://sviluppo4.arsdue.com/users/");
+	let data = await fetch(process.env.APIBASE + "/users/");
 	let users = await data.json();
 
 	return (

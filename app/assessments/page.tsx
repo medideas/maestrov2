@@ -49,19 +49,14 @@ type AssessmentResult = {
 };
 
 const UserProfilePage = async () => {
-	const dataset = [2, 3, 4, 5];
-	const userId = "aae0005d-eb16-47b1-acee-e809e4610245";
-	let dataCompetencies = await fetch(
-		"https://sviluppo4.arsdue.com/competencies"
-	);
+	const userId = "2e83a4e4-d1c5-4eac-8c6f-266247ba2a79";
+	let dataCompetencies = await fetch(process.env.APIBASE + "/competencies");
 	let competencies = await dataCompetencies.json();
 
-	let dataUser = await fetch(`https://sviluppo4.arsdue.com/users/${userId}`);
+	let dataUser = await fetch(process.env.APIBASE + `/users/${userId}`);
 	let user = await dataUser.json();
 
-	let dataAssessment = await fetch(
-		"https://sviluppo4.arsdue.com/my/assessments/"
-	);
+	let dataAssessment = await fetch(process.env.APIBASE + "/my/assessments/");
 	let assessment = await dataAssessment.json();
 
 	return (

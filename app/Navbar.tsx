@@ -27,6 +27,7 @@ const Navbar = () => {
 		{ label: "Library", href: "/mylibrary" },
 		{ label: "Role Play", href: "/roleplay" },
 		{ label: "Help", href: "/help" },
+		{ label: "Login", href: "/login" },
 	];
 
 	return (

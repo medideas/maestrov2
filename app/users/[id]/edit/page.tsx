@@ -3,19 +3,20 @@ import UserForm from "../../_components/UserForm";
 import { Flex, Heading } from "@radix-ui/themes";
 import { notFound, useSearchParams } from "next/navigation";
 
-const EditUserPage = async ({ params }: { params: { id: string } }) => {
+const EditUserPage = async (props: { params: Promise<{ id: string }> }) => {
+	const params = await props.params;
 	let id = params.id;
-	var data = await fetch("https://sviluppo4.arsdue.com/users" + id);
+	var data = await fetch(process.env.APIBASE + "/users" + id);
 	const user = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/business-units");
+	data = await fetch(process.env.APIBASE + "/business-units");
 	const businessUnits = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/languages");
+	data = await fetch(process.env.APIBASE + "/languages");
 	const languages = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/regions");
+	data = await fetch(process.env.APIBASE + "/regions");
 	const regions = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/job-titles");
+	data = await fetch(process.env.APIBASE + "/job-titles");
 	const jobTitles = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/roles");
+	data = await fetch(process.env.APIBASE + "/roles");
 	const roles = await data.json();
 
 	if (!user) notFound();

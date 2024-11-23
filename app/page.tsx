@@ -1,13 +1,18 @@
 import { Flex, Box, Heading, Text, Card, Grid, Inset } from "@radix-ui/themes";
 import Link from "next/link";
-import CarouselCard from "./components/CarouselCard";
 import React from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
+import ArticleCard from "./articles/_components/ArticleCard";
+import { cookies } from "next/headers";
 
 interface Article {
 	id: string;
-	name: string;
+	title: string;
 	description: string;
+	cover: string;
+	duration: number;
+	aiGenerated: boolean;
+	internalUseOnly: boolean;
 }
 
 interface Competency {
@@ -18,18 +23,16 @@ interface Competency {
 }
 
 export default async function Home() {
-	let dataArticles = await fetch("https://sviluppo4.arsdue.com/articles", {
+	var data = await fetch(process.env.APIBASE + "/articles", {
 		cache: "no-store",
 	});
-	let articles = await dataArticles.json();
+	let articles = await data.json();
 
-	let dataCompetencies = await fetch(
-		"https://sviluppo4.arsdue.com/competencies",
-		{
-			cache: "no-store",
-		}
-	);
-	let competencies = await dataCompetencies.json();
+	data = await fetch(process.env.APIBASE + "/competencies", {
+		cache: "no-store",
+	});
+	let competencies = await data.json();
+	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
 
 	return (
 		<>
@@ -41,11 +44,11 @@ export default async function Home() {
 					</Box>
 				</Flex>
 				<Grid columns={{ initial: "2", sm: "4" }} gap="3" width="auto">
-					{competencies.map((competency: Competency) => (
+					{competencies.map((competency: Competency, index: number) => (
 						<Link href={`/mylibrary`} key={competency.id}>
 							<Box
 								width="100"
-								className={`border-none w-100 p-6 red rounded-md hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out md:py-10`}
+								className={`border-none w-100 p-6 ${colors[index]} rounded-md hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out md:py-10`}
 							>
 								<Text weight="light" className="px-1 py-1 text-lg font-bold">
 									{competency.name}
@@ -66,32 +69,10 @@ export default async function Home() {
 						<HiChevronLeft size="3x" />
 					</div>
 					<Flex gap="4" width="100%" justify="start">
-						{/* {articles &&
-							articles.map(
-								(article: {
-									id: number;
-									title: string | null | undefined;
-									excerpt: string;
-									category: string;
-									duration: string;
-									cover: string;
-									type: string;
-									tags: string[];
-								}) => (
-									<CarouselCard
-										id={article.id}
-										title={article.title!}
-										excerpt={article.excerpt}
-										category={article.category}
-										duration={article.duration}
-										cover={article.cover}
-										key={article.id}
-										className="min-w-[350px]"
-										type={article.type}
-										tags={article.tags}
-									/>
-								)
-							)} */}
+						{articles &&
+							articles.map((article: Article) => (
+								<ArticleCard key={article.id} article={article} />
+							))}
 					</Flex>
 					<div className="absolute bg-white py-[11%] w-[40px] z-10 right-0 mr-[30px] mt-[-10px]">
 						<HiChevronRight size="3x" />
@@ -108,32 +89,10 @@ export default async function Home() {
 						<HiChevronLeft size="3x" />
 					</div>
 					<Flex gap="4" width="100%" justify="start">
-						{/* {articles &&
-							articles.map(
-								(article: {
-									id: number;
-									title: string | null | undefined;
-									excerpt: string;
-									category: string;
-									duration: string;
-									cover: string;
-									type: string;
-									tags: string[];
-								}) => (
-									<CarouselCard
-										id={article.id}
-										title={article.title!}
-										excerpt={article.excerpt}
-										category={article.category}
-										duration={article.duration}
-										cover={article.cover}
-										key={article.id}
-										className="min-w-[350px]"
-										type={article.type}
-										tags={article.tags}
-									/>
-								)
-							)} */}
+						{articles &&
+							articles.map((article: Article) => (
+								<ArticleCard key={article.id} article={article} />
+							))}
 					</Flex>
 					<div className="absolute bg-white py-[11%] w-[40px] z-10 right-0 mr-[30px] mt-[-10px]">
 						<HiChevronRight size="3x" />

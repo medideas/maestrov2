@@ -9,24 +9,26 @@ import {
 	Text,
 } from "@radix-ui/themes";
 import React from "react";
-import CarouselCard from "../components/CarouselCard";
 import Link from "next/link";
-import ArticleForm from "./_components/ArticleForm";
 import ArticleCard from "./_components/ArticleCard";
+import { cookies } from "next/headers";
 
 type Article = {
 	cover: string;
 	id: string;
 	title: string;
 	description: string;
+	aiGenerated: boolean;
+	internalUseOnly: boolean;
 };
 
 const ArticlesPage = async () => {
-	const data = await fetch("https://sviluppo4.arsdue.com/articles");
+	const cookieStore = await cookies();
+	const jwt = cookieStore.get("jwt");
+	const data = await fetch(process.env.APIBASE + "/articles");
 	const articles: Article[] = await data.json();
-	console.log(articles);
 	return (
-		<Flex direction="column" gap="4">
+		<Flex direction="column" gap="4" p="5">
 			<Flex justify="between">
 				<Flex direction="column">
 					<Heading>Articles</Heading>

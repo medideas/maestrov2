@@ -3,15 +3,15 @@ import React from "react";
 import UserForm from "../_components/UserForm";
 
 const NewUser = async () => {
-	var data = await fetch("https://sviluppo4.arsdue.com/business-units");
+	var data = await fetch(process.env.APIBASE + "/business-units");
 	const businessUnits = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/languages");
+	data = await fetch(process.env.APIBASE + "/languages");
 	const languages = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/regions");
+	data = await fetch(process.env.APIBASE + "/regions");
 	const regions = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/job-titles");
+	data = await fetch(process.env.APIBASE + "/job-titles");
 	const jobTitles = await data.json();
-	data = await fetch("https://sviluppo4.arsdue.com/roles");
+	data = await fetch(process.env.APIBASE + "/roles");
 	const roles = await data.json();
 	return (
 		<Flex>

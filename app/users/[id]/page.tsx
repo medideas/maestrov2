@@ -41,9 +41,10 @@ type Role = {
 	name: string;
 };
 
-const UserPage = async ({ params }: { params: { id: string } }) => {
+const UserPage = async (props: { params: Promise<{ id: string }> }) => {
+	const params = await props.params;
 	const id = params.id;
-	let data = await fetch("https://sviluppo4.arsdue.com/users/" + id);
+	let data = await fetch(process.env.APIBASE + "/users/" + id);
 	let user: User = await data.json();
 	return (
 		<Container>
