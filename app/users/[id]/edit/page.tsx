@@ -2,22 +2,21 @@ import React from "react";
 import UserForm from "../../_components/UserForm";
 import { Container, Flex, Heading } from "@radix-ui/themes";
 import { notFound, useSearchParams } from "next/navigation";
+import fetchInterceptor from "@/app/utils/fetchInterceptor";
 
 const EditUserPage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
 	let id = params.id;
-	var data = await fetch(process.env.APIBASE + "/users/" + id);
-	const user = await data.json();
-	data = await fetch(process.env.APIBASE + "/business-units/");
-	const businessUnits = await data.json();
-	data = await fetch(process.env.APIBASE + "/languages/");
-	const languages = await data.json();
-	data = await fetch(process.env.APIBASE + "/regions/");
-	const regions = await data.json();
-	data = await fetch(process.env.APIBASE + "/job-titles/");
-	const jobTitles = await data.json();
-	data = await fetch(process.env.APIBASE + "/roles/");
-	const roles = await data.json();
+	const user = await fetchInterceptor(process.env.APIBASE + "/users/" + id);
+	const businessUnits = await fetchInterceptor(
+		process.env.APIBASE + "/business-units/"
+	);
+	const languages = await fetchInterceptor(process.env.APIBASE + "/languages/");
+	const regions = await fetchInterceptor(process.env.APIBASE + "/regions/");
+	const jobTitles = await fetchInterceptor(
+		process.env.APIBASE + "/job-titles/"
+	);
+	const roles = await fetchInterceptor(process.env.APIBASE + "/roles/");
 
 	if (!user) notFound();
 

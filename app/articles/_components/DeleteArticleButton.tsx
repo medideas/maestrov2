@@ -11,7 +11,6 @@ interface Props {
 const DeleteArticleButton = ({ articleId }: Props) => {
 	const router = useRouter();
 	const deleteArticle = () => {
-		console.log("delete article");
 		fetch(`https://sviluppo4.arsdue.com/articles/${articleId}`),
 			{
 				method: "DELETE",

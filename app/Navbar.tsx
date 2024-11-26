@@ -5,16 +5,7 @@ import { usePathname } from "next/navigation";
 import classnames from "classnames";
 import { SlMenu, SlClose } from "react-icons/sl";
 
-import {
-	Avatar,
-	Box,
-	Button,
-	Dialog,
-	DropdownMenu,
-	Flex,
-	Heading,
-	Text,
-} from "@radix-ui/themes";
+import { Avatar, Box, Button, Dialog, Flex, Heading } from "@radix-ui/themes";
 
 const Navbar = () => {
 	const currentPath = usePathname();

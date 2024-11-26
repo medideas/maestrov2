@@ -1,5 +1,5 @@
 "use client";
-import { Badge, Table } from "@radix-ui/themes";
+import { Table } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 import { GoPencil } from "react-icons/go";

@@ -2,24 +2,9 @@ import "@radix-ui/themes/styles.css";
 import "./globals.css";
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
-import {
-	Box,
-	Grid,
-	Section,
-	Theme,
-	ThemePanel,
-	Text,
-	Heading,
-	Container,
-} from "@radix-ui/themes";
+import { Box, Grid, Section, Theme } from "@radix-ui/themes";
 import Navbar from "./Navbar";
 import AskMaestro from "./components/AskMaestro";
-
-const dm_sans = DM_Sans({
-	subsets: ["latin"],
-	weight: ["100", "200", "300", "600"],
-	variable: "--font-dm_sans",
-});
 
 export const metadata: Metadata = {
 	title: "Maestro",

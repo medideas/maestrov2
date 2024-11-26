@@ -1,16 +1,6 @@
 import React from "react";
 import Sidebar from "./_components/Sidebar";
-import {
-	Grid,
-	Box,
-	Button,
-	Card,
-	Flex,
-	Heading,
-	Text,
-	TextField,
-} from "@radix-ui/themes";
-import { CameraIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { Grid, Box, Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { FaCar } from "react-icons/fa6";
 import { GrGamepad } from "react-icons/gr";
 import { PiMagicWandBold } from "react-icons/pi";

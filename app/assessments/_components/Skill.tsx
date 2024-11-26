@@ -1,3 +1,4 @@
+import fetchInterceptor from "@/app/utils/fetchInterceptor";
 import { Grid, Text, Tooltip } from "@radix-ui/themes";
 import React from "react";
 
@@ -20,21 +21,21 @@ type JobTitle = {
 	name: string;
 };
 
-type Result = {
+interface Props {
+	params: { id: string };
+	assessmentResults: AssessmentResult[];
+}
+
+type AssessmentResult = {
 	jobTitleSkillId: string;
 	value: number;
 };
 
-interface Props {
-	params: { id: string };
-	results: Result[];
-}
-
-const Skill = async ({ params, results }: Props) => {
+const Skill = async ({ params, assessmentResults }: Props) => {
 	const userJobTitleId = "8183d06e-e4e5-46f1-ada9-373afc37e366";
 	const id = params.id;
-	let data = await fetch("https://sviluppo4.arsdue.com/skills/" + id);
-	let skill: Skill = await data.json();
+	const skill = await fetchInterceptor(process.env.APIBASE + "/skills/" + id);
+
 	return (
 		<Grid columns="2" gap="3" align="center" mb="3">
 			<Text as="p" weight="light" className="col-span-1">
@@ -42,16 +43,19 @@ const Skill = async ({ params, results }: Props) => {
 			</Text>
 
 			{skill.jobTitleSkills.map(
-				(jobTitleSkill) =>
+				(jobTitleSkill: JobTitleSkill) =>
 					jobTitleSkill.jobTitleId == userJobTitleId && (
-						<div className="flex flex-col border-b-2 col-span-1">
+						<div
+							key={jobTitleSkill.id}
+							className="flex flex-col border-b-2 col-span-1"
+						>
 							<Tooltip content={`Expected value: ${jobTitleSkill.target}`}>
 								<div
 									className={`bg-gray-400 w-4 h-4 rounded-full my-[-8px] ml-[${jobTitleSkill.target}0px]`}
 								></div>
 							</Tooltip>
-							{results.map(
-								(result) =>
+							{assessmentResults.map(
+								(result: AssessmentResult) =>
 									result.jobTitleSkillId == jobTitleSkill.id && (
 										<Tooltip content={`Your result: ${result.value}`}>
 											<div

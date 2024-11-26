@@ -1,15 +1,8 @@
-import {
-	Badge,
-	Box,
-	CheckboxGroup,
-	Flex,
-	Grid,
-	Heading,
-	Separator,
-} from "@radix-ui/themes";
+import { Box, Grid } from "@radix-ui/themes";
 import React from "react";
 import ArticleCard from "../articles/_components/ArticleCard";
 import FilterSideBar from "./FilterSideBar";
+import fetchInterceptor from "../utils/fetchInterceptor";
 
 type Article = {
 	id: string;
@@ -21,17 +14,13 @@ type Article = {
 };
 
 const MyLibrary = async () => {
-	const data = await fetch(process.env.APIBASE + "/articles");
-	const articles = await data.json();
+	const articles = await fetchInterceptor(process.env.APIBASE + "/articles");
 	return (
 		<Grid columns={{ initial: "1", md: "4" }} m={{ initial: "4", md: "0" }}>
 			<div className="column-gap-1 md:m-5">
 				<FilterSideBar />
 			</div>
 			<Box className="mt-5 col-span-3">
-				{/* <Heading mb="2" className="first-letter:uppercase">
-					{pageTitle.toString().replace(/-/g, " ")}
-				</Heading> */}
 				<Grid
 					columns={{ initial: "1", md: "3" }}
 					gap="3"

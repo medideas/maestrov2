@@ -1,18 +1,16 @@
 import { Container, Flex } from "@radix-ui/themes";
 import React from "react";
 import UserForm from "../_components/UserForm";
+import fetchInterceptor from "@/app/utils/fetchInterceptor";
 
 const NewUser = async () => {
-	var data = await fetch(process.env.APIBASE + "/business-units");
-	const businessUnits = await data.json();
-	data = await fetch(process.env.APIBASE + "/languages");
-	const languages = await data.json();
-	data = await fetch(process.env.APIBASE + "/regions");
-	const regions = await data.json();
-	data = await fetch(process.env.APIBASE + "/job-titles");
-	const jobTitles = await data.json();
-	data = await fetch(process.env.APIBASE + "/roles");
-	const roles = await data.json();
+	const businessUnits = await fetchInterceptor(
+		process.env.APIBASE + "/business-units"
+	);
+	const languages = await fetchInterceptor(process.env.APIBASE + "/languages");
+	const regions = await fetchInterceptor(process.env.APIBASE + "/regions");
+	const jobTitles = await fetchInterceptor(process.env.APIBASE + "/job-titles");
+	const roles = await fetchInterceptor(process.env.APIBASE + "/roles");
 	return (
 		<Container className="my-[40px] max-w-[600px] mx-auto border-[1px] shadow-md p-5">
 			<UserForm

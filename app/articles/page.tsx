@@ -1,17 +1,7 @@
-import {
-	Box,
-	Button,
-	Card,
-	Flex,
-	Grid,
-	Heading,
-	Inset,
-	Text,
-} from "@radix-ui/themes";
+import { Button, Flex, Grid, Heading, Text } from "@radix-ui/themes";
 import React from "react";
 import Link from "next/link";
 import ArticleCard from "./_components/ArticleCard";
-import { cookies } from "next/headers";
 import fetchInterceptor from "../utils/fetchInterceptor";
 
 type Article = {

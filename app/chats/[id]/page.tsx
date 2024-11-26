@@ -3,11 +3,6 @@ import React from "react";
 import Sidebar from "../_components/Sidebar";
 import Chatbot from "../_components/Chatbot";
 
-type Chat = {
-	id: string;
-	name: string;
-};
-
 type Message = {
 	id: string;
 	body: string;

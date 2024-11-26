@@ -7,10 +7,10 @@ import {
 	Flex,
 	Grid,
 	Text,
-	Tooltip,
 } from "@radix-ui/themes";
 import React from "react";
 import Skill from "./Skill";
+import fetchInterceptor from "@/app/utils/fetchInterceptor";
 
 interface Props {
 	params: { id: string };
@@ -24,10 +24,11 @@ type AssessmentResult = {
 };
 
 const CompetencyModal = async ({ params, assessmentResults }: Props) => {
-	const results = assessmentResults;
+	const results: AssessmentResult[] = assessmentResults;
 	const id = params.id;
-	let data = await fetch("https://sviluppo4.arsdue.com/competencies/" + id);
-	let competency = await data.json();
+	const competency = await fetchInterceptor(
+		process.env.APIBASE + "/competencies/" + id
+	);
 	return (
 		<Dialog.Root key={competency.id}>
 			<Dialog.Trigger>
@@ -82,7 +83,11 @@ const CompetencyModal = async ({ params, assessmentResults }: Props) => {
 					</Box>
 				</Grid>
 				{competency.skills.map((skill: Skill) => (
-					<Skill params={{ id: skill.id }} results={results} />
+					<Skill
+						key={skill.id}
+						params={{ id: skill.id }}
+						assessmentResults={results}
+					/>
 				))}
 			</Dialog.Content>
 		</Dialog.Root>

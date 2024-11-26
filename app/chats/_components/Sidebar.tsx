@@ -1,6 +1,5 @@
 import { BookmarkIcon, LightningBoltIcon } from "@radix-ui/react-icons";
 import { Flex, Box, Card, Text, Heading } from "@radix-ui/themes";
-import Link from "next/link";
 import React from "react";
 import Chatslist from "./ChatsList";
 import fetchInterceptor from "@/app/utils/fetchInterceptor";

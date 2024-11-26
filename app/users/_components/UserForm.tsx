@@ -1,6 +1,4 @@
 "use client";
-import axios from "axios";
-import { userSchema } from "@/app/validationSchemas";
 import {
 	Container,
 	Flex,
@@ -10,9 +8,7 @@ import {
 	Button,
 } from "@radix-ui/themes";
 import { Field, Form, Formik } from "formik";
-import { redirect, useRouter, usePathname } from "next/navigation";
-import { SiAxios } from "react-icons/si";
-import { z } from "zod";
+import { useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
 

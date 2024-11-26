@@ -1,4 +1,4 @@
-import { cookies, headers } from "next/headers";
+import { cookies } from "next/headers";
 
 const fetchInterceptor = async (url:string) => {
   const jwt = await (await cookies()).get("jwt")

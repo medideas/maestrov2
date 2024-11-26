@@ -2,10 +2,8 @@
 
 "use client";
 import { Box, Button, Card, Flex, Grid } from "@radix-ui/themes";
-import axios from "axios";
-import { Field, Form, Formik, useField } from "formik";
+import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
-import ArticleCard from "./ArticleCard";
 import { usePathname, useRouter } from "next/navigation";
 
 interface Props {

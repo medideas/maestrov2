@@ -1,4 +1,4 @@
-import { Flex, Box, Heading, Text, Card, Grid, Inset } from "@radix-ui/themes";
+import { Flex, Box, Heading, Text, Grid } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";

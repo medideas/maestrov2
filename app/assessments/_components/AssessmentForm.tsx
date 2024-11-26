@@ -1,13 +1,8 @@
 "use client";
 import { Button, Flex, Grid, Text } from "@radix-ui/themes";
-import { Form, Formik, Field, FieldArray } from "formik";
+import { Form, Formik, Field } from "formik";
 import React from "react";
 import assessmentQuestions from "../../utils/assessmentQuestions";
-
-type assessmentQuestion = {
-	jobTitleSkillId: string;
-	jobTitleSkillIds: JobTitleSkillId[];
-};
 
 type JobTitleSkillId = {
 	question: string;

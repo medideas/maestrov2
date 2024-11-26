@@ -54,26 +54,14 @@ const FilterSideBar = ({
 								key={index}
 								value={option}
 								className="pb-2"
-								onChange={(e) => {
-									// handleCheckboxesChange(e.target.value);
+								onChange={() => {
+									console.log("ciao");
 								}}
 							>
 								{option}
 							</CheckboxGroup.Item>
 						))}
 						<Separator my="3" size="4" />
-						{/* {menuTopics.map((topic, index) => (
-									<CheckboxGroup.Item
-										key={index}
-										value={topic}
-										className="pb-2"
-										onClick={(e) => {
-											handleCheckboxesChange(e.target.value);
-										}}
-									>
-										{topic}
-									</CheckboxGroup.Item>
-								))} */}
 					</CheckboxGroup.Root>
 				</Flex>
 			</div>

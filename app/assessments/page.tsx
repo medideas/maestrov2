@@ -1,18 +1,8 @@
-import {
-	Flex,
-	Grid,
-	Heading,
-	Text,
-	Card,
-	Inset,
-	Box,
-	Tooltip,
-	Dialog,
-	Button,
-} from "@radix-ui/themes";
+import { Flex, Grid, Heading, Box, Tooltip, Button } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 import CompetencyModal from "./_components/CompetencyModal";
+import fetchInterceptor from "../utils/fetchInterceptor";
 
 interface Competency {
 	id: string;
@@ -38,26 +28,14 @@ interface JobTitleSkill {
 	assessmentResultsId: string;
 }
 
-type Assessment = {
-	id: string;
-	name: string;
-	assessmentRestuls: AssessmentResult[];
-};
-
-type AssessmentResult = {
-	value: number;
-};
-
 const UserProfilePage = async () => {
 	const userId = "2e83a4e4-d1c5-4eac-8c6f-266247ba2a79";
-	let dataCompetencies = await fetch(process.env.APIBASE + "/competencies");
-	let competencies = await dataCompetencies.json();
-
-	let dataUser = await fetch(process.env.APIBASE + `/users/${userId}`);
-	let user = await dataUser.json();
-
-	let dataAssessment = await fetch(process.env.APIBASE + "/my/assessments/");
-	let assessment = await dataAssessment.json();
+	const competencies = await fetchInterceptor(
+		process.env.APIBASE + "/competencies"
+	);
+	const assessment = await fetchInterceptor(
+		process.env.APIBASE + "my/assessments/"
+	);
 
 	return (
 		<>
@@ -71,6 +49,7 @@ const UserProfilePage = async () => {
 				<Grid columns={{ initial: "1", md: "4" }} gap="3">
 					{competencies.map((competency: Competency, index: number) => (
 						<CompetencyModal
+							key={competency.id}
 							params={{
 								id: competency.id,
 							}}
@@ -86,6 +65,7 @@ const UserProfilePage = async () => {
 				</Flex>
 				{competencies.map((competency: Competency) => (
 					<Grid
+						key={competency.id}
 						columns={{ initial: "1", md: "5" }}
 						gap="6"
 						align="center"

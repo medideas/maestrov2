@@ -18,24 +18,6 @@ import { isAuthorized } from "@/app/utils/roleRules";
 import DeleteArticleButton from "../_components/DeleteArticleButton";
 import fetchInterceptor from "@/app/utils/fetchInterceptor";
 
-type Article = {
-	id: string;
-	title: string;
-	description: string;
-	cover: string;
-	content: string;
-	duration: number;
-	aiGenerated: boolean;
-	internalUseOnly: boolean;
-	revokedAt: string;
-	mediaId: string;
-	sourceId: string;
-	educationalMethodologyId: string;
-	educationalFrameworkId: string;
-	educationalToolId: string;
-	languageId: string;
-};
-
 const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
 	const id = params.id;
