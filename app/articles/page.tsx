@@ -24,7 +24,7 @@ type Article = {
 };
 
 const ArticlesPage = async () => {
-	const articles = fetchInterceptor(process.env.APIBASE + "/articles");
+	const articles = await fetchInterceptor(process.env.APIBASE + "/articles");
 	return (
 		<Flex direction="column" gap="4" p="5">
 			<Flex justify="between">
