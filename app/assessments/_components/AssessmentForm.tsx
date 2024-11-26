@@ -9,7 +9,15 @@ type JobTitleSkillId = {
 	answer_1: string;
 };
 
-const AssessmentForm = () => {
+type JobTitleSkill = {
+	id: string;
+};
+
+interface Props {
+	jobTitleSkills: JobTitleSkill[];
+}
+
+const AssessmentForm = ({ jobTitleSkills }: Props) => {
 	return (
 		<Flex>
 			<Formik
