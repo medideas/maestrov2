@@ -3,6 +3,7 @@ import { Flex, Box, Card, Text, Heading } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 import Chatslist from "./ChatsList";
+import fetchInterceptor from "@/app/utils/fetchInterceptor";
 
 interface Chat {
 	id: string;
@@ -10,8 +11,7 @@ interface Chat {
 }
 
 const Sidebar = async () => {
-	const data = await fetch(process.env.APIBASE + "/my/chats");
-	const chats: Chat[] = await data.json();
+	const chats = await fetchInterceptor(process.env.APIBASE + "/my/chats");
 	return (
 		<>
 			<Flex
@@ -31,7 +31,7 @@ const Sidebar = async () => {
 							<Text>No chats in here yet: let's start conversation.</Text>
 						)}
 						<ul className="list-none">
-							{chats.map((chat) => (
+							{chats.map((chat: Chat) => (
 								<Chatslist chat={chat} key={chat.id} />
 							))}
 						</ul>
