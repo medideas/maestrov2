@@ -23,15 +23,15 @@ type JobTitle = {
 
 interface Props {
 	params: { id: string };
-	assessmentResults: AssessmentResult[];
+	// assessmentResults: AssessmentResult[];
 }
 
-type AssessmentResult = {
-	jobTitleSkillId: string;
-	value: number;
-};
+// type AssessmentResult = {
+// 	jobTitleSkillId: string;
+// 	value: number;
+// };
 
-const Skill = async ({ params, assessmentResults }: Props) => {
+const Skill = async ({ params }: Props) => {
 	const userJobTitleId = "8183d06e-e4e5-46f1-ada9-373afc37e366";
 	const id = params.id;
 	const skill = await fetchInterceptor(process.env.APIBASE + "/skills/" + id);
@@ -54,7 +54,7 @@ const Skill = async ({ params, assessmentResults }: Props) => {
 									className={`bg-gray-400 w-4 h-4 rounded-full my-[-8px] ml-[${jobTitleSkill.target}0px]`}
 								></div>
 							</Tooltip>
-							{assessmentResults.map(
+							{/* {assessmentResults.map(
 								(result: AssessmentResult) =>
 									result.jobTitleSkillId == jobTitleSkill.id && (
 										<Tooltip content={`Your result: ${result.value}`}>
@@ -63,7 +63,7 @@ const Skill = async ({ params, assessmentResults }: Props) => {
 											></div>
 										</Tooltip>
 									)
-							)}
+							)} */}
 						</div>
 					)
 			)}

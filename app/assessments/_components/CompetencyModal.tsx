@@ -83,11 +83,7 @@ const CompetencyModal = async ({ params, assessmentResults }: Props) => {
 					</Box>
 				</Grid>
 				{competency.skills.map((skill: Skill) => (
-					<Skill
-						key={skill.id}
-						params={{ id: skill.id }}
-						assessmentResults={results}
-					/>
+					<Skill key={skill.id} params={{ id: skill.id }} />
 				))}
 			</Dialog.Content>
 		</Dialog.Root>
