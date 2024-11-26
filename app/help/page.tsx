@@ -37,7 +37,10 @@ const HelpPage = () => {
 					</Text>
 				</Flex>
 				<Flex gap="4" my="3">
-					<Box width="350px">
+					<Box
+						width="350px"
+						className="transition ease-in-out hover:translate-y-[-10px] duration-300 hover:shadow-lg"
+					>
 						<Card size="2" className="bg-maestro min-h-[100%]">
 							<Flex gap="4" align="center" p="2">
 								<BsStars size="100" />
@@ -54,7 +57,10 @@ const HelpPage = () => {
 						</Card>
 					</Box>
 
-					<Box width="350px">
+					<Box
+						width="350px"
+						className="transition ease-in-out hover:translate-y-[-10px] duration-300  hover:shadow-lg"
+					>
 						<Card size="2" className="bg-maestro">
 							<Flex gap="4" align="center" p="2">
 								<IoBookOutline size="100" />
@@ -71,7 +77,10 @@ const HelpPage = () => {
 						</Card>
 					</Box>
 
-					<Box width="350px">
+					<Box
+						width="350px"
+						className="transition ease-in-out hover:translate-y-[-10px] duration-300 hover:shadow-lg"
+					>
 						<Card size="2" className="bg-maestro">
 							<Flex gap="4" align="center" p="2">
 								<PiUsersThin size="100" />
@@ -110,7 +119,7 @@ const HelpPage = () => {
 				<Flex gap="5" align="start" mb="5">
 					<div className="max-w-[160px] text-center mx-4">
 						<div className="bg-maestro p-10 rounded-full w-[150px] mb-4">
-							<IoBookOutline size="70" />
+							<IoBookOutline size="70" color="#ccc" />
 						</div>
 
 						<Text size="2" align="center">
@@ -120,7 +129,7 @@ const HelpPage = () => {
 
 					<div className="max-w-[160px] text-center mx-4">
 						<div className="bg-maestro p-10 rounded-full w-[150px] mb-4">
-							<AiOutlineUser size="70" />
+							<AiOutlineUser size="70" color="#ccc" />
 						</div>
 						<Text size="2" className="text-center">
 							Content limited to one competency: Clinical & Product Knowledge
@@ -128,7 +137,7 @@ const HelpPage = () => {
 					</div>
 					<div className="max-w-[160px] text-center mx-4">
 						<div className="bg-maestro p-10 rounded-full w-[150px] mb-4">
-							<PiFolderPlusThin size="70" />
+							<PiFolderPlusThin size="70" color="#ccc" />
 						</div>
 						<Text size="2" className="text-center">
 							+200 documents uploaded in the library
@@ -136,7 +145,7 @@ const HelpPage = () => {
 					</div>
 					<div className="max-w-[160px] text-center mx-4">
 						<div className="bg-maestro p-10 rounded-full w-[150px] mb-4">
-							<MdWifiTethering size="70" />
+							<MdWifiTethering size="70" color="#ccc" />
 						</div>
 						<Text size="2" className="text-center">
 							Accessible via website from laptop, tablet and mobile phone
@@ -144,7 +153,7 @@ const HelpPage = () => {
 					</div>
 					<div className="max-w-[160px] text-center mx-4">
 						<div className="bg-maestro p-10 rounded-full w-[150px] mb-4">
-							<GoRocket size="70" />
+							<GoRocket size="70" color="#ccc" />
 						</div>
 						<Text size="2" className="text-center">
 							Constantly evolving and improving... many new features to come!
@@ -155,10 +164,14 @@ const HelpPage = () => {
 			<Flex className="bg-maestro p-5 my-5">
 				<Container>
 					<Grid columns="3">
-						<Box className="col-span-1">
-							<img alt="screenshot" />
+						<Box className="col-span-1" p="3" mr="5">
+							<img alt="screenshot" src="./help-1.png" />
 						</Box>
-						<Box className="col-span-2" py="5">
+						<Flex
+							justify="center"
+							direction="column"
+							className="align-middle col-span-2"
+						>
 							<Heading weight="light" mb="2">
 								ChatMaestro
 							</Heading>
@@ -171,14 +184,18 @@ const HelpPage = () => {
 								and receive immediate support, which is particularly beneficial
 								for complex or technical subjects.
 							</Text>
-						</Box>
+						</Flex>
 					</Grid>
 				</Container>
 			</Flex>
 			<Flex className="bg-maestro p-5 my-5">
 				<Container>
 					<Grid columns="3">
-						<Box className="col-span-2 text-right" py="5">
+						<Flex
+							justify="center"
+							direction="column"
+							className="align-middle col-span-2"
+						>
 							<Heading weight="light" mb="2">
 								Home Page
 							</Heading>
@@ -189,9 +206,9 @@ const HelpPage = () => {
 								materials relevant to your job functions, making your learning
 								more efficient and impactful.
 							</Text>
-						</Box>
+						</Flex>
 						<Box className="col-span-1">
-							<img alt="screenshot" />
+							<img alt="screenshot" src="./help-2.png" />
 						</Box>
 					</Grid>
 				</Container>
@@ -199,10 +216,14 @@ const HelpPage = () => {
 			<Flex className="bg-maestro p-5 my-5">
 				<Container>
 					<Grid columns="3">
-						<Box className="col-span-1">
-							<img alt="screenshot" />
+						<Box className="col-span-1" py="5" p="3" mr="5">
+							<img alt="screenshot" src="./help-1.png" />
 						</Box>
-						<Box className="col-span-2" py="5">
+						<Flex
+							justify="center"
+							direction="column"
+							className="align-middle col-span-2"
+						>
 							<Heading weight="light" mb="2">
 								Profile
 							</Heading>
@@ -213,14 +234,18 @@ const HelpPage = () => {
 								and Selling Skills. Maestro will guide you through a
 								personalized learning path and track your progress during time.
 							</Text>
-						</Box>
+						</Flex>
 					</Grid>
 				</Container>
 			</Flex>
 			<Flex className="bg-maestro p-5 my-5">
 				<Container>
 					<Grid columns="3">
-						<Box className="col-span-2 text-right" py="5">
+						<Flex
+							justify="center"
+							direction="column"
+							className="align-middle col-span-2"
+						>
 							<Heading weight="light" mb="2">
 								Library
 							</Heading>
@@ -230,16 +255,16 @@ const HelpPage = () => {
 								what you need and save your favorite documents so you can easily
 								access them later when you have time.
 							</Text>
-						</Box>
+						</Flex>
 						<Box className="col-span-1">
-							<img alt="screenshot" />
+							<img alt="screenshot" src="./help-2.png" />
 						</Box>
 					</Grid>
 				</Container>
 			</Flex>
 			<Flex
 				direction="column"
-				className="mt-[50px] max-w-[1100px] mx-auto"
+				className="mt-[50px] mb-[80px] max-w-[1100px] mx-auto"
 				gap="5"
 			>
 				<Flex direction="column">
@@ -252,7 +277,11 @@ const HelpPage = () => {
 						</Heading>
 					</Flex>
 					<Flex direction="column" gap="4">
-						<Accordion.Root type="single" collapsible>
+						<Accordion.Root
+							type="single"
+							collapsible
+							className="bg-slate-100 p-5"
+						>
 							<Accordion.Item value="item-1">
 								<Accordion.Header>
 									<Accordion.Trigger>
@@ -272,7 +301,11 @@ const HelpPage = () => {
 							</Accordion.Item>
 						</Accordion.Root>
 
-						<Accordion.Root type="single" collapsible>
+						<Accordion.Root
+							type="single"
+							collapsible
+							className="border-slate-100 border-[1px] p-5"
+						>
 							<Accordion.Item value="item-1">
 								<Accordion.Header>
 									<Accordion.Trigger>
@@ -291,7 +324,11 @@ const HelpPage = () => {
 							</Accordion.Item>
 						</Accordion.Root>
 
-						<Accordion.Root type="single" collapsible>
+						<Accordion.Root
+							type="single"
+							collapsible
+							className="bg-slate-100 p-5"
+						>
 							<Accordion.Item value="item-1">
 								<Accordion.Header>
 									<Accordion.Trigger>
@@ -310,7 +347,11 @@ const HelpPage = () => {
 							</Accordion.Item>
 						</Accordion.Root>
 
-						<Accordion.Root type="single" collapsible>
+						<Accordion.Root
+							type="single"
+							collapsible
+							className="border-slate-100 border-[1px] p-5"
+						>
 							<Accordion.Item value="item-1">
 								<Accordion.Header>
 									<Accordion.Trigger>
@@ -331,7 +372,11 @@ const HelpPage = () => {
 							</Accordion.Item>
 						</Accordion.Root>
 
-						<Accordion.Root type="single" collapsible>
+						<Accordion.Root
+							type="single"
+							collapsible
+							className="bg-slate-100 p-5"
+						>
 							<Accordion.Item value="item-1">
 								<Accordion.Header>
 									<Accordion.Trigger>
@@ -351,7 +396,11 @@ const HelpPage = () => {
 							</Accordion.Item>
 						</Accordion.Root>
 
-						<Accordion.Root type="single" collapsible>
+						<Accordion.Root
+							type="single"
+							collapsible
+							className="border-slate-100 border-[1px] p-5"
+						>
 							<Accordion.Item value="item-1">
 								<Accordion.Header>
 									<Accordion.Trigger>

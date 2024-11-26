@@ -1,14 +1,14 @@
-import { Button, Flex, Heading } from "@radix-ui/themes";
+import { Button, Container, Flex, Heading } from "@radix-ui/themes";
 import React from "react";
 import UsersTable from "./UsersTable";
 import Link from "next/link";
+import fetchInterceptor from "../utils/fetchInterceptor";
 
 const Users = async () => {
-	let data = await fetch(process.env.APIBASE + "/users/");
-	let users = await data.json();
+	const users = await fetchInterceptor(process.env.APIBASE + "/users");
 
 	return (
-		<Flex direction="column" className="max-w-[1000px] mx-auto">
+		<Container className="max-w-[1000px] mx-auto my-[50px]">
 			<Flex justify="between" align="center">
 				<Flex direction="column" my="5">
 					<Heading>Users</Heading>
@@ -21,7 +21,7 @@ const Users = async () => {
 				</Flex>
 			</Flex>
 			{users ? <UsersTable users={users} /> : "Sorry, no users added yet"}
-		</Flex>
+		</Container>
 	);
 };
 

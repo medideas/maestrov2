@@ -1,4 +1,4 @@
-import { Flex } from "@radix-ui/themes";
+import { Container, Flex } from "@radix-ui/themes";
 import React from "react";
 import UserForm from "../_components/UserForm";
 
@@ -14,7 +14,7 @@ const NewUser = async () => {
 	data = await fetch(process.env.APIBASE + "/roles");
 	const roles = await data.json();
 	return (
-		<Flex>
+		<Container className="my-[40px] max-w-[600px] mx-auto border-[1px] shadow-md p-5">
 			<UserForm
 				businessUnits={businessUnits}
 				languages={languages}
@@ -22,7 +22,7 @@ const NewUser = async () => {
 				jobTitles={jobTitles}
 				roles={roles}
 			/>
-		</Flex>
+		</Container>
 	);
 };
 

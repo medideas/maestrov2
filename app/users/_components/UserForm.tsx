@@ -1,11 +1,20 @@
 "use client";
 import axios from "axios";
 import { userSchema } from "@/app/validationSchemas";
-import { Container, Flex } from "@radix-ui/themes";
+import {
+	Container,
+	Flex,
+	Grid,
+	Heading,
+	Separator,
+	Button,
+} from "@radix-ui/themes";
 import { Field, Form, Formik } from "formik";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter, usePathname } from "next/navigation";
 import { SiAxios } from "react-icons/si";
 import { z } from "zod";
+import { useState } from "react";
+import Link from "next/link";
 
 interface User {
 	id: string;
@@ -41,8 +50,6 @@ interface JobTitle {
 	name: string;
 }
 
-type UserFormData = z.infer<typeof userSchema>;
-
 const UserForm = ({
 	user,
 	businessUnits,
@@ -61,30 +68,51 @@ const UserForm = ({
 	const router = useRouter();
 	const initialValues = {
 		firstName: user?.firstName || "",
-		lastName: "",
-		email: "",
-		regionId: "",
-		languageId: "",
-		businessUnitId: "",
-		jobTitleId: "",
-		roleIds: [],
+		lastName: user?.lastName || "",
+		email: user?.email || "",
+		regionId: user?.regionId || "",
+		languageId: user?.languageId || "",
+		businessUnitId: user?.businessUnitId || "",
+		jobTitleId: user?.jobTitleId || "",
+		roleIds: user?.roleIds || [],
 	};
-	console.log(user);
+	const [submitting, setSubmitting] = useState(false);
+	const pathname = usePathname();
+
+	const isEditing = () => {
+		return pathname.includes("/edit");
+	};
+	console.log(isEditing());
 	return (
 		<Container>
 			<Formik
 				initialValues={initialValues}
 				onSubmit={(values) => {
-					console.log(JSON.stringify(values));
-					axios.post(process.env.APIBASE + "/users/", values, {
-						headers: {
-							"Content-Type": "application/json",
-						},
-					});
+					setSubmitting(true);
+					if (isEditing()) {
+						console.log(JSON.stringify(values));
+						fetch(`https://sviluppo4.arsdue.com/users/${user?.id}`, {
+							headers: {
+								"Content-Type": "application/json",
+							},
+							method: "PATCH",
+							body: JSON.stringify(values),
+						});
+					} else {
+						console.log(JSON.stringify(values));
+						fetch("https://sviluppo4.arsdue.com/" + "users/", {
+							headers: {
+								"Content-Type": "application/json",
+							},
+							method: "POST",
+							body: JSON.stringify(values),
+						});
+					}
+					router.push("/users");
 				}}
 			>
 				<Form>
-					<Flex>
+					<Grid gap="5" columns="2">
 						<div>
 							<label>First name</label>
 							<Field name="firstName" className="border-2 mx-3" />
@@ -93,15 +121,15 @@ const UserForm = ({
 							<label>Last name</label>
 							<Field name="lastName" className="border-2 mx-3" />
 						</div>
-					</Flex>
-					<Flex mt="4">
+					</Grid>
+					<Grid mt="4">
 						<div>
 							<label>Email</label>
 							<Field name="email" className="border-2 mx-3" />
 						</div>
-					</Flex>
-					<Flex>
-						<div>
+					</Grid>
+					<Grid columns="2" my="3">
+						<div className="p-3">
 							<label htmlFor="businessUnitId">Business Unit</label>
 							<Field as="select" name="businessUnitId" id="businessUnitId">
 								<option>Select an option</option>
@@ -112,9 +140,7 @@ const UserForm = ({
 								))}
 							</Field>
 						</div>
-					</Flex>
-					<Flex>
-						<div>
+						<div className="p-3">
 							<label htmlFor="regionId">Region</label>
 							<Field as="select" name="regionId" id="regionId">
 								{regions.map((region) => (
@@ -124,9 +150,9 @@ const UserForm = ({
 								))}
 							</Field>
 						</div>
-					</Flex>
-					<Flex>
-						<div>
+					</Grid>
+					<Grid columns="2" my="3">
+						<div className="p-3">
 							<label htmlFor="languageId">Language</label>
 							<Field as="select" name="languageId" id="languageId">
 								{languages.map((language) => (
@@ -136,8 +162,6 @@ const UserForm = ({
 								))}
 							</Field>
 						</div>
-					</Flex>
-					<Flex>
 						<div>
 							<label htmlFor="jobTitleId">Job Title</label>
 							<Field as="select" name="jobTitleId" id="jobTitleId">
@@ -148,8 +172,12 @@ const UserForm = ({
 								))}
 							</Field>
 						</div>
-					</Flex>
+					</Grid>
+					<Separator my="3" size="4" />
 					<div role="group" aria-labelledby="checkbox-group">
+						<Heading weight="light" size="5">
+							Role
+						</Heading>
 						{roles.map((role, index) => (
 							<div key={index}>
 								<label htmlFor="roleIds">
@@ -164,11 +192,24 @@ const UserForm = ({
 							</div>
 						))}
 					</div>
-					<div>
-						<button className="btn mt-5 py-1 px-5 bg-primary" type="submit">
-							Submit form
-						</button>
-					</div>
+					<Flex gap="2" pt="4">
+						<Button
+							className="btn mt-5 py-1 px-4 bg-primary"
+							type="submit"
+							disabled={submitting}
+						>
+							{isEditing() ? "Update user" : "Create new user"}
+						</Button>
+						<Link href="/users">
+							<Button
+								className="btn mt-5 py-1 px-5 bg-primary"
+								type="button"
+								variant="outline"
+							>
+								Cancel
+							</Button>
+						</Link>
+					</Flex>
 				</Form>
 			</Formik>
 		</Container>

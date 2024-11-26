@@ -1,3 +1,4 @@
+"use client";
 import { Badge, Table } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
@@ -36,7 +37,7 @@ type Region = {
 
 const UsersTable = ({ users }: Props) => {
 	return (
-		<Table.Root>
+		<Table.Root size="3">
 			<Table.Header>
 				<Table.Row>
 					<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>

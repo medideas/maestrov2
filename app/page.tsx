@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import ArticleCard from "./articles/_components/ArticleCard";
-import { cookies } from "next/headers";
+import fetchInterceptor from "./utils/fetchInterceptor";
 
 interface Article {
 	id: string;
@@ -23,15 +23,11 @@ interface Competency {
 }
 
 export default async function Home() {
-	var data = await fetch(process.env.APIBASE + "/articles", {
-		cache: "no-store",
-	});
-	let articles = await data.json();
+	const competencies = await fetchInterceptor(
+		process.env.APIBASE + "/competencies"
+	);
+	const articles = await fetchInterceptor(process.env.APIBASE + "/articles");
 
-	data = await fetch(process.env.APIBASE + "/competencies", {
-		cache: "no-store",
-	});
-	let competencies = await data.json();
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
 
 	return (

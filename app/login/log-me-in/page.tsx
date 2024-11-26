@@ -1,16 +1,27 @@
 "use client";
 import { Flex, Spinner, Text } from "@radix-ui/themes";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSearchParams, redirect } from "next/navigation";
+import {
+	getCookie,
+	getCookies,
+	setCookie,
+	deleteCookie,
+	hasCookie,
+} from "cookies-next/client";
 
 const LogMeInPage = () => {
 	const searchParams = useSearchParams();
 	const jwt = searchParams.get("jwt");
-	const req = fetch("http://localhost:3000/actions/login/", {
-		method: "POST",
-		body: JSON.stringify({ jwt: jwt }),
-	});
-	redirect("/");
+	useEffect(() => {
+		setCookie("jwt", jwt, { path: "/" });
+	}, []);
+
+	/* .... */
+	// const req = fetch("http://localhost:3000/api/login/", {
+	// 	method: "POST",
+	// 	body: JSON.stringify({ jwt: jwt }),
+	// });
 
 	return (
 		<Flex className="max-w-[400px] mx-auto my-[50px]">

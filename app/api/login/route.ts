@@ -3,8 +3,10 @@ import { cookies } from 'next/headers'
 
 export async function POST(request: NextRequest){
     const body = await request.json();
-    const cookieStore = await cookies();
-    cookieStore.set('jwt', body.jwt);
-    console.log(cookieStore.get('jwt'))
+    const jwt = body.jwt;
+    await (await cookies()).set({
+        name: 'jwt',
+        value: jwt,
+      })
     return NextResponse.json({status: 201});
 }

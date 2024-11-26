@@ -1,3 +1,4 @@
+import fetchInterceptor from "@/app/utils/fetchInterceptor";
 import {
 	Badge,
 	Code,
@@ -44,8 +45,7 @@ type Role = {
 const UserPage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
 	const id = params.id;
-	let data = await fetch(process.env.APIBASE + "/users/" + id);
-	let user: User = await data.json();
+	const user = await fetchInterceptor(process.env.APIBASE + "/users/" + id);
 	return (
 		<Container>
 			<Flex justify="between">
@@ -98,10 +98,10 @@ const UserPage = async (props: { params: Promise<{ id: string }> }) => {
 							{user.businessUnit ? user.businessUnit.name : "Not yet assigned"}
 						</DataList.Value>
 					</DataList.Item>
-					<DataList.Item>
+					{/* <DataList.Item>
 						<DataList.Label minWidth="88px">JobTitle</DataList.Label>
 						<DataList.Value>{user.jobTitle.name}</DataList.Value>
-					</DataList.Item>
+					</DataList.Item> */}
 				</DataList.Root>
 			</Flex>
 		</Container>

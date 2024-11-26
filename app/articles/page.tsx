@@ -12,6 +12,7 @@ import React from "react";
 import Link from "next/link";
 import ArticleCard from "./_components/ArticleCard";
 import { cookies } from "next/headers";
+import fetchInterceptor from "../utils/fetchInterceptor";
 
 type Article = {
 	cover: string;
@@ -23,10 +24,7 @@ type Article = {
 };
 
 const ArticlesPage = async () => {
-	const cookieStore = await cookies();
-	const jwt = cookieStore.get("jwt");
-	const data = await fetch(process.env.APIBASE + "/articles");
-	const articles: Article[] = await data.json();
+	const articles = fetchInterceptor(process.env.APIBASE + "/articles");
 	return (
 		<Flex direction="column" gap="4" p="5">
 			<Flex justify="between">
@@ -41,7 +39,7 @@ const ArticlesPage = async () => {
 				</Flex>
 			</Flex>
 			<Grid columns="4" gap="3">
-				{articles.map((article) => (
+				{articles.map((article: Article) => (
 					<ArticleCard key={article.id} article={article} />
 				))}
 			</Grid>

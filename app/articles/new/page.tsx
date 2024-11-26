@@ -1,20 +1,21 @@
 import { Flex, Container, Heading, Text } from "@radix-ui/themes";
 import React from "react";
 import ArticleForm from "../_components/ArticleForm";
+import fetchInterceptor from "@/app/utils/fetchInterceptor";
 
 const NewArticle = async () => {
-	var data = await fetch(process.env.APIBASE + "/educational-frameworks");
-	const educationalFrameworks = await data.json();
-	data = await fetch(process.env.APIBASE + "/educational-methodologies");
-	const educationalMethodolodies = await data.json();
-	data = await fetch(process.env.APIBASE + "/media");
-	const medias = await data.json();
-	data = await fetch(process.env.APIBASE + "/languages");
-	const languages = await data.json();
-	data = await fetch(process.env.APIBASE + "/sources");
-	const sources = await data.json();
-	data = await fetch(process.env.APIBASE + "/educational-tools");
-	const educationalTools = await data.json();
+	const educationalFrameworks = await fetchInterceptor(
+		process.env.APIBASE + "/educational-frameworks"
+	);
+	const educationalMethodolodies = await fetchInterceptor(
+		process.env.APIBASE + "/educational-methodologies"
+	);
+	const medias = await fetchInterceptor(process.env.APIBASE + "/medias");
+	const languages = await fetchInterceptor(process.env.APIBASE + "/languages");
+	const sources = await fetchInterceptor(process.env.APIBASE + "/sources");
+	const educationalTools = await fetchInterceptor(
+		process.env.APIBASE + "/educational-tools"
+	);
 	return (
 		<Container>
 			<Heading>New article</Heading>

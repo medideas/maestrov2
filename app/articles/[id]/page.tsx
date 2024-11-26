@@ -16,13 +16,14 @@ import React from "react";
 import Link from "next/link";
 import { isAuthorized } from "@/app/utils/roleRules";
 import DeleteArticleButton from "../_components/DeleteArticleButton";
+import fetchInterceptor from "@/app/utils/fetchInterceptor";
 
 type Article = {
 	id: string;
 	title: string;
 	description: string;
-	coverFile: string;
-	contentFile: string;
+	cover: string;
+	content: string;
 	duration: number;
 	aiGenerated: boolean;
 	internalUseOnly: boolean;
@@ -38,8 +39,9 @@ type Article = {
 const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
 	const id = params.id;
-	const data = await fetch(process.env.APIBASE + "/articles/" + id);
-	const article = await data.json();
+	const article = await fetchInterceptor(
+		process.env.APIBASE + "/articles/" + id
+	);
 	return (
 		<Container my="5">
 			<Flex justify="end" mb="3">
