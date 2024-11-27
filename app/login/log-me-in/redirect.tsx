@@ -1,3 +1,4 @@
+"use client";
 import { setCookie } from "cookies-next";
 import { redirect, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
