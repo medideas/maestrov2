@@ -1,13 +1,20 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import classnames from "classnames";
 import { SlMenu, SlClose } from "react-icons/sl";
 
 import { Avatar, Box, Button, Dialog, Flex, Heading } from "@radix-ui/themes";
+import { hasCookie } from "cookies-next";
 
 const Navbar = () => {
+	let userIsLoggedIn = false;
+	useEffect(() => {
+		if (hasCookie("jwt")) {
+			userIsLoggedIn = true;
+		}
+	});
 	const currentPath = usePathname();
 	const [isOpen, setOpen] = useState(false);
 
@@ -18,7 +25,6 @@ const Navbar = () => {
 		{ label: "Library", href: "/mylibrary" },
 		{ label: "Role Play", href: "/roleplay" },
 		{ label: "Help", href: "/help" },
-		{ label: "Login", href: "/login" },
 	];
 
 	return (
@@ -88,6 +94,14 @@ const Navbar = () => {
 								</Link>
 							</li>
 						))}
+						<li className="py-2 pr-5">
+							<Link
+								href={!userIsLoggedIn ? "/logout" : "/login"}
+								className={"hover:text-red-500 transition-colors"}
+							>
+								{!userIsLoggedIn ? "Logout" : "Login"}
+							</Link>
+						</li>
 					</ul>
 				</Flex>
 				{/* mobile menu */}
@@ -124,6 +138,16 @@ const Navbar = () => {
 									</Link>
 								</li>
 							))}
+							<li className="py-2 pr-5">
+								<Link
+									href={userIsLoggedIn ? "/logout" : "/login"}
+									className={classnames({
+										"font-semibold text-l": true,
+									})}
+								>
+									{!userIsLoggedIn ? "/logout" : "/login"}
+								</Link>
+							</li>
 						</ul>
 					</Flex>
 				</div>

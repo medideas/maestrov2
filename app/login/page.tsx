@@ -10,7 +10,7 @@ import {
 import React from "react";
 import LoginButton from "./_components/LoginButton";
 
-const LoginPage = () => {
+const LoginPage = async () => {
 	return (
 		<Flex justify="center" className="my-[40px]">
 			<Flex minWidth="400px" className="shadow-md">

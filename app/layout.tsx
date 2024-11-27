@@ -21,7 +21,6 @@ export default function RootLayout({
 			<body className={"flex flex-col m-0 p-0"}>
 				<Theme accentColor="red" radius="small" appearance="light">
 					<Navbar />
-
 					<main className="flex-auto">{children}</main>
 
 					<div className="w-[100%] bottom-0 fixed z-20">

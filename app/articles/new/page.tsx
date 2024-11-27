@@ -10,14 +10,14 @@ const NewArticle = async () => {
 	const educationalMethodolodies = await fetchInterceptor(
 		process.env.APIBASE + "/educational-methodologies"
 	);
-	const medias = await fetchInterceptor(process.env.APIBASE + "/medias");
+	const medias = await fetchInterceptor(process.env.APIBASE + "/media");
 	const languages = await fetchInterceptor(process.env.APIBASE + "/languages");
 	const sources = await fetchInterceptor(process.env.APIBASE + "/sources");
 	const educationalTools = await fetchInterceptor(
 		process.env.APIBASE + "/educational-tools"
 	);
 	return (
-		<Container>
+		<Container my="5">
 			<Heading>New article</Heading>
 			<Text>
 				Add the required information to add content to the Knowledge base
