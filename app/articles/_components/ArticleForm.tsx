@@ -130,7 +130,7 @@ const ArticleForm = ({
 								method: "PATCH",
 								body: formData, // Send FormData
 						  })
-						: await fetch(process.env.APIBASE + "/articles", {
+						: await fetch("https://sviluppo4.arsdue.com/articles", {
 								headers: {
 									Accept: "application/json",
 									Authorization: "Bearer " + jwt,
