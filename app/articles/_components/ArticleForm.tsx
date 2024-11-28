@@ -129,6 +129,10 @@ const ArticleForm = ({
 								body: formData, // Send FormData
 						  })
 						: await fetch(process.env.APIBASE + "/articles", {
+								headers: {
+									Accept: "application/json",
+									Authorization: "Bearer " + jwt,
+								},
 								method: "POST",
 								body: formData, // Send FormData
 						  });
