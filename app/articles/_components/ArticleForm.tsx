@@ -119,6 +119,8 @@ const ArticleForm = ({
 					);
 					formData.append("educationalToolId", values.educationalToolId);
 					formData.append("languageId", values.languageId);
+					pathname.includes("/edit") ? "edit" : "new";
+					console.log(process.env.APIBASE);
 					pathname.includes("/edit")
 						? await fetch(process.env.APIBASE + "/articles/" + article?.id, {
 								headers: {
