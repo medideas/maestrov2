@@ -5,6 +5,7 @@ import { Box, Button, Card, Flex, Grid } from "@radix-ui/themes";
 import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { getCookie } from "cookies-next";
 
 interface Props {
 	article?: Article;
@@ -76,6 +77,7 @@ const ArticleForm = ({
 	const [contentFile, setContentFile] = useState(article?.content || "");
 	const pathname = usePathname();
 	const router = useRouter();
+	const jwt = getCookie("jwt");
 	return (
 		<div>
 			<Formik
@@ -119,6 +121,10 @@ const ArticleForm = ({
 					formData.append("languageId", values.languageId);
 					pathname.includes("/edit")
 						? await fetch(process.env.APIBASE + "/articles/" + article?.id, {
+								headers: {
+									Accept: "application/json",
+									Authorization: "Bearer " + jwt,
+								},
 								method: "PATCH",
 								body: formData, // Send FormData
 						  })
