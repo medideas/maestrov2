@@ -15,6 +15,7 @@ import fetchInterceptor from "@/app/utils/fetchInterceptor";
 interface Props {
 	params: { id: string };
 	assessmentResults: AssessmentResult[];
+	color: string;
 }
 
 type AssessmentResult = {
@@ -23,7 +24,7 @@ type AssessmentResult = {
 	jobTitleSkillId: string;
 };
 
-const CompetencyModal = async ({ params, assessmentResults }: Props) => {
+const CompetencyModal = async ({ params, assessmentResults, color }: Props) => {
 	const results: AssessmentResult[] = assessmentResults;
 	const id = params.id;
 	const competency = await fetchInterceptor(
@@ -32,7 +33,9 @@ const CompetencyModal = async ({ params, assessmentResults }: Props) => {
 	return (
 		<Dialog.Root key={competency.id}>
 			<Dialog.Trigger>
-				<Box className="hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out">
+				<Box
+					className={`hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out ${color}`}
+				>
 					<Card size="2" className={competency.color}>
 						<Heading as="h4" weight="light" mb="5">
 							{competency.name}

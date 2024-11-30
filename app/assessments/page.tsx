@@ -29,13 +29,14 @@ interface JobTitleSkill {
 }
 
 const UserProfilePage = async () => {
-	const userId = "2e83a4e4-d1c5-4eac-8c6f-266247ba2a79";
 	const competencies = await fetchInterceptor(
 		process.env.APIBASE + "/competencies"
 	);
 	const assessment = await fetchInterceptor(
-		process.env.APIBASE + "my/assessments/"
+		process.env.APIBASE + "/my/assessments/"
 	);
+
+	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
 
 	return (
 		<>
@@ -50,6 +51,7 @@ const UserProfilePage = async () => {
 					{competencies.map((competency: Competency, index: number) => (
 						<CompetencyModal
 							key={competency.id}
+							color={colors[index]}
 							params={{
 								id: competency.id,
 							}}

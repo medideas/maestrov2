@@ -23,7 +23,7 @@ const Navbar = () => {
 		{ label: "My Profile", href: "/assessments" },
 		{ label: "ChatMaestro", href: "/chats" },
 		{ label: "Library", href: "/mylibrary" },
-		{ label: "Role Play", href: "/roleplay" },
+		{ label: "Manage users", href: "/users" },
 		{ label: "Help", href: "/help" },
 	];
 
@@ -94,7 +94,7 @@ const Navbar = () => {
 								</Link>
 							</li>
 						))}
-						<li className="py-2 pr-5">
+						<li className="pr-5">
 							<Link
 								href={!userIsLoggedIn ? "/logout" : "/login"}
 								className={"hover:text-red-500 transition-colors"}
@@ -145,7 +145,7 @@ const Navbar = () => {
 										"font-semibold text-l": true,
 									})}
 								>
-									{!userIsLoggedIn ? "/logout" : "/login"}
+									{!userIsLoggedIn ? "Log out" : "Log in"}
 								</Link>
 							</li>
 						</ul>

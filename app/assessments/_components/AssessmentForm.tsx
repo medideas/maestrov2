@@ -1,82 +1,128 @@
 "use client";
-import { Button, Flex, Grid, Text } from "@radix-ui/themes";
+import { Button, Container, Grid, Separator, Text } from "@radix-ui/themes";
 import { Form, Formik, Field } from "formik";
 import React from "react";
-import assessmentQuestions from "../../utils/assessmentQuestions";
+import { useRouter } from "next/navigation";
+import assessmentQuestions from "@/app/utils/assessmentQuestions";
+import { getCookie } from "cookies-next";
 
-type JobTitleSkillId = {
+type AssessmenTQuestionSet = {
 	question: string;
-	answer_1: string;
+	Answer_1: string;
 };
 
 type JobTitleSkill = {
 	id: string;
 };
 
+type User = {
+	id: string;
+	jobTitleId: string;
+};
+
 interface Props {
 	jobTitleSkills: JobTitleSkill[];
+	user: User;
 }
 
-const AssessmentForm = ({ jobTitleSkills }: Props) => {
+const AssessmentForm = ({ jobTitleSkills, user }: Props) => {
+	const jwt = getCookie("jwt");
+	const router = useRouter();
+	let answer: { jobTitleSkillId: string; value: number } = {
+		jobTitleSkillId: "",
+		value: 0,
+	};
+	let quiz: { jobTitleSkillId: string; value: string }[] = [];
+	let submitQuiz = { name: "", assessmentResults: quiz };
 	return (
-		<Flex>
+		<Container py="5">
 			<Formik
 				initialValues={{
 					name: "",
-					assessmentResults: [{ jobTitleSkillId: "", value: "" }],
+					assessmentResults: [],
 				}}
-				onSubmit={(values) => console.log(JSON.stringify(values))}
+				onSubmit={(values) => {
+					assessmentQuestions[0].jobTitleSkillIds.map((job, index) =>
+						quiz.push({
+							jobTitleSkillId: job.jobTitleSkillid,
+							value: values.assessmentResults[index],
+						})
+					);
+					submitQuiz = { name: values.name, assessmentResults: quiz };
+					console.log(JSON.stringify(submitQuiz));
+					fetch("https://sviluppo4.arsdue.com/" + "my/assessments/", {
+						headers: {
+							Accept: "application/json",
+							Authorization: "Bearer " + jwt,
+						},
+						method: "POST",
+						body: JSON.stringify(submitQuiz),
+					});
+				}}
 			>
 				<Form>
-					<Field name="name" />
+					<label htmlFor="name">
+						Assign a name to this assessment
+						<Field name="name" />
+					</label>
+					{/* {assessmentQuestions.map((assessmentQuestionsSet) => */}
+					{/* assessmentQuestionsSet.jobTitleId === user.jobTitleId && */}
+
 					{assessmentQuestions[0].jobTitleSkillIds.map((job, index) => (
 						<div key={index} className="p-4">
 							<Text weight="bold">{job.Question}</Text>
-							<Field
-								name={`assessmentResults[${index}].jobTitleSkillId`}
-								value={job.jobTitleSkillid}
-								type="hidden"
-							/>
 							<Grid columns="4">
-								<label>
-									<Field
-										name={`assessmentResults[${index}].value`}
-										type="radio"
-										value="1"
-									/>
-									{job.Answer_1}
-								</label>
-								<label>
-									<Field
-										name={`assessmentResults[${index}].value`}
-										type="radio"
-										value="2"
-									/>
-									{job.Answer_2}
-								</label>
-								<label>
-									<Field
-										name={`assessmentResults[${index}].value`}
-										type="radio"
-										value="3"
-									/>
-									{job.Answer_3}
-								</label>
-								<label>
-									<Field
-										name={`assessmentResults[${index}].value`}
-										type="radio"
-										value="4"
-									/>
-									{job.Answer_4}
-								</label>
+								<div className="p-3 m-3 border-[1px] rounded-sm hover:shadow-md hover:translate-y-[-4px] transition-all  duration-200 ease-in-out">
+									<label htmlFor={`assessmentResults[${index}].value`}>
+										<Field
+											name={`assessmentResults[${index}].value`}
+											type="radio"
+											value="1"
+										/>
+										<Separator size="4" my="3" />
+										{job.Answer_1}
+									</label>
+								</div>
+								<div className="p-3 m-3 border-[1px] rounded-sm hover:shadow-md hover:translate-y-[-4px] transition-all  duration-200 ease-in-out">
+									<label htmlFor={`assessmentResults[${index}].value`}>
+										<Field
+											name={`assessmentResults[${index}].value`}
+											type="radio"
+											value="2"
+										/>
+										<Separator size="4" my="3" />
+										{job.Answer_2}
+									</label>
+								</div>
+								<div className="p-3 m-3 border-[1px] rounded-sm hover:shadow-md hover:translate-y-[-4px] transition-all  duration-200 ease-in-out">
+									<label htmlFor={`assessmentResults[${index}].value`}>
+										<Field
+											name={`assessmentResults[${index}].value`}
+											type="radio"
+											value="3"
+										/>
+										<Separator size="4" my="3" />
+										{job.Answer_3}
+									</label>
+								</div>
+								<div className="p-3 m-3 border-[1px] rounded-sm hover:shadow-md hover:translate-y-[-4px] transition-all  duration-200 ease-in-out">
+									<label htmlFor={`assessmentResults[${index}].value`}>
+										<Field
+											name={`assessmentResults[${index}].value`}
+											type="radio"
+											value="4"
+										/>
+										<Separator size="4" my="3" />
+										{job.Answer_4}
+									</label>
+								</div>
 							</Grid>
 						</div>
 					))}
 					<Button type="submit">Save assessment</Button>
 				</Form>
 			</Formik>
-		</Flex>
+		</Container>
 	);
 };
 

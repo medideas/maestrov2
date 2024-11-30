@@ -1,10 +1,11 @@
 "use client";
 import { Button, Flex } from "@radix-ui/themes";
+import { getCookie } from "cookies-next";
 import { Field, Form, Formik } from "formik";
 import React from "react";
 
 const NewChat = () => {
-	console.log(process.env);
+	const jwt = getCookie("jwt");
 	return (
 		<Flex>
 			<Formik
@@ -12,7 +13,11 @@ const NewChat = () => {
 					name: "",
 				}}
 				onSubmit={async (values) => {
-					await fetch(process.env.APIBASE + "/my/chats/", {
+					await fetch("https://sviluppo4.arsdue.com" + "/my/chats/", {
+						headers: {
+							Accept: "application/json",
+							Authorization: "Bearer " + jwt,
+						},
 						method: "POST",
 						body: JSON.stringify(values),
 					});
