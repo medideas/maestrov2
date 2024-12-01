@@ -20,7 +20,7 @@ const Navbar = () => {
 
 	const links = [
 		{ label: "Home", href: "/" },
-		{ label: "My Profile", href: "/assessments" },
+		{ label: "My Profile", href: "/my/profile" },
 		{ label: "ChatMaestro", href: "/chats" },
 		{ label: "Library", href: "/mylibrary" },
 		{ label: "Manage users", href: "/users" },

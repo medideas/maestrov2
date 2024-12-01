@@ -1,16 +1,8 @@
-import {
-	Box,
-	Dialog,
-	Card,
-	Heading,
-	Inset,
-	Flex,
-	Grid,
-	Text,
-} from "@radix-ui/themes";
+import { Box, Dialog, Card, Heading, Flex, Grid, Text } from "@radix-ui/themes";
 import React from "react";
 import Skill from "./Skill";
 import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import BarChart from "./BarChart";
 
 interface Props {
 	params: { id: string };
@@ -40,18 +32,6 @@ const CompetencyModal = async ({ params, assessmentResults, color }: Props) => {
 						<Heading as="h4" weight="light" mb="5">
 							{competency.name}
 						</Heading>
-						<Inset>
-							<img
-								src="/chart-1.png"
-								alt="Bold typography"
-								style={{
-									display: "block",
-									objectFit: "contain",
-									width: "100%",
-								}}
-								className="my-3 p-4 "
-							/>
-						</Inset>
 					</Card>
 				</Box>
 			</Dialog.Trigger>
@@ -73,16 +53,7 @@ const CompetencyModal = async ({ params, assessmentResults, color }: Props) => {
 						</Flex>
 					</Box>
 					<Box>
-						<img
-							src="/chart-1.png"
-							alt="Bold typography"
-							style={{
-								display: "block",
-								objectFit: "contain",
-								width: "100%",
-							}}
-							className="my-3 p-4 "
-						/>
+						<BarChart competency={competency} />
 					</Box>
 				</Grid>
 				{competency.skills.map((skill: Skill) => (
