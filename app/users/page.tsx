@@ -5,7 +5,9 @@ import Link from "next/link";
 import fetchInterceptor from "../utils/fetchInterceptor";
 
 const Users = async () => {
-	const users = await fetchInterceptor(process.env.APIBASE + "/users");
+	const users = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/users"
+	);
 
 	return (
 		<Container className="max-w-[1000px] mx-auto my-[50px]">

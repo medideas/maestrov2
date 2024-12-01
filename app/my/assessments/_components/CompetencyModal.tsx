@@ -20,7 +20,7 @@ const CompetencyModal = async ({ params, assessmentResults, color }: Props) => {
 	const results: AssessmentResult[] = assessmentResults;
 	const id = params.id;
 	const competency = await fetchInterceptor(
-		process.env.APIBASE + "/competencies/" + id
+		process.env.NEXT_PUBLIC_APIBASE + "/competencies/" + id
 	);
 	return (
 		<Dialog.Root key={competency.id}>

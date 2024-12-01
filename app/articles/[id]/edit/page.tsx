@@ -6,19 +6,25 @@ import fetchInterceptor from "@/app/utils/fetchInterceptor";
 const EditArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
 	const article = await fetchInterceptor(
-		process.env.APIBASE + "/articles/" + params.id
+		process.env.NEXT_PUBLIC_APIBASE + "/articles/" + params.id
 	);
 	const educationalFrameworks = await fetchInterceptor(
-		process.env.APIBASE + "/educational-frameworks"
+		process.env.NEXT_PUBLIC_APIBASE + "/educational-frameworks"
 	);
 	const educationalMethodolodies = await fetchInterceptor(
-		process.env.APIBASE + "/educational-methodologies"
+		process.env.NEXT_PUBLIC_APIBASE + "/educational-methodologies"
 	);
-	const medias = await fetchInterceptor(process.env.APIBASE + "/media");
-	const languages = await fetchInterceptor(process.env.APIBASE + "/languages");
-	const sources = await fetchInterceptor(process.env.APIBASE + "/sources");
+	const medias = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/media"
+	);
+	const languages = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/languages"
+	);
+	const sources = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/sources"
+	);
 	const educationalTools = await fetchInterceptor(
-		process.env.APIBASE + "/educational-tools"
+		process.env.NEXT_PUBLIC_APIBASE + "/educational-tools"
 	);
 
 	return (

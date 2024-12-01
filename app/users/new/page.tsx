@@ -7,10 +7,18 @@ const NewUser = async () => {
 	const businessUnits = await fetchInterceptor(
 		process.env.APIBASE + "/business-units"
 	);
-	const languages = await fetchInterceptor(process.env.APIBASE + "/languages");
-	const regions = await fetchInterceptor(process.env.APIBASE + "/regions");
-	const jobTitles = await fetchInterceptor(process.env.APIBASE + "/job-titles");
-	const roles = await fetchInterceptor(process.env.APIBASE + "/roles");
+	const languages = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/languages"
+	);
+	const regions = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/regions"
+	);
+	const jobTitles = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/job-titles"
+	);
+	const roles = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/roles"
+	);
 	return (
 		<Container className="my-[40px] max-w-[600px] mx-auto border-[1px] shadow-md p-5">
 			<UserForm

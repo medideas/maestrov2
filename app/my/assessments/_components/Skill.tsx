@@ -34,7 +34,9 @@ interface Props {
 const Skill = async ({ params }: Props) => {
 	const userJobTitleId = "8183d06e-e4e5-46f1-ada9-373afc37e366";
 	const id = params.id;
-	const skill = await fetchInterceptor(process.env.APIBASE + "/skills/" + id);
+	const skill = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/skills/" + id
+	);
 
 	return (
 		<Grid columns="2" gap="3" align="center" mb="3">

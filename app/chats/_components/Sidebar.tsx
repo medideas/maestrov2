@@ -10,7 +10,9 @@ interface Chat {
 }
 
 const Sidebar = async () => {
-	const chats = await fetchInterceptor(process.env.APIBASE + "/my/chats");
+	const chats = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/my/chats"
+	);
 	return (
 		<>
 			<Flex

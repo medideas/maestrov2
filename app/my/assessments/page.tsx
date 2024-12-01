@@ -5,7 +5,7 @@ import fetchInterceptor from "../../utils/fetchInterceptor";
 
 const UserProfilePage = async () => {
 	const assessment = await fetchInterceptor(
-		process.env.APIBASE + "/my/assessments/"
+		process.env.NEXT_PUBLIC_APIBASE + "/my/assessments/"
 	);
 
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];

@@ -24,9 +24,11 @@ interface Competency {
 
 export default async function Home() {
 	const competencies = await fetchInterceptor(
-		process.env.APIBASE + "/competencies"
+		process.env.NEXT_PUBLIC_APIBASE + "/competencies"
 	);
-	const articles = await fetchInterceptor(process.env.APIBASE + "/articles");
+	const articles = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/articles"
+	);
 
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
 

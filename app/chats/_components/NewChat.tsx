@@ -13,7 +13,7 @@ const NewChat = () => {
 					name: "",
 				}}
 				onSubmit={async (values) => {
-					await fetch("https://sviluppo4.arsdue.com" + "/my/chats/", {
+					await fetch(process.env.NEXT_PUBLIC_APIBASE + "/my/chats/", {
 						headers: {
 							Accept: "application/json",
 							Authorization: "Bearer " + jwt,

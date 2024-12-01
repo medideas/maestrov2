@@ -18,10 +18,10 @@ import LatestAssessment from "../assessments/_components/LatestAssessment";
 
 const MyProfile = async () => {
 	const user = await fetchInterceptor(
-		"https://sviluppo4.arsdue.com" + "/my/profile"
+		process.env.NEXT_PUBLIC_APIBASE + "/my/profile"
 	);
 	const assessment = await fetchInterceptor(
-		"https://sviluppo4.arsdue.com" + "/my/assessment"
+		process.env.NEXT_PUBLIC_APIBASE + "/my/assessment"
 	);
 	let roles = [""];
 	user.roleUsers.map((role: { role: { name: any } }) =>
@@ -103,12 +103,13 @@ const MyProfile = async () => {
 			</Flex>
 			<Separator my="5" size="4" />
 			<Grid columns={"2"}>
-				<Flex>
+				<Flex direction={"column"}>
 					<Heading size="4">Assessements</Heading>
 					<LatestAssessment assessment={assessment} />
 				</Flex>
-				<Flex>
+				<Flex direction={"column"}>
 					<Heading size="4">Articles</Heading>
+					<Text>Here you can find the articles you bookmarked</Text>
 				</Flex>
 			</Grid>
 		</Container>

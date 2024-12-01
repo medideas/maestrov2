@@ -11,7 +11,7 @@ type Message = {
 const ChatPage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
 	const id = params.id;
-	const data = await fetch(process.env.APIBASE + "/my/chats/" + id);
+	const data = await fetch(process.env.NEXT_PUBLIC_APIBASE + "/my/chats/" + id);
 	const chat = await data.json();
 	return (
 		<Grid columns={{ initial: "1", md: "4" }} className="w-[100%]">

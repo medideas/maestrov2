@@ -31,10 +31,10 @@ interface JobTitleSkill {
 const AssessmentPage = async ({ params }: { params: { id: string } }) => {
 	let id = await params.id;
 	const competencies = await fetchInterceptor(
-		process.env.APIBASE + "/competencies"
+		process.env.NEXT_PUBLIC_APIBASE + "/competencies"
 	);
 	const assessment = await fetchInterceptor(
-		process.env.APIBASE + "/my/assessments/" + id
+		process.env.NEXT_PUBLIC_APIBASE + "/my/assessments/" + id
 	);
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
 	return (

@@ -22,7 +22,7 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
 	const id = params.id;
 	const article = await fetchInterceptor(
-		process.env.APIBASE + "/articles/" + id
+		process.env.NEXT_PUBLIC_APIBASE + "/articles/" + id
 	);
 	return (
 		<Container my="5">

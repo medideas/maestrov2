@@ -45,7 +45,9 @@ type Role = {
 const UserPage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
 	const id = params.id;
-	const user = await fetchInterceptor(process.env.APIBASE + "/users/" + id);
+	const user = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/users/" + id
+	);
 	return (
 		<Container>
 			<Flex justify="between">

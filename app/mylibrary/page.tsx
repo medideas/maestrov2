@@ -14,7 +14,9 @@ type Article = {
 };
 
 const MyLibrary = async () => {
-	const articles = await fetchInterceptor(process.env.APIBASE + "/articles");
+	const articles = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/articles"
+	);
 	return (
 		<Grid columns={{ initial: "1", md: "4" }} m={{ initial: "4", md: "0" }}>
 			<div className="column-gap-1 md:m-5">

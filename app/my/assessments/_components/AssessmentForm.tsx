@@ -50,7 +50,7 @@ const AssessmentForm = ({ jobTitleSkills, user }: Props) => {
 					);
 					submitQuiz = { name: values.name, assessmentResults: quiz };
 					console.log(JSON.stringify(submitQuiz));
-					fetch("https://sviluppo4.arsdue.com/" + "my/assessments/", {
+					fetch(process.env.NEXT_PUBLIC_APIBASE + "/my/assessments/", {
 						headers: {
 							Accept: "application/json",
 							Authorization: "Bearer " + jwt,

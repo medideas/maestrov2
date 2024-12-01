@@ -16,7 +16,7 @@ const Chatbot = ({ chatId }: Props) => {
 					chatId: chatId,
 				}}
 				onSubmit={async (values) =>
-					await fetch(process.env.APIBASE + "/chatbot/ask/ ", {
+					await fetch(process.env.NEXT_PUBLIC_APIBASE + "/chatbot/ask/ ", {
 						method: "POST",
 						body: JSON.stringify(values),
 					})
