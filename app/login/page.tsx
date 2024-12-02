@@ -12,7 +12,7 @@ import LoginButton from "./_components/LoginButton";
 
 const LoginPage = async () => {
 	return (
-		<Flex justify="center" className="my-[40px]">
+		<Flex justify="center" className="pt-[130px]">
 			<Flex minWidth="400px" className="shadow-md">
 				<AspectRatio ratio={8 / 10}>
 					<img

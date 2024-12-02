@@ -29,7 +29,7 @@ const Navbar = ({ user }: { user: User }) => {
 		}
 	});
 	const userRoles: any[] = [];
-	// user.roleUsers.map((r) => userRoles.push(r.role.name));
+	user.roleUsers.map((r) => userRoles.push(r.role.name));
 	console.log(userRoles);
 	const currentPath = usePathname();
 	const [isOpen, setOpen] = useState(false);

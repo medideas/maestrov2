@@ -25,7 +25,7 @@ export default async function RootLayout({
 			<body className={"flex flex-col m-0 p-0"}>
 				<Theme accentColor="red" radius="small" appearance="light">
 					<Navbar user={user} />
-					<main className="flex-auto">{children}</main>
+					<main className="flex-auto min-h-[80vh]">{children}</main>
 
 					<div className="w-[100%] bottom-0 fixed z-20">
 						<AskMaestro />

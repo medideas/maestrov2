@@ -7,9 +7,11 @@ import React from "react";
 const AskMaestro = () => {
 	const pathname = usePathname();
 	const isChat = pathname.includes("/chat");
+	const isLogout = pathname.includes("/logout");
+	const isLogin = pathname.includes("/login");
 	return (
 		<div>
-			{!isChat && (
+			{!isChat && !isLogout && !isLogin && (
 				<Flex className="bg-gray-100 w-[100%]" p="3">
 					<Box width="100%">
 						<TextField.Root placeholder="Ask me anything">
