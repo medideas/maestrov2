@@ -22,6 +22,7 @@ type Role = {
 };
 
 const Navbar = ({ user }: { user: User }) => {
+	const currentPath = usePathname();
 	let userIsLoggedIn = false;
 	useEffect(() => {
 		if (hasCookie("jwt")) {
@@ -29,11 +30,11 @@ const Navbar = ({ user }: { user: User }) => {
 		}
 	});
 	const userRoles: any[] = [];
-	user.roleUsers.map((r) => userRoles.push(r.role.name));
-	console.log(userRoles);
-	const currentPath = usePathname();
-	const [isOpen, setOpen] = useState(false);
+	!currentPath.includes("/login") &&
+		!currentPath.includes("/logout") &&
+		user.roleUsers.map((r) => userRoles.push(r.role.name));
 
+	const [isOpen, setOpen] = useState(false);
 	const isAllowed = (linkFor: any, userRoles: any) => {
 		let result = false;
 		if (linkFor === "all") {
