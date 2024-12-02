@@ -28,8 +28,10 @@ interface JobTitleSkill {
 	assessmentResultsId: string;
 }
 
-const AssessmentPage = async ({ params }: { params: { id: string } }) => {
-	let id = await params.id;
+type tParams = Promise<{ slug: string[] }>;
+
+const AssessmentPage = async (props: { params: tParams }) => {
+	let id = await props.params;
 	const competencies = await fetchInterceptor(
 		process.env.NEXT_PUBLIC_APIBASE + "/competencies"
 	);
