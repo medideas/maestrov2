@@ -17,19 +17,24 @@ import Link from "next/link";
 import { isAuthorized } from "@/app/utils/roleRules";
 import DeleteArticleButton from "../_components/DeleteArticleButton";
 import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import DownloadFile from "../_components/DownloadFile";
 
 const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
 	const id = params.id;
 	const article = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/articles/" + id
+		`${process.env.NEXT_PUBLIC_APIBASE}/articles/${id}`
 	);
+	const document = await fetchInterceptor(
+		`${process.env.NEXT_PUBLIC_APIBASE}/articles/${id}/download`
+	);
+	console.log(article.id);
 	return (
-		<Container my="5">
+		<Container my={{ initial: "0", md: "5" }} p={{ initial: "4", md: "0" }}>
 			<Flex justify="end" mb="3">
 				<Link href="/articles">Go back to articles</Link>
 			</Flex>
-			<AspectRatio ratio={6 / 1}>
+			<AspectRatio ratio={6 / 3}>
 				<img
 					src={`data:image/jpeg;base64, ${article.cover}`}
 					style={{
@@ -40,10 +45,14 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 					}}
 				/>
 			</AspectRatio>
-			<Grid columns="3" mt="5">
+			<Grid columns={{ initial: "1", md: "3" }} mt="5">
 				<Box className="col-span-2" mr="3">
 					<Flex mb="5" direction="column" gap="3">
-						<Flex justify="between">
+						<Flex
+							justify="between"
+							direction={{ initial: "column", md: "row" }}
+							gap={{ initial: "3", md: "0" }}
+						>
 							<Heading>{article.title}</Heading>
 							{isAuthorized() && (
 								<Flex gap="3">
@@ -130,13 +139,15 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 
 							<Separator my="3" size="4" />
 							<Flex>
-								<Link
-									href="link-to-the-file"
+								{/* <Link
+									href={`data:application/pdf;base64,[base64], ${document.content}`}
+									download={`${document.title}.${document.extension}`}
 									target="_blank"
 									className="[w-100%]"
-								>
-									<Button variant="outline">Download the resource</Button>
-								</Link>
+								> */}
+								<DownloadFile pdf={document} />
+
+								{/* </Link> */}
 							</Flex>
 						</Box>
 					</Card>

@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@radix-ui/themes";
-import Link from "next/link";
+import { getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -10,17 +10,21 @@ interface Props {
 
 const DeleteArticleButton = ({ articleId }: Props) => {
 	const router = useRouter();
-	const deleteArticle = () => {
-		fetch(`https://sviluppo4.arsdue.com/articles/${articleId}`),
+	const jwt = getCookie("jwt");
+	console.log(articleId);
+	const deleteArticle = (articleId: string) => {
+		fetch(`${process.env.NEXT_PUBLIC_APIBASE}/articles/${articleId}`),
 			{
+				headers: {
+					Accept: "application/json",
+					Authorization: "Bearer " + jwt,
+				},
 				method: "DELETE",
 			};
 		router.push("/articles");
 	};
 	return (
-		<Link href="#" onClick={() => deleteArticle()}>
-			<Button>Delete article</Button>
-		</Link>
+		<Button onClick={() => deleteArticle(articleId)}>Delete article</Button>
 	);
 };
 

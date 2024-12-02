@@ -19,7 +19,11 @@ const ArticlesPage = async () => {
 	);
 	return (
 		<Flex direction="column" gap="4" p="5">
-			<Flex justify="between">
+			<Flex
+				direction={{ initial: "column", md: "row" }}
+				justify="between"
+				gap={{ initial: "3", md: "0" }}
+			>
 				<Flex direction="column">
 					<Heading>Articles</Heading>
 					<Text>In this section you can find all the articles</Text>
@@ -30,7 +34,7 @@ const ArticlesPage = async () => {
 					</Link>
 				</Flex>
 			</Flex>
-			<Grid columns="4" gap="3">
+			<Grid columns={{ initial: "1", md: "4" }} gap="3">
 				{articles.map((article: Article) => (
 					<ArticleCard key={article.id} article={article} />
 				))}
