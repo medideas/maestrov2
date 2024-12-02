@@ -1,6 +1,5 @@
 "use client";
 import { setCookie } from "cookies-next";
-import { redirect } from "next/navigation";
 import { useEffect } from "react";
 
 interface Props {

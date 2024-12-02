@@ -31,7 +31,6 @@ export default async function Home() {
 	);
 
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
-
 	return (
 		<>
 			<main className="flex flex-col p-5">

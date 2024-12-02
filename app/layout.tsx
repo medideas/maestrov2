@@ -5,22 +5,26 @@ import { DM_Sans } from "next/font/google";
 import { Box, Grid, Section, Theme } from "@radix-ui/themes";
 import Navbar from "./Navbar";
 import AskMaestro from "./components/AskMaestro";
+import fetchInterceptor from "./utils/fetchInterceptor";
 
 export const metadata: Metadata = {
 	title: "Maestro",
 	description: "Share knowledge",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const user = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/my/profile/"
+	);
 	return (
 		<html lang="en">
 			<body className={"flex flex-col m-0 p-0"}>
 				<Theme accentColor="red" radius="small" appearance="light">
-					<Navbar />
+					<Navbar user={user} />
 					<main className="flex-auto">{children}</main>
 
 					<div className="w-[100%] bottom-0 fixed z-20">
