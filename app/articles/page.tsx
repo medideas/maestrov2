@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import ArticleCard from "./_components/ArticleCard";
 import fetchInterceptor from "../utils/fetchInterceptor";
+import ArticlesTable from "./_components/ArticlesTable";
 
 type Article = {
 	cover: string;
@@ -34,11 +35,7 @@ const ArticlesPage = async () => {
 					</Link>
 				</Flex>
 			</Flex>
-			<Grid columns={{ initial: "1", md: "4" }} gap="3">
-				{articles.map((article: Article) => (
-					<ArticleCard key={article.id} article={article} />
-				))}
-			</Grid>
+			<ArticlesTable articles={articles} />
 		</Flex>
 	);
 };

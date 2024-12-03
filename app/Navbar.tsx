@@ -79,8 +79,8 @@ const Navbar = ({ user }: { user: User }) => {
 			for: "User Manager",
 		},
 		{
-			label: "New article",
-			href: "/articles/new",
+			label: "Articles",
+			href: "/articles/",
 			for: "Editor",
 		},
 		{

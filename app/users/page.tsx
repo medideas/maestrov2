@@ -30,22 +30,13 @@ const Users = async (props: {
 					<p>Here you can find all the users of your bussiness unit</p>
 				</Flex>
 				<Flex align={"center"} gap="5">
-					<Flex>
-						<Search placeholder="" />
-					</Flex>
-					<Flex>
-						<Link href="/users/new/">
-							<Button>Add a new user</Button>
-						</Link>
-					</Flex>
+					<Link href="/users/new/">
+						<Button>Add a new user</Button>
+					</Link>
 				</Flex>
 			</Flex>
 			<Separator my="3" size="4" />
-			{users ? (
-				<UsersTable query={query} users={users} />
-			) : (
-				"Sorry, no users added yet"
-			)}
+			{users ? <UsersTable users={users} /> : "Sorry, no users added yet"}
 		</Flex>
 	);
 };

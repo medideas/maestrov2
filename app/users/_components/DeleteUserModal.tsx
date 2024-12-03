@@ -2,17 +2,10 @@
 import { TrashIcon } from "@radix-ui/react-icons";
 import { Button, Dialog, Separator, Text } from "@radix-ui/themes";
 import { getCookie } from "cookies-next";
-import { redirect, useRouter } from "next/navigation";
-import React, { useState } from "react";
-import { boolean } from "yup";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-type User = {
-	id: String;
-	firstName: String;
-	lastName: String;
-};
-
-const DeleteUserButton = ({ user }: { user: User }) => {
+const DeleteUserModal = ({ props }: Props) => {
 	const [dialog, setDialog] = useState(false);
 	const router = useRouter();
 	const deleteUser = (userId: String) => {
@@ -54,4 +47,4 @@ const DeleteUserButton = ({ user }: { user: User }) => {
 	);
 };
 
-export default DeleteUserButton;
+export default DeleteUserModal;

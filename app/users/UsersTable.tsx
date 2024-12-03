@@ -1,10 +1,15 @@
 "use client";
-import { TrashIcon } from "@radix-ui/react-icons";
+import { EyeOpenIcon, Pencil2Icon, TrashIcon } from "@radix-ui/react-icons";
 import { Button, Dialog, Table } from "@radix-ui/themes";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { GoPencil } from "react-icons/go";
-import DeleteUserButton from "./_components/DeleteUserButton";
+import DeleteUserButton from "./_components/DeleteUserModal";
+import { AgGridReact } from "ag-grid-react";
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-quartz.css";
+import { useRouter } from "next/navigation";
+import DeleteUserModal from "./_components/DeleteUserModal";
 
 type User = {
 	id: string;
@@ -39,47 +44,83 @@ type Region = {
 };
 
 const UsersTable = ({ users, query }: Props) => {
+	const router = useRouter();
+	const ViewUserButton = (props) => {
+		return (
+			<Button
+				variant="outline"
+				color="gray"
+				mt="1"
+				onClick={() => router.push("/users/" + props.value.toLocaleString())}
+			>
+				<EyeOpenIcon />
+			</Button>
+		);
+	};
+	const EditUserButton = (props) => {
+		return (
+			<Button
+				variant="outline"
+				color="gray"
+				mt="1"
+				onClick={() =>
+					router.push("/users/" + props.value.toLocaleString() + "/edit")
+				}
+			>
+				<Pencil2Icon />
+			</Button>
+		);
+	};
+	const DeleteUserButton = (props) => {
+		return (
+			<Button
+				variant="outline"
+				color="gray"
+				mt="1"
+				onClick={() => <DeleteUserModal props={props} />}
+			>
+				<TrashIcon />
+			</Button>
+		);
+	};
+
+	const [colDefs, setColDefs] = useState([
+		{ field: "firstName" },
+		{ field: "lastName", filter: true },
+		{ field: "region.name" },
+		{ field: "businessUnit.name" },
+		{
+			field: "roleUsers",
+			valueGetter: (r: { role: { name: any } }) => r.name,
+		},
+		{ field: "language.name" },
+		{
+			field: "id",
+			headerName: "View",
+			width: 80,
+			cellRenderer: ViewUserButton,
+		},
+		{
+			field: "id",
+			headerName: "Edit",
+			width: 80,
+			cellRenderer: EditUserButton,
+		},
+		{
+			field: "id",
+			headerName: "Delete",
+			width: 80,
+		},
+	]);
+	const [rowData, setRowData] = useState(users);
 	return (
-		<Table.Root size="1">
-			<Table.Header>
-				<Table.Row>
-					<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
-					<Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
-					<Table.ColumnHeaderCell>Region</Table.ColumnHeaderCell>
-					<Table.ColumnHeaderCell>Business Unit</Table.ColumnHeaderCell>
-					<Table.ColumnHeaderCell>Roles</Table.ColumnHeaderCell>
-					<Table.ColumnHeaderCell>Language</Table.ColumnHeaderCell>
-					<Table.ColumnHeaderCell>Edit</Table.ColumnHeaderCell>
-					<Table.ColumnHeaderCell>Remove</Table.ColumnHeaderCell>
-				</Table.Row>
-			</Table.Header>
-			<Table.Body>
-				{users.map((user) => (
-					<Table.Row key={user.id}>
-						<Table.RowHeaderCell>
-							<Link href={`/users/${user.id}`} className="underline">
-								{user.firstName} {user.lastName}
-							</Link>
-						</Table.RowHeaderCell>
-						<Table.Cell>{user.email}</Table.Cell>
-						<Table.Cell>{user.region.name}</Table.Cell>
-						<Table.Cell>{user.businessUnit.name}</Table.Cell>
-						<Table.Cell>{user.jobTitle.name}</Table.Cell>
-						<Table.Cell>{user.language.name}</Table.Cell>
-
-						<Table.Cell>
-							<Link href={`/users/${user.id}/edit`}>
-								<GoPencil size="18" />
-							</Link>
-						</Table.Cell>
-
-						<Table.Cell>
-							<DeleteUserButton user={user} />
-						</Table.Cell>
-					</Table.Row>
-				))}
-			</Table.Body>
-		</Table.Root>
+		<div
+			className="ag-theme-quartz" // applying the Data Grid theme
+			style={{ height: 500 }} // the Data Grid will fill the size of the parent container
+		>
+			<AgGridReact rowData={rowData} columnDefs={colDefs} />
+			{/* <DeleteUserButton user={user} />; */}
+		</div>
 	);
 };
 
