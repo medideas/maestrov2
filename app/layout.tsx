@@ -1,7 +1,7 @@
 import "@radix-ui/themes/styles.css";
 import "./globals.css";
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import { Box, Grid, Section, Theme } from "@radix-ui/themes";
 import Navbar from "./Navbar";
 import AskMaestro from "./components/AskMaestro";
@@ -12,6 +12,8 @@ export const metadata: Metadata = {
 	description: "Share knowledge",
 };
 
+const myFont = localFont({ src: "./fonts/DM-Sans.woff" });
+
 export default async function RootLayout({
 	children,
 }: Readonly<{
@@ -21,7 +23,7 @@ export default async function RootLayout({
 		process.env.NEXT_PUBLIC_APIBASE + "/my/profile/"
 	);
 	return (
-		<html lang="en">
+		<html lang="en" className="dm_sans.className">
 			<body className={"flex flex-col m-0 p-0"}>
 				<Theme accentColor="red" radius="small" appearance="light">
 					<Navbar user={user} />

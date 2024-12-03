@@ -35,9 +35,10 @@ const MyProfile = async () => {
 					<Flex justify={"between"} mt="5">
 						<Flex>
 							<Avatar
-								src="https://images.unsplash.com/photo-1728577740843-5f29c7586afe?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-								fallback="A"
+								src=""
+								fallback={user.firstName[0]}
 								size="9"
+								color="iris"
 							></Avatar>
 						</Flex>
 					</Flex>
