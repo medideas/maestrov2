@@ -15,7 +15,7 @@ import React from "react";
 const Logout = () => {
 	deleteCookie("jwt");
 	return (
-		<Container py="9" maxWidth={"600px"}>
+		<Container py={{ initial: "2", md: "9" }} px="4" maxWidth={"600px"}>
 			<Flex direction="column" gap="4" className="pt-[200px]">
 				<Image
 					src="/maestro.png"

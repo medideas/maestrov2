@@ -43,14 +43,16 @@ export default async function Home() {
 				<Grid columns={{ initial: "2", sm: "4" }} gap="3" width="auto">
 					{competencies.map((competency: Competency, index: number) => (
 						<Link href={`/mylibrary`} key={competency.id}>
-							<Box
+							<Flex
 								width="100"
+								minHeight={"150px"}
+								align={"center"}
 								className={`border-none w-100 p-6 ${colors[index]} rounded-md hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out md:py-10`}
 							>
 								<Text weight="light" className="px-1 py-1 text-lg font-bold">
 									{competency.name}
 								</Text>
-							</Box>
+							</Flex>
 						</Link>
 					))}
 				</Grid>
@@ -62,7 +64,7 @@ export default async function Home() {
 					</Box>
 				</Flex>
 				<Flex className="overflow-y-hidden overflow-x-scroll" p="3" px="5">
-					<div className="absolute bg-white py-[11%] w-[50px] z-10 ml-[-50px] mt-[-10px]">
+					<div className="absolute bg-white py-[11%] w-[50px] z-10 ml-[-50px] mt-[-10px] invisible md:visible">
 						<HiChevronLeft size="3x" />
 					</div>
 					<Flex gap="4" width="100%" justify="start">
@@ -71,7 +73,7 @@ export default async function Home() {
 								<ArticleCard key={article.id} article={article} />
 							))}
 					</Flex>
-					<div className="absolute bg-white py-[11%] w-[40px] z-10 right-0 mr-[30px] mt-[-10px]">
+					<div className="absolute bg-white py-[11%] w-[40px] z-10 right-0 mr-[30px] mt-[-10px] invisible md:visible">
 						<HiChevronRight size="3x" />
 					</div>
 				</Flex>
@@ -82,7 +84,7 @@ export default async function Home() {
 					</Box>
 				</Flex>
 				<Flex className="overflow-y-hidden overflow-x-scroll" p="3">
-					<div className="absolute bg-white py-[11%] w-[50px] z-10 ml-[-50px] mt-[-10px]">
+					<div className="absolute bg-white py-[11%] w-[50px] z-10 ml-[-50px] mt-[-10px] invisible md:visible">
 						<HiChevronLeft size="3x" />
 					</div>
 					<Flex gap="4" width="100%" justify="start">
@@ -91,7 +93,7 @@ export default async function Home() {
 								<ArticleCard key={article.id} article={article} />
 							))}
 					</Flex>
-					<div className="absolute bg-white py-[11%] w-[40px] z-10 right-0 mr-[30px] mt-[-10px]">
+					<div className="absolute bg-white py-[11%] w-[40px] z-10 right-0 mr-[30px] mt-[-10px] invisible md:visible">
 						<HiChevronRight size="3x" />
 					</div>
 				</Flex>
