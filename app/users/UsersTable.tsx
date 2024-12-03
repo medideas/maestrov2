@@ -1,8 +1,10 @@
 "use client";
-import { Table } from "@radix-ui/themes";
+import { TrashIcon } from "@radix-ui/react-icons";
+import { Button, Dialog, Table } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 import { GoPencil } from "react-icons/go";
+import DeleteUserButton from "./_components/DeleteUserButton";
 
 type User = {
 	id: string;
@@ -17,6 +19,7 @@ type User = {
 
 interface Props {
 	users: User[];
+	query: string;
 }
 
 type JobTitle = {
@@ -35,9 +38,9 @@ type Region = {
 	name: string;
 };
 
-const UsersTable = ({ users }: Props) => {
+const UsersTable = ({ users, query }: Props) => {
 	return (
-		<Table.Root size="3">
+		<Table.Root size="1">
 			<Table.Header>
 				<Table.Row>
 					<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
@@ -47,13 +50,14 @@ const UsersTable = ({ users }: Props) => {
 					<Table.ColumnHeaderCell>Roles</Table.ColumnHeaderCell>
 					<Table.ColumnHeaderCell>Language</Table.ColumnHeaderCell>
 					<Table.ColumnHeaderCell>Edit</Table.ColumnHeaderCell>
+					<Table.ColumnHeaderCell>Remove</Table.ColumnHeaderCell>
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
 				{users.map((user) => (
 					<Table.Row key={user.id}>
 						<Table.RowHeaderCell>
-							<Link href={`/users/${user.id}`}>
+							<Link href={`/users/${user.id}`} className="underline">
 								{user.firstName} {user.lastName}
 							</Link>
 						</Table.RowHeaderCell>
@@ -69,7 +73,9 @@ const UsersTable = ({ users }: Props) => {
 							</Link>
 						</Table.Cell>
 
-						<Table.Cell></Table.Cell>
+						<Table.Cell>
+							<DeleteUserButton user={user} />
+						</Table.Cell>
 					</Table.Row>
 				))}
 			</Table.Body>

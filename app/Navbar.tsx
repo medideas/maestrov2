@@ -73,7 +73,7 @@ const Navbar = ({ user }: { user: User }) => {
 			for: "User Manager",
 		},
 		{
-			label: "Add new article",
+			label: "New article",
 			href: "/articles/new",
 			for: "Editor",
 		},
@@ -105,7 +105,11 @@ const Navbar = ({ user }: { user: User }) => {
 								<Box display={{ initial: "none", sm: "block" }}>
 									<Dialog.Root>
 										<Dialog.Trigger>
-											<Avatar fallback="A" radius="full" size="5" />
+											<Avatar
+												fallback={user.firstName[0]}
+												radius="full"
+												size="5"
+											/>
 										</Dialog.Trigger>
 										<Dialog.Content maxWidth="60%">
 											<Dialog.Close>
@@ -180,7 +184,7 @@ const Navbar = ({ user }: { user: User }) => {
 									</Heading>
 								</Box>
 								<Box>
-									<Avatar fallback="A" radius="full" size="5" />
+									<Avatar fallback={user.firstName[0]} radius="full" size="5" />
 								</Box>
 							</Flex>
 							<Flex pb="5">

@@ -1,6 +1,7 @@
 import fetchInterceptor from "@/app/utils/fetchInterceptor";
 import {
 	Badge,
+	Button,
 	Code,
 	Container,
 	DataList,
@@ -43,18 +44,20 @@ type Role = {
 };
 
 const UserPage = async (props: { params: Promise<{ id: string }> }) => {
-	const params = await props.params;
-	const id = params.id;
+	const id = await props.params;
 	const user = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/users/" + id
+		`${process.env.NEXT_PUBLIC_APIBASE}/users/${id}`
 	);
+	console.log(user);
 	return (
-		<Container>
+		<Container py={"50px"}>
 			<Flex justify="between">
 				<Heading mb="5">
 					{user.firstName} {user.lastName}
 				</Heading>
-				<Link href="/users">Go back to users</Link>
+				<Link href="/users">
+					<Button variant="outline">Go back to users</Button>
+				</Link>
 			</Flex>
 
 			<Flex direction="column">

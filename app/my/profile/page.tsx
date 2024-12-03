@@ -77,6 +77,7 @@ const MyProfile = async () => {
 													variant="soft"
 													radius="medium"
 													size={"1"}
+													key={role.id}
 												>
 													{role}
 												</Badge>
