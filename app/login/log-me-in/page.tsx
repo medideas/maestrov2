@@ -2,6 +2,7 @@ import React from "react";
 import { Flex, Spinner, Text } from "@radix-ui/themes";
 import SetCookie from "./setCookie";
 import { redirect } from "next/navigation";
+import { setCookie } from "cookies-next";
 
 const LogMeInPage = async ({
 	searchParams,
@@ -10,7 +11,6 @@ const LogMeInPage = async ({
 }) => {
 	const search = await searchParams;
 	const jwt = search.jwt;
-	redirect("/");
 	return (
 		<Flex className="max-w-[400px] mx-auto my-[50px]">
 			<SetCookie jwt={search.jwt as string} />
