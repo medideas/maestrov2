@@ -24,7 +24,6 @@ type User = {
 
 interface Props {
 	users: User[];
-	query: string;
 }
 
 type JobTitle = {
@@ -43,7 +42,7 @@ type Region = {
 	name: string;
 };
 
-const UsersTable = ({ users, query }: Props) => {
+const UsersTable = ({ users }: Props) => {
 	const router = useRouter();
 	const ViewUserButton = (props) => {
 		return (

@@ -13,7 +13,7 @@ import {
 	Separator,
 	Text,
 } from "@radix-ui/themes";
-import React from "react";
+import React, { Suspense } from "react";
 import LatestAssessment from "../assessments/_components/LatestAssessment";
 
 const MyProfile = async () => {
@@ -28,6 +28,7 @@ const MyProfile = async () => {
 		roles.push(role.role.name)
 	);
 	roles.shift();
+	// await new Promise((resolve) => setTimeout(resolve, 2000));
 	return (
 		<Container className="my-[50px]">
 			<Flex justify={"between"}>
@@ -47,7 +48,9 @@ const MyProfile = async () => {
 						<Text>
 							Welcome to your page profile, dear{" "}
 							<b>
-								{user.firstName} {user.lastName}
+								<Suspense>
+									{user.firstName} {user.lastName}
+								</Suspense>
 							</b>
 						</Text>
 					</Flex>

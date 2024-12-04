@@ -6,6 +6,7 @@ import { Box, Grid, Section, Theme } from "@radix-ui/themes";
 import Navbar from "./Navbar";
 import AskMaestro from "./components/AskMaestro";
 import fetchInterceptor from "./utils/fetchInterceptor";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
 	title: "Maestro",
@@ -27,7 +28,9 @@ export default async function RootLayout({
 			<body className={"flex flex-col m-0 p-0"}>
 				<Theme accentColor="red" radius="small" appearance="light">
 					<Navbar user={user} />
-					<main className="flex-auto min-h-[80vh]">{children}</main>
+					<main className="flex-auto min-h-[80vh]">
+						<Suspense>{children}</Suspense>
+					</main>
 
 					<div className="w-[100%] bottom-0 fixed z-20">
 						<AskMaestro />

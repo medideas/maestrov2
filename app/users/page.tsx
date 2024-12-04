@@ -1,5 +1,5 @@
 import { Button, Container, Flex, Heading, Separator } from "@radix-ui/themes";
-import React from "react";
+import React, { Suspense } from "react";
 import UsersTable from "./UsersTable";
 import Link from "next/link";
 import fetchInterceptor from "../utils/fetchInterceptor";
@@ -17,6 +17,7 @@ const Users = async (props: {
 	const users = await fetchInterceptor(
 		process.env.NEXT_PUBLIC_APIBASE + "/users"
 	);
+	await new Promise((resolve) => setTimeout(resolve, 2000));
 
 	return (
 		<Flex
@@ -36,7 +37,9 @@ const Users = async (props: {
 				</Flex>
 			</Flex>
 			<Separator my="3" size="4" />
-			{users ? <UsersTable users={users} /> : "Sorry, no users added yet"}
+			<Suspense>
+				{users ? <UsersTable users={users} /> : "Sorry, no users added yet"}
+			</Suspense>
 		</Flex>
 	);
 };

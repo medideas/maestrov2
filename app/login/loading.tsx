@@ -1,17 +1,17 @@
 import {
-	AspectRatio,
-	Box,
-	Card,
 	Flex,
+	Card,
+	Box,
 	Heading,
 	Separator,
 	Text,
+	Skeleton,
+	Spinner,
 } from "@radix-ui/themes";
 import React, { Suspense } from "react";
 import LoginButton from "./_components/LoginButton";
 
-const LoginPage = async () => {
-	// await new Promise((resolve) => setTimeout(resolve, 2000));
+const LoadingLogin = () => {
 	return (
 		<Flex
 			justify="center"
@@ -19,20 +19,7 @@ const LoginPage = async () => {
 			direction={{ initial: "column", md: "row" }}
 		>
 			<Flex minWidth="400px" className="shadow-md">
-				<Suspense>
-					<AspectRatio ratio={16 / 9}>
-						<img
-							src="./login.jpg"
-							alt="A house in a forest"
-							style={{
-								objectFit: "cover",
-								width: "100%",
-								height: "100%",
-								borderRadius: "var(--radius-5)",
-							}}
-						/>
-					</AspectRatio>
-				</Suspense>
+				<Skeleton width={"100%"} height={"100%"}></Skeleton>
 			</Flex>
 			<Flex p="5" align="center" gap="5">
 				<Flex direction="column" gap="2">
@@ -45,9 +32,7 @@ const LoginPage = async () => {
 								Time to join the revolution in onboarding and training
 							</Text>
 							<Separator my="4" size="4" />
-							<Suspense>
-								<LoginButton />
-							</Suspense>
+							<Spinner size="3" />
 						</Box>
 					</Card>
 				</Flex>
@@ -56,4 +41,4 @@ const LoginPage = async () => {
 	);
 };
 
-export default LoginPage;
+export default LoadingLogin;

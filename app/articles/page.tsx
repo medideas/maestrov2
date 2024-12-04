@@ -1,5 +1,5 @@
 import { Button, Flex, Grid, Heading, Text } from "@radix-ui/themes";
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import ArticleCard from "./_components/ArticleCard";
 import fetchInterceptor from "../utils/fetchInterceptor";
@@ -35,7 +35,9 @@ const ArticlesPage = async () => {
 					</Link>
 				</Flex>
 			</Flex>
-			<ArticlesTable articles={articles} />
+			<Suspense>
+				<ArticlesTable articles={articles} />
+			</Suspense>
 		</Flex>
 	);
 };

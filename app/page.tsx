@@ -31,6 +31,7 @@ export default async function Home() {
 	);
 
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
+	// await new Promise((resolve) => setTimeout(resolve, 2000));
 	return (
 		<>
 			<main className="flex flex-col p-5">

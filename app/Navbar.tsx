@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import classnames from "classnames";
 import { SlMenu, SlClose } from "react-icons/sl";
-
 import { Avatar, Box, Button, Dialog, Flex, Heading } from "@radix-ui/themes";
 import { hasCookie } from "cookies-next";
 
@@ -35,22 +34,22 @@ const Navbar = ({ user }: { user: User }) => {
 			userIsLoggedIn = true;
 		}
 	});
-	const userRoles: any[] = [];
-	!currentPath.includes("/login") &&
-		!currentPath.includes("/logout") &&
-		user.roleUsers.map((r: RoleUser) => userRoles.push(r.role.name));
+	// const userRoles: any[] = [];
+	// !currentPath.includes("/login") &&
+	// 	!currentPath.includes("/logout") &&
+	// 	user.roleUsers.map((r: RoleUser) => userRoles.push(r.role.name));
 
 	const [isOpen, setOpen] = useState(false);
-	const isAllowed = (linkFor: any, userRoles: any) => {
-		let result = false;
-		if (linkFor === "all") {
-			result = true;
-		}
-		if (userRoles.includes(linkFor)) {
-			result = true;
-		}
-		return result;
-	};
+	// const isAllowed = (linkFor: any, userRoles: any) => {
+	// 	let result = false;
+	// 	if (linkFor === "all") {
+	// 		result = true;
+	// 	}
+	// 	if (userRoles.includes(linkFor)) {
+	// 		result = true;
+	// 	}
+	// 	return result;
+	// };
 
 	const links = [
 		{
@@ -65,7 +64,7 @@ const Navbar = ({ user }: { user: User }) => {
 		},
 		{
 			label: "ChatMaestro",
-			href: "/chats",
+			href: "/my/chats",
 			for: "all",
 		},
 		{
@@ -111,11 +110,7 @@ const Navbar = ({ user }: { user: User }) => {
 								<Box display={{ initial: "none", sm: "block" }}>
 									<Dialog.Root>
 										<Dialog.Trigger>
-											<Avatar
-												fallback={user.firstName[0]}
-												radius="full"
-												size="5"
-											/>
+											<Avatar fallback="U" radius="full" size="5" />
 										</Dialog.Trigger>
 										<Dialog.Content maxWidth="60%">
 											<Dialog.Close>
@@ -147,24 +142,25 @@ const Navbar = ({ user }: { user: User }) => {
 						>
 							<ul className="flex-col tabs group">
 								{links.map(
-									(link) =>
-										isAllowed(link.for, userRoles) && (
-											<li
-												key={link.href}
-												className={link.href === currentPath ? " active" : ""}
+									(link) => (
+										// isAllowed(link.for, userRoles) && (
+										<li
+											key={link.href}
+											className={link.href === currentPath ? " active" : ""}
+										>
+											<Link
+												href={link.href}
+												className={classnames({
+													"text-red-800": link.href === currentPath,
+													"text-zinc-500": link.href != currentPath,
+													"hover:text-red-500 transition-colors": true,
+												})}
 											>
-												<Link
-													href={link.href}
-													className={classnames({
-														"text-red-800": link.href === currentPath,
-														"text-zinc-500": link.href != currentPath,
-														"hover:text-red-500 transition-colors": true,
-													})}
-												>
-													{link.label}
-												</Link>
-											</li>
-										)
+												{link.label}
+											</Link>
+										</li>
+									)
+									// )
 								)}
 								<li className="pr-5">
 									<Link
@@ -196,22 +192,23 @@ const Navbar = ({ user }: { user: User }) => {
 							<Flex pb="5">
 								<ul className="flex-col flex-1 text-right">
 									{links.map(
-										(link) =>
-											isAllowed(link.for, userRoles) && (
-												<li key={link.href} className="py-2 pr-5">
-													<Link
-														href={link.href}
-														className={classnames({
-															"text-red-800": link.href === currentPath,
-															"text-zinc-500": link.href != currentPath,
-															"font-semibold text-l": true,
-														})}
-														onClick={() => setOpen(!isOpen)}
-													>
-														{link.label}
-													</Link>
-												</li>
-											)
+										(link) => (
+											// isAllowed(link.for, userRoles) && (
+											<li key={link.href} className="py-2 pr-5">
+												<Link
+													href={link.href}
+													className={classnames({
+														"text-red-800": link.href === currentPath,
+														"text-zinc-500": link.href != currentPath,
+														"font-semibold text-l": true,
+													})}
+													onClick={() => setOpen(!isOpen)}
+												>
+													{link.label}
+												</Link>
+											</li>
+										)
+										// )
 									)}
 									<li className="py-2 pr-5">
 										<Link

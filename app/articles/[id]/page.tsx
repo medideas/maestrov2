@@ -12,14 +12,16 @@ import {
 	AspectRatio,
 	Dialog,
 } from "@radix-ui/themes";
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import { isAuthorized } from "@/app/utils/roleRules";
 import DeleteArticleButton from "../_components/DeleteArticleButton";
 import fetchInterceptor from "@/app/utils/fetchInterceptor";
 import DownloadFile from "../_components/DownloadFile";
+import LoadingArticle from "./loading";
 
 const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
+	// await new Promise((resolve) => setTimeout(resolve, 2000));
 	const params = await props.params;
 	const id = params.id;
 	const article = await fetchInterceptor(
@@ -34,17 +36,19 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 			<Flex justify="end" mb="3">
 				<Link href="/articles">Go back to articles</Link>
 			</Flex>
-			<AspectRatio ratio={6 / 3}>
-				<img
-					src={`data:image/jpeg;base64, ${article.cover}`}
-					style={{
-						objectFit: "cover",
-						width: "100%",
-						height: "100%",
-						borderRadius: "5px",
-					}}
-				/>
-			</AspectRatio>
+			<Suspense>
+				<AspectRatio ratio={6 / 3}>
+					<img
+						src={`data:image/jpeg;base64, ${article.cover}`}
+						style={{
+							objectFit: "cover",
+							width: "100%",
+							height: "100%",
+							borderRadius: "5px",
+						}}
+					/>
+				</AspectRatio>
+			</Suspense>
 			<Grid columns={{ initial: "1", md: "3" }} mt="5">
 				<Box className="col-span-2" mr="3">
 					<Flex mb="5" direction="column" gap="3">
