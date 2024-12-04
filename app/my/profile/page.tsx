@@ -30,9 +30,9 @@ const MyProfile = async () => {
 	roles.shift();
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
 	return (
-		<Container className="my-[50px]">
-			<Flex justify={"between"}>
-				<Flex align="center" gap="5">
+		<Container className="sm:my-[50px]" p={{ initial: "3", sm: "0" }}>
+			<Flex justify={"between"} direction={{ initial: "column", sm: "row" }}>
+				<Flex align="center" gap="5" mb={{ initial: "3", sm: "0" }}>
 					<Flex justify={"between"} mt="5">
 						<Flex>
 							<Avatar
@@ -75,13 +75,13 @@ const MyProfile = async () => {
 								<Flex>
 									<DataList.Item>
 										<Flex gap="2">
-											{roles.map((role) => (
+											{roles.map((role, index) => (
 												<Badge
 													color="jade"
 													variant="soft"
 													radius="medium"
 													size={"1"}
-													key={role.id}
+													key={index}
 												>
 													{role}
 												</Badge>
@@ -107,7 +107,7 @@ const MyProfile = async () => {
 				</Flex>
 			</Flex>
 			<Separator my="5" size="4" />
-			<Grid columns={"2"}>
+			<Grid columns={{ initial: "1", sm: "2" }} gap="5">
 				<Flex direction={"column"}>
 					<Heading size="4">Assessements</Heading>
 					<LatestAssessment assessment={assessment} />

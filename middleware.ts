@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { hasCookie } from 'cookies-next/server';
+import { hasCookie, deleteCookie } from 'cookies-next/server';
 import { cookies } from 'next/headers';
  
 // export async function middleware(request: NextRequest){
@@ -35,6 +35,12 @@ export default async function middleware(req: NextRequest) {
 
     // check if the route is protected
     if (isProtectedRoute && !sessionCookie ) {
+        return NextResponse.redirect(new URL('/login', req.nextUrl))
+    }
+
+    // End the session by logging out
+    if (sessionCookie && req.nextUrl.pathname.includes("/logout")) {
+        deleteCookie("jwt", {cookies});
         return NextResponse.redirect(new URL('/login', req.nextUrl))
     }
 
