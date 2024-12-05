@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { hasCookie, deleteCookie } from 'cookies-next/server';
+import { hasCookie, deleteCookie, setCookie } from 'cookies-next/server';
 import { cookies } from 'next/headers';
  
 // export async function middleware(request: NextRequest){
@@ -17,32 +17,33 @@ import { cookies } from 'next/headers';
 // }
 
 // 1. Specify protected and public routes
-const protectedRoutes = [ "/", "/articles", "/chats", "/my", "/library", "help"]
-const publicRoutes = ["/login", "/login/log-me-in", "/logout"]
+const publicRoutes = ["/login", "/login/log-me-in"]
 
 export default async function middleware(req: NextRequest) {
     const path = req.nextUrl.pathname;
-    const isProtectedRoute = protectedRoutes.includes(path);
     const isPublicRoute = publicRoutes.includes(path);
-    const roles = ["Learner", "Editor", "Users Manager"];
-    const accessRoles = [
-        {role: "Learner", blockedRoutes: ["/articles/new", "/articles/edit", "/users", "/users/new", "/users/edit"]}, 
-        {role: "Editor", blockedRoutes: ["/users", "/users/new", "/users/edit"]},
-        {role: "Users Manager", blockedRoutes: ["/articles/new", "/articles/edit"]}
-     ]
-    const sessionCookie = await hasCookie('jwt', { cookies });
-    console.log("Session cookie = " + sessionCookie);
+    // const roles = ["Learner", "Editor", "Users Manager"];
+    // const accessRoles = [
+    //     {role: "Learner", blockedRoutes: ["/articles/new", "/articles/edit", "/users", "/users/new", "/users/edit"]}, 
+    //     {role: "Editor", blockedRoutes: ["/users", "/users/new", "/users/edit"]},
+    //     {role: "Users Manager", blockedRoutes: ["/articles/new", "/articles/edit"]}
+    //  ]
 
+
+    const userLoggedIn = await hasCookie('jwt', { cookies });
+    
     // check if the route is protected
-    if (isProtectedRoute && !sessionCookie ) {
+    if (!userLoggedIn && !isPublicRoute){ 
         return NextResponse.redirect(new URL('/login', req.nextUrl))
-    }
+    } 
 
-    // End the session by logging out
-    if (sessionCookie && req.nextUrl.pathname.includes("/logout")) {
-        deleteCookie("jwt", {cookies});
-        return NextResponse.redirect(new URL('/login', req.nextUrl))
-    }
+    // // End the session by logging out
+    // if (sessionCookie) {
+    //     if(req.nextUrl.pathname.includes("/logout")){
+    //         deleteCookie("jwt", {cookies});
+    //         return NextResponse.redirect(new URL('/login', req.nextUrl))
+    //     }
+    // }
 
     return NextResponse.next()
 }

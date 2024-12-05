@@ -13,6 +13,7 @@ const Sidebar = async () => {
 	const chats = await fetchInterceptor(
 		process.env.NEXT_PUBLIC_APIBASE + "/my/chats"
 	);
+	console.log(chats);
 	return (
 		<>
 			<Flex
@@ -28,8 +29,12 @@ const Sidebar = async () => {
 						Recent Chats
 					</Heading>
 					<Box>
-						{!chats && (
-							<Text>No chats in here yet: let's start conversation.</Text>
+						{chats.length === 0 && (
+							<Text size="2">
+								No chats in here yet
+								<br />
+								Let's start conversation.
+							</Text>
 						)}
 						<ul className="list-none">
 							{chats.map((chat: Chat) => (

@@ -1,19 +1,18 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import { Flex, Spinner, Text } from "@radix-ui/themes";
-import SetCookie from "./setCookie";
-import { redirect } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import { setCookie } from "cookies-next";
 
-const LogMeInPage = async ({
-	searchParams,
-}: {
-	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) => {
-	const search = await searchParams;
-	const jwt = search.jwt;
+const LogMeInPage = () => {
+	const search = useSearchParams();
+	useEffect(() => {
+		const jwt = search.get("jwt");
+		setCookie("jwt", jwt);
+		document.location.href = "/";
+	});
 	return (
 		<Flex className="max-w-[400px] mx-auto my-[50px]">
-			<SetCookie jwt={search.jwt as string} />
 			<Text className="text-center">
 				<Spinner size="3" className="mx-auto" mb="3" />
 				You are loggin in to Maestro.

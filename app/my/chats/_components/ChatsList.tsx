@@ -14,7 +14,7 @@ type Chat = {
 const Chatslist = ({ chat }: Props) => {
 	const path = usePathname();
 	return (
-		<Link href={"/chats/" + chat.id}>
+		<Link href={"/my/chats/" + chat.id}>
 			<li
 				key={chat.id}
 				className={

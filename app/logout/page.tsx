@@ -1,3 +1,4 @@
+"use client";
 import {
 	Button,
 	Container,
@@ -8,9 +9,18 @@ import {
 } from "@radix-ui/themes";
 import Image from "next/image";
 import Link from "next/link";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
+import { deleteCookie } from "cookies-next";
 
-const Logout = async () => {
+const Logout = () => {
+	const router = useRouter();
+	const search = useSearchParams();
+	useEffect(() => {
+		const jwt = search.get("jwt");
+		deleteCookie("jwt");
+		document.location.href = "/";
+	});
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
 	return (
 		<Container py={{ initial: "2", md: "9" }} px="4" maxWidth={"600px"}>
