@@ -4,6 +4,7 @@ import React from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import ArticleCard from "./articles/_components/ArticleCard";
 import fetchInterceptor from "./utils/fetchInterceptor";
+import { headers } from "next/headers";
 
 interface Article {
 	id: string;
@@ -23,6 +24,16 @@ interface Competency {
 }
 
 export default async function Home() {
+	const currentUser = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/my/profile"
+	);
+	const roles = await currentUser.roleUsers;
+
+	const authorizePathsForEditor = ["/", "/articles"];
+
+	const permissions = ["Editor"];
+	// console.log(roles.some((r) => permissions.authorizePaths.includes(r)));
+
 	const competencies = await fetchInterceptor(
 		process.env.NEXT_PUBLIC_APIBASE + "/competencies"
 	);

@@ -45,7 +45,7 @@ const AssessmentForm = ({ jobTitleSkills, user }: Props) => {
 					assessmentQuestions[0].jobTitleSkillIds.map((job, index) =>
 						quiz.push({
 							jobTitleSkillId: job.jobTitleSkillid,
-							value: values.assessmentResults[index],
+							value: values.assessmentResults[index].value,
 						})
 					);
 					submitQuiz = { name: values.name, assessmentResults: quiz };

@@ -13,7 +13,11 @@ const Chatbox = async () => {
 			<Grid columns={{ initial: "1", md: "4" }}>
 				<Sidebar />
 				<Flex align="center" width="100%">
-					<Flex direction="column" justify="between">
+					<Flex
+						direction="column"
+						justify="between"
+						style={{ backgroundImage: "url(/bgchat.jpg)" }}
+					>
 						<Flex direction="column" gap="2">
 							<Heading as="h1" size="8" weight="light" align="center">
 								Maestro
@@ -32,7 +36,7 @@ const Chatbox = async () => {
 										width="350px"
 										className="align-middle hover:scale-105 transition-all duration-200"
 									>
-										<Card className="shadow-lg h-[150px]">
+										<Card className="shadow-lg h-[150px] bg-slate-300 hover:bg-slate-100 duration-200">
 											<Flex direction="column" gap="3" p="3">
 												<FaCar size="30" />
 												<Text>
@@ -45,7 +49,7 @@ const Chatbox = async () => {
 										width="350px"
 										className="align-middle hover:scale-105 transition-all duration-200"
 									>
-										<Card className="shadow-lg h-[150px]">
+										<Card className="shadow-lg h-[150px] bg-slate-300 hover:bg-slate-100 duration-200">
 											<Flex direction="column" gap="3" p="3">
 												<GrGamepad size="30" />
 												<Text>Test me on Edwards products!</Text>
@@ -56,7 +60,7 @@ const Chatbox = async () => {
 										width="350px"
 										className="align-middle hover:scale-105 transition-all duration-200"
 									>
-										<Card className="shadow-lg h-[150px]">
+										<Card className="shadow-lg h-[150px] bg-slate-300 hover:bg-slate-100 duration-200">
 											<Flex direction="column" gap="3" p="3">
 												<PiMagicWandBold size="30" />
 												<Text>Rephrase this email for a customer</Text>

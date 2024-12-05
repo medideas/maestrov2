@@ -1,14 +1,15 @@
 //ATTENTION: TO UPLOAD THE FILES (cover and attachment) NEED TO CREATE A FORM DATA OBJECT AND PASS THE VALUES INTO IT, THEN PASS THE FORMDATA INTO THE BODY REQUEST
 
 "use client";
-import { Box, Button, Card, Flex, Grid, Text } from "@radix-ui/themes";
+import { Box, Button, Callout, Card, Flex, Grid, Text } from "@radix-ui/themes";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { getCookie } from "cookies-next";
 import * as Yup from "yup";
 import { RiAiGenerate } from "react-icons/ri";
 import FormCallout from "@/app/components/FormCallout";
+import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 interface Props {
 	article?: Article;
@@ -87,8 +88,6 @@ const articleSchema = Yup.object().shape({
 	educationalToolId: Yup.string().required(
 		"Please, select the educational tool "
 	),
-	cover: Yup.mixed().required("Cover is required"),
-	content: Yup.mixed().required("File reference is mandatory"),
 });
 
 const ArticleForm = ({
@@ -105,9 +104,25 @@ const ArticleForm = ({
 	const pathname = usePathname();
 	const router = useRouter();
 	const jwt = getCookie("jwt");
+
+	useEffect(() => {
+		fetch(
+			`${process.env.NEXT_PUBLIC_APIBASE}/articles/${article.id}/download`,
+			{
+				method: "GET",
+				headers: {
+					Authorization: `Bearer ${jwt}`,
+					"Content-type": "Application/json",
+				},
+			}
+		)
+			.then((response) => response.json())
+			.then((json) => setContentFile(json));
+	}, []);
 	return (
 		<div>
 			<Formik
+				enableReinitialize={false}
 				initialValues={{
 					title: article?.title || "",
 					description: article?.description || "",
@@ -126,6 +141,7 @@ const ArticleForm = ({
 				}}
 				validationSchema={articleSchema}
 				onSubmit={async (values) => {
+					console.log("submit");
 					const formData = new FormData();
 					formData.append("title", values.title);
 					formData.append("description", values.description);
@@ -287,13 +303,33 @@ const ArticleForm = ({
 													console.log(coverFile);
 												}}
 											/>
-											{coverFile && <Text>File: {`${coverFile.name}`}</Text>}
+
+											{coverFile && (
+												<Callout.Root color="grass" mb="3">
+													<Callout.Icon>
+														<InfoCircledIcon />
+													</Callout.Icon>
+													<Callout.Text>Cover is already selected</Callout.Text>
+												</Callout.Root>
+											)}
+											{coverFile && (
+												<img
+													src={`data:image/jpeg;base64, ${article.cover}`}
+													style={{
+														objectFit: "cover",
+														width: "150px",
+														height: "100%",
+														borderRadius: "5px",
+													}}
+												/>
+											)}
 											<ErrorMessage name="cover" component="div">
 												{(msg) => <FormCallout msg={msg} />}
 											</ErrorMessage>
 										</div>
 
 										<div className="form-section">
+											{contentFile && <Text>The file is still here</Text>}
 											<label htmlFor="contentFile">
 												Content file for article
 											</label>

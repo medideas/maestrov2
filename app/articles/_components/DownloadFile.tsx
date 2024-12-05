@@ -1,6 +1,8 @@
 "use client";
 import { Button } from "@radix-ui/themes";
-import React from "react";
+import React, { useEffect } from "react";
+import { saveAs } from "file-saver";
+import { getCookie } from "cookies-next";
 
 interface Props {
 	pdf: Pdf;
@@ -12,18 +14,30 @@ type Pdf = {
 	extension: String;
 };
 
-function downloadPDF(pdf): any {
-	const pdfLink = `${pdf.content}`;
-	const anchorElement = document.createElement("a");
-	const fileName = `${pdf.title}.pdf`;
-	anchorElement.href = pdfLink;
-	anchorElement.download = fileName;
-	anchorElement.click();
-}
+const downloadPDF = async (articleId: string) => {
+	const jwt = getCookie("jwt");
+	const res = await fetch(
+		`${process.env.NEXT_PUBLIC_APIBASE}/articles/${articleId}/download`,
+		{
+			method: "GET",
+			headers: {
+				Authorization: `Bearer ${jwt}`,
+			},
+		}
+	);
+	const downloadedDocument = await res.json();
+	console.log(downloadedDocument);
+	const atobfile = atob(downloadedDocument.content);
+	const data: Blob = new Blob([atobfile], {
+		type: downloadedDocument.mimeType,
+	});
 
-const DownloadFile = ({ pdf }: { pdf: Pdf }) => {
+	saveAs(data, downloadedDocument.title + "." + downloadedDocument.extension);
+};
+
+const DownloadFile = ({ articleId }: { articleId: string }) => {
 	return (
-		<Button variant="outline" onClick={() => downloadPDF(pdf)}>
+		<Button variant="outline" onClick={() => downloadPDF(articleId)}>
 			Download the resource
 		</Button>
 	);

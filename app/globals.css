@@ -166,3 +166,9 @@ select {
 .tabs li a:after {
 	right: -30px;
 }
+
+.chatbot {
+	border-radius: 2em;
+	padding: 0.8em;
+	background-color: #f5f2f0;
+}

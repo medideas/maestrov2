@@ -1,11 +1,18 @@
 "use client";
+import { FileTextIcon, ImageIcon } from "@radix-ui/react-icons";
 import { Button, Flex } from "@radix-ui/themes";
 import { getCookie } from "cookies-next";
 import { Field, Form, Formik } from "formik";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import React from "react";
+import { HiOutlineDocumentSearch } from "react-icons/hi";
+
+type Chat = {
+	id: String;
+};
 
 const NewChat = () => {
+	const router = useRouter();
 	const jwt = getCookie("jwt");
 	return (
 		<Flex>
@@ -24,18 +31,29 @@ const NewChat = () => {
 							},
 							method: "POST",
 							body: JSON.stringify(values),
-							cache: "no-cache",
+							cache: "no-store",
 						}
 					);
+					const chatId = await newChat.json();
+					router.push(`/my/chats/${chatId.id}`);
 					// if (newChat) redirect("/my/chats");
 				}}
 			>
-				<Form>
-					<Flex align="center" justify="between" width={"100%"}>
-						<Field name="name" id="name" />
-						<Button type="submit" ml="1">
-							Start a new conversation
-						</Button>
+				<Form className="w-[100%]">
+					<Flex align="center" width={"100%"}>
+						<HiOutlineDocumentSearch
+							className="absolute m-[20px]"
+							size="30"
+							color="aaa"
+						/>
+						<Field
+							name="name"
+							id="name"
+							className="chatbot"
+							placeholder={""}
+							autoFocus="true"
+							placeholder="              Ask me something"
+						/>
 					</Flex>
 				</Form>
 			</Formik>

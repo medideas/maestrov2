@@ -27,10 +27,6 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	const article = await fetchInterceptor(
 		`${process.env.NEXT_PUBLIC_APIBASE}/articles/${id}`
 	);
-	const document = await fetchInterceptor(
-		`${process.env.NEXT_PUBLIC_APIBASE}/articles/${id}/download`
-	);
-	console.log(article.id);
 	return (
 		<Container my={{ initial: "0", md: "5" }} p={{ initial: "4", md: "0" }}>
 			<Flex justify="end" mb="3">
@@ -143,15 +139,7 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 
 							<Separator my="3" size="4" />
 							<Flex>
-								{/* <Link
-									href={`data:application/pdf;base64,[base64], ${document.content}`}
-									download={`${document.title}.${document.extension}`}
-									target="_blank"
-									className="[w-100%]"
-								> */}
-								<DownloadFile pdf={document} />
-
-								{/* </Link> */}
+								<DownloadFile articleId={article.id} />
 							</Flex>
 						</Box>
 					</Card>
