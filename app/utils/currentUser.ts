@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 
-const fetchInterceptor = async (url: string) => {
+const currentUser = async () => {
   const jwt = await (await cookies()).get("jwt")
-  const data = await fetch(url, {
+  const data = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/my/profile`, {
       headers: {
     Accept: "application/json",
     Authorization:
@@ -14,4 +14,4 @@ const fetchInterceptor = async (url: string) => {
   return (res);
 }
 
-export default fetchInterceptor;
+export default currentUser;

@@ -11,6 +11,7 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
+import { FaBookmark } from "react-icons/fa6";
 
 interface Props {
 	article: Article;
@@ -32,7 +33,7 @@ const ArticleCard = ({ article }: Props) => {
 			<Box width="350px">
 				<Card className="shadow-lg">
 					<Inset clip="padding-box" side="top" pb="current">
-						<div className="absolute p-3 top-[90px] w-[100%] text-center">
+						<div className="absolute p-3 top-[90px] w-[100%]">
 							<Heading color="sky">{article.title}</Heading>
 						</div>
 						<img

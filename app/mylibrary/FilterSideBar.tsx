@@ -1,13 +1,10 @@
 "use client";
 import { CheckboxGroup, Flex, Heading, Separator } from "@radix-ui/themes";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-const FilterSideBar = ({
-	searchParams,
-}: {
-	searchParams?: { [key: string]: string };
-}) => {
+const FilterSideBar = () => {
 	const menuItems = ["recommended for you", "in progress", "saved"];
 	const competencies = [
 		"Clinical & Product Knowledge",
@@ -15,8 +12,11 @@ const FilterSideBar = ({
 		"Selling Skills",
 		"Operational Excellence",
 	];
+	const searchParams = useSearchParams();
 	const selectedTag = searchParams?.tag as string;
-	const selectedCompetency = searchParams?.competency as string;
+	const selectedCompetency = searchParams?.get("competency");
+	console.log(selectedCompetency);
+
 	const [activeTag, setActiveTag] = useState(searchParams?.tag);
 
 	return (

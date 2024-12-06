@@ -2,9 +2,10 @@ import { Flex, Box, Heading, Text, Grid } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
-import ArticleCard from "./articles/_components/ArticleCard";
-import fetchInterceptor from "./utils/fetchInterceptor";
+import ArticleCard from "../../articles/_components/ArticleCard";
+import fetchInterceptor from "../../utils/fetchInterceptor";
 import { headers } from "next/headers";
+import { FaBookmark } from "react-icons/fa6";
 
 interface Article {
 	id: string;
@@ -23,12 +24,15 @@ interface Competency {
 	color: string;
 }
 
-export default async function Home() {
+export default async function MyArticles() {
 	const competencies = await fetchInterceptor(
 		process.env.NEXT_PUBLIC_APIBASE + "/competencies"
 	);
-	const articles = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/articles"
+	const myArticles = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/my/articles/pinned"
+	);
+	const suggestedArticles = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/my/articles/suggested"
 	);
 
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
@@ -43,8 +47,16 @@ export default async function Home() {
 					</Box>
 				</Flex>
 				<Grid columns={{ initial: "2", sm: "4" }} gap="3" width="auto">
+					{competencies.length === 0 && (
+						<Text>Here you should have some competencies</Text>
+					)}
 					{competencies.map((competency: Competency, index: number) => (
-						<Link href={`/mylibrary`} key={competency.id}>
+						<Link
+							href={`/mylibrary/?competency=${competency.name
+								.replace(/\s+/g, "-")
+								.toLowerCase()}`}
+							key={competency.id}
+						>
 							<Flex
 								width="100"
 								minHeight={"150px"}
@@ -61,7 +73,7 @@ export default async function Home() {
 
 				<Flex mt="5" mb="3">
 					<Box>
-						<Heading>Recommended for you</Heading>
+						<Heading>Saved by you</Heading>
 						<Text>Grouped by Competency</Text>
 					</Box>
 				</Flex>
@@ -70,10 +82,22 @@ export default async function Home() {
 						<HiChevronLeft size="3x" />
 					</div>
 					<Flex gap="4" width="100%" justify="start">
-						{articles &&
-							articles.map((article: Article) => (
+						{myArticles.length === 0 && (
+							<Flex>
+								<Text>Here you should see some articles</Text>
+							</Flex>
+						)}
+
+						{myArticles.map((article: Article) => (
+							<Flex>
+								<FaBookmark
+									size="22"
+									className="absolute top-3 right-3 z-50"
+									color="cyan"
+								/>
 								<ArticleCard key={article.id} article={article} />
-							))}
+							</Flex>
+						))}
 					</Flex>
 					<div className="absolute bg-white py-[11%] w-[40px] z-10 right-0 mr-[30px] mt-[-10px] invisible md:visible">
 						<HiChevronRight size="3x" />
@@ -90,10 +114,14 @@ export default async function Home() {
 						<HiChevronLeft size="3x" />
 					</div>
 					<Flex gap="4" width="100%" justify="start">
-						{articles &&
-							articles.map((article: Article) => (
-								<ArticleCard key={article.id} article={article} />
-							))}
+						{suggestedArticles.length === 0 && (
+							<Flex>
+								<Text>Here you should see some articles</Text>
+							</Flex>
+						)}
+						{suggestedArticles.map((article: Article) => (
+							<ArticleCard key={article.id} article={article} />
+						))}
 					</Flex>
 					<div className="absolute bg-white py-[11%] w-[40px] z-10 right-0 mr-[30px] mt-[-10px] invisible md:visible">
 						<HiChevronRight size="3x" />

@@ -32,7 +32,7 @@ const AssessmentForm = ({ jobTitleSkills, user }: Props) => {
 		jobTitleSkillId: "",
 		value: 0,
 	};
-	let quiz: { jobTitleSkillId: string; value: string }[] = [];
+	let quiz: { jobTitleSkillId: string; value: number }[] = [];
 	let submitQuiz = { name: "", assessmentResults: quiz };
 	return (
 		<Container py="5">
@@ -45,7 +45,7 @@ const AssessmentForm = ({ jobTitleSkills, user }: Props) => {
 					assessmentQuestions[0].jobTitleSkillIds.map((job, index) =>
 						quiz.push({
 							jobTitleSkillId: job.jobTitleSkillid,
-							value: values.assessmentResults[index].value,
+							value: Number(values.assessmentResults[index].value),
 						})
 					);
 					submitQuiz = { name: values.name, assessmentResults: quiz };

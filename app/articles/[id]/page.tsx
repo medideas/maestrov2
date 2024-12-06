@@ -19,6 +19,7 @@ import DeleteArticleButton from "../_components/DeleteArticleButton";
 import fetchInterceptor from "@/app/utils/fetchInterceptor";
 import DownloadFile from "../_components/DownloadFile";
 import LoadingArticle from "./loading";
+import PinArticleButton from "../_components/PinArticleButton";
 
 const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -53,7 +54,10 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 							direction={{ initial: "column", md: "row" }}
 							gap={{ initial: "3", md: "0" }}
 						>
-							<Heading>{article.title}</Heading>
+							<Flex>
+								<PinArticleButton articleId={article.id} />
+								<Heading>{article.title}</Heading>
+							</Flex>
 							{isAuthorized() && (
 								<Flex gap="3">
 									<Link href={`/articles/${article.id}/edit`}>

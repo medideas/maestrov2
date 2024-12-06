@@ -5,7 +5,7 @@ import React from "react";
 
 const LoginButton = () => {
 	return (
-		<Link href={process.env.NEXT_PUBLIC_APIBASE + "/auth/sso/saml/login"}>
+		<Link href={`${process.env.NEXT_PUBLIC_APIBASE}/auth/sso/saml/login`}>
 			<Button type="submit" mt="3" variant="outline">
 				Login
 			</Button>

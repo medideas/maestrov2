@@ -4,6 +4,8 @@ import Link from "next/link";
 import ArticleCard from "./_components/ArticleCard";
 import fetchInterceptor from "../utils/fetchInterceptor";
 import ArticlesTable from "./_components/ArticlesTable";
+import currentUser from "../utils/currentUser";
+import isUserAllowed from "../utils/isUserAllowed";
 
 type Article = {
 	cover: string;

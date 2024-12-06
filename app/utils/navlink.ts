@@ -1,7 +1,7 @@
 const links = [
     {
-        label: "Home",
-        href: "/",
+        label: "My Articles",
+        href: "/my/articles",
         for: "all",
     },
     {
