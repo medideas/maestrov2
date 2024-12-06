@@ -46,7 +46,7 @@ const MyProfile = async () => {
 					<Flex direction={"column"} gap={"3"}>
 						<Heading>My Profile</Heading>
 						<Text>
-							Welcome to your page profile, dear{" "}
+							Welcome to your profile, dear{" "}
 							<b>
 								<Suspense>
 									{user.firstName} {user.lastName}

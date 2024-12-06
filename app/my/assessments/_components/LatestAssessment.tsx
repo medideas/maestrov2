@@ -15,10 +15,21 @@ const LatestAssessment = ({ assessment }: Props) => {
 	console.log(assessment);
 	return (
 		<Flex direction={"column"} gap="3">
-			<Text>No assessments</Text>
-			<Link href="/my/assessments/new">
-				<Button>Take a new assessment</Button>
-			</Link>
+			{!assessment ? (
+				<Flex direction={"column"} gap="2" mt="3">
+					<Text>There are no assessments. Take your first quiz</Text>
+					<Link href="/my/assessments/new">
+						<Button>Take a new assessment</Button>
+					</Link>
+				</Flex>
+			) : (
+				<Flex direction={"column"} gap="3">
+					<Text mt="3">You already took an assessment. Check the results</Text>
+					<Link href="/my/assessments">
+						<Button variant="outline">Check your latest assessment</Button>
+					</Link>
+				</Flex>
+			)}
 		</Flex>
 	);
 };
