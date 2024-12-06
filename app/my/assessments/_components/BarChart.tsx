@@ -15,15 +15,14 @@ type Skill = {
 
 interface Props {
 	competency: Competency;
+	assessmentValues: Number[];
 }
 
-const BarChart = ({ competency }: Props) => {
+const BarChart = ({ competency, assessmentValues }: Props) => {
 	const chartRef = useRef(null);
 	const chartCompetency = competency;
 	const labels = [""];
-	const values = [3];
 	chartCompetency.skills.map((skill) => labels.push(skill.name));
-	chartCompetency.skills.map((skill) => values.push(Math.random() * 4 + 1));
 
 	useEffect(() => {
 		if (chartRef.current) {
@@ -39,7 +38,7 @@ const BarChart = ({ competency }: Props) => {
 				labels: labels,
 				datasets: [
 					{
-						data: values,
+						data: assessmentValues,
 						backgroundColor: "rgba(0,0,0,0)",
 						borderColor: "bg-primary",
 						borderWidth: 2,
@@ -73,7 +72,13 @@ const BarChart = ({ competency }: Props) => {
 	return (
 		<Flex
 			justify={"center"}
-			style={{ position: "relative", width: "auto", height: "250px" }}
+			style={{
+				position: "relative",
+				maxWidth: "700px",
+				width: "100%",
+				height: "100%",
+				maxHeight: "500px",
+			}}
 		>
 			<canvas ref={chartRef} />
 		</Flex>

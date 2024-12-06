@@ -1,10 +1,19 @@
 "use client";
-import { Button, Container, Grid, Separator, Text } from "@radix-ui/themes";
+import {
+	Button,
+	Container,
+	Flex,
+	Grid,
+	Heading,
+	Separator,
+	Text,
+} from "@radix-ui/themes";
 import { Form, Formik, Field } from "formik";
 import React from "react";
 import { useRouter } from "next/navigation";
 import assessmentQuestions from "@/app/utils/assessmentQuestions";
 import { getCookie } from "cookies-next";
+import { MdOutlineQuiz } from "react-icons/md";
 
 type AssessmenTQuestionSet = {
 	question: string;
@@ -18,12 +27,18 @@ type JobTitleSkill = {
 type User = {
 	id: string;
 	jobTitleId: string;
+	jobTitle: JobTitle;
 };
 
 interface Props {
 	jobTitleSkills: JobTitleSkill[];
 	user: User;
 }
+
+type JobTitle = {
+	id: String;
+	name: String;
+};
 
 const AssessmentForm = ({ jobTitleSkills, user }: Props) => {
 	const jwt = getCookie("jwt");
@@ -36,6 +51,20 @@ const AssessmentForm = ({ jobTitleSkills, user }: Props) => {
 	let submitQuiz = { name: "", assessmentResults: quiz };
 	return (
 		<Container py="5">
+			<Flex
+				align={"center"}
+				gap="4"
+				className="bg-slate-100 pt-4 px-5 rounded-full shadow-xl"
+				mb="7"
+			>
+				<MdOutlineQuiz size="60" className="pb-4" />
+				<Flex direction={"column"} mb="5">
+					<Text className="pb-2">
+						You are taking the assessment for the job title:
+					</Text>
+					<Heading>{user.jobTitle.name}</Heading>
+				</Flex>
+			</Flex>
 			<Formik
 				initialValues={{
 					name: "",
@@ -53,7 +82,7 @@ const AssessmentForm = ({ jobTitleSkills, user }: Props) => {
 					fetch(process.env.NEXT_PUBLIC_APIBASE + "/my/assessments/", {
 						headers: {
 							Accept: "application/json",
-							Authorization: "Bearer " + jwt,
+							Authorization: `Bearer ${jwt}`,
 						},
 						method: "POST",
 						body: JSON.stringify(submitQuiz),

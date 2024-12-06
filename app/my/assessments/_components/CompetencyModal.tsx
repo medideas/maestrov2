@@ -1,4 +1,13 @@
-import { Box, Dialog, Card, Heading, Flex, Grid, Text } from "@radix-ui/themes";
+import {
+	Box,
+	Dialog,
+	Card,
+	Heading,
+	Flex,
+	Grid,
+	Text,
+	Separator,
+} from "@radix-ui/themes";
 import React from "react";
 import Skill from "./Skill";
 import fetchInterceptor from "@/app/utils/fetchInterceptor";
@@ -22,42 +31,59 @@ const CompetencyModal = async ({ params, assessmentResults, color }: Props) => {
 	const competency = await fetchInterceptor(
 		process.env.NEXT_PUBLIC_APIBASE + "/competencies/" + id
 	);
+	const assessmentValues = [];
+	const average = (array) =>
+		array.reduce((sum, currentValue) => sum + currentValue, 0) / array.length;
+	console.log(average);
+	assessmentResults.map((answer) => assessmentValues.push(answer.value));
 	return (
 		<Dialog.Root key={competency.id}>
 			<Dialog.Trigger>
-				<Box
-					className={`hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out ${color}`}
+				<Flex
+					className={`hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out ${color} min-h-[120px] w-[100%] max-w-[100%]`}
+					align="center"
 				>
-					<Card size="2" className={competency.color}>
-						<Heading as="h4" weight="light" mb="5">
+					<Card
+						size="2"
+						className={`${competency.color} h-[100%] w-[100%] max-w-[100%]`}
+					>
+						<Heading as="h4" weight="light" size="5" className=" py-[30px]">
 							{competency.name}
 						</Heading>
 					</Card>
-				</Box>
+				</Flex>
 			</Dialog.Trigger>
 			<Dialog.Content maxWidth="800px">
 				<Dialog.Title>{competency.name}</Dialog.Title>
-				<Grid columns={{ initial: "1", md: "2" }} mb="5" align="center">
-					<Box className="col-span-1" mb="3">
+				<Flex mb="5" direction="column" align="center" justify={"between"}>
+					<Flex maxWidth={"100%"} minWidth={"100%"}>
+						<BarChart
+							competency={competency}
+							assessmentValues={assessmentValues}
+						/>
+					</Flex>
+					<Flex mb="3" align="center" gap="3">
+						<Flex align="center" gap="3">
+							<Heading size="6" weight="medium">
+								{average(assessmentValues)}
+							</Heading>
+							<Text as="p">OVERALL SCORE</Text>
+						</Flex>
+						<Separator mx="3" orientation="vertical" />
 						<Flex align="center" gap="3">
 							<Heading size="6" weight="medium">
 								2.3
 							</Heading>
-							<Text as="p">OVERALL SCORE</Text>
-						</Flex>
-						<Flex align="center" gap="3" mt="4">
-							<Heading size="8" weight="medium">
-								2.3
-							</Heading>
 							<Text as="p">TARGET SCORE</Text>
 						</Flex>
-					</Box>
-					<Box>
-						<BarChart competency={competency} />
-					</Box>
-				</Grid>
+					</Flex>
+				</Flex>
 				{competency.skills.map((skill: Skill) => (
-					<Skill key={skill.id} params={{ id: skill.id }} />
+					<Skill
+						key={skill.id}
+						params={{ id: skill.id }}
+						assessmentResults={assessmentResults}
+					/>
 				))}
 			</Dialog.Content>
 		</Dialog.Root>
