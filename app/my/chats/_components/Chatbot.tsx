@@ -12,7 +12,7 @@ interface Props {
 const Chatbot = ({ chatId }: Props) => {
 	const jwt = getCookie("jwt");
 	return (
-		<Flex justify="between">
+		<Flex justify="between" width={"100%"}>
 			<Formik
 				initialValues={{
 					prompt: "",
@@ -25,7 +25,7 @@ const Chatbot = ({ chatId }: Props) => {
 						{
 							headers: {
 								"Content-type": "application/json",
-								Authorization: "Bearer " + jwt,
+								Authorization: `Bearer ${jwt}`,
 							},
 							method: "POST",
 							body: JSON.stringify(values),
@@ -36,20 +36,20 @@ const Chatbot = ({ chatId }: Props) => {
 				<Form className="w-[100%]" style={{ width: "100%" }}>
 					<Flex align="center" style={{ width: "100%" }}>
 						<Flex direction="column" className="w-[100%]">
-							<Flex className="w-[100%]" style={{ width: "100%" }}>
-								<HiOutlineDocumentSearch
-									className="absolute m-[20px]"
-									size="30"
-									color="aaa"
-								/>
+							<Flex
+								className="w-[100%] chatbot"
+								align={"center"}
+								style={{ width: "100%" }}
+							>
+								<HiOutlineDocumentSearch size="30" color="aaa" />
 								<Field
-									name="name"
-									id="name"
-									className="chatbot w-[100%]"
+									name="prompt"
+									id="prompt"
+									className="w-[100%] chatbot border-none"
 									style={{ width: "100%" }}
 									placeholder={""}
 									autoFocus="true"
-									placeholder="              Ask me something"
+									placeholder="Ask me something"
 								/>
 							</Flex>
 						</Flex>

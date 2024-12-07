@@ -15,6 +15,8 @@ import {
 } from "@radix-ui/themes";
 import React, { Suspense } from "react";
 import LatestAssessment from "../assessments/_components/LatestAssessment";
+import UserAvatar from "./_components/UserAvatar";
+import UserDetailsCard from "./_components/UserDetailsCard";
 
 const MyProfile = async () => {
 	const user = await fetchInterceptor(
@@ -32,79 +34,8 @@ const MyProfile = async () => {
 	return (
 		<Container className="sm:my-[50px]" p={{ initial: "3", sm: "0" }}>
 			<Flex justify={"between"} direction={{ initial: "column", sm: "row" }}>
-				<Flex align="center" gap="5" mb={{ initial: "3", sm: "0" }}>
-					<Flex justify={"between"} mt="5">
-						<Flex>
-							<Avatar
-								src=""
-								fallback={user.firstName[0]}
-								size="9"
-								color="iris"
-							></Avatar>
-						</Flex>
-					</Flex>
-					<Flex direction={"column"} gap={"3"}>
-						<Heading>My Profile</Heading>
-						<Text>
-							Welcome to your profile, dear{" "}
-							<b>
-								<Suspense>
-									{user.firstName} {user.lastName}
-								</Suspense>
-							</b>
-						</Text>
-					</Flex>
-				</Flex>
-				<Flex>
-					<Card>
-						<Box p="4">
-							<DataList.Root>
-								<DataList.Item>
-									<DataList.Label minWidth="88px">Name</DataList.Label>
-									<DataList.Value>
-										{user.firstName} {user.lastName}
-									</DataList.Value>
-								</DataList.Item>
-								<DataList.Item>
-									<DataList.Label minWidth="88px">Email</DataList.Label>
-									<DataList.Value>
-										<Text>{user.email}</Text>
-									</DataList.Value>
-								</DataList.Item>
-								<DataList.Label>Roles</DataList.Label>
-								<Flex>
-									<DataList.Item>
-										<Flex gap="2">
-											{roles.map((role, index) => (
-												<Badge
-													color="jade"
-													variant="soft"
-													radius="medium"
-													size={"1"}
-													key={index}
-												>
-													{role}
-												</Badge>
-											))}
-										</Flex>
-									</DataList.Item>
-								</Flex>
-								<DataList.Item>
-									<DataList.Label>Business Unit</DataList.Label>
-									<DataList.Value>{user.businessUnit.name}</DataList.Value>
-								</DataList.Item>
-								<DataList.Item>
-									<DataList.Label>Region</DataList.Label>
-									<DataList.Value>{user.region.name}</DataList.Value>
-								</DataList.Item>
-								<DataList.Item>
-									<DataList.Label>Language</DataList.Label>
-									<DataList.Value>{user.language.name}</DataList.Value>
-								</DataList.Item>
-							</DataList.Root>
-						</Box>
-					</Card>
-				</Flex>
+				<UserAvatar user={user} message={"Welcome to your profile, dear "} />
+				<UserDetailsCard user={user} />
 			</Flex>
 			<Separator my="5" size="4" />
 			<Grid columns={{ initial: "1", sm: "2" }} gap="5">

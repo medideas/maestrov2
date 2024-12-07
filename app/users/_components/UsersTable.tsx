@@ -1,48 +1,17 @@
 "use client";
 import { EyeOpenIcon, Pencil2Icon, TrashIcon } from "@radix-ui/react-icons";
-import { Button, Dialog, Table } from "@radix-ui/themes";
-import Link from "next/link";
-import React, { useState } from "react";
-import { GoPencil } from "react-icons/go";
-import DeleteUserButton from "./_components/DeleteUserModal";
+import { Badge, Button, Dialog, Flex, Spinner, Table } from "@radix-ui/themes";
+import React, { useEffect, useState } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import { useRouter } from "next/navigation";
-import DeleteUserModal from "./_components/DeleteUserModal";
+import DeleteUserModal from "../_components/DeleteUserModal";
+import { getCookie } from "cookies-next";
+import colorSequence from "@/app/utils/colorSequence";
 
-type User = {
-	id: string;
-	firstName: string;
-	lastName: string;
-	email: string;
-	jobTitle: JobTitle;
-	businessUnit: BusinessUnit;
-	language: Language;
-	region: Region;
-};
-
-interface Props {
-	users: User[];
-}
-
-type JobTitle = {
-	name: string;
-};
-
-type BusinessUnit = {
-	name: string;
-};
-
-type Language = {
-	name: string;
-};
-
-type Region = {
-	name: string;
-};
-
-const UsersTable = ({ users }: Props) => {
+const UsersTable = ({ users }: { users: User }) => {
+	const jwt = getCookie("jwt");
 	const router = useRouter();
 	const ViewUserButton = (props) => {
 		return (
@@ -70,16 +39,30 @@ const UsersTable = ({ users }: Props) => {
 			</Button>
 		);
 	};
-	const DeleteUserButton = (props) => {
-		return (
-			<Button
-				variant="outline"
-				color="gray"
-				mt="1"
-				onClick={() => <DeleteUserModal props={props} />}
-			>
-				<TrashIcon />
-			</Button>
+
+	const UserRolesCell = (props) => {
+		const [user, setUser] = useState<User[]>([]);
+		useEffect(() => {
+			fetch("https://sviluppo4.arsdue.com/users/" + props.data.id, {
+				method: "GET",
+				headers: {
+					Authorization: "Bearer " + jwt,
+				},
+			})
+				.then((response) => response.json())
+				.then((json) => setUser(json));
+		}, []);
+		console.log(user);
+		return user.roleUsers ? (
+			<div>
+				{user.roleUsers.map((r, index) => (
+					<Badge key={index} mr="1" color={colorSequence[index]}>
+						{r.role.name}
+					</Badge>
+				))}
+			</div>
+		) : (
+			<Spinner className="mt-2" />
 		);
 	};
 
@@ -89,10 +72,12 @@ const UsersTable = ({ users }: Props) => {
 		{ field: "region.name" },
 		{ field: "businessUnit.name" },
 		{
-			field: "roleUsers",
-			valueGetter: (r: { role: { name: any } }) => r.name,
+			field: "roleUsers.role.name",
+			headerName: "User roles",
+			cellRenderer: UserRolesCell,
+			width: 300,
 		},
-		{ field: "language.name" },
+		{ field: "language.name", headerName: "Language" },
 		{
 			field: "id",
 			headerName: "View",
@@ -104,11 +89,6 @@ const UsersTable = ({ users }: Props) => {
 			headerName: "Edit",
 			width: 80,
 			cellRenderer: EditUserButton,
-		},
-		{
-			field: "id",
-			headerName: "Delete",
-			width: 80,
 		},
 	]);
 	const [rowData, setRowData] = useState(users);

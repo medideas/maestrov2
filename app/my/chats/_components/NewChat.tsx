@@ -40,19 +40,20 @@ const NewChat = () => {
 				}}
 			>
 				<Form className="w-[100%]">
-					<Flex align="center" width={"100%"}>
-						<HiOutlineDocumentSearch
-							className="absolute m-[20px]"
-							size="30"
-							color="aaa"
-						/>
+					<Flex
+						className="w-[100%] chatbot"
+						align={"center"}
+						style={{ width: "100%" }}
+					>
+						<HiOutlineDocumentSearch size="30" color="aaa" />
 						<Field
-							name="name"
-							id="name"
-							className="chatbot"
+							name="prompt"
+							id="prompt"
+							className="w-[100%] chatbot border-none"
+							style={{ width: "100%" }}
 							placeholder={""}
 							autoFocus="true"
-							placeholder="              Ask me something"
+							placeholder="Ask me something"
 						/>
 					</Flex>
 				</Form>

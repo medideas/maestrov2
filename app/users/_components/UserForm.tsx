@@ -15,40 +15,6 @@ import { getCookie } from "cookies-next";
 import * as Yup from "yup";
 import FormCallout from "@/app/components/FormCallout";
 
-interface User {
-	id: string;
-	firstName: string;
-	lastName: string;
-	email: string;
-	roleIds: Role[];
-	regionId: string;
-	jobTitleId: string;
-	languageId: string;
-	businessUnitId: string;
-}
-
-interface Role {
-	id: string;
-	name: string;
-}
-
-interface BusinessUnit {
-	id: string;
-	name: string;
-}
-interface Language {
-	id: string;
-	name: string;
-}
-interface Region {
-	id: string;
-	name: string;
-}
-interface JobTitle {
-	id: string;
-	name: string;
-}
-
 const UserForm = ({
 	user,
 	businessUnits,
@@ -65,6 +31,9 @@ const UserForm = ({
 	roles: Role[];
 }) => {
 	const router = useRouter();
+	let userRoleIds: Role[] = [];
+	user?.roleUsers.map((role) => userRoleIds.push(role.role.id));
+	console.log(JSON.stringify(userRoleIds));
 	const initialValues = {
 		firstName: user?.firstName || "",
 		lastName: user?.lastName || "",
@@ -73,7 +42,7 @@ const UserForm = ({
 		languageId: user?.languageId || "",
 		businessUnitId: user?.businessUnitId || "",
 		jobTitleId: user?.jobTitleId || "",
-		roleIds: user?.roleIds || [],
+		roleIds: userRoleIds || [],
 	};
 	const jwt = getCookie("jwt");
 	const [submitting, setSubmitting] = useState(false);
@@ -93,7 +62,6 @@ const UserForm = ({
 			.min(1)
 			.required("Add the Business Unit of the user"),
 		jobTitleId: Yup.string().min(1).required("Add the Job Title of the user"),
-		roleIds: Yup.string().min(1).required("Select the roles of this user"),
 	});
 
 	return (
@@ -102,6 +70,7 @@ const UserForm = ({
 				initialValues={initialValues}
 				validationSchema={userSchema}
 				onSubmit={(values) => {
+					console.log(values);
 					setSubmitting(true);
 					if (isEditing()) {
 						console.log(JSON.stringify(values));
@@ -110,7 +79,7 @@ const UserForm = ({
 								"Content-Type": "application/json",
 								Authorization: "Bearer " + jwt,
 							},
-							method: "PATCH",
+							method: "PUT",
 							body: JSON.stringify(values),
 						});
 					} else {
@@ -172,6 +141,7 @@ const UserForm = ({
 							<div className="p-3">
 								<label htmlFor="regionId">Region</label>
 								<Field as="select" name="regionId" id="regionId">
+									<option>Select an option</option>
 									{regions.map((region) => (
 										<option key={region.id} value={region.id}>
 											{region.name}
@@ -187,6 +157,7 @@ const UserForm = ({
 							<div className="p-3">
 								<label htmlFor="languageId">Language</label>
 								<Field as="select" name="languageId" id="languageId">
+									<option>Select an option</option>
 									{languages.map((language) => (
 										<option key={language.id} value={language.id}>
 											{language.name}
@@ -200,6 +171,7 @@ const UserForm = ({
 							<div>
 								<label htmlFor="jobTitleId">Job Title</label>
 								<Field as="select" name="jobTitleId" id="jobTitleId">
+									<option>Select an option</option>
 									{jobTitles.map((jobTitle) => (
 										<option key={jobTitle.id} value={jobTitle.id}>
 											{jobTitle.name}

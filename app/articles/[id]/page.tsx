@@ -20,6 +20,7 @@ import fetchInterceptor from "@/app/utils/fetchInterceptor";
 import DownloadFile from "../_components/DownloadFile";
 import LoadingArticle from "./loading";
 import PinArticleButton from "../_components/PinArticleButton";
+import ArticleRelevanceForJobTitleSkills from "../_components/ArticleRelevanceForJobTitleSkills";
 
 const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -108,6 +109,10 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 							</Flex>
 						)}
 					</Flex>
+					<Separator my="4" size="4" />
+					{/* <Flex>
+						<ArticleRelevanceForJobTitleSkills article={article} />
+					</Flex> */}
 				</Box>
 				<Box>
 					<Card className="shadow-lg">

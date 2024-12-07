@@ -167,8 +167,16 @@ select {
 	right: -30px;
 }
 
+.tabs li a:after :last-of-type{
+	display: none;
+}
+
 .chatbot {
-	border-radius: 2em;
-	padding: 0.8em;
 	background-color: #f5f2f0;
+	border-radius: 2em;
+	padding: 0.4em 0.8em;
+}
+
+.chatbot:focus{
+	border: none;
 }

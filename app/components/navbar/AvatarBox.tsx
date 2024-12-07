@@ -9,6 +9,7 @@ type User = {
 
 const AvatarBox = ({ user }: { user: User }) => {
 	const currentPath = usePathname();
+	const currentLink = (url: string, path: string) => {};
 	return (
 		<Flex align="center">
 			<Dialog.Root>
@@ -24,9 +25,9 @@ const AvatarBox = ({ user }: { user: User }) => {
 				</Dialog.Content>
 			</Dialog.Root>
 			<Box ml="4">
-				<Heading as="h3">Home</Heading>
+				<Heading as="h3">{user.firstName}</Heading>
 				<Heading as="h4" weight="regular" size="4">
-					Welcome back {user.firstName}
+					Welcome back
 				</Heading>
 			</Box>
 		</Flex>

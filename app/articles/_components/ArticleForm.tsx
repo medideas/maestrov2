@@ -7,7 +7,6 @@ import React, { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { getCookie } from "cookies-next";
 import * as Yup from "yup";
-import { RiAiGenerate } from "react-icons/ri";
 import FormCallout from "@/app/components/FormCallout";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 
@@ -20,53 +19,6 @@ interface Props {
 	sources: Source[];
 	educationalTools: EducationalTool[];
 }
-
-type Article = {
-	id: string;
-	title: string;
-	description: string;
-	cover: string;
-	content: string;
-	duration: string;
-	educationalFrameworkId: string;
-	educationalToolId: string;
-	educationalMethodologyId: string;
-	sourceId: string;
-	mediaId: string;
-	languageId: string;
-	aiGenerated: boolean;
-	internalUseOnly: boolean;
-};
-
-type EducationalFramework = {
-	id: "string";
-	name: "string";
-};
-
-type EducationalMethodology = {
-	id: "string";
-	name: "string";
-};
-
-type Media = {
-	id: "string";
-	name: "string";
-};
-
-type Language = {
-	id: "string";
-	name: "string";
-};
-
-type Source = {
-	id: "string";
-	name: "string";
-};
-
-type EducationalTool = {
-	id: "string";
-	name: "string";
-};
 
 const articleSchema = Yup.object().shape({
 	title: Yup.string().min(1).required("Please, set the title"),
@@ -107,7 +59,7 @@ const ArticleForm = ({
 
 	useEffect(() => {
 		fetch(
-			`${process.env.NEXT_PUBLIC_APIBASE}/articles/${article.id}/download`,
+			`${process.env.NEXT_PUBLIC_APIBASE}/articles/${article?.id}/download`,
 			{
 				method: "GET",
 				headers: {
@@ -314,7 +266,7 @@ const ArticleForm = ({
 											)}
 											{coverFile && (
 												<img
-													src={`data:image/jpeg;base64, ${article.cover}`}
+													src={`data:image/jpeg;base64, ${article?.cover}`}
 													style={{
 														objectFit: "cover",
 														width: "150px",

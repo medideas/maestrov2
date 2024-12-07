@@ -4,11 +4,6 @@ import React, { cache } from "react";
 import Chatslist from "./ChatsList";
 import fetchInterceptor from "@/app/utils/fetchInterceptor";
 
-interface Chat {
-	id: string;
-	name: string;
-}
-
 const Sidebar = async () => {
 	const chats = await fetchInterceptor(
 		process.env.NEXT_PUBLIC_APIBASE + "/my/chats",
@@ -43,43 +38,6 @@ const Sidebar = async () => {
 							))}
 						</ul>
 					</Box>
-				</Box>
-				<Box>
-					<Heading mt="5" mb="3">
-						Maestro Apps
-					</Heading>
-					<Flex direction="column" gap="3" mb="3">
-						<Card size="1">
-							<Flex gap="3" align="center">
-								<BookmarkIcon />
-								<Box>
-									<Text as="div" size="2" color="gray">
-										Summarize a book
-									</Text>
-								</Box>
-							</Flex>
-						</Card>
-						<Card size="1">
-							<Flex gap="3" align="center">
-								<LightningBoltIcon />
-								<Box>
-									<Text as="div" size="2" color="gray">
-										Summarize a book
-									</Text>
-								</Box>
-							</Flex>
-						</Card>
-						<Card size="1">
-							<Flex gap="3" align="center">
-								<BookmarkIcon />
-								<Box>
-									<Text as="div" size="2" color="gray">
-										Summarize a book
-									</Text>
-								</Box>
-							</Flex>
-						</Card>
-					</Flex>
 				</Box>
 			</Flex>
 		</>

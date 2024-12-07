@@ -8,30 +8,11 @@ import fetchInterceptor from "./utils/fetchInterceptor";
 import { hasCookie } from "cookies-next";
 import { cookies } from "next/headers";
 
-type User = {
-	id: String;
-	firstName: String;
-	lastName: String;
-	email: String;
-	roleUsers: RoleUser[];
-};
-
-type RoleUser = {
-	id: String;
-	name: String;
-	role: Role[];
-};
-
-type Role = {
-	id: String;
-	name: String;
-};
-
 const Navbar = async () => {
 	const userSession = await hasCookie("jwt", { cookies });
 	if (userSession) {
 		const loggedUser = await fetchInterceptor(
-			process.env.NEXT_PUBLIC_APIBASE + "/my/profile"
+			`${process.env.NEXT_PUBLIC_APIBASE}/my/profile`
 		);
 		return (
 			<nav className="p-0 m-0">

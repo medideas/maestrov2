@@ -1,9 +1,8 @@
 import { Button, Container, Flex, Heading, Separator } from "@radix-ui/themes";
 import React, { Suspense } from "react";
-import UsersTable from "./UsersTable";
+import UsersTable from "./_components/UsersTable";
 import Link from "next/link";
 import fetchInterceptor from "../utils/fetchInterceptor";
-import Search from "./_components/Search";
 
 const Users = async (props: {
 	searchParams?: Promise<{
