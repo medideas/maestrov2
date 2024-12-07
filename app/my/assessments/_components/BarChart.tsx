@@ -22,6 +22,7 @@ const BarChart = ({ competency, assessmentValues }: Props) => {
 	const chartRef = useRef(null);
 	const chartCompetency = competency;
 	const labels = [""];
+	const assessmentValuesForChart = assessmentValues;
 	chartCompetency.skills.map((skill) => labels.push(skill.name));
 
 	useEffect(() => {
@@ -38,7 +39,7 @@ const BarChart = ({ competency, assessmentValues }: Props) => {
 				labels: labels,
 				datasets: [
 					{
-						data: assessmentValues,
+						data: assessmentValuesForChart,
 						backgroundColor: "rgba(0,0,0,0)",
 						borderColor: "bg-primary",
 						borderWidth: 2,

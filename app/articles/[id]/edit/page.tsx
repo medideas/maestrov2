@@ -1,6 +1,6 @@
 import { Container, Flex, Heading } from "@radix-ui/themes";
 import React from "react";
-import ArticleForm from "../../_components/ArticleForm";
+import EditArticleForm from "../../_components/EditArticleForm";
 import fetchInterceptor from "@/app/utils/fetchInterceptor";
 
 const EditArticlePage = async (props: { params: Promise<{ id: string }> }) => {
@@ -28,12 +28,12 @@ const EditArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	);
 
 	return (
-		<Container>
+		<Container className="py-[50px]" width={"100%"}>
 			<Flex>
 				<Heading>{article.title}</Heading>
 			</Flex>
 			<Flex>
-				<ArticleForm
+				<EditArticleForm
 					article={article}
 					educationalFrameworks={educationalFrameworks}
 					educationalMethodologies={educationalMethodolodies}

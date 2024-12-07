@@ -42,7 +42,7 @@ const articleSchema = Yup.object().shape({
 	),
 });
 
-const ArticleForm = ({
+const NewArticleForm = ({
 	article,
 	educationalFrameworks,
 	educationalMethodologies,
@@ -57,20 +57,21 @@ const ArticleForm = ({
 	const router = useRouter();
 	const jwt = getCookie("jwt");
 
-	useEffect(() => {
-		fetch(
-			`${process.env.NEXT_PUBLIC_APIBASE}/articles/${article?.id}/download`,
-			{
-				method: "GET",
-				headers: {
-					Authorization: `Bearer ${jwt}`,
-					"Content-type": "Application/json",
-				},
-			}
-		)
-			.then((response) => response.json())
-			.then((json) => setContentFile(json));
-	}, []);
+	// useEffect(() => {
+	// 	fetch(
+	// 		`${process.env.NEXT_PUBLIC_APIBASE}/articles/${article?.id}/download`,
+	// 		{
+	// 			method: "GET",
+	// 			headers: {
+	// 				Authorization: `Bearer ${jwt}`,
+	// 				"Content-type": "Application/json",
+	// 			},
+	// 		}
+	// 	)
+	// 		.then((response) => response.json())
+	// 		.then((json) => setContentFile(json));
+	// }, []);
+	const [submitting, setSubmitting] = useState(false);
 	return (
 		<div>
 			<Formik
@@ -79,8 +80,8 @@ const ArticleForm = ({
 					title: article?.title || "",
 					description: article?.description || "",
 					duration: article?.duration || 0,
-					aiGenerated: article?.aiGenerated || false,
-					internalUseOnly: article?.internalUseOnly || false,
+					aiGenerated: String(article?.aiGenerated) || String(false),
+					internalUseOnly: String(article?.internalUseOnly) || String(false),
 					revokedAt: "2050-01-01",
 					mediaId: article?.mediaId || "",
 					sourceId: article?.sourceId || "",
@@ -91,9 +92,10 @@ const ArticleForm = ({
 					cover: "",
 					content: "",
 				}}
-				validationSchema={articleSchema}
+				// validationSchema={articleSchema}
 				onSubmit={async (values) => {
-					console.log("submit");
+					setSubmitting(true);
+					console.log(JSON.stringify(values));
 					const formData = new FormData();
 					formData.append("title", values.title);
 					formData.append("description", values.description);
@@ -116,26 +118,16 @@ const ArticleForm = ({
 					formData.append("educationalToolId", values.educationalToolId);
 					formData.append("languageId", values.languageId);
 					pathname.includes("/edit") ? "edit" : "new";
-					pathname.includes("/edit")
-						? await fetch(
-								process.env.NEXT_PUBLIC_APIBASE + "/articles/" + article?.id,
-								{
-									headers: {
-										Accept: "application/json",
-										Authorization: "Bearer " + jwt,
-									},
-									method: "PATCH",
-									body: formData, // Send FormData
-								}
-						  )
-						: await fetch(process.env.NEXT_PUBLIC_APIBASE + "/articles", {
-								headers: {
-									Accept: "application/json",
-									Authorization: "Bearer " + jwt,
-								},
-								method: "POST",
-								body: formData, // Send FormData
-						  });
+					pathname.includes("/edit");
+
+					await fetch(process.env.NEXT_PUBLIC_APIBASE + "/articles", {
+						headers: {
+							Accept: "application/json",
+							Authorization: "Bearer " + jwt,
+						},
+						method: "POST",
+						body: formData, // Send FormData
+					});
 					router.push("/articles");
 				}}
 			>
@@ -266,7 +258,7 @@ const ArticleForm = ({
 											)}
 											{coverFile && (
 												<img
-													src={`data:image/jpeg;base64, ${article?.cover}`}
+													src={`data:image/jpg;base64, ${values.coverFile}`}
 													style={{
 														objectFit: "cover",
 														width: "150px",
@@ -295,6 +287,7 @@ const ArticleForm = ({
 														files: React.SetStateAction<string>[];
 													};
 												}) => {
+													console.log(event.currentTarget.files[0]);
 													setContentFile(event.currentTarget.files[0]);
 												}}
 											/>
@@ -457,7 +450,9 @@ const ArticleForm = ({
 						</Grid>
 
 						<div>
-							<Button type="submit">Submit article</Button>
+							<Button type="submit" disabled={submitting}>
+								Submit article
+							</Button>
 						</div>
 					</Form>
 				)}
@@ -466,4 +461,4 @@ const ArticleForm = ({
 	);
 };
 
-export default ArticleForm;
+export default NewArticleForm;

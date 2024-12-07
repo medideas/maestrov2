@@ -26,29 +26,37 @@ const Message = ({ message, user }: { message: Message; user: boolean }) => {
 				</Text>
 			</Flex>
 			{message.citations.length > 0 && (
-				<Flex direction={"column"} px="5">
-					<Separator size="4" mb="3" />
+				<Flex direction={"column"} px="5" mb="2">
 					<Flex>
-						{message.citations.map((citation) => (
-							<Flex gap="2" pb="3" pl="5" direction={"column"} align="center">
-								<Flex>
-									{" "}
-									<Box width={"50px"} m="2">
-										<IoDocumentTextOutline size="30" color="bbb" />
-									</Box>
-									<Flex direction={"column"}>
-										<Link
-											className="underline mt-2"
-											href={`/articles/${citation.references[0].article.id}`}
-										>
-											<Text size="2" weight={"medium"}>
-												{citation.references[0].article.title}
-											</Text>
-										</Link>
+						{message.citations.map(
+							(citation) =>
+								citation.references.length > 0 && (
+									<Flex
+										gap="2"
+										pb="3"
+										pl="5"
+										direction={"column"}
+										align="center"
+									>
+										<Separator size="4" mb="3" />
+										<Flex>
+											<Box width={"50px"} m="2">
+												<IoDocumentTextOutline size="30" color="bbb" />
+											</Box>
+											<Flex direction={"column"}>
+												<Link
+													className="underline mt-2"
+													href={`/articles/${citation.references[0]?.article?.id}`}
+												>
+													<Text size="2" weight={"medium"}>
+														{citation.references[0]?.article?.title}
+													</Text>
+												</Link>
+											</Flex>
+										</Flex>
 									</Flex>
-								</Flex>
-							</Flex>
-						))}
+								)
+						)}
 					</Flex>
 				</Flex>
 			)}

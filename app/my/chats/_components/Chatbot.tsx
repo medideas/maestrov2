@@ -1,8 +1,9 @@
 "use client";
-import { Button, Flex } from "@radix-ui/themes";
+import { Button, Flex, Spinner, Text } from "@radix-ui/themes";
 import { getCookie } from "cookies-next";
 import { Field, Form, Formik } from "formik";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
 
 interface Props {
@@ -10,16 +11,33 @@ interface Props {
 }
 
 const Chatbot = ({ chatId }: Props) => {
+	const [submitting, setSubmitting] = useState(false);
 	const jwt = getCookie("jwt");
+	const router = useRouter();
 	return (
-		<Flex justify="between" width={"100%"}>
+		<Flex justify="between" width={"100%"} direction={"column"}>
+			{submitting && (
+				<Flex
+					className="bg-green-200 rounded-full"
+					height={"60px"}
+					align={"center"}
+					px="5"
+					gap="3"
+					my="3"
+					display={submitting}
+				>
+					<Spinner size="3" />
+					<Text>Interrogating the knowledgbase...</Text>
+				</Flex>
+			)}
+
 			<Formik
 				initialValues={{
 					prompt: "",
 					chatId: chatId,
 				}}
 				onSubmit={async (values) => {
-					console.log(JSON.stringify(values));
+					setSubmitting(true);
 					const req = await fetch(
 						process.env.NEXT_PUBLIC_APIBASE + "/chatbot/ask/ ",
 						{
@@ -31,6 +49,9 @@ const Chatbot = ({ chatId }: Props) => {
 							body: JSON.stringify(values),
 						}
 					);
+					console.log(req);
+					const answer: Chat = await req.json();
+					router.push(`/my/chats/${answer.chatId}`);
 				}}
 			>
 				<Form className="w-[100%]" style={{ width: "100%" }}>
@@ -50,6 +71,7 @@ const Chatbot = ({ chatId }: Props) => {
 									placeholder={""}
 									autoFocus="true"
 									placeholder="Ask me something"
+									disabled={submitting}
 								/>
 							</Flex>
 						</Flex>

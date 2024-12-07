@@ -1,7 +1,7 @@
 import { Container, Heading, Text } from "@radix-ui/themes";
 import React from "react";
-import ArticleForm from "../_components/ArticleForm";
 import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import NewArticleForm from "../_components/NewArticleForm";
 
 const NewArticle = async () => {
 	const educationalFrameworks = await fetchInterceptor(
@@ -28,7 +28,7 @@ const NewArticle = async () => {
 			<Text>
 				Add the required information to add content to the Knowledge base
 			</Text>
-			<ArticleForm
+			<NewArticleForm
 				educationalFrameworks={educationalFrameworks}
 				educationalMethodologies={educationalMethodolodies}
 				educationalTools={educationalTools}
