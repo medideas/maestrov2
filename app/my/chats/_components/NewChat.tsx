@@ -1,9 +1,8 @@
 "use client";
-import { FileTextIcon, ImageIcon } from "@radix-ui/react-icons";
-import { Button, Flex } from "@radix-ui/themes";
+import { Flex } from "@radix-ui/themes";
 import { getCookie } from "cookies-next";
 import { Field, Form, Formik } from "formik";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
 
@@ -35,6 +34,7 @@ const NewChat = () => {
 						}
 					);
 					const chatId = await newChat.json();
+					console.log(chatId);
 					router.push(`/my/chats/${chatId.id}`);
 					// if (newChat) redirect("/my/chats");
 				}}
@@ -47,11 +47,10 @@ const NewChat = () => {
 					>
 						<HiOutlineDocumentSearch size="30" color="aaa" />
 						<Field
-							name="prompt"
+							name="name"
 							id="prompt"
 							className="w-[100%] chatbot border-none"
 							style={{ width: "100%" }}
-							placeholder={""}
 							autoFocus="true"
 							placeholder="Ask me something"
 						/>

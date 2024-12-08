@@ -26,8 +26,12 @@ const downloadPDF = async (articleId: string) => {
 		}
 	);
 	const downloadedDocument = await res.json();
-	console.log(downloadedDocument);
-	const atobfile = atob(downloadedDocument.content);
+	const byteCharacters = atob(downloadedDocument.content);
+	const byteNumbers = new Array(byteCharacters.length);
+	for (let i = 0; i < byteCharacters.length; i++) {
+		byteNumbers[i] = byteCharacters.charCodeAt(i);
+	}
+	const atobfile = new Uint8Array(byteNumbers);
 	const data: Blob = new Blob([atobfile], {
 		type: downloadedDocument.mimeType,
 	});

@@ -4,12 +4,19 @@ import React from "react";
 import { CiUser } from "react-icons/ci";
 import { IoChevronUpCircleSharp, IoDocumentTextOutline } from "react-icons/io5";
 import { PiRobotFill } from "react-icons/pi";
-import { RiRobot2Line } from "react-icons/ri";
+import { RiRobot3Line } from "react-icons/ri";
 
 const Message = ({ message, user }: { message: Message; user: boolean }) => {
 	console.log(message);
 	return (
-		<Flex direction={"column"} className={user ? "bg-slate-50" : ""}>
+		<Flex
+			direction={"column"}
+			className={
+				user
+					? "bg-slate-50 rounded-2xl hover:shadow-md duration-150 hover:translate-y-[-2px]"
+					: ""
+			}
+		>
 			<Flex
 				p="2"
 				px="4"
@@ -19,7 +26,7 @@ const Message = ({ message, user }: { message: Message; user: boolean }) => {
 				direction={user ? "row" : "row-reverse"}
 			>
 				<Box width={"50px"}>
-					{user ? <PiRobotFill /> : <CiUser size="20" />}
+					{user ? <RiRobot3Line size="20" /> : <CiUser size="20" />}
 				</Box>
 				<Text as="p" style={{ lineHeight: "2em" }}>
 					{message.text}

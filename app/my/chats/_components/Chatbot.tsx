@@ -15,7 +15,7 @@ const Chatbot = ({ chatId }: Props) => {
 	const jwt = getCookie("jwt");
 	const router = useRouter();
 	return (
-		<Flex justify="between" width={"100%"} direction={"column"}>
+		<Flex justify="between" width={"100%"} direction={"column"} mt="3">
 			{submitting && (
 				<Flex
 					className="bg-green-200 rounded-full"
@@ -38,20 +38,36 @@ const Chatbot = ({ chatId }: Props) => {
 				}}
 				onSubmit={async (values) => {
 					setSubmitting(true);
-					const req = await fetch(
-						process.env.NEXT_PUBLIC_APIBASE + "/chatbot/ask/ ",
-						{
-							headers: {
-								"Content-type": "application/json",
-								Authorization: `Bearer ${jwt}`,
-							},
-							method: "POST",
-							body: JSON.stringify(values),
+					try {
+						const req = await fetch(
+							process.env.NEXT_PUBLIC_APIBASE + "/chatbot/ask/ ",
+							{
+								headers: {
+									"Content-type": "application/json",
+									Authorization: `Bearer ${jwt}`,
+								},
+								method: "POST",
+								body: JSON.stringify(values),
+							}
+						);
+						console.log(req);
+						if (req.ok) {
+							const answer = await req.json();
+							setSubmitting(false);
+							router.push(`/my/chats/${answer.chatId}`);
+						} else {
+							console.log(req.status, req.statusText);
+							setSubmitting(false);
+							alert(
+								"Something went wrong: we had some issues. Try again in a moment"
+							);
 						}
-					);
-					console.log(req);
-					const answer: Chat = await req.json();
-					router.push(`/my/chats/${answer.chatId}`);
+					} catch (error) {
+						setSubmitting(false);
+						console.log(error);
+					}
+
+					// window.location.href = "/my/chats/" + answer.chatId;
 				}}
 			>
 				<Form className="w-[100%]" style={{ width: "100%" }}>

@@ -6,16 +6,17 @@ import fetchInterceptor from "@/app/utils/fetchInterceptor";
 
 const Sidebar = async () => {
 	const chats = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/my/chats",
-		{ method: "GET", cache: "no-store" }
+		process.env.NEXT_PUBLIC_APIBASE + "/my/chats"
 	);
 	console.log(chats);
 	return (
 		<>
 			<Flex
+				display={{ initial: "none", md: "flex" }}
 				px="5"
 				py="2"
-				width="340px"
+				width={"340px"}
+				minWidth={"340px"}
 				className="min-h-80 border-r-[1px] border-gray-300 bg-stone-200"
 				direction="column"
 				justify="between"

@@ -80,14 +80,14 @@ const EditArticleForm = ({
 				// validationSchema={articleSchema}
 				onSubmit={async (values) => {
 					setSubmitting(true);
-					console.log("submitting");
+					console.log(JSON.stringify(values));
 					const formData = new FormData();
 					formData.append("title", values.title);
 					formData.append("description", values.description);
 					formData.append("duration", values.duration.toString());
 					formData.append("coverFile", coverFile);
-					formData.append("aiGenerated", values.aiGenerated.toString());
-					formData.append("internalUseOnly", values.internalUseOnly.toString());
+					formData.append("aiGenerated", values.aiGenerated);
+					formData.append("internalUseOnly", values.internalUseOnly);
 					formData.append("revokedAt", values.revokedAt.toString());
 					formData.append("mediaId", values.mediaId);
 					formData.append("sourceId", values.sourceId);
@@ -157,24 +157,13 @@ const EditArticleForm = ({
 
 								<div className="form-section">
 									<div role="group" aria-labelledby="my-radio-group">
-										<p>Internal use only?</p>
 										<label htmlFor="internalUseOnly">
-											True
+											Internal Use Only
 											<Field
 												id="internalUseOnly"
 												name="internalUseOnly"
-												type="radio"
-												value="true"
-												checked={Boolean(values.internalUseOnly)}
-											/>
-										</label>
-										<label htmlFor="internalUseOnly">
-											False
-											<Field
-												id="internalUseOnly"
-												name="internalUseOnly"
-												type="radio"
-												value="false"
+												type="checkbox"
+												value={Boolean(values.internalUseOnly)}
 												checked={Boolean(values.internalUseOnly)}
 											/>
 										</label>
@@ -186,24 +175,13 @@ const EditArticleForm = ({
 
 								<div className="form-section">
 									<div role="group" aria-labelledby="my-radio-group">
-										<p>AI Generated</p>
 										<label htmlFor="aiGenerated">
-											True
+											AI Generated
 											<Field
 												id="aiGenerated"
 												name="aiGenerated"
-												type="radio"
-												value="true"
-												checked={Boolean(values.aiGenerated)}
-											/>
-										</label>
-										<label htmlFor="aiGenerated">
-											False
-											<Field
-												id="aiGenerated"
-												name="aiGenerated"
-												type="radio"
-												value="false"
+												type="checkbox"
+												value={Boolean(values.aiGenerated)}
 												checked={Boolean(values.aiGenerated)}
 											/>
 										</label>

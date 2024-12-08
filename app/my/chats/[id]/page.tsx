@@ -19,22 +19,49 @@ const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 		`${process.env.NEXT_PUBLIC_APIBASE}/my/chats/${id}`
 	);
 	return (
-		<Grid columns={{ initial: "1", md: "4" }} className="w-[100%]">
+		<Flex className="w-[100%] min-w-[100%]" width={"100%"} minHeight={"80vh"}>
 			<Sidebar />
 			<Suspense>
-				<Flex direction="column" p="5" justify="between" className="col-span-3">
-					<Flex direction="column">
-						<Heading mb="2" size="3">
+				<Flex
+					direction="column"
+					p={{ initial: "2", md: "5" }}
+					justify="between"
+					className="col-span-3"
+					width={"100%"}
+					minHeight={"100%"}
+				>
+					<Flex direction="column" height={"100%"}>
+						<Heading mb="2" size={{}}>
 							{chat.name}
 						</Heading>
 						{chat.messages.length === 0 && (
 							<Text>Let me help you with your research</Text>
 						)}
 
-						<Flex direction="column" gap="3">
-							{chat.messages.map((message: Message, index: number) => (
-								<Message key={message.id} message={message} user={index & 1} />
-							))}
+						<Flex
+							direction="column"
+							gap="3"
+							position={"relative"}
+							minWidth={"100%"}
+							width={"100%"}
+							height={"100%"}
+						>
+							<Flex
+								direction={"column"}
+								position={"absolute"}
+								width={"100%"}
+								minWidth={"100%"}
+								height={"100%"}
+								overflowY={"scroll"}
+							>
+								{chat.messages.map((message: Message, index: number) => (
+									<Message
+										key={message.id}
+										message={message}
+										user={index & 1}
+									/>
+								))}
+							</Flex>
 						</Flex>
 					</Flex>
 					<Flex className="w-[100%]" justify={"between"}>
@@ -42,7 +69,7 @@ const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 					</Flex>
 				</Flex>
 			</Suspense>
-		</Grid>
+		</Flex>
 	);
 };
 
