@@ -1,16 +1,17 @@
 import React, { Suspense } from "react";
 import Sidebar from "./_components/Sidebar";
-import { Grid, Box, Card, Flex, Heading, Text } from "@radix-ui/themes";
+import { Box, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
 import { FaCar } from "react-icons/fa6";
 import { GrGamepad } from "react-icons/gr";
 import { PiMagicWandBold } from "react-icons/pi";
 import NewChat from "./_components/NewChat";
+import MobileChatsMenu from "./_components/MobileChatsMenu";
 
 const Chatbox = async () => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
 	return (
 		<>
-			<Grid columns={{ initial: "1", md: "4" }}>
+			<Flex>
 				<Sidebar />
 				<Flex align="center" width="100%">
 					<Flex
@@ -18,28 +19,56 @@ const Chatbox = async () => {
 						justify="between"
 						style={{ backgroundImage: "url(/bgchat.jpg)" }}
 					>
-						<Flex direction="column" gap="2">
-							<Heading as="h1" size="8" weight="light" align="center">
-								Maestro
-							</Heading>
-							<Heading as="h3" size="4" weight="light" align="center">
-								From curiosity to knowledge
-							</Heading>
+						<Flex py="5">
+							<Flex position={"absolute"} top="120px" right={"5"}>
+								<MobileChatsMenu />
+							</Flex>
+							<Flex
+								direction="column"
+								gap="2"
+								justify={{ initial: "start", md: "center" }}
+								px="5"
+							>
+								<Heading
+									as="h1"
+									size="8"
+									weight="light"
+									mt={{ initial: "5", md: "0" }}
+								>
+									Maestro
+								</Heading>
+								<Heading as="h3" size="4" weight="light">
+									From curiosity to knowledge
+								</Heading>
+							</Flex>
+						</Flex>
+						<Flex display={{ initial: "flex", md: "none" }}>
+							<Separator size="4" my="3" />
 						</Flex>
 						<Flex mt="3" direction="column" justify="between" mx="5">
 							<Heading as="h3" size="3" weight="light">
 								Suggested tasks
 							</Heading>
 							<Suspense>
-								<Flex mt="3" gap="3" justify="center">
+								<Flex
+									direction={{ initial: "column", md: "row" }}
+									mt="3"
+									gap="3"
+									justify="center"
+								>
 									<Box
 										width="350px"
 										className="align-middle hover:scale-105 transition-all duration-200"
 									>
-										<Card className="shadow-lg h-[150px] bg-slate-300 hover:bg-slate-100 duration-200">
-											<Flex direction="column" gap="3" p="3">
+										<Card className="shadow-lg md:h-[150px] h-[80px] bg-slate-300 hover:bg-slate-100 duration-200">
+											<Flex
+												direction={{ initial: "row", md: "column" }}
+												gap="3"
+												p={{ initial: "1", md: "3" }}
+												align={{ initial: "center", md: "start" }}
+											>
 												<FaCar size="30" />
-												<Text>
+												<Text size={{ initial: "3", md: "4" }}>
 													What can I listen to during my next car trip?
 												</Text>
 											</Flex>
@@ -47,10 +76,15 @@ const Chatbox = async () => {
 									</Box>
 									<Box
 										width="350px"
-										className="align-middle hover:scale-105 transition-all duration-200"
+										className="align-middle  hover:scale-105 transition-all duration-200"
 									>
-										<Card className="shadow-lg h-[150px] bg-slate-300 hover:bg-slate-100 duration-200">
-											<Flex direction="column" gap="3" p="3">
+										<Card className="shadow-lg md:h-[150px] h-[80px] bg-slate-300 hover:bg-slate-100 duration-200">
+											<Flex
+												direction={{ initial: "row", md: "column" }}
+												gap="3"
+												p={{ initial: "1", md: "3" }}
+												align={{ initial: "center", md: "start" }}
+											>
 												<GrGamepad size="30" />
 												<Text>Test me on Edwards products!</Text>
 											</Flex>
@@ -58,10 +92,15 @@ const Chatbox = async () => {
 									</Box>
 									<Box
 										width="350px"
-										className="align-middle hover:scale-105 transition-all duration-200"
+										className="align-middle  hover:scale-105 transition-all duration-200"
 									>
-										<Card className="shadow-lg h-[150px] bg-slate-300 hover:bg-slate-100 duration-200">
-											<Flex direction="column" gap="3" p="3">
+										<Card className="shadow-lg md:h-[150px] h-[80px] bg-slate-300 hover:bg-slate-100 duration-200">
+											<Flex
+												direction={{ initial: "row", md: "column" }}
+												gap="3"
+												p={{ initial: "1", md: "3" }}
+												align={{ initial: "center", md: "start" }}
+											>
 												<PiMagicWandBold size="30" />
 												<Text>Rephrase this email for a customer</Text>
 											</Flex>
@@ -69,7 +108,7 @@ const Chatbox = async () => {
 									</Box>
 								</Flex>
 							</Suspense>
-							<Flex className="mt-[250px]" direction="column">
+							<Flex className="mt-[200px]" direction="column">
 								<NewChat />
 								<Text size="1" mt="2" align="center">
 									Maestro can make mistakes. Check important info.
@@ -78,7 +117,7 @@ const Chatbox = async () => {
 						</Flex>
 					</Flex>
 				</Flex>
-			</Grid>
+			</Flex>
 		</>
 	);
 };

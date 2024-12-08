@@ -5,16 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import DeleteChatButton from "./DeleteChatButton";
 
-interface Props {
-	chat: Chat;
-}
-
-type Chat = {
-	id: string;
-	name: string;
-};
-
-const Chatslist = ({ chat }: Props) => {
+const Chatslist = ({ chat }: { chat: Chat }) => {
 	const path = usePathname();
 	return (
 		<li

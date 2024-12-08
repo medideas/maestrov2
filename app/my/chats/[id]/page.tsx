@@ -1,4 +1,4 @@
-import { Flex, Heading, Text, Grid } from "@radix-ui/themes";
+import { Flex, Heading, Text, Grid, Separator } from "@radix-ui/themes";
 import React, { Suspense } from "react";
 import Sidebar from "../_components/Sidebar";
 import Chatbot from "../_components/Chatbot";
@@ -6,6 +6,7 @@ import fetchInterceptor from "@/app/utils/fetchInterceptor";
 import { CiUser } from "react-icons/ci";
 import { RiRobot2Line } from "react-icons/ri";
 import Message from "../_components/Message";
+import MobileChatsMenu from "../_components/MobileChatsMenu";
 
 type Message = {
 	id: string;
@@ -31,12 +32,18 @@ const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 					minHeight={"100%"}
 				>
 					<Flex direction="column" height={"100%"}>
-						<Heading mb="2" size={{}}>
-							{chat.name}
-						</Heading>
-						{chat.messages.length === 0 && (
-							<Text>Let me help you with your research</Text>
-						)}
+						<Flex justify={"between"} align={"center"} px="3">
+							<Flex direction={"column"}>
+								<Heading mb="2" size={{}}>
+									{chat.name}
+								</Heading>
+								{chat.messages.length === 0 && (
+									<Text>Let me help you with your research</Text>
+								)}
+							</Flex>
+							<MobileChatsMenu />
+						</Flex>
+						<Separator my="3" size="4" />
 
 						<Flex
 							direction="column"

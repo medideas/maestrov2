@@ -28,7 +28,7 @@ const DesktopNavLinks = () => {
 						className={currentNavLink(currentPath, link.href) ? " active" : ""}
 					>
 						<Link
-							href={`/${link.href}`}
+							href={`${link.href}`}
 							className={classnames({
 								"text-red-800": link.href === currentPath,
 								"text-zinc-500": link.href != currentPath,
