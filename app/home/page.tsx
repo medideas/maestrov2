@@ -44,39 +44,96 @@ const Home = async () => {
 					<Text>Grouped by Competency</Text>
 				</Box>
 			</Flex>
-			<Flex className="overflow-y-hidden overflow-x-scroll" p="3" px="5">
-				<div className="absolute bg-white py-[11%] w-[50px] z-10 ml-[-50px] mt-[-10px] invisible md:visible">
-					<HiChevronLeft size="3x" />
-				</div>
-				<Flex gap="4" width="100%" justify="start">
-					{articles &&
-						articles.map((article: Article) => (
-							<ArticleCard key={article.id} article={article} />
-						))}
+			<Flex
+				justify={"between"}
+				height={"480px"}
+				align="center"
+				className="border-[1px] rounded-md"
+			>
+				<Flex
+					height={"100%"}
+					width={"50px"}
+					align="center"
+					justify={"center"}
+					display={{ initial: "none", md: "flex" }}
+				>
+					<HiChevronLeft size="24" />
 				</Flex>
-				<div className="absolute bg-white py-[11%] w-[40px] z-10 right-0 mr-[30px] mt-[-10px] invisible md:visible">
-					<HiChevronRight size="3x" />
-				</div>
+
+				<Flex height={"100%"} width={"93%"} gap="4" position={"relative"}>
+					<Flex
+						position={"absolute"}
+						width={"100%"}
+						height={"100%"}
+						gap="4"
+						overflowX={"scroll"}
+						overflowY={"hidden"}
+					>
+						{articles &&
+							articles.map((article: Article) => (
+								<ArticleCard key={article.id} article={article} />
+							))}
+					</Flex>
+				</Flex>
+
+				<Flex
+					height={"100%"}
+					width={"50px"}
+					align="center"
+					justify={"center"}
+					display={{ initial: "none", md: "flex" }}
+				>
+					<HiChevronRight size="24" />
+				</Flex>
 			</Flex>
+
 			<Flex mt="5" mb="3">
 				<Box>
-					<Heading>Top Related Learning Activities</Heading>
-					<Text>What's trending</Text>
+					<Heading>Recommended for you</Heading>
+					<Text>Grouped by Competency</Text>
 				</Box>
 			</Flex>
-			<Flex className="overflow-y-hidden overflow-x-scroll" p="3">
-				<div className="absolute bg-white py-[11%] w-[50px] z-10 ml-[-50px] mt-[-10px] invisible md:visible">
-					<HiChevronLeft size="3x" />
-				</div>
-				<Flex gap="4" width="100%" justify="start">
-					{articles &&
-						articles.map((article: Article) => (
-							<ArticleCard key={article.id} article={article} />
-						))}
+			<Flex
+				justify={"between"}
+				height={"480px"}
+				align="center"
+				className="border-[1px] rounded-md"
+			>
+				<Flex
+					height={"100%"}
+					width={"50px"}
+					align="center"
+					justify={"center"}
+					display={{ initial: "none", md: "flex" }}
+				>
+					<HiChevronLeft size="24" />
 				</Flex>
-				<div className="absolute bg-white py-[11%] w-[40px] z-10 right-0 mr-[30px] mt-[-10px] invisible md:visible">
-					<HiChevronRight size="3x" />
-				</div>
+
+				<Flex height={"100%"} width={"93%"} gap="4" position={"relative"}>
+					<Flex
+						position={"absolute"}
+						width={"100%"}
+						height={"100%"}
+						gap="4"
+						overflowX={"scroll"}
+						overflowY={"hidden"}
+					>
+						{articles &&
+							articles.map((article: Article) => (
+								<ArticleCard key={article.id} article={article} />
+							))}
+					</Flex>
+				</Flex>
+
+				<Flex
+					height={"100%"}
+					width={"50px"}
+					align="center"
+					justify={"center"}
+					display={{ initial: "none", md: "flex" }}
+				>
+					<HiChevronRight size="24" />
+				</Flex>
 			</Flex>
 			<div className="flex flex-col-mt-10"></div>
 		</main>

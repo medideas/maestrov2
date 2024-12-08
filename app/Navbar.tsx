@@ -23,7 +23,12 @@ const Navbar = async () => {
 						</Flex>
 						<Flex align="center" gap="3">
 							<Link href="/">
-								<img src="/maestro.png" alt="Maestro logo" width={80} />
+								<img
+									src="/maestro.png"
+									alt="Maestro logo"
+									width={80}
+									className="mr-5"
+								/>
 							</Link>
 						</Flex>
 					</Flex>

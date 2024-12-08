@@ -11,7 +11,7 @@ const Chatbox = async () => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
 	return (
 		<>
-			<Flex>
+			<Flex height={"100vh"}>
 				<Sidebar />
 				<Flex align="center" width="100%">
 					<Flex
@@ -19,7 +19,7 @@ const Chatbox = async () => {
 						justify="between"
 						style={{ backgroundImage: "url(/bgchat.jpg)" }}
 					>
-						<Flex py="5">
+						<Flex py="5" justify={{ initial: "start", md: "center" }}>
 							<Flex position={"absolute"} top="120px" right={"5"}>
 								<MobileChatsMenu />
 							</Flex>
@@ -27,6 +27,7 @@ const Chatbox = async () => {
 								direction="column"
 								gap="2"
 								justify={{ initial: "start", md: "center" }}
+								align={{ initial: "start", md: "center" }}
 								px="5"
 							>
 								<Heading
