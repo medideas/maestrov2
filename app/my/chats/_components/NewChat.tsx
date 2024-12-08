@@ -6,10 +6,6 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
 
-type Chat = {
-	id: String;
-};
-
 const NewChat = () => {
 	const router = useRouter();
 	const jwt = getCookie("jwt");

@@ -4,24 +4,6 @@ import React from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import ArticleCard from "../articles/_components/ArticleCard";
 import fetchInterceptor from "../utils/fetchInterceptor";
-import { headers } from "next/headers";
-
-interface Article {
-	id: string;
-	title: string;
-	description: string;
-	cover: string;
-	duration: number;
-	aiGenerated: boolean;
-	internalUseOnly: boolean;
-}
-
-interface Competency {
-	id: string;
-	name: string;
-	description: string;
-	color: string;
-}
 
 const Home = async () => {
 	const competencies = await fetchInterceptor(

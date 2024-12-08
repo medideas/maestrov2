@@ -16,6 +16,13 @@ interface Article {
 	internalUseOnly: boolean;
 };
 
+interface Competency {
+	id: string;
+	name: string;
+	description: string;
+	color: string;
+}
+
 interface EducationalFramework {
 	id: String;
 	name: String;

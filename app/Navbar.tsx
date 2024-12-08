@@ -15,7 +15,7 @@ const Navbar = async () => {
 			`${process.env.NEXT_PUBLIC_APIBASE}/my/profile`
 		);
 		return (
-			<nav className="p-0 m-0">
+			<nav className="p-0 m-0 overflow-x-hidden">
 				<Flex direction="column">
 					<Flex justify="between" className="bg-navbar p-5">
 						<Flex display={{ initial: "none", sm: "flex" }}>
