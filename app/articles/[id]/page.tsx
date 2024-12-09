@@ -18,9 +18,9 @@ import { isAuthorized } from "@/app/utils/roleRules";
 import DeleteArticleButton from "../_components/DeleteArticleButton";
 import fetchInterceptor from "@/app/utils/fetchInterceptor";
 import DownloadFile from "../_components/DownloadFile";
-import LoadingArticle from "./loading";
 import PinArticleButton from "../_components/PinArticleButton";
 import ArticleRelevanceForJobTitleSkills from "../_components/ArticleRelevanceForJobTitleSkills";
+import GoBack from "../_components/GoBack";
 
 const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -32,7 +32,7 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	return (
 		<Container my={{ initial: "0", md: "5" }} p={{ initial: "4", md: "0" }}>
 			<Flex justify="end" mb="3">
-				<Link href="/articles">Go back to articles</Link>
+				<GoBack />
 			</Flex>
 			<Suspense>
 				<AspectRatio ratio={6 / 3}>

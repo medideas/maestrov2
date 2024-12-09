@@ -48,7 +48,11 @@ const ArticleCard = ({ article }: Props) => {
 						/>
 					</Inset>
 					<Flex py="1">
-						<Text size="2">{article.description}</Text>
+						<Text size="2">
+							{article.description.length > 110
+								? article.description.substring(0, 110) + " [...]"
+								: article.description}
+						</Text>
 					</Flex>
 					<Flex direction="column" gap="3" mb="3">
 						{article.internalUseOnly && (

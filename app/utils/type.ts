@@ -120,3 +120,31 @@ interface Reference{
 	article: Article;
 }
 
+type Skill = {
+	id: string;
+	name: string;
+	target: number;
+	jobTitleSkills: JobTitleSkill[];
+};
+
+type JobTitleSkill = {
+	id: string;
+	jobTitleId: string;
+	target: number;
+	jobTitle: JobTitle;
+};
+
+interface Props {
+	params: { id: string };
+	assessmentResults: AssessmentResult[];
+}
+
+type AssessmentResult = {
+	jobTitleSkillId: string;
+	value: number;
+};
+
+interface IngestionJob{
+	id: string;
+	locked: boolean;
+}

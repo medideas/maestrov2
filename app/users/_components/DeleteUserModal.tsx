@@ -5,7 +5,7 @@ import { getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const DeleteUserModal = ({ props }: Props) => {
+const DeleteUserModal = ({ user }: { user: User }) => {
 	const [dialog, setDialog] = useState(false);
 	const router = useRouter();
 	const deleteUser = (userId: String) => {
@@ -21,7 +21,7 @@ const DeleteUserModal = ({ props }: Props) => {
 				method: "DELETE",
 			}
 		);
-		router.push("/users");
+		router.replace("/users");
 	};
 	return (
 		<Dialog.Root open={dialog}>

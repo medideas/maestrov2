@@ -12,21 +12,10 @@ import {
 } from "@radix-ui/themes";
 import React, { Suspense } from "react";
 import Link from "next/link";
-import ArticleCard from "./_components/ArticleCard";
 import fetchInterceptor from "../utils/fetchInterceptor";
 import ArticlesTable from "./_components/ArticlesTable";
-import currentUser from "../utils/currentUser";
-import isUserAllowed from "../utils/isUserAllowed";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
-
-type Article = {
-	cover: string;
-	id: string;
-	title: string;
-	description: string;
-	aiGenerated: boolean;
-	internalUseOnly: boolean;
-};
+import SyncKnowledge from "../my/chats/_components/SyncKnowledge";
 
 const ArticlesPage = async () => {
 	const articles = await fetchInterceptor(
@@ -37,11 +26,11 @@ const ArticlesPage = async () => {
 		`${process.env.NEXT_PUBLIC_APIBASE}/chatbot/ingestion-jobs/last`
 	);
 
-	// const fetchStatus = () => {
-	// 	ingestionJob = fetchInterceptor(
-	// 		`${process.env.NEXT_PUBLIC_APIBASE}/chatbot/ingestion-jobs/last`
-	// 	);
-	// };
+	const fetchStatus = () => {
+		ingestionJob = fetchInterceptor(
+			`${process.env.NEXT_PUBLIC_APIBASE}/chatbot/ingestion-jobs/last`
+		);
+	};
 
 	// useEffect(() => {
 	// 	const myInterval = setInterval(fetchStatus, 5000);
@@ -51,7 +40,7 @@ const ArticlesPage = async () => {
 	// 		clearInterval(myInterval);
 	// 	};
 	// }, []);
-	// console.log(ingestionJob);
+	console.log(ingestionJob);
 	return (
 		<Flex direction="column" gap="4" p="5">
 			<Flex
@@ -86,21 +75,8 @@ const ArticlesPage = async () => {
 								Knowledgebase syncronization
 							</Heading>
 						</Flex>
-						<Flex justify={"center"}>
-							{ingestionJob.status === "COMPLETE" ? (
-								<Badge size="3" color="green" className="text-center">
-									Complete
-								</Badge>
-							) : (
-								<Button
-									variant="outline"
-									color="gray"
-									disabled={ingestionJob.locked}
-								>
-									{!ingestionJob.locked && "Sync ongoing"}
-								</Button>
-							)}
-						</Flex>
+
+						<SyncKnowledge ingestionJob={ingestionJob} />
 					</Flex>
 				</Card>
 			</Flex>

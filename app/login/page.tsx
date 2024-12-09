@@ -22,7 +22,7 @@ const LoginPage = async () => {
 				<Suspense>
 					<AspectRatio ratio={16 / 9}>
 						<img
-							src="/login.jpg"
+							src="/login.png"
 							alt="Edwards login"
 							style={{
 								objectFit: "cover",

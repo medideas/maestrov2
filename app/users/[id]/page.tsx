@@ -13,6 +13,7 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
+import DeleteUserModal from "../_components/DeleteUserModal";
 
 const UserPage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
@@ -32,9 +33,7 @@ const UserPage = async (props: { params: Promise<{ id: string }> }) => {
 						<Link href={`/users/${user.id}/edit`}>
 							<Button color="jade">Edit user profile</Button>
 						</Link>
-						<Link href={`/users/${user.id}/delete`}>
-							<Button color="red">Delete User</Button>
-						</Link>
+						<DeleteUserModal user={user} />
 					</Flex>
 				</Flex>
 			</Flex>

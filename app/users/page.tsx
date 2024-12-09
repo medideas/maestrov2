@@ -27,7 +27,7 @@ const Users = async (props: {
 			<Flex justify="between" align="center">
 				<Flex direction="column" my="2">
 					<Heading>Users</Heading>
-					<p>Here you can find all the users of your bussiness unit</p>
+					<p>Here you can find all the users of your business unit</p>
 				</Flex>
 				<Flex align={"center"} gap="5">
 					<Link href="/users/new/">

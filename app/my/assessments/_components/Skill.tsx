@@ -2,35 +2,6 @@ import fetchInterceptor from "@/app/utils/fetchInterceptor";
 import { Grid, Text, Tooltip } from "@radix-ui/themes";
 import React from "react";
 
-type Skill = {
-	id: string;
-	name: string;
-	target: number;
-	jobTitleSkills: JobTitleSkill[];
-};
-
-type JobTitleSkill = {
-	id: string;
-	jobTitleId: string;
-	target: number;
-	jobTitle: JobTitle;
-};
-
-type JobTitle = {
-	id: string;
-	name: string;
-};
-
-interface Props {
-	params: { id: string };
-	assessmentResults: AssessmentResult[];
-}
-
-type AssessmentResult = {
-	jobTitleSkillId: string;
-	value: number;
-};
-
 const Skill = async ({ params, assessmentResults }: Props) => {
 	const userJobTitleId = "5b53f32b-5a49-402d-a146-480cd49e14e6";
 	const id = params.id;
