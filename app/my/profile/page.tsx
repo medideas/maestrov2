@@ -17,6 +17,7 @@ import React, { Suspense } from "react";
 import LatestAssessment from "../assessments/_components/LatestAssessment";
 import UserAvatar from "./_components/UserAvatar";
 import UserDetailsCard from "./_components/UserDetailsCard";
+import BookmarkedArticles from "./_components/BookmarkedArticles";
 
 const MyProfile = async () => {
 	const user = await fetchInterceptor(
@@ -43,9 +44,10 @@ const MyProfile = async () => {
 					<Heading size="4">Assessements</Heading>
 					<LatestAssessment assessment={assessment} />
 				</Flex>
-				<Flex direction={"column"}>
+				<Flex direction={"column"} gap="3">
 					<Heading size="4">Articles</Heading>
-					<Text>Here you can find the articles you bookmarked</Text>
+					<Text size="2">Here you can find the articles you bookmarked</Text>
+					<BookmarkedArticles />
 				</Flex>
 			</Grid>
 		</Container>

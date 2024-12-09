@@ -20,6 +20,10 @@ label {
 	display: block;
 }
 
+.no-block-label {
+	display: inline !important;
+}
+
 input {
 	display: block;
 	padding: 0.3em;
@@ -167,7 +171,7 @@ select {
 	right: -30px;
 }
 
-.tabs li a:after :last-of-type{
+.tabs li a:after :last-of-type {
 	display: none;
 }
 
@@ -177,6 +181,6 @@ select {
 	padding: 0.4em 0.8em;
 }
 
-.chatbot:focus{
+.chatbot:focus {
 	border: none;
 }

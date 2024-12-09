@@ -184,27 +184,33 @@ const UserForm = ({
 							</div>
 						</Grid>
 						<Separator my="3" size="4" />
-						<div role="group" aria-labelledby="checkbox-group">
+						<Flex
+							direction="column"
+							justify={"end"}
+							role="group"
+							aria-labelledby="checkbox-group"
+						>
 							<Heading weight="light" size="5">
 								Role
 							</Heading>
 							{roles.map((role, index) => (
-								<div key={index}>
-									<label htmlFor="roleIds">
+								<Flex key={index} direction={"column"} justify={"start"}>
+									<label htmlFor="roleIds" className="no-block-label">
+										{role.name}
 										<Field
 											type="checkbox"
 											name="roleIds"
 											value={role.id}
 											id="roleIds"
+											className="mb-[10px]"
 										/>{" "}
-										{role.name}
 									</label>
 									<ErrorMessage name="roleIds" component="div">
 										{(msg) => <FormCallout msg={msg} />}
 									</ErrorMessage>
-								</div>
+								</Flex>
 							))}
-						</div>
+						</Flex>
 						<Flex gap="2" pt="4">
 							<Button
 								className="btn mt-5 py-1 px-4 bg-primary"

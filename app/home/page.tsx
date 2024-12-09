@@ -12,6 +12,9 @@ const Home = async () => {
 	const articles = await fetchInterceptor(
 		process.env.NEXT_PUBLIC_APIBASE + "/articles"
 	);
+	const myArticles = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/my/articles/pinned"
+	);
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
 	return (
 		<main className="flex flex-col p-5">
@@ -51,6 +54,7 @@ const Home = async () => {
 				className="border-[1px] rounded-md"
 			>
 				<Flex
+					id="carousel-1"
 					height={"100%"}
 					width={"50px"}
 					align="center"
@@ -89,8 +93,8 @@ const Home = async () => {
 
 			<Flex mt="5" mb="3">
 				<Box>
-					<Heading>Recommended for you</Heading>
-					<Text>Grouped by Competency</Text>
+					<Heading>My Articles</Heading>
+					<Text>The articles you saved for later</Text>
 				</Box>
 			</Flex>
 			<Flex
@@ -118,8 +122,8 @@ const Home = async () => {
 						overflowX={"scroll"}
 						overflowY={"hidden"}
 					>
-						{articles &&
-							articles.map((article: Article) => (
+						{myArticles &&
+							myArticles.map((article: Article) => (
 								<ArticleCard key={article.id} article={article} />
 							))}
 					</Flex>
