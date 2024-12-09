@@ -42,9 +42,26 @@ const AskMaestro = () => {
 							cache: "no-store",
 						}
 					);
-					const chatId = await newChat.json();
-					console.log(chatId);
-					router.push(`/my/chats/${chatId.id}`);
+					const chat = await newChat.json();
+					console.log(chat);
+					console.log(JSON.stringify({ chatId: chat.id, prompt: values.name }));
+					try {
+						const question = await fetch(
+							`${process.env.NEXT_PUBLIC_APIBASE}/chatbot/ask`,
+							{
+								headers: {
+									"Content-type": "application/json",
+									Authorization: "Bearer " + jwt,
+								},
+								method: "POST",
+								body: JSON.stringify({ chatId: chat.id, prompt: values.name }),
+								cache: "no-store",
+							}
+						);
+					} catch (error) {
+						console.log(error);
+					}
+					router.push(`/my/chats/${chat.id}`);
 					// if (newChat) redirect("/my/chats");
 				}}
 			>

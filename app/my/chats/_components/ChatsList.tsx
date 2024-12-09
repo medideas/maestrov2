@@ -18,7 +18,7 @@ const Chatslist = ({ chat }: { chat: Chat }) => {
 		>
 			<Flex justify={"between"} align={"center"}>
 				<Link className="w-[100%]" href={"/my/chats/" + chat.id}>
-					{chat.name}
+					<Text size="2">{chat.name}</Text>
 				</Link>
 				<DeleteChatButton chatId={chat.id} />
 			</Flex>
