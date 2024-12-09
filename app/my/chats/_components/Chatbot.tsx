@@ -85,7 +85,6 @@ const Chatbot = ({ chatId }: Props) => {
 									className="w-[100%] chatbot border-none"
 									style={{ width: "100%" }}
 									placeholder={""}
-									autoFocus="true"
 									placeholder="Ask me something"
 									disabled={submitting}
 								/>
