@@ -12,7 +12,9 @@ const BookmarkedArticles = async () => {
 			{myArticles.length === 0 ? (
 				<Text>You haven't pinned any article yet</Text>
 			) : (
-				myArticles.map((article) => <LinkBookmarkedArticle article={article} />)
+				myArticles.map((article) => (
+					<LinkBookmarkedArticle key={article.id} article={article} />
+				))
 			)}
 		</Flex>
 	);

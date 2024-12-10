@@ -31,15 +31,6 @@ const ArticlesPage = async () => {
 			`${process.env.NEXT_PUBLIC_APIBASE}/chatbot/ingestion-jobs/last`
 		);
 	};
-
-	// useEffect(() => {
-	// 	const myInterval = setInterval(fetchStatus, 5000);
-
-	// 	return () => {
-	// 		// should clear the interval when the component unmounts
-	// 		clearInterval(myInterval);
-	// 	};
-	// }, []);
 	console.log(ingestionJob);
 	return (
 		<Flex direction="column" gap="4" p="5">

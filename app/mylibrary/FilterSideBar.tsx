@@ -4,14 +4,14 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-const FilterSideBar = () => {
+const FilterSideBar = ({ competencies }: { competencies: Competency[] }) => {
 	const menuItems = ["recommended for you", "in progress", "saved"];
-	const competencies = [
-		"Clinical & Product Knowledge",
-		"Market & Business Expertise",
-		"Selling Skills",
-		"Operational Excellence",
-	];
+	// const competencies = [
+	// 	"Clinical & Product Knowledge",
+	// 	"Market & Business Expertise",
+	// 	"Selling Skills",
+	// 	"Operational Excellence",
+	// ];
 	const searchParams = useSearchParams();
 	const selectedTag = searchParams?.tag as string;
 	const selectedCompetency = searchParams?.get("competency");
@@ -52,13 +52,13 @@ const FilterSideBar = () => {
 						{competencies.map((option, index) => (
 							<CheckboxGroup.Item
 								key={index}
-								value={option}
+								value={option.name}
 								className="pb-2"
 								onChange={() => {
 									console.log("ciao");
 								}}
 							>
-								{option}
+								{option.name}
 							</CheckboxGroup.Item>
 						))}
 						<Separator my="3" size="4" />
