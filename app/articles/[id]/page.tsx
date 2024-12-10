@@ -10,17 +10,17 @@ import {
 	Badge,
 	Button,
 	AspectRatio,
-	Dialog,
 } from "@radix-ui/themes";
 import React, { Suspense } from "react";
 import Link from "next/link";
 import { isAuthorized } from "@/app/utils/roleRules";
-import DeleteArticleButton from "../_components/DeleteArticleButton";
 import fetchInterceptor from "@/app/utils/fetchInterceptor";
 import DownloadFile from "../_components/DownloadFile";
 import PinArticleButton from "../_components/PinArticleButton";
 import ArticleRelevanceForJobTitleSkills from "../_components/ArticleRelevanceForJobTitleSkills";
-import GoBack from "../_components/GoBack";
+import GoBack from "@/app/components/GoBack";
+import DeleteItemButton from "@/app/components/DeleteItemButton";
+import EditItemButton from "@/app/components/EditItemButton";
 
 const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -35,7 +35,7 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 				<GoBack />
 			</Flex>
 			<Suspense>
-				<AspectRatio ratio={6 / 3}>
+				<AspectRatio ratio={9 / 3}>
 					<img
 						src={`data:image/jpeg;base64, ${article.cover}`}
 						style={{
@@ -47,9 +47,9 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 					/>
 				</AspectRatio>
 			</Suspense>
-			<Grid columns={{ initial: "1", md: "3" }} mt="5">
+			<Grid columns={{ initial: "1", md: "3" }} mt="6" gap="5">
 				<Box className="col-span-2" mr="3">
-					<Flex mb="5" direction="column" gap="3">
+					<Flex mb="5" direction="column" gap="5">
 						<Flex
 							justify="between"
 							direction={{ initial: "column", md: "row" }}
@@ -60,27 +60,9 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 								<Heading>{article.title}</Heading>
 							</Flex>
 							{isAuthorized() && (
-								<Flex gap="3">
-									<Link href={`/articles/${article.id}/edit`}>
-										<Button>Edit article</Button>
-									</Link>
-									<Dialog.Root>
-										<Dialog.Trigger>
-											<Button variant="outline">Delete Article</Button>
-										</Dialog.Trigger>
-										<Dialog.Content maxWidth="800px">
-											<Dialog.Title>
-												Delete "{article.title}" article
-											</Dialog.Title>
-											<Flex direction="column" gap="3">
-												<Text>
-													Are you sure you want to delete this article? This
-													action cannot be undone.
-												</Text>
-												<DeleteArticleButton articleId={article.id} />
-											</Flex>
-										</Dialog.Content>
-									</Dialog.Root>
+								<Flex gap="3" direction={{ initial: "column", md: "row" }}>
+									<EditItemButton kind={"article"} id={article.id} />
+									<DeleteItemButton kind={"article"} id={article.id} />
 								</Flex>
 							)}
 						</Flex>
@@ -117,8 +99,10 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 				<Box>
 					<Card className="shadow-lg">
 						<Box p="3">
-							<Heading size="2">Duration</Heading>
-							<Text>{article.duration}</Text>
+							<Flex justify={"between"}>
+								<Heading size="2">Duration</Heading>
+								<Text>{article.duration}</Text>
+							</Flex>
 
 							<Separator my="3" size="4" />
 							<Flex justify="between">
@@ -146,8 +130,7 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 								<Text>{article.educationalTool.name}</Text>
 							</Flex>
 
-							<Separator my="3" size="4" />
-							<Flex>
+							<Flex minWidth={"100%"} mt="5">
 								<DownloadFile articleId={article.id} />
 							</Flex>
 						</Box>

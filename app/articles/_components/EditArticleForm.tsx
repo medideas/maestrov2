@@ -21,6 +21,18 @@ interface Props {
 	educationalTools: EducationalTool[];
 }
 
+function dataURLtoFile(dataurl: string, filename: string) {
+	var arr = dataurl.split(","),
+		mime = arr[0].match(/:(.*?);/)![1],
+		bstr = atob(arr[arr.length - 1]),
+		n = bstr.length,
+		u8arr = new Uint8Array(n);
+	while (n--) {
+		u8arr[n] = bstr.charCodeAt(n);
+	}
+	return new File([u8arr], filename, { type: mime });
+}
+
 const articleSchema = Yup.object().shape({
 	title: Yup.string().min(1).required("Please, set the title"),
 	description: Yup.string()
@@ -42,7 +54,6 @@ const articleSchema = Yup.object().shape({
 		"Please, select the educational tool "
 	),
 });
-
 const EditArticleForm = ({
 	article,
 	educationalFrameworks,
@@ -58,6 +69,21 @@ const EditArticleForm = ({
 	const jwt = getCookie("jwt");
 
 	const [submitting, setSubmitting] = useState(false);
+
+	var file = dataURLtoFile(
+		`data:image/jpeg;base64, ${article?.cover}`,
+		"image.jpg"
+	);
+
+	useEffect(() => {
+		const fileInput = document.querySelector('input[type="file"]');
+		console.log(fileInput);
+		const dataTransfer = new DataTransfer();
+		dataTransfer.items.add(file);
+		fileInput.files = dataTransfer.files;
+		setCoverFile(file);
+	}, []);
+
 	return (
 		<div>
 			<Formik
@@ -211,7 +237,7 @@ const EditArticleForm = ({
 														files: React.SetStateAction<string>[];
 													};
 												}) => {
-													console.log(event);
+													console.log(event.currentTarget.files[0]);
 													setCoverFile(event.currentTarget.files[0]);
 													console.log(coverFile);
 												}}

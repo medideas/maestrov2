@@ -8,6 +8,7 @@ import AskMaestro from "./components/AskMaestro";
 import fetchInterceptor from "./utils/fetchInterceptor";
 import { Suspense } from "react";
 import NewChat from "./my/chats/_components/NewChat";
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
 	title: "Maestro",
@@ -27,6 +28,7 @@ export default async function RootLayout({
 	return (
 		<html lang="en" className="dm_sans.className">
 			<body className={"flex flex-col m-0 p-0"}>
+				<ToastContainer />
 				<Theme accentColor="red" radius="small" appearance="light">
 					<Navbar user={user} />
 					<main className="flex-auto min-h-[80vh]">

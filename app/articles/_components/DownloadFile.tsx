@@ -41,7 +41,7 @@ const downloadPDF = async (articleId: string) => {
 
 const DownloadFile = ({ articleId }: { articleId: string }) => {
 	return (
-		<Button variant="outline" onClick={() => downloadPDF(articleId)}>
+		<Button style={{ width: "100%" }} onClick={() => downloadPDF(articleId)}>
 			Download the resource
 		</Button>
 	);

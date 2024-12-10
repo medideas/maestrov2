@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@radix-ui/themes";
+import { Button, Link } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -9,9 +9,9 @@ const GoBack = () => {
 		router.back();
 	};
 	return (
-		<Button variant="outline" color="grass" onClick={() => handleClick()}>
+		<Link underline="auto" onClick={() => handleClick()}>
 			Go back
-		</Button>
+		</Link>
 	);
 };
 

@@ -1,16 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-type User = {
-    id: String;
-    roleUsers: Role[]
-}
-
-type Role = {
-    id: String;
-    name: String;
-}
-
 const isUserAllowed = async (path: string, user: User) => {
     let result = true;
     // const currentUser = user;
