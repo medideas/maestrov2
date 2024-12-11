@@ -34,22 +34,22 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 			<Flex justify="end" mb="3">
 				<GoBack />
 			</Flex>
-			<Suspense>
-				<AspectRatio ratio={9 / 3}>
-					<img
-						src={`data:image/jpeg;base64, ${article.cover}`}
-						style={{
-							objectFit: "cover",
-							width: "100%",
-							height: "100%",
-							borderRadius: "5px",
-						}}
-					/>
-				</AspectRatio>
-			</Suspense>
 			<Grid columns={{ initial: "1", md: "3" }} mt="6" gap="5">
 				<Box className="col-span-2" mr="3">
-					<Flex mb="5" direction="column" gap="5">
+					<Suspense>
+						<AspectRatio ratio={9 / 3}>
+							<img
+								src={`data:image/jpeg;base64, ${article.cover}`}
+								style={{
+									objectFit: "cover",
+									width: "100%",
+									height: "100%",
+									borderRadius: "5px",
+								}}
+							/>
+						</AspectRatio>
+					</Suspense>
+					<Flex my="5" direction="column" gap="5">
 						<Flex
 							justify="between"
 							direction={{ initial: "column", md: "row" }}
@@ -101,7 +101,7 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 						<Box p="3">
 							<Flex justify={"between"}>
 								<Heading size="2">Duration</Heading>
-								<Text>{article.duration}</Text>
+								<Text>{article.duration} pages</Text>
 							</Flex>
 
 							<Separator my="3" size="4" />

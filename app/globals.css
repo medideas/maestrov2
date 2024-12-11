@@ -46,6 +46,16 @@ textarea {
 	border: none;
 }
 
+.uploadLabel {
+	padding: 0.4em;
+	background-color: #f0f0f0;
+	width: 200px;
+	border-radius: 5px;
+	border: 1px solid gray;
+	text-align: center;
+	font-size: 0.9em;
+}
+
 select {
 	padding: 0.3em;
 	border-radius: 4px;

@@ -28,11 +28,16 @@ const EditArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	);
 
 	return (
-		<Container className="py-[50px]" width={"100%"}>
+		<Flex
+			direction={"column"}
+			className="py-[50px] mx-auto"
+			width={"100%"}
+			maxWidth={"1000px"}
+		>
 			<Flex>
 				<Heading>{article.title}</Heading>
 			</Flex>
-			<Flex>
+			<Flex width={"100%"}>
 				<EditArticleForm
 					article={article}
 					educationalFrameworks={educationalFrameworks}
@@ -43,7 +48,7 @@ const EditArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 					educationalTools={educationalTools}
 				/>
 			</Flex>
-		</Container>
+		</Flex>
 	);
 };
 

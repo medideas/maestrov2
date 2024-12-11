@@ -9,6 +9,8 @@ import { getCookie } from "cookies-next";
 import * as Yup from "yup";
 import FormCallout from "@/app/components/FormCallout";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
+import GoBack from "@/app/components/GoBack";
 
 interface Props {
 	article?: Article;
@@ -231,12 +233,17 @@ const NewArticleForm = ({
 								<Card className="shadow-lg">
 									<Box p="3">
 										<div className="form-section">
-											<label htmlFor="coverFile">Cover for article</label>
+											<Flex align={"center"} justify={"start"} gap="3">
+												<label htmlFor="cover" className="uploadLabel">
+													Cover for article
+												</label>
+												{coverFile && <Text color="grass">Cover selected</Text>}
+											</Flex>
 											<Field
 												id="cover"
 												name="cover"
 												type="file"
-												className="file"
+												className="file hidden"
 												onChange={(event: {
 													currentTarget: {
 														files: React.SetStateAction<string>[];
@@ -247,41 +254,25 @@ const NewArticleForm = ({
 													console.log(coverFile);
 												}}
 											/>
-
-											{coverFile && (
-												<Callout.Root color="grass" mb="3">
-													<Callout.Icon>
-														<InfoCircledIcon />
-													</Callout.Icon>
-													<Callout.Text>Cover is already selected</Callout.Text>
-												</Callout.Root>
-											)}
-											{coverFile && (
-												<img
-													src={`data:image/jpg;base64, ${values.coverFile}`}
-													style={{
-														objectFit: "cover",
-														width: "150px",
-														height: "100%",
-														borderRadius: "5px",
-													}}
-												/>
-											)}
 											<ErrorMessage name="cover" component="div">
 												{(msg) => <FormCallout msg={msg} />}
 											</ErrorMessage>
 										</div>
 
 										<div className="form-section">
-											{contentFile && <Text>The file is still here</Text>}
-											<label htmlFor="contentFile">
-												Content file for article
-											</label>
+											<Flex align={"center"} justify={"start"} gap="3">
+												<label htmlFor="content" className="uploadLabel">
+													Content file for article
+												</label>
+												{contentFile && (
+													<Text color="grass">File selected</Text>
+												)}
+											</Flex>
 											<Field
 												id="content"
 												name="content"
 												type="file"
-												className="file"
+												className="file hidden"
 												onChange={(event: {
 													currentTarget: {
 														files: React.SetStateAction<string>[];
@@ -358,7 +349,7 @@ const NewArticleForm = ({
 
 										<div className="form-section">
 											<label htmlFor="educationalToolId">
-												Educational Tools
+												Educational Tool
 											</label>
 											<Field
 												id="educationalToolId"
@@ -383,7 +374,7 @@ const NewArticleForm = ({
 										</div>
 
 										<div className="form-section">
-											<label htmlFor="sourceId">Sources</label>
+											<label htmlFor="sourceId">Source</label>
 											<Field
 												id="sourceId"
 												name="sourceId"
@@ -404,7 +395,7 @@ const NewArticleForm = ({
 										</div>
 
 										<div className="form-section">
-											<label htmlFor="languageId">Languages</label>
+											<label htmlFor="languageId">Language</label>
 											<Field
 												id="languageId"
 												name="languageId"
@@ -425,7 +416,7 @@ const NewArticleForm = ({
 										</div>
 
 										<div className="form-section">
-											<label htmlFor="mediaId">Medias</label>
+											<label htmlFor="mediaId">Media</label>
 											<Field
 												id="mediaId"
 												name="mediaId"
@@ -449,11 +440,12 @@ const NewArticleForm = ({
 							</Flex>
 						</Grid>
 
-						<div>
+						<Flex gap="3">
 							<Button type="submit" disabled={submitting}>
 								Submit article
 							</Button>
-						</div>
+							<GoBack />
+						</Flex>
 					</Form>
 				)}
 			</Formik>

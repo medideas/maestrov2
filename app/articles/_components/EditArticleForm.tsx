@@ -10,6 +10,7 @@ import * as Yup from "yup";
 import FormCallout from "@/app/components/FormCallout";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+import GoBack from "@/app/components/GoBack";
 
 interface Props {
 	article?: Article;
@@ -85,7 +86,7 @@ const EditArticleForm = ({
 	}, []);
 
 	return (
-		<div>
+		<Flex direction={"column"} width={"100%"}>
 			<Formik
 				enableReinitialize={false}
 				initialValues={{
@@ -174,7 +175,7 @@ const EditArticleForm = ({
 								</div>
 
 								<div className="form-section">
-									<label htmlFor="duration">Duration of article</label>
+									<label htmlFor="duration">Duration of article (pages)</label>
 									<Field id="duration" name="duration" type="number" />
 									<ErrorMessage name="duration" component="div">
 										{(msg) => <FormCallout msg={msg} />}
@@ -226,34 +227,31 @@ const EditArticleForm = ({
 								<Card className="shadow-lg">
 									<Box p="3">
 										<div className="form-section">
-											<label htmlFor="coverFile">Cover for article</label>
+											<Flex align={"center"} justify={"start"} gap="3">
+												<label htmlFor="cover" className="uploadLabel">
+													Cover for article
+												</label>
+												{coverFile && <Text color="grass">Cover selected</Text>}
+											</Flex>
 											<Field
 												id="cover"
 												name="cover"
 												type="file"
-												className="file"
+												className="file hidden"
 												onChange={(event: {
 													currentTarget: {
 														files: React.SetStateAction<string>[];
 													};
 												}) => {
-													console.log(event.currentTarget.files[0]);
+													console.log(event);
 													setCoverFile(event.currentTarget.files[0]);
 													console.log(coverFile);
 												}}
 											/>
 
 											{coverFile && (
-												<Callout.Root color="grass" mb="3">
-													<Callout.Icon>
-														<InfoCircledIcon />
-													</Callout.Icon>
-													<Callout.Text>Cover is already selected</Callout.Text>
-												</Callout.Root>
-											)}
-											{coverFile && (
 												<img
-													src={`data:image/jpeg;base64, ${article?.cover}`}
+													src={`data:image/jpg;base64, ${values.coverFile}`}
 													style={{
 														objectFit: "cover",
 														width: "150px",
@@ -329,7 +327,7 @@ const EditArticleForm = ({
 
 										<div className="form-section">
 											<label htmlFor="educationalToolId">
-												Educational Tools
+												Educational Tool
 											</label>
 											<Field
 												id="educationalToolId"
@@ -354,7 +352,7 @@ const EditArticleForm = ({
 										</div>
 
 										<div className="form-section">
-											<label htmlFor="sourceId">Sources</label>
+											<label htmlFor="sourceId">Source</label>
 											<Field
 												id="sourceId"
 												name="sourceId"
@@ -375,7 +373,7 @@ const EditArticleForm = ({
 										</div>
 
 										<div className="form-section">
-											<label htmlFor="languageId">Languages</label>
+											<label htmlFor="languageId">Language</label>
 											<Field
 												id="languageId"
 												name="languageId"
@@ -396,7 +394,7 @@ const EditArticleForm = ({
 										</div>
 
 										<div className="form-section">
-											<label htmlFor="mediaId">Medias</label>
+											<label htmlFor="mediaId">Media</label>
 											<Field
 												id="mediaId"
 												name="mediaId"
@@ -422,16 +420,14 @@ const EditArticleForm = ({
 
 						<Flex gap="3">
 							<Button type="submit" disabled={submitting}>
-								Submit article
+								Save changes
 							</Button>
-							<Link href="/articles">
-								<Button variant="outline">Cancel</Button>
-							</Link>
+							<GoBack />
 						</Flex>
 					</Form>
 				)}
 			</Formik>
-		</div>
+		</Flex>
 	);
 };
 
