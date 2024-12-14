@@ -15,6 +15,7 @@ import { FaBookmark } from "react-icons/fa6";
 
 interface Props {
 	article: Article;
+	className?: string;
 }
 
 type Article = {
@@ -26,10 +27,10 @@ type Article = {
 	internalUseOnly: boolean;
 };
 
-const ArticleCard = ({ article }: Props) => {
+const ArticleCard = ({ article, className }: Props) => {
 	console.log(article);
 	return (
-		<Link href={`articles/${article.id}`}>
+		<Link href={`articles/${article.id}`} className={className}>
 			<Box width="350px">
 				<Card className="shadow-lg">
 					<Inset clip="padding-box" side="top" pb="current">
