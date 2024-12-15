@@ -2,7 +2,7 @@ import { Button, Container, Flex, Heading, Separator } from "@radix-ui/themes";
 import React, { Suspense } from "react";
 import UsersTable from "./_components/UsersTable";
 import Link from "next/link";
-import fetchInterceptor from "../utils/fetchInterceptor";
+import { fetchApi } from "../utils/fetchInterceptor";
 
 const Users = async (props: {
 	searchParams?: Promise<{
@@ -13,9 +13,7 @@ const Users = async (props: {
 	const searchParams = await props.searchParams;
 	const query = searchParams?.query || "";
 	const currentPage = Number(searchParams?.page) || 1;
-	const users = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/users"
-	);
+	const users = await fetchApi("/users");
 	await new Promise((resolve) => setTimeout(resolve, 2000));
 
 	return (

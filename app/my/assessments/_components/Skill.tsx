@@ -1,13 +1,11 @@
-import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import { fetchApi } from "@/app/utils/fetchInterceptor";
 import { Grid, Text, Tooltip } from "@radix-ui/themes";
 import React from "react";
 
 const Skill = async ({ params, assessmentResults }: Props) => {
 	const userJobTitleId = "5b53f32b-5a49-402d-a146-480cd49e14e6";
 	const id = params.id;
-	const skill = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/skills/" + id
-	);
+	const skill = await fetchApi("/skills/" + id);
 
 	return (
 		<Grid columns="2" gap="3" align="center" mb="3">

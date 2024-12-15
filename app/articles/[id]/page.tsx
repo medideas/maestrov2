@@ -14,7 +14,7 @@ import {
 import React, { Suspense } from "react";
 import Link from "next/link";
 import { isAuthorized } from "@/app/utils/roleRules";
-import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import { fetchApi } from "@/app/utils/fetchInterceptor";
 import DownloadFile from "../_components/DownloadFile";
 import PinArticleButton from "../_components/PinArticleButton";
 import ArticleRelevanceForJobTitleSkills from "../_components/ArticleRelevanceForJobTitleSkills";
@@ -26,9 +26,7 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
 	const params = await props.params;
 	const id = params.id;
-	const article = await fetchInterceptor(
-		`${process.env.NEXT_PUBLIC_APIBASE}/articles/${id}`
-	);
+	const article = await fetchApi(`/articles/${id}`);
 	return (
 		<Container my={{ initial: "0", md: "5" }} p={{ initial: "4", md: "0" }}>
 			<Flex justify="end" mb="3">

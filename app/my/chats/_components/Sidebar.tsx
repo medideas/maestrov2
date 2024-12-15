@@ -2,12 +2,10 @@ import { BookmarkIcon, LightningBoltIcon } from "@radix-ui/react-icons";
 import { Flex, Box, Card, Text, Heading } from "@radix-ui/themes";
 import React, { cache } from "react";
 import Chatslist from "./ChatsList";
-import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import { fetchApi } from "@/app/utils/fetchInterceptor";
 
 const Sidebar = async () => {
-	const chats = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/my/chats"
-	);
+	const chats = await fetchApi("/my/chats");
 	return (
 		<>
 			<Flex
