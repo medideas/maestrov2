@@ -6,6 +6,7 @@ import ArticleCard from "../../articles/_components/ArticleCard";
 import fetchInterceptor from "../../utils/fetchInterceptor";
 import { headers } from "next/headers";
 import { FaBookmark } from "react-icons/fa6";
+import { Carousel } from "@/app/components/carousel/Carousel";
 
 interface Article {
 	id: string;
@@ -77,56 +78,34 @@ export default async function MyArticles() {
 						<Text>Grouped by Competency</Text>
 					</Box>
 				</Flex>
-				<Flex className="overflow-y-hidden overflow-x-scroll" p="3" px="5">
-					<div className="absolute bg-white py-[11%] w-[50px] z-10 ml-[-50px] mt-[-10px] invisible md:visible">
-						<HiChevronLeft size="3x" />
-					</div>
-					<Flex gap="4" width="100%" justify="start">
-						{myArticles.length === 0 && (
-							<Flex>
-								<Text>Here you should see some articles</Text>
-							</Flex>
-						)}
-
-						{myArticles.map((article: Article) => (
-							<Flex>
-								<FaBookmark
-									size="22"
-									className="absolute top-3 right-3 z-50"
-									color="cyan"
-								/>
-								<ArticleCard key={article.id} article={article} />
-							</Flex>
-						))}
-					</Flex>
-					<div className="absolute bg-white py-[11%] w-[40px] z-10 right-0 mr-[30px] mt-[-10px] invisible md:visible">
-						<HiChevronRight size="3x" />
-					</div>
-				</Flex>
+				<Carousel>
+					{myArticles.map((article: Article) => (
+						<Flex>
+							<FaBookmark
+								size="22"
+								className="absolute top-3 right-3 z-50"
+								color="cyan"
+							/>
+							<ArticleCard key={article.id} article={article} />
+						</Flex>
+					))}
+				</Carousel>
 				<Flex mt="5" mb="3">
 					<Box>
 						<Heading>Top Related Learning Activities</Heading>
 						<Text>What's trending</Text>
 					</Box>
 				</Flex>
-				<Flex className="overflow-y-hidden overflow-x-scroll" p="3">
-					<div className="absolute bg-white py-[11%] w-[50px] z-10 ml-[-50px] mt-[-10px] invisible md:visible">
-						<HiChevronLeft size="3x" />
-					</div>
-					<Flex gap="4" width="100%" justify="start">
-						{suggestedArticles.length === 0 && (
-							<Flex>
-								<Text>Here you should see some articles</Text>
-							</Flex>
-						)}
-						{suggestedArticles.map((article: Article) => (
-							<ArticleCard key={article.id} article={article} />
-						))}
-					</Flex>
-					<div className="absolute bg-white py-[11%] w-[40px] z-10 right-0 mr-[30px] mt-[-10px] invisible md:visible">
-						<HiChevronRight size="3x" />
-					</div>
-				</Flex>
+				<Carousel>
+					{suggestedArticles.length === 0 && (
+						<Flex>
+							<Text>Here you should see some articles</Text>
+						</Flex>
+					)}
+					{suggestedArticles.map((article: Article) => (
+						<ArticleCard key={article.id} article={article} />
+					))}
+				</Carousel>
 				<div className="flex flex-col-mt-10"></div>
 			</main>
 		</>
