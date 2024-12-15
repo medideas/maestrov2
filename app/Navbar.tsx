@@ -12,6 +12,9 @@ const Navbar = async () => {
 	const userSession = await hasCookie("jwt", { cookies });
 	if (userSession) {
 		const loggedUser = await fetchApi(`/my/profile`);
+		const userRoles = loggedUser.roleUsers;
+		let roles: string[] = [];
+		userRoles.map((r) => roles.push(r.role.name));
 		return (
 			<nav className="p-0 m-0 overflow-x-hidden">
 				<Flex direction="column">
@@ -35,14 +38,14 @@ const Navbar = async () => {
 						justify="end"
 						className="bg-navbar"
 					>
-						<DesktopNavLinks />
+						<DesktopNavLinks roles={roles} />
 					</Flex>
 					<Flex
 						display={{ initial: "flex", sm: "none" }}
 						justify="end"
 						className="bg-navbar"
 					>
-						<MobileNavLinks user={loggedUser} />
+						<MobileNavLinks user={loggedUser} roles={roles} />
 					</Flex>
 				</Flex>
 			</nav>

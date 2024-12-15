@@ -14,6 +14,9 @@ const EditArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 		languages,
 		sources,
 		educationalTools,
+		businessUnits,
+		courses,
+		regions,
 	] = await Promise.all([
 		fetchApi("/articles/" + params.id),
 		fetchApi("/educational-frameworks"),
@@ -21,7 +24,10 @@ const EditArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 		fetchApi("/media"),
 		fetchApi("/languages"),
 		fetchApi("/sources"),
-		fetchApi("/educational-tools")
+		fetchApi("/educational-tools"),
+		fetchApi("/business-units"),
+		fetchApi("/courses"),
+		fetchApi("/regions"),
 	]);
 
 	return (
@@ -43,6 +49,9 @@ const EditArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 					languages={languages}
 					sources={sources}
 					educationalTools={educationalTools}
+					businessUnits={businessUnits}
+					courses={courses}
+					regions={regions}
 				/>
 			</Flex>
 		</Flex>

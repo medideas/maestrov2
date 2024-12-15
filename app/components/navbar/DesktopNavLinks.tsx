@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import classnames from "classnames";
 import links from "../../utils/navlink";
+import { boolean } from "yup";
+import isUserAllowed from "@/app/utils/isUserAllowed";
 
 const currentNavLink = function (url: string, linkPath: string) {
 	let result = false;
@@ -14,7 +16,7 @@ const currentNavLink = function (url: string, linkPath: string) {
 	return result;
 };
 
-const DesktopNavLinks = () => {
+const DesktopNavLinks = ({ roles }: { roles: string[] }) => {
 	const [isOpen, setOpen] = useState(false);
 	const currentPath = usePathname();
 	let userIsLoggedIn = true;
@@ -22,23 +24,28 @@ const DesktopNavLinks = () => {
 	return (
 		<div>
 			<ul className="flex-col tabs group">
-				{links.map((link) => (
-					<li
-						key={link.href}
-						className={currentNavLink(currentPath, link.href) ? " active" : ""}
-					>
-						<Link
-							href={`${link.href}`}
-							className={classnames({
-								"text-red-800": link.href === currentPath,
-								"text-zinc-500": link.href != currentPath,
-								"hover:text-red-500 transition-colors": true,
-							})}
-						>
-							{link.label}
-						</Link>
-					</li>
-				))}
+				{links.map(
+					(link) =>
+						isUserAllowed(roles, link.label) && (
+							<li
+								key={link.href}
+								className={
+									currentNavLink(currentPath, link.href) ? " active" : ""
+								}
+							>
+								<Link
+									href={`${link.href}`}
+									className={classnames({
+										"text-red-800": link.href === currentPath,
+										"text-zinc-500": link.href != currentPath,
+										"hover:text-red-500 transition-colors": true,
+									})}
+								>
+									{link.label}
+								</Link>
+							</li>
+						)
+				)}
 				<li className="pr-5">
 					<Link
 						href="/logout"

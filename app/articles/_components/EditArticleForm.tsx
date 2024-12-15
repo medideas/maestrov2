@@ -20,6 +20,9 @@ interface Props {
 	languages: Language[];
 	sources: Source[];
 	educationalTools: EducationalTool[];
+	businessUnits: BusinessUnit[];
+	courses: Course[];
+	regions: Region[];
 }
 
 function dataURLtoFile(dataurl: string, filename: string) {
@@ -63,6 +66,9 @@ const EditArticleForm = ({
 	medias,
 	languages,
 	sources,
+	businessUnits,
+	courses,
+	regions,
 }: Props) => {
 	const [coverFile, setCoverFile] = useState(article?.cover || "");
 	const pathname = usePathname();

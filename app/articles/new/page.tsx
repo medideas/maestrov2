@@ -11,6 +11,9 @@ const NewArticle = async () => {
 		languages,
 		sources,
 		educationalTools,
+		businessUnits,
+		courses,
+		regions,
 	] = await Promise.all([
 		fetchApi("/educational-frameworks"),
 		fetchApi("/educational-methodologies"),
@@ -18,8 +21,11 @@ const NewArticle = async () => {
 		fetchApi("/languages"),
 		fetchApi("/sources"),
 		fetchApi("/educational-tools"),
+		fetchApi("/business-units"),
+		fetchApi("/courses"),
+		fetchApi("/regions"),
 	]);
-	
+
 	return (
 		<Container my="5">
 			<Heading>New article</Heading>
@@ -33,6 +39,9 @@ const NewArticle = async () => {
 				sources={sources}
 				medias={medias}
 				languages={languages}
+				businessUnits={businessUnits}
+				courses={courses}
+				regions={regions}
 			/>
 		</Container>
 	);

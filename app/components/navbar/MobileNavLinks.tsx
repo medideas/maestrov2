@@ -7,12 +7,13 @@ import classnames from "classnames";
 import links from "../../utils/navlink";
 import AvatarBox from "./AvatarBox";
 import { SlClose, SlMenu } from "react-icons/sl";
+import isUserAllowed from "@/app/utils/isUserAllowed";
 
 type User = {
 	firstName: String;
 };
 
-const MobileNavLinks = ({ user }: { user: User }) => {
+const MobileNavLinks = ({ roles, user }: { roles: string[]; user: User }) => {
 	const [isOpen, setOpen] = useState(false);
 	const currentPath = usePathname();
 	let userIsLoggedIn = true;
@@ -40,22 +41,22 @@ const MobileNavLinks = ({ user }: { user: User }) => {
 				<Flex pb="5">
 					<ul className="flex-col flex-1 text-right">
 						{links.map(
-							(link) => (
-								// isAllowed(link.for, userRoles) && (
-								<li key={link.href} className="py-2 pr-5">
-									<Link
-										href={link.href}
-										className={classnames({
-											"text-red-800": link.href === currentPath,
-											"text-zinc-500": link.href != currentPath,
-											"font-semibold text-l": true,
-										})}
-										onClick={() => setOpen(!isOpen)}
-									>
-										{link.label}
-									</Link>
-								</li>
-							)
+							(link) =>
+								isUserAllowed(roles, link.label) && (
+									<li key={link.href} className="py-2 pr-5">
+										<Link
+											href={link.href}
+											className={classnames({
+												"text-red-800": link.href === currentPath,
+												"text-zinc-500": link.href != currentPath,
+												"font-semibold text-l": true,
+											})}
+											onClick={() => setOpen(!isOpen)}
+										>
+											{link.label}
+										</Link>
+									</li>
+								)
 							// )
 						)}
 						<li className="py-2 pr-5">
