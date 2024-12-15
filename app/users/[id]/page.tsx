@@ -1,6 +1,6 @@
 import UserAvatar from "@/app/my/profile/_components/UserAvatar";
 import UserDetailsCard from "@/app/my/profile/_components/UserDetailsCard";
-import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import { fetchApi } from "@/app/utils/fetchInterceptor";
 import {
 	Badge,
 	Button,
@@ -18,9 +18,7 @@ import DeleteUserModal from "../_components/DeleteUserModal";
 const UserPage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
 	const id = params.id;
-	const user = await fetchInterceptor(
-		`${process.env.NEXT_PUBLIC_APIBASE}/users/${id}`
-	);
+	const user = await fetchApi(`/users/${id}`);
 	console.log(user);
 	return (
 		<Container py={"50px"}>

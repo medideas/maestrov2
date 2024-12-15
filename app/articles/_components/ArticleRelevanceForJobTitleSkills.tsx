@@ -1,4 +1,4 @@
-import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import ( fetchApi ) from "@/app/utils/fetchInterceptor";
 import { Flex, Tabs, Text, Box, Heading } from "@radix-ui/themes";
 import React from "react";
 
@@ -12,12 +12,8 @@ const ArticleRelevanceForJobTitleSkills = async ({
 }: {
 	article: Article;
 }) => {
-	const jobTitleSkills = await fetchInterceptor(
-		`${process.env.NEXT_PUBLIC_APIBASE}/job-title-skills`
-	);
-	const jobTitleSkills = await fetchInterceptor(
-		`${process.env.NEXT_PUBLIC_APIBASE}/job-title-skills`
-	);
+	const jobTitleSkills = await fetchApi(`/job-title-skills`);
+
 	return (
 		<Flex direction={"column"} gap="4">
 			<Heading size="3" weight={"bold"}>

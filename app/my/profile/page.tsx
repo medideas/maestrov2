@@ -1,4 +1,4 @@
-import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import { fetchApi } from "@/app/utils/fetchInterceptor";
 import AssessementsTable from "../assessments/_components/LatestAssessment";
 import {
 	Avatar,
@@ -20,12 +20,13 @@ import UserDetailsCard from "./_components/UserDetailsCard";
 import BookmarkedArticles from "./_components/BookmarkedArticles";
 
 const MyProfile = async () => {
-	const user = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/my/profile"
-	);
-	const assessment = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/my/assessment"
-	);
+	const [
+		user,
+		assessment,
+	] = await Promise.all([
+		fetchApi(`/my/profile`),
+		fetchApi(`/my/assessment`),
+	]);
 
 	let roles = [""];
 	user.roleUsers.map((role: { role: { name: any } }) =>
@@ -44,6 +45,11 @@ const MyProfile = async () => {
 				<Flex direction={"column"}>
 					<Heading size="4">Assessements</Heading>
 					<LatestAssessment assessment={assessment} />
+				</Flex>
+				<Flex direction={"column"} gap="3">
+					<Heading size="4">Articles</Heading>
+					<Text size="2">Here you can find the articles you bookmarked</Text>
+					<BookmarkedArticles />
 				</Flex>
 			</Grid>
 		</Container>

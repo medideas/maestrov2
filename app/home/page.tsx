@@ -3,22 +3,20 @@ import Link from "next/link";
 import React from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import ArticleCard from "../articles/_components/ArticleCard";
-import fetchInterceptor from "../utils/fetchInterceptor";
-import { Carousel } from "../components/carousel/Carousel";
-import carouselStyles from "../components/carousel/carousel.module.css";
+import { fetchApi } from "../utils/fetchInterceptor";
 
 const Home = async () => {
-	const competencies = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/competencies"
-	);
-	const articles = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/articles"
-	);
-	const myArticles = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/my/articles/pinned"
-	);
+	const [
+		competencies,
+		articles,
+		myArticles,
+	] = await Promise.all([
+		fetchApi("/competencies"),
+		fetchApi("/articles"),
+		fetchApi("/my/articles/pinned")
+	]);
+	
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
-
 	return (
 		<main className="flex flex-col p-5">
 			<Flex mb="3">
@@ -50,13 +48,49 @@ const Home = async () => {
 					<Text>Grouped by Competency</Text>
 				</Box>
 			</Flex>
+			<Flex
+				justify={"between"}
+				height={"480px"}
+				align="center"
+				className="border-[1px] rounded-md"
+			>
+				<Flex
+					id="carousel-1"
+					height={"100%"}
+					width={"50px"}
+					align="center"
+					justify={"center"}
+					display={{ initial: "none", md: "flex" }}
+				>
+					<HiChevronLeft size="24" />
+				</Flex>
 
-			<Carousel>
-				{articles &&
-					articles.map((article: Article) => (
-						<ArticleCard key={article.id} article={article} className={carouselStyles.item} />
-					))}
-			</Carousel>
+				<Flex height={"100%"} width={"93%"} gap="4" position={"relative"}>
+					<Flex
+						position={"absolute"}
+						width={"100%"}
+						height={"100%"}
+						gap="4"
+						overflowX={"scroll"}
+						overflowY={"hidden"}
+					>
+						{articles &&
+							articles.map((article: Article) => (
+								<ArticleCard key={article.id} article={article} />
+							))}
+					</Flex>
+				</Flex>
+
+				<Flex
+					height={"100%"}
+					width={"50px"}
+					align="center"
+					justify={"center"}
+					display={{ initial: "none", md: "flex" }}
+				>
+					<HiChevronRight size="24" />
+				</Flex>
+			</Flex>
 
 			<Flex mt="5" mb="3">
 				<Box>
@@ -64,12 +98,48 @@ const Home = async () => {
 					<Text>The articles you saved for later</Text>
 				</Box>
 			</Flex>
-			<Carousel>
-				{myArticles &&
-					myArticles.map((article: Article) => (
-						<ArticleCard key={article.id} article={article} />
-					))}
-			</Carousel>
+			<Flex
+				justify={"between"}
+				height={"480px"}
+				align="center"
+				className="border-[1px] rounded-md"
+			>
+				<Flex
+					height={"100%"}
+					width={"50px"}
+					align="center"
+					justify={"center"}
+					display={{ initial: "none", md: "flex" }}
+				>
+					<HiChevronLeft size="24" />
+				</Flex>
+
+				<Flex height={"100%"} width={"93%"} gap="4" position={"relative"}>
+					<Flex
+						position={"absolute"}
+						width={"100%"}
+						height={"100%"}
+						gap="4"
+						overflowX={"scroll"}
+						overflowY={"hidden"}
+					>
+						{myArticles &&
+							myArticles.map((article: Article) => (
+								<ArticleCard key={article.id} article={article} />
+							))}
+					</Flex>
+				</Flex>
+
+				<Flex
+					height={"100%"}
+					width={"50px"}
+					align="center"
+					justify={"center"}
+					display={{ initial: "none", md: "flex" }}
+				>
+					<HiChevronRight size="24" />
+				</Flex>
+			</Flex>
 			<div className="flex flex-col-mt-10"></div>
 		</main>
 	);

@@ -5,7 +5,7 @@ import localFont from "next/font/local";
 import { Flex, Box, Grid, Section, Theme, Text } from "@radix-ui/themes";
 import Navbar from "./Navbar";
 import AskMaestro from "./components/AskMaestro";
-import fetchInterceptor from "./utils/fetchInterceptor";
+import { fetchApi } from "./utils/fetchInterceptor";
 import { Suspense } from "react";
 import NewChat from "./my/chats/_components/NewChat";
 import { ToastContainer } from "react-toastify";
@@ -22,9 +22,7 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const user = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/my/profile/"
-	);
+	const user = await fetchApi("/my/profile/");
 	return (
 		<html lang="en" className="dm_sans.className">
 			<body className={"flex flex-col m-0 p-0"}>

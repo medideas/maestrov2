@@ -4,16 +4,14 @@ import { Flex } from "@radix-ui/themes";
 import DesktopNavLinks from "./components/navbar/DesktopNavLinks";
 import MobileNavLinks from "./components/navbar/MobileNavLinks";
 import AvatarBox from "./components/navbar/AvatarBox";
-import fetchInterceptor from "./utils/fetchInterceptor";
+import { fetchApi } from "./utils/fetchInterceptor";
 import { hasCookie } from "cookies-next";
 import { cookies } from "next/headers";
 
 const Navbar = async () => {
 	const userSession = await hasCookie("jwt", { cookies });
 	if (userSession) {
-		const loggedUser = await fetchInterceptor(
-			`${process.env.NEXT_PUBLIC_APIBASE}/my/profile`
-		);
+		const loggedUser = await fetchApi(`/my/profile`);
 		return (
 			<nav className="p-0 m-0 overflow-x-hidden">
 				<Flex direction="column">

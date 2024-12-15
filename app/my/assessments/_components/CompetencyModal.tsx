@@ -10,7 +10,7 @@ import {
 } from "@radix-ui/themes";
 import React from "react";
 import Skill from "./Skill";
-import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import { fetchApi } from "@/app/utils/fetchInterceptor";
 import BarChart from "./BarChart";
 
 interface Props {
@@ -28,9 +28,7 @@ type AssessmentResult = {
 const CompetencyModal = async ({ params, assessmentResults, color }: Props) => {
 	const results: AssessmentResult[] = assessmentResults;
 	const id = params.id;
-	const competency = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/competencies/" + id
-	);
+	const competency = await fetchApi("/competencies/" + id);
 	const assessmentValues = [];
 	const average = (array) =>
 		array.reduce((sum, currentValue) => sum + currentValue, 0) / array.length;

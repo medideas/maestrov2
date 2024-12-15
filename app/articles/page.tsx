@@ -12,24 +12,18 @@ import {
 } from "@radix-ui/themes";
 import React, { Suspense } from "react";
 import Link from "next/link";
-import fetchInterceptor from "../utils/fetchInterceptor";
+import { fetchApi } from "../utils/fetchInterceptor";
 import ArticlesTable from "./_components/ArticlesTable";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import SyncKnowledge from "../my/chats/_components/SyncKnowledge";
 
 const ArticlesPage = async () => {
-	const articles = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/articles"
-	);
+	const articles = await fetchApi("/articles");
 
-	let ingestionJob = await fetchInterceptor(
-		`${process.env.NEXT_PUBLIC_APIBASE}/chatbot/ingestion-jobs/last`
-	);
+	let ingestionJob = await fetchApi(`/chatbot/ingestion-jobs/last`);
 
 	const fetchStatus = () => {
-		ingestionJob = fetchInterceptor(
-			`${process.env.NEXT_PUBLIC_APIBASE}/chatbot/ingestion-jobs/last`
-		);
+		ingestionJob = fetchApi(`/chatbot/ingestion-jobs/last`);
 	};
 	return (
 		<Flex direction="column" gap="4" p="5">

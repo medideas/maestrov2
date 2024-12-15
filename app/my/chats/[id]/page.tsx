@@ -2,7 +2,7 @@ import { Flex, Heading, Text, Grid, Separator } from "@radix-ui/themes";
 import React, { Suspense } from "react";
 import Sidebar from "../_components/Sidebar";
 import Chatbot from "../_components/Chatbot";
-import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import { fetchApi } from "@/app/utils/fetchInterceptor";
 import { CiUser } from "react-icons/ci";
 import { RiRobot2Line } from "react-icons/ri";
 import Message from "../_components/Message";
@@ -16,9 +16,7 @@ type Message = {
 const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const id = (await params).id;
 	console.log(id);
-	const chat = await fetchInterceptor(
-		`${process.env.NEXT_PUBLIC_APIBASE}/my/chats/${id}`
-	);
+	const chat = await fetchApi(`/my/chats/${id}`);
 	return (
 		<Flex className="w-[100%] min-w-[100%]" width={"100%"} minHeight={"80vh"}>
 			<Sidebar />

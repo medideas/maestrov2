@@ -1,31 +1,28 @@
 import { Container, Flex, Heading } from "@radix-ui/themes";
 import React from "react";
 import EditArticleForm from "../../_components/EditArticleForm";
-import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import { fetchApi } from "@/app/utils/fetchInterceptor";
 
 const EditArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
-	const article = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/articles/" + params.id
-	);
-	const educationalFrameworks = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/educational-frameworks"
-	);
-	const educationalMethodolodies = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/educational-methodologies"
-	);
-	const medias = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/media"
-	);
-	const languages = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/languages"
-	);
-	const sources = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/sources"
-	);
-	const educationalTools = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/educational-tools"
-	);
+
+	const [
+		article,
+		educationalFrameworks,
+		educationalMethodolodies,
+		medias,
+		languages,
+		sources,
+		educationalTools,
+	] = await Promise.all([
+		fetchApi("/articles/" + params.id),
+		fetchApi("/educational-frameworks"),
+		fetchApi("/educational-methodologies"),
+		fetchApi("/media"),
+		fetchApi("/languages"),
+		fetchApi("/sources"),
+		fetchApi("/educational-tools")
+	]);
 
 	return (
 		<Flex
