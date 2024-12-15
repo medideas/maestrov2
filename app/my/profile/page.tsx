@@ -1,4 +1,4 @@
-import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import { fetchApi } from "@/app/utils/fetchInterceptor";
 import AssessementsTable from "../assessments/_components/LatestAssessment";
 import {
 	Avatar,
@@ -20,12 +20,14 @@ import UserDetailsCard from "./_components/UserDetailsCard";
 import BookmarkedArticles from "./_components/BookmarkedArticles";
 
 const MyProfile = async () => {
-	const user = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/my/profile"
-	);
-	const assessment = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/my/assessment"
-	);
+	const [
+		user,
+		assessment,
+	] = await Promise.all([
+		fetchApi(`/my/profile`),
+		fetchApi(`/my/assessment`),
+	]);
+
 	let roles = [""];
 	user.roleUsers.map((role: { role: { name: any } }) =>
 		roles.push(role.role.name)

@@ -1,27 +1,25 @@
 import { Container, Heading, Text } from "@radix-ui/themes";
 import React from "react";
-import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import { fetchApi } from "@/app/utils/fetchInterceptor";
 import NewArticleForm from "../_components/NewArticleForm";
 
 const NewArticle = async () => {
-	const educationalFrameworks = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/educational-frameworks"
-	);
-	const educationalMethodolodies = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/educational-methodologies"
-	);
-	const medias = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/media"
-	);
-	const languages = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/languages"
-	);
-	const sources = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/sources"
-	);
-	const educationalTools = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/educational-tools"
-	);
+	const [
+		educationalFrameworks,
+		educationalMethodolodies,
+		medias,
+		languages,
+		sources,
+		educationalTools,
+	] = await Promise.all([
+		fetchApi("/educational-frameworks"),
+		fetchApi("/educational-methodologies"),
+		fetchApi("/media"),
+		fetchApi("/languages"),
+		fetchApi("/sources"),
+		fetchApi("/educational-tools"),
+	]);
+	
 	return (
 		<Container my="5">
 			<Heading>New article</Heading>

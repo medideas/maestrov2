@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import ArticleCard from "../../articles/_components/ArticleCard";
-import fetchInterceptor from "../../utils/fetchInterceptor";
+import { fetchApi } from "../../utils/fetchInterceptor";
 import { headers } from "next/headers";
 import { FaBookmark } from "react-icons/fa6";
 
@@ -25,15 +25,15 @@ interface Competency {
 }
 
 export default async function MyArticles() {
-	const competencies = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/competencies"
-	);
-	const myArticles = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/my/articles/pinned"
-	);
-	const suggestedArticles = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/my/articles/suggested"
-	);
+	const [
+		competencies,
+		myArticles,
+		suggestedArticles,
+	] = await Promise.all([
+		fetchApi("/competencies"),
+		fetchApi("/my/articles/pinned"),
+		fetchApi("/my/articles/suggested")
+	]);
 
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
 	// await new Promise((resolve) => setTimeout(resolve, 2000));

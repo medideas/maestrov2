@@ -2,16 +2,19 @@ import { Box, Flex, Grid } from "@radix-ui/themes";
 import React, { Suspense } from "react";
 import ArticleCard from "../articles/_components/ArticleCard";
 import FilterSideBar from "./FilterSideBar";
-import fetchInterceptor from "../utils/fetchInterceptor";
+import { fetchApi } from "../utils/fetchInterceptor";
 
 const MyLibrary = async () => {
 	await new Promise((resolve) => setTimeout(resolve, 2000));
-	const articles = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/articles"
-	);
-	const competencies = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/competencies"
-	);
+
+	const [
+		articles,
+		competencies,
+	] = await Promise.all([
+		fetchApi(`/articles`),
+		fetchApi(`/competencies`),
+	]);
+
 	return (
 		<Grid
 			columns={{ initial: "1", md: "4" }}

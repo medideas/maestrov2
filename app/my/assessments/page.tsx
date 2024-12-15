@@ -2,7 +2,7 @@ import { Flex, Heading, Grid, Button, Box, Tooltip } from "@radix-ui/themes";
 import CompetencyModal from "./_components/CompetencyModal";
 import React from "react";
 import Link from "next/link";
-import fetchInterceptor from "@/app/utils/fetchInterceptor";
+import { fetchApi } from "@/app/utils/fetchInterceptor";
 
 interface Competency {
 	id: string;
@@ -32,12 +32,14 @@ type tParams = Promise<{ slug: string[] }>;
 
 const AssessmentPage = async (props: { params: tParams }) => {
 	let id = await props.params;
-	const competencies = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/competencies"
-	);
-	const assessment = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/my/assessments/"
-	);
+	const [
+		competencies,
+		assessment,
+	] = await Promise.all([
+		fetchApi(`/competencies`),
+		fetchApi(`/my/assessments/`),
+	]);
+
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
 	console.log(assessment);
 	return (

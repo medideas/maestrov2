@@ -3,18 +3,19 @@ import Link from "next/link";
 import React from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import ArticleCard from "../articles/_components/ArticleCard";
-import fetchInterceptor from "../utils/fetchInterceptor";
+import { fetchApi } from "../utils/fetchInterceptor";
 
 const Home = async () => {
-	const competencies = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/competencies"
-	);
-	const articles = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/articles"
-	);
-	const myArticles = await fetchInterceptor(
-		process.env.NEXT_PUBLIC_APIBASE + "/my/articles/pinned"
-	);
+	const [
+		competencies,
+		articles,
+		myArticles,
+	] = await Promise.all([
+		fetchApi("/competencies"),
+		fetchApi("/articles"),
+		fetchApi("/my/articles/pinned")
+	]);
+	
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
 	return (
 		<main className="flex flex-col p-5">
