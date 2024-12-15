@@ -26,6 +26,7 @@ const MyProfile = async () => {
 	const assessment = await fetchInterceptor(
 		process.env.NEXT_PUBLIC_APIBASE + "/my/assessment"
 	);
+
 	let roles = [""];
 	user.roleUsers.map((role: { role: { name: any } }) =>
 		roles.push(role.role.name)
@@ -43,11 +44,6 @@ const MyProfile = async () => {
 				<Flex direction={"column"}>
 					<Heading size="4">Assessements</Heading>
 					<LatestAssessment assessment={assessment} />
-				</Flex>
-				<Flex direction={"column"} gap="3">
-					<Heading size="4">Articles</Heading>
-					<Text size="2">Here you can find the articles you bookmarked</Text>
-					<BookmarkedArticles />
 				</Flex>
 			</Grid>
 		</Container>

@@ -20,6 +20,9 @@ interface Props {
 	languages: Language[];
 	sources: Source[];
 	educationalTools: EducationalTool[];
+	courses: Course[];
+	businessUnits: BusinessUnit[];
+	regions: Region[];
 }
 
 const articleSchema = Yup.object().shape({
@@ -52,6 +55,9 @@ const NewArticleForm = ({
 	medias,
 	languages,
 	sources,
+	businessUnits,
+	courses,
+	regions,
 }: Props) => {
 	const [coverFile, setCoverFile] = useState(article?.cover || "");
 	const [contentFile, setContentFile] = useState(article?.content || "");
@@ -59,45 +65,36 @@ const NewArticleForm = ({
 	const router = useRouter();
 	const jwt = getCookie("jwt");
 
-	// useEffect(() => {
-	// 	fetch(
-	// 		`${process.env.NEXT_PUBLIC_APIBASE}/articles/${article?.id}/download`,
-	// 		{
-	// 			method: "GET",
-	// 			headers: {
-	// 				Authorization: `Bearer ${jwt}`,
-	// 				"Content-type": "Application/json",
-	// 			},
-	// 		}
-	// 	)
-	// 		.then((response) => response.json())
-	// 		.then((json) => setContentFile(json));
-	// }, []);
 	const [submitting, setSubmitting] = useState(false);
+	// let businessUnitIds: { businessUnitId: string }[] = [];
+	// let courseIds: { courseId: string }[] = [];
+	// let regionIds: { regionId: string }[] = [];
 	return (
 		<div>
 			<Formik
 				enableReinitialize={false}
 				initialValues={{
-					title: article?.title || "",
-					description: article?.description || "",
-					duration: article?.duration || 0,
-					aiGenerated: String(article?.aiGenerated) || String(false),
-					internalUseOnly: String(article?.internalUseOnly) || String(false),
+					title: "",
+					description: "",
+					duration: 0,
+					aiGenerated: false,
+					internalUseOnly: false,
 					revokedAt: "2050-01-01",
-					mediaId: article?.mediaId || "",
-					sourceId: article?.sourceId || "",
-					educationalMethodologyId: article?.educationalMethodologyId || "",
-					educationalFrameworkId: article?.educationalFrameworkId || "",
-					educationalToolId: article?.educationalToolId || "",
-					languageId: article?.languageId || "",
+					mediaId: "",
+					sourceId: "",
+					educationalMethodologyId: "",
+					educationalFrameworkId: "",
+					educationalToolId: "",
+					languageId: "",
+					articleBusinessUnits: "",
+					articleCourses: "",
+					articleRegions: "",
 					cover: "",
 					content: "",
 				}}
 				// validationSchema={articleSchema}
 				onSubmit={async (values) => {
 					setSubmitting(true);
-					console.log(JSON.stringify(values));
 					const formData = new FormData();
 					formData.append("title", values.title);
 					formData.append("description", values.description);
@@ -122,14 +119,69 @@ const NewArticleForm = ({
 					pathname.includes("/edit") ? "edit" : "new";
 					pathname.includes("/edit");
 
-					await fetch(process.env.NEXT_PUBLIC_APIBASE + "/articles", {
-						headers: {
-							Accept: "application/json",
-							Authorization: "Bearer " + jwt,
-						},
-						method: "POST",
-						body: formData, // Send FormData
-					});
+					const res = await fetch(
+						process.env.NEXT_PUBLIC_APIBASE + "/articles",
+						{
+							headers: {
+								Accept: "application/json",
+								Authorization: "Bearer " + jwt,
+							},
+							method: "POST",
+							body: formData, // Send FormData
+						}
+					);
+
+					const newArticle = await res.json();
+					// Business unit IDs
+					await fetch(
+						`${process.env.NEXT_PUBLIC_APIBASE}
+							/articles/
+							${newArticle.id}
+							/sync/business-units`,
+						{
+							method: "PUT",
+							headers: {
+								Accept: "application/json",
+								Authorization: "Bearer " + jwt,
+							},
+							body: JSON.stringify({
+								businessUnits: values.articleBusinessUnits,
+							}),
+						}
+					);
+
+					// Course IDs
+					await fetch(
+						`${process.env.NEXT_PUBLIC_APIBASE}
+							/articles/
+							${newArticle.id}
+							/sync/courses`,
+						{
+							method: "PUT",
+							headers: {
+								Accept: "application/json",
+								Authorization: "Bearer " + jwt,
+							},
+							body: JSON.stringify({ courses: values.articleCourses }),
+						}
+					);
+
+					// Region IDs
+					await fetch(
+						`${process.env.NEXT_PUBLIC_APIBASE}
+							/articles/
+							${newArticle.id}
+							/sync/regions`,
+						{
+							method: "PUT",
+							headers: {
+								Accept: "application/json",
+								Authorization: "Bearer " + jwt,
+							},
+							body: JSON.stringify({ regions: values.articleRegions }),
+						}
+					);
+
 					router.push("/articles");
 				}}
 			>
@@ -283,6 +335,68 @@ const NewArticleForm = ({
 												}}
 											/>
 											<ErrorMessage name="content" component="div">
+												{(msg) => <FormCallout msg={msg} />}
+											</ErrorMessage>
+										</div>
+
+										<div className="form-section">
+											<label htmlFor="articleBusinessUnits">
+												Business Units
+											</label>
+											{businessUnits.map((bu, index) => (
+												<Flex key={index}>
+													<Text>
+														{bu.name}
+														<Field
+															name={`articleBusinessUnits`}
+															type="checkbox"
+															className="mb-1"
+															value={`${bu.id}`}
+														/>
+													</Text>
+												</Flex>
+											))}
+											<ErrorMessage name="articleBusinessUnits" component="div">
+												{(msg) => <FormCallout msg={msg} />}
+											</ErrorMessage>
+										</div>
+
+										<div className="form-section">
+											<label htmlFor="articleCourses">Courses</label>
+											{courses.map((c, index) => (
+												<Flex key={index}>
+													<Text>
+														{c.name}
+														<Field
+															name={`articleCourses`}
+															type="checkbox"
+															className="mb-1"
+															value={`${c.id}`}
+														/>
+													</Text>
+												</Flex>
+											))}
+											<ErrorMessage name="articleCourses" component="div">
+												{(msg) => <FormCallout msg={msg} />}
+											</ErrorMessage>
+										</div>
+
+										<div className="form-section">
+											<label htmlFor="articleRegions">Courses</label>
+											{regions.map((r, index) => (
+												<Flex key={index}>
+													<Text>
+														{r.name}
+														<Field
+															name={`articleRegions`}
+															type="checkbox"
+															className="mb-1"
+															value={`${r.id}`}
+														/>
+													</Text>
+												</Flex>
+											))}
+											<ErrorMessage name="articleRegions" component="div">
 												{(msg) => <FormCallout msg={msg} />}
 											</ErrorMessage>
 										</div>

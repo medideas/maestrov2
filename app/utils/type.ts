@@ -14,6 +14,9 @@ interface Article {
 	languageId: String;
 	aiGenerated: boolean;
 	internalUseOnly: boolean;
+	articleBusinessUnits: BusinessUnit[]
+	articleCourses: Course[]
+	articleRegions: Region[]
 };
 
 interface Competency {
@@ -147,4 +150,9 @@ type AssessmentResult = {
 interface IngestionJob{
 	id: string;
 	locked: boolean;
+}
+
+interface Course{
+	id: string;
+	name: string;
 }

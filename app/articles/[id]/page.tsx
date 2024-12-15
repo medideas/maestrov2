@@ -21,6 +21,8 @@ import ArticleRelevanceForJobTitleSkills from "../_components/ArticleRelevanceFo
 import GoBack from "@/app/components/GoBack";
 import DeleteItemButton from "@/app/components/DeleteItemButton";
 import EditItemButton from "@/app/components/EditItemButton";
+import isUserAllowed from "@/app/utils/isUserAllowed";
+import currentUser from "@/app/utils/currentUser";
 
 const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -29,6 +31,10 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	const article = await fetchInterceptor(
 		`${process.env.NEXT_PUBLIC_APIBASE}/articles/${id}`
 	);
+	const author = await fetchInterceptor(
+		`${process.env.NEXT_PUBLIC_APIBASE}/users/${article.userId}`
+	);
+
 	return (
 		<Container my={{ initial: "0", md: "5" }} p={{ initial: "4", md: "0" }}>
 			<Flex justify="end" mb="3">
@@ -59,7 +65,7 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 								<PinArticleButton articleId={article.id} />
 								<Heading>{article.title}</Heading>
 							</Flex>
-							{isAuthorized() && (
+							{(await isUserAllowed(currentUser, "Editor")) && (
 								<Flex gap="3" direction={{ initial: "column", md: "row" }}>
 									<EditItemButton kind={"article"} id={article.id} />
 									<DeleteItemButton kind={"article"} id={article.id} />
@@ -100,6 +106,12 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 					<Card className="shadow-lg">
 						<Box p="3">
 							<Flex justify={"between"}>
+								<Heading size="2">Article uploaded by: </Heading>
+								<Text>{`${author.firstName} ${author.lastName}`}</Text>
+							</Flex>
+
+							<Separator my="3" size="4" />
+							<Flex justify={"between"}>
 								<Heading size="2">Duration</Heading>
 								<Text>{article.duration} pages</Text>
 							</Flex>
@@ -129,6 +141,50 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 								<Heading size="2">Educational Tool</Heading>
 								<Text>{article.educationalTool.name}</Text>
 							</Flex>
+							<Separator my="3" size="4" />
+							<Flex justify="between" direction={"column"} gap="2">
+								<Heading size="2">
+									Valid for the following Business units
+								</Heading>
+								{typeof (
+									article.articleBusinessUnits.lenght === "undefined"
+								) ? (
+									<Text size="2">
+										This article is suitable for all business units
+									</Text>
+								) : (
+									<ul>
+										{article.articleBusinessUnits.map((bu, index) => (
+											<li>{bu.name}</li>
+										))}
+									</ul>
+								)}
+							</Flex>
+							<Flex justify="between" direction={"column"} gap="2">
+								<Separator my="3" size="4" />
+								<Heading size="2">Valid for the following Regions</Heading>
+								{typeof (article.articleRegions.lenght === "undefined") ? (
+									<Text size="2">This article is suitable for all regions</Text>
+								) : (
+									<ul>
+										{article.articleRegions.map((r, index) => (
+											<li>{r.name}</li>
+										))}
+									</ul>
+								)}
+							</Flex>
+							{typeof (article.articleCourses.lenght === "undefined") ? (
+								<div></div>
+							) : (
+								<Flex justify="between" direction={"column"} gap="2">
+									<Heading size="2">Courses</Heading>
+									<ul>
+										{article.articleCourses.map((c, index) => (
+											<li>{c.name}</li>
+										))}
+									</ul>
+								</Flex>
+							)}
 
 							<Flex minWidth={"100%"} mt="5">
 								<DownloadFile articleId={article.id} />

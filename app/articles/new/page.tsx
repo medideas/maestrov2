@@ -22,6 +22,15 @@ const NewArticle = async () => {
 	const educationalTools = await fetchInterceptor(
 		process.env.NEXT_PUBLIC_APIBASE + "/educational-tools"
 	);
+	const courses = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/courses"
+	);
+	const businessUnits = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/business-units"
+	);
+	const regions = await fetchInterceptor(
+		process.env.NEXT_PUBLIC_APIBASE + "/regions"
+	);
 	return (
 		<Container my="5">
 			<Heading>New article</Heading>
@@ -35,6 +44,9 @@ const NewArticle = async () => {
 				sources={sources}
 				medias={medias}
 				languages={languages}
+				courses={courses}
+				businessUnits={businessUnits}
+				regions={regions}
 			/>
 		</Container>
 	);

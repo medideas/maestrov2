@@ -16,6 +16,7 @@ const Home = async () => {
 		process.env.NEXT_PUBLIC_APIBASE + "/my/articles/pinned"
 	);
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
+
 	return (
 		<main className="flex flex-col p-5">
 			<Flex mb="3">

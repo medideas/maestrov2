@@ -31,7 +31,6 @@ const ArticlesPage = async () => {
 			`${process.env.NEXT_PUBLIC_APIBASE}/chatbot/ingestion-jobs/last`
 		);
 	};
-	console.log(ingestionJob);
 	return (
 		<Flex direction="column" gap="4" p="5">
 			<Flex
