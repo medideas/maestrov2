@@ -22,7 +22,7 @@ const DesktopNavLinks = ({ roles }: { roles: string[] }) => {
 	let userIsLoggedIn = true;
 
 	return (
-		<div>
+		<nav>
 			<ul className="flex-col tabs group">
 				{links.map(
 					(link) =>
@@ -55,7 +55,7 @@ const DesktopNavLinks = ({ roles }: { roles: string[] }) => {
 					</Link>
 				</li>
 			</ul>
-		</div>
+		</nav>
 	);
 };
 
