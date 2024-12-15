@@ -56,7 +56,6 @@ export const Carousel = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<Flex
 			justify={"between"}
-			height={"480px"}
 			align="center"
 			className="border-[1px] rounded-md"
 		>
