@@ -1,7 +1,16 @@
 //ATTENTION: TO UPLOAD THE FILES (cover and attachment) NEED TO CREATE A FORM DATA OBJECT AND PASS THE VALUES INTO IT, THEN PASS THE FORMDATA INTO THE BODY REQUEST
 
 "use client";
-import { Box, Button, Callout, Card, Flex, Grid, Text } from "@radix-ui/themes";
+import {
+	Box,
+	Button,
+	Callout,
+	Card,
+	Flex,
+	Grid,
+	Heading,
+	Text,
+} from "@radix-ui/themes";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
@@ -23,6 +32,8 @@ interface Props {
 	courses: Course[];
 	businessUnits: BusinessUnit[];
 	regions: Region[];
+	jobTitleSkills: JobTitleSkill[];
+	jobTitles: JobTitle[];
 }
 
 const articleSchema = Yup.object().shape({
@@ -58,6 +69,8 @@ const NewArticleForm = ({
 	businessUnits,
 	courses,
 	regions,
+	jobTitleSkills,
+	jobTitles,
 }: Props) => {
 	const [coverFile, setCoverFile] = useState(article?.cover || "");
 	const [contentFile, setContentFile] = useState(article?.content || "");
@@ -89,6 +102,7 @@ const NewArticleForm = ({
 					articleBusinessUnits: "",
 					articleCourses: "",
 					articleRegions: "",
+					relevance: "1",
 					cover: "",
 					content: "",
 				}}
@@ -182,7 +196,21 @@ const NewArticleForm = ({
 						}
 					);
 
-					router.push("/articles");
+					let resultJobTitleSkillIds: {
+						jobTitleSkillId: string;
+						relevance: string;
+					}[] = [];
+					jobTitleSkills.map((jobTitleSkill, index) =>
+						resultJobTitleSkillIds.push({
+							jobTitleSkillId: jobTitleSkill.id,
+							relevance:
+								values.relevance[index] === undefined
+									? "0"
+									: values.relevance[index],
+						})
+					);
+					console.log(JSON.stringify(resultJobTitleSkillIds));
+					// router.push("/articles");
 				}}
 			>
 				{({ values, touched, errors }) => (
@@ -553,6 +581,34 @@ const NewArticleForm = ({
 								</Card>
 							</Flex>
 						</Grid>
+						<Card my="5" className="shadow-md">
+							<Heading size="3">Relevance per Job Title</Heading>
+							<Grid my="3" columns={"2"} gap="5">
+								{jobTitles.map((jobTitle) => (
+									<Flex direction={"column"}>
+										<Heading size="2">{jobTitle.name}</Heading>
+										<ul>
+											{jobTitleSkills.map(
+												(jobTitleSkill, index) =>
+													jobTitleSkill.jobTitle.name === jobTitle.name && (
+														<Flex justify={"end"} gap="4" mb="2">
+															<Text className="text-left">
+																{jobTitleSkill.skill.name}
+															</Text>
+															<Field as="select" name={`relevance[${index}]`}>
+																<option value="0">0</option>
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+															</Field>
+														</Flex>
+													)
+											)}
+										</ul>
+									</Flex>
+								))}
+							</Grid>
+						</Card>
 
 						<Flex gap="3">
 							<Button type="submit" disabled={submitting}>

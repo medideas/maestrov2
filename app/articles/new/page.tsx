@@ -14,6 +14,8 @@ const NewArticle = async () => {
 		businessUnits,
 		courses,
 		regions,
+		jobTitleSkills,
+		jobTitles,
 	] = await Promise.all([
 		fetchApi("/educational-frameworks"),
 		fetchApi("/educational-methodologies"),
@@ -24,6 +26,8 @@ const NewArticle = async () => {
 		fetchApi("/business-units"),
 		fetchApi("/courses"),
 		fetchApi("/regions"),
+		fetchApi("/job-title-skills"),
+		fetchApi("/job-titles"),
 	]);
 
 	return (
@@ -42,6 +46,8 @@ const NewArticle = async () => {
 				businessUnits={businessUnits}
 				courses={courses}
 				regions={regions}
+				jobTitleSkills={jobTitleSkills}
+				jobTitles={jobTitles}
 			/>
 		</Container>
 	);
