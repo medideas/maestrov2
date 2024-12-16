@@ -102,7 +102,7 @@ const NewArticleForm = ({
 					articleBusinessUnits: "",
 					articleCourses: "",
 					articleRegions: "",
-					relevance: "1",
+					relevance: 0,
 					cover: "",
 					content: "",
 				}}
@@ -146,8 +146,14 @@ const NewArticleForm = ({
 					);
 
 					const newArticle = await res.json();
+					console.log(await newArticle.id);
+					console.log(
+						JSON.stringify({
+							businessUnits: values.articleBusinessUnits,
+						})
+					);
 					// Business unit IDs
-					await fetch(
+					const businessUnitRes = await fetch(
 						`${process.env.NEXT_PUBLIC_APIBASE}
 							/articles/
 							${newArticle.id}
@@ -155,7 +161,7 @@ const NewArticleForm = ({
 						{
 							method: "PUT",
 							headers: {
-								Accept: "application/json",
+								"Content-Type": "application/json",
 								Authorization: "Bearer " + jwt,
 							},
 							body: JSON.stringify({
@@ -163,6 +169,7 @@ const NewArticleForm = ({
 							}),
 						}
 					);
+					console.log(await businessUnitRes.json());
 
 					// Course IDs
 					await fetch(
@@ -173,7 +180,7 @@ const NewArticleForm = ({
 						{
 							method: "PUT",
 							headers: {
-								Accept: "application/json",
+								"Content-Type": "application/json",
 								Authorization: "Bearer " + jwt,
 							},
 							body: JSON.stringify({ courses: values.articleCourses }),
@@ -189,7 +196,7 @@ const NewArticleForm = ({
 						{
 							method: "PUT",
 							headers: {
-								Accept: "application/json",
+								"Content-Type": "application/json",
 								Authorization: "Bearer " + jwt,
 							},
 							body: JSON.stringify({ regions: values.articleRegions }),
@@ -198,19 +205,34 @@ const NewArticleForm = ({
 
 					let resultJobTitleSkillIds: {
 						jobTitleSkillId: string;
-						relevance: string;
+						relevance: Number;
 					}[] = [];
 					jobTitleSkills.map((jobTitleSkill, index) =>
 						resultJobTitleSkillIds.push({
 							jobTitleSkillId: jobTitleSkill.id,
 							relevance:
 								values.relevance[index] === undefined
-									? "0"
-									: values.relevance[index],
+									? 1
+									: Number(values.relevance[index]),
 						})
 					);
 					console.log(JSON.stringify(resultJobTitleSkillIds));
-					// router.push("/articles");
+					await fetch(
+						`${process.env.NEXT_PUBLIC_APIBASE}
+							/articles/
+							${newArticle.id}
+							/sync/job-title-skills`,
+						{
+							method: "PUT",
+							headers: {
+								"Content-Type": "application/json",
+								Authorization: "Bearer " + jwt,
+							},
+							body: JSON.stringify({ jobTitleSkills: resultJobTitleSkillIds }),
+						}
+					);
+
+					router.push("/articles/" + newArticle.id);
 				}}
 			>
 				{({ values, touched, errors }) => (
@@ -587,11 +609,11 @@ const NewArticleForm = ({
 								{jobTitles.map((jobTitle) => (
 									<Flex direction={"column"}>
 										<Heading size="2">{jobTitle.name}</Heading>
-										<ul>
+										<ul key={jobTitle.id}>
 											{jobTitleSkills.map(
 												(jobTitleSkill, index) =>
 													jobTitleSkill.jobTitle.name === jobTitle.name && (
-														<Flex justify={"end"} gap="4" mb="2">
+														<Flex justify={"end"} gap="4" mb="2" key={index}>
 															<Text className="text-left">
 																{jobTitleSkill.skill.name}
 															</Text>

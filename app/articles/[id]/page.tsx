@@ -8,25 +8,25 @@ import {
 	Text,
 	Separator,
 	Badge,
-	Button,
 	AspectRatio,
 } from "@radix-ui/themes";
 import React, { Suspense } from "react";
-import Link from "next/link";
 import { isAuthorized } from "@/app/utils/roleRules";
 import { fetchApi } from "@/app/utils/fetchInterceptor";
 import DownloadFile from "../_components/DownloadFile";
 import PinArticleButton from "../_components/PinArticleButton";
-import ArticleRelevanceForJobTitleSkills from "../_components/ArticleRelevanceForJobTitleSkills";
 import GoBack from "@/app/components/GoBack";
 import DeleteItemButton from "@/app/components/DeleteItemButton";
 import EditItemButton from "@/app/components/EditItemButton";
+import ArticleRelevanceForJobTitleSkills from "../_components/ArticleRelevanceForJobTitleSkills";
 
 const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
 	const params = await props.params;
 	const id = params.id;
 	const article = await fetchApi(`/articles/${id}`);
+	const jobTitles = await fetchApi(`/job-titles/`);
+	const jobTitleSkills = await fetchApi(`/job-title-skills/`);
 	return (
 		<Container my={{ initial: "0", md: "5" }} p={{ initial: "4", md: "0" }}>
 			<Flex justify="end" mb="3">
@@ -89,12 +89,63 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 							</Flex>
 						)}
 					</Flex>
-					<Separator my="4" size="4" />
-					{/* <Flex>
-						<ArticleRelevanceForJobTitleSkills article={article} />
-					</Flex> */}
 				</Box>
 				<Box>
+					<Card className="shadow-lg mb-5">
+						<Box p="3">
+							<Flex justify={"between"}>
+								<Heading size="2">Business Units</Heading>
+								<Flex gap="3">
+									{article.articleBusinessUnits.length === 0 && (
+										<Badge color="gray">Valid for all BU</Badge>
+									)}
+									{article.articleBusinessUnits.map((bu) => (
+										<Badge key={bu.id} color="gray">
+											{bu.businessUnit.name}
+										</Badge>
+									))}
+								</Flex>
+							</Flex>
+							<Separator my="3" size="4" />
+
+							<Flex justify={"between"}>
+								<Heading size="2">Regions</Heading>
+								<Flex gap="3">
+									{article.articleRegions.length === 0 && (
+										<Badge color="grass">Valid for all Regions</Badge>
+									)}
+									{article.articleRegions.map((r) => (
+										<Badge key={r.id} color="grass">
+											{r.region.name}
+										</Badge>
+									))}
+								</Flex>
+							</Flex>
+
+							<Separator my="3" size="4" />
+
+							<Flex
+								justify={"between"}
+								direction={
+									article.articleCourses.length === 0 ? "row" : "column"
+								}
+							>
+								<Heading mb="3" size="2">
+									Courses
+								</Heading>
+								<Flex gap="3">
+									{article.articleCourses.length === 0 && (
+										<Badge color="gray">Not includes in any course</Badge>
+									)}
+									{article.articleCourses.map((c) => (
+										<Badge key={c.id} color="gold">
+											{c.course.name}
+										</Badge>
+									))}
+								</Flex>
+							</Flex>
+						</Box>
+					</Card>
 					<Card className="shadow-lg">
 						<Box p="3">
 							<Flex justify={"between"}>
@@ -135,6 +186,14 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 					</Card>
 				</Box>
 			</Grid>
+			<Separator my="4" size="4" />
+			<Flex>
+				<ArticleRelevanceForJobTitleSkills
+					article={article}
+					jobTitles={jobTitles}
+					jobTitleSkills={jobTitleSkills}
+				/>
+			</Flex>
 		</Container>
 	);
 };

@@ -1,46 +1,57 @@
-import ( fetchApi ) from "@/app/utils/fetchInterceptor";
-import { Flex, Tabs, Text, Box, Heading } from "@radix-ui/themes";
+import { Box, Card, Flex, Heading, Table, Tabs, Text } from "@radix-ui/themes";
 import React from "react";
 
-type Article = {
-	id: String;
-	title: String;
-};
-
-const ArticleRelevanceForJobTitleSkills = async ({
+const ArticleRelevanceForJobTitleSkills = ({
 	article,
+	jobTitles,
+	jobTitleSkills,
 }: {
 	article: Article;
+	jobTitles: JobTitle[];
+	jobTitleSkills: JobTitleSkill[];
 }) => {
-	const jobTitleSkills = await fetchApi(`/job-title-skills`);
-
 	return (
-		<Flex direction={"column"} gap="4">
-			<Heading size="3" weight={"bold"}>
-				Relevance for {article.title}
-			</Heading>
+		<Flex>
 			<Tabs.Root defaultValue="account">
 				<Tabs.List>
-					{jobTitleSkills.map((jobTitle) => (
-						<Tabs.Trigger value="documents">
-							{jobTitle.jobTitle.name}
-						</Tabs.Trigger>
+					{jobTitles.map((jobTitle) => (
+						<Tabs.Trigger value={jobTitle.id}>{jobTitle.name}</Tabs.Trigger>
 					))}
 				</Tabs.List>
-				<Box pt="3">
-					<Tabs.Content value="account">
-						<Text size="2">Make changes to your account.</Text>
-					</Tabs.Content>
 
-					<Tabs.Content value="documents">
-						<Text size="2">Access and update your documents.</Text>
-					</Tabs.Content>
-
-					<Tabs.Content value="settings">
-						<Text size="2">
-							Edit your profile or update contact information.
-						</Text>
-					</Tabs.Content>
+				<Box pt="3" mb="5">
+					{jobTitles.map((jobTitle) => (
+						<Tabs.Content value={jobTitle.id}>
+							<Flex
+								justify={"start"}
+								my="3"
+								direction={"column"}
+								align={"start"}
+							>
+								<Heading size="2" mb="2">
+									Article relevance for {jobTitle.name}
+								</Heading>
+								<Table.Root>
+									{jobTitleSkills.map(
+										(jobTitleSkill) =>
+											jobTitleSkill.jobTitle.id === jobTitle.id && (
+												<Table.Row>
+													<Table.Cell>{jobTitleSkill.skill.name}</Table.Cell>
+													<Table.Cell>
+														{article.articleJobTitleSkills.map(
+															(articleJobTitleSkill) =>
+																articleJobTitleSkill.jobTitleSkillId ===
+																	jobTitleSkill.id &&
+																articleJobTitleSkill.relevance
+														)}
+													</Table.Cell>
+												</Table.Row>
+											)
+									)}
+								</Table.Root>
+							</Flex>
+						</Tabs.Content>
+					))}
 				</Box>
 			</Tabs.Root>
 		</Flex>
