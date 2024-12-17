@@ -4,6 +4,8 @@ import React from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import ArticleCard from "../articles/_components/ArticleCard";
 import { fetchApi } from "../utils/fetchInterceptor";
+import { Carousel } from "../components/carousel/Carousel";
+import carouselStyles from "../components/carousel/carousel.module.css";
 
 const Home = async () => {
 	const [
@@ -48,49 +50,12 @@ const Home = async () => {
 					<Text>Grouped by Competency</Text>
 				</Box>
 			</Flex>
-			<Flex
-				justify={"between"}
-				height={"480px"}
-				align="center"
-				className="border-[1px] rounded-md"
-			>
-				<Flex
-					id="carousel-1"
-					height={"100%"}
-					width={"50px"}
-					align="center"
-					justify={"center"}
-					display={{ initial: "none", md: "flex" }}
-				>
-					<HiChevronLeft size="24" />
-				</Flex>
-
-				<Flex height={"100%"} width={"93%"} gap="4" position={"relative"}>
-					<Flex
-						position={"absolute"}
-						width={"100%"}
-						height={"100%"}
-						gap="4"
-						overflowX={"scroll"}
-						overflowY={"hidden"}
-					>
-						{articles &&
-							articles.map((article: Article) => (
-								<ArticleCard key={article.id} article={article} />
-							))}
-					</Flex>
-				</Flex>
-
-				<Flex
-					height={"100%"}
-					width={"50px"}
-					align="center"
-					justify={"center"}
-					display={{ initial: "none", md: "flex" }}
-				>
-					<HiChevronRight size="24" />
-				</Flex>
-			</Flex>
+			<Carousel>
+				{articles &&
+					articles.map((article: Article) => (
+						<ArticleCard key={article.id} article={article} className={carouselStyles.item} />
+					))}
+			</Carousel>
 
 			<Flex mt="5" mb="3">
 				<Box>
@@ -98,48 +63,12 @@ const Home = async () => {
 					<Text>The articles you saved for later</Text>
 				</Box>
 			</Flex>
-			<Flex
-				justify={"between"}
-				height={"480px"}
-				align="center"
-				className="border-[1px] rounded-md"
-			>
-				<Flex
-					height={"100%"}
-					width={"50px"}
-					align="center"
-					justify={"center"}
-					display={{ initial: "none", md: "flex" }}
-				>
-					<HiChevronLeft size="24" />
-				</Flex>
-
-				<Flex height={"100%"} width={"93%"} gap="4" position={"relative"}>
-					<Flex
-						position={"absolute"}
-						width={"100%"}
-						height={"100%"}
-						gap="4"
-						overflowX={"scroll"}
-						overflowY={"hidden"}
-					>
-						{myArticles &&
-							myArticles.map((article: Article) => (
-								<ArticleCard key={article.id} article={article} />
-							))}
-					</Flex>
-				</Flex>
-
-				<Flex
-					height={"100%"}
-					width={"50px"}
-					align="center"
-					justify={"center"}
-					display={{ initial: "none", md: "flex" }}
-				>
-					<HiChevronRight size="24" />
-				</Flex>
-			</Flex>
+			<Carousel>
+				{myArticles &&
+					myArticles.map((article: Article) => (
+						<ArticleCard key={article.id} article={article} />
+					))}
+			</Carousel>
 			<div className="flex flex-col-mt-10"></div>
 		</main>
 	);
