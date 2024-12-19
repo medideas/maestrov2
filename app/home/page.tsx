@@ -8,9 +8,9 @@ import { Carousel } from "../components/carousel/Carousel";
 import carouselStyles from "../components/carousel/carousel.module.css";
 
 const Home = async () => {
-	const [competencies, articles, myArticles] = await Promise.all([
+	const [competencies, suggestedArticles, myArticles] = await Promise.all([
 		fetchApi("/competencies"),
-		fetchApi("/articles"),
+		fetchApi("/my/articles/suggested"),
 		fetchApi("/my/articles/pinned"),
 	]);
 
@@ -47,9 +47,13 @@ const Home = async () => {
 				</Box>
 			</Flex>
 			<Carousel>
-				{articles &&
-					articles.map((article: Article) => (
-						<ArticleCard key={article.id} article={article} className={carouselStyles.item} />
+				{suggestedArticles &&
+					suggestedArticles.map((article: Article) => (
+						<ArticleCard
+							key={article.id}
+							article={article}
+							className={carouselStyles.item}
+						/>
 					))}
 			</Carousel>
 

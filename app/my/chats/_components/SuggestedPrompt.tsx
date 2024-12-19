@@ -1,7 +1,6 @@
 "use client";
 import { Box, Card, Flex, Link, Text } from "@radix-ui/themes";
 import { getCookie } from "cookies-next";
-import { redirect } from "next/dist/server/api-utils";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { FaMagic } from "react-icons/fa";
@@ -19,8 +18,6 @@ const SuggestedPrompt = ({
 	const jwt = getCookie("jwt");
 	const router = useRouter();
 	const handleClick = (prompt: string, promptTitle: string) => () => {
-		console.log(prompt);
-		console.log(promptTitle);
 		fetch(`${process.env.NEXT_PUBLIC_APIBASE}/my/chats/`, {
 			method: "POST",
 			headers: {
@@ -31,8 +28,7 @@ const SuggestedPrompt = ({
 			body: JSON.stringify({ name: promptTitle }),
 		})
 			.then((response) => response.json())
-			.then((json) => console.log(json))
-			.then((newChat) =>
+			.then((json) =>
 				fetch(`${process.env.NEXT_PUBLIC_APIBASE}/chatbot/ask/`, {
 					method: "POST",
 					headers: {
@@ -40,12 +36,14 @@ const SuggestedPrompt = ({
 						"Content-type": "application/json",
 						Authorization: "Bearer " + jwt,
 					},
-					body: JSON.stringify({ prompt: prompt }),
+					body: JSON.stringify({ chatId: json.id, prompt: prompt }),
 				})
 			)
 			.then((response) => response.json())
-			.then((json) => console.log(json))
-			.then((json) => router.push(`/my/chats/${json.chatId}`));
+			.then((json) => {
+				console.log(json);
+				router.push(`/my/chats/${json.chatId}`);
+			});
 	};
 	return (
 		<Box

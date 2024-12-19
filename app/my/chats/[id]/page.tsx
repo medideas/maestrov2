@@ -3,8 +3,6 @@ import React, { Suspense } from "react";
 import Sidebar from "../_components/Sidebar";
 import Chatbot from "../_components/Chatbot";
 import { fetchApi } from "@/app/utils/fetchInterceptor";
-import { CiUser } from "react-icons/ci";
-import { RiRobot2Line } from "react-icons/ri";
 import Message from "../_components/Message";
 import MobileChatsMenu from "../_components/MobileChatsMenu";
 
@@ -15,8 +13,8 @@ type Message = {
 
 const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const id = (await params).id;
-	console.log(id);
 	const chat = await fetchApi(`/my/chats/${id}`);
+	console.log(chat);
 	return (
 		<Flex className="w-[100%] min-w-[100%]" width={"100%"} minHeight={"80vh"}>
 			<Sidebar />
@@ -32,7 +30,7 @@ const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 					<Flex direction="column" height={"100%"}>
 						<Flex justify={"between"} align={"center"} px="3">
 							<Flex direction={"column"}>
-								<Heading mb="2" size={{}}>
+								<Heading mb="2" size="4">
 									{chat.name}
 								</Heading>
 								{chat.messages.length === 0 && (

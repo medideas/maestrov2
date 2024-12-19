@@ -7,14 +7,16 @@ import { PiRobotFill } from "react-icons/pi";
 import { RiRobot3Line } from "react-icons/ri";
 
 const Message = ({ message, user }: { message: Message; user: boolean }) => {
-	console.log(message);
+	let formattedMessage = [];
+	formattedMessage.push(message.text.split("\n"));
+	console.log(formattedMessage);
 	return (
 		<Flex
 			direction={"column"}
 			className={
 				user
-					? "bg-slate-50 rounded-2xl hover:shadow-md duration-150 hover:translate-y-[-2px]"
-					: ""
+					? "bg-slate-50 rounded-2xl hover:shadow-md duration-150 hover:translate-y-[-2px] border-slate-100 border-2 mr-3"
+					: "border-slate-200 border-[1px] rounded-3xl mb-3 mr-3"
 			}
 		>
 			<Flex
@@ -22,15 +24,19 @@ const Message = ({ message, user }: { message: Message; user: boolean }) => {
 				px="4"
 				gap="4"
 				align="center"
-				justify={user ? "end" : "start"}
-				direction={user ? "row" : "row-reverse"}
+				justify={"start"}
+				direction={"row"}
 			>
 				<Box width={"50px"}>
 					{user ? <RiRobot3Line size="20" /> : <CiUser size="20" />}
 				</Box>
-				<Text as="p" style={{ lineHeight: "2em" }}>
-					{message.text}
-				</Text>
+				<Flex direction={"column"}>
+					{formattedMessage[0].map((message) => (
+						<Text as="p" style={{ lineHeight: "2em" }}>
+							{message}
+						</Text>
+					))}
+				</Flex>
 			</Flex>
 			{message.citations.length > 0 && (
 				<Flex direction={"column"} px="5" mb="2">
