@@ -3,20 +3,12 @@ import { Dialog, Flex, Separator, Text } from "@radix-ui/themes";
 import React, { useEffect, useState } from "react";
 import { PiChatsDuotone } from "react-icons/pi";
 import MobileChatsLink from "./MobileChatsLink";
-import fetchInterceptor from "@/app/utils/fetchInterceptor";
-import { getCookie } from "cookies-next";
+import { fetchApi } from "@/app/utils/fetchInterceptor";
 
 const MobileChatsMenu = () => {
-	const jwt = getCookie("jwt");
 	const [chats, setChats] = useState<Chat[]>([]);
 	useEffect(() => {
-		fetch(`${process.env.NEXT_PUBLIC_APIBASE}/my/chats/`, {
-			method: "GET",
-			headers: {
-				Authorization: "Bearer " + jwt,
-			},
-		})
-			.then((response) => response.json())
+		fetchApi("/my/chats/")
 			.then((json) => setChats(json));
 	}, []);
 

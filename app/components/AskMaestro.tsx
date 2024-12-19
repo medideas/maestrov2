@@ -1,16 +1,14 @@
 "use client";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Box, Button, Flex, TextField } from "@radix-ui/themes";
-import { getCookie } from "cookies-next";
 import { Formik, Form, Field } from "formik";
 import { usePathname, useRouter } from "next/navigation";
-import router from "next/router";
 import React from "react";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
+import { fetchApi } from "../utils/fetchInterceptor";
 
 const AskMaestro = () => {
 	const router = useRouter();
-	const jwt = getCookie("jwt");
 	const pathname = usePathname();
 	const blockedRoutes = ["/my/chats", "/login", "/logout"];
 
@@ -30,32 +28,21 @@ const AskMaestro = () => {
 				}}
 				onSubmit={async (values) => {
 					console.log(JSON.stringify(values));
-					const newChat = await fetch(
-						process.env.NEXT_PUBLIC_APIBASE + "/my/chats/",
+					const chat = await fetchApi(
+						"/my/chats/",
 						{
-							headers: {
-								"Content-type": "application/json",
-								Authorization: "Bearer " + jwt,
-							},
 							method: "POST",
-							body: JSON.stringify(values),
-							cache: "no-store",
+							body: JSON.stringify(values)
 						}
 					);
-					const chat = await newChat.json();
 					console.log(chat);
 					console.log(JSON.stringify({ chatId: chat.id, prompt: values.name }));
 					try {
-						const question = await fetch(
-							`${process.env.NEXT_PUBLIC_APIBASE}/chatbot/ask`,
+						const question = await fetchApi(
+							"/chatbot/ask",
 							{
-								headers: {
-									"Content-type": "application/json",
-									Authorization: "Bearer " + jwt,
-								},
 								method: "POST",
-								body: JSON.stringify({ chatId: chat.id, prompt: values.name }),
-								cache: "no-store",
+								body: JSON.stringify({ chatId: chat.id, prompt: values.name })
 							}
 						);
 					} catch (error) {
