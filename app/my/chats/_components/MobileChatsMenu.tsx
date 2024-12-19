@@ -18,7 +18,7 @@ const MobileChatsMenu = () => {
 		})
 			.then((response) => response.json())
 			.then((json) => setChats(json));
-	});
+	}, []);
 
 	return (
 		<Flex

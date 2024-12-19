@@ -6,6 +6,7 @@ import { GrGamepad } from "react-icons/gr";
 import { PiMagicWandBold } from "react-icons/pi";
 import NewChat from "./_components/NewChat";
 import MobileChatsMenu from "./_components/MobileChatsMenu";
+import SuggestedPrompt from "./_components/SuggestedPrompt";
 
 const Chatbox = async () => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -54,56 +55,27 @@ const Chatbox = async () => {
 										gap="3"
 										justify="center"
 									>
-										<Box
-											width="350px"
-											className="align-middle hover:scale-105 transition-all duration-200"
-										>
-											<Card className="shadow-lg md:h-[150px] h-[80px] bg-slate-300 hover:bg-slate-100 duration-200">
-												<Flex
-													direction={{ initial: "row", md: "column" }}
-													gap="3"
-													p={{ initial: "1", md: "3" }}
-													align={{ initial: "center", md: "start" }}
-												>
-													<FaCar size="30" />
-													<Text size={{ initial: "3", md: "4" }}>
-														What can I listen to during my next car trip?
-													</Text>
-												</Flex>
-											</Card>
-										</Box>
-										<Box
-											width="350px"
-											className="align-middle  hover:scale-105 transition-all duration-200"
-										>
-											<Card className="shadow-lg md:h-[150px] h-[80px] bg-slate-300 hover:bg-slate-100 duration-200">
-												<Flex
-													direction={{ initial: "row", md: "column" }}
-													gap="3"
-													p={{ initial: "1", md: "3" }}
-													align={{ initial: "center", md: "start" }}
-												>
-													<GrGamepad size="30" />
-													<Text>Test me on Edwards products!</Text>
-												</Flex>
-											</Card>
-										</Box>
-										<Box
-											width="350px"
-											className="align-middle  hover:scale-105 transition-all duration-200"
-										>
-											<Card className="shadow-lg md:h-[150px] h-[80px] bg-slate-300 hover:bg-slate-100 duration-200">
-												<Flex
-													direction={{ initial: "row", md: "column" }}
-													gap="3"
-													p={{ initial: "1", md: "3" }}
-													align={{ initial: "center", md: "start" }}
-												>
-													<PiMagicWandBold size="30" />
-													<Text>Rephrase this email for a customer</Text>
-												</Flex>
-											</Card>
-										</Box>
+										<SuggestedPrompt
+											promptIcon="car"
+											promptTitle={"What can I listen during my next car trip?"}
+											prompt={
+												"Suggest a set of podcasts that the user can listen with a duration of less then 20 minutes"
+											}
+										/>
+										<SuggestedPrompt
+											promptIcon="gamepad"
+											promptTitle={"Test me on edwards products"}
+											prompt={
+												"Create three questions about edwards products that could challenge the user's knowledge"
+											}
+										/>
+										<SuggestedPrompt
+											promptIcon="magic"
+											promptTitle={"Rephrase this email for a customer"}
+											prompt={
+												"Ask the user for the text of the email he or she is writing. Help them rephrase that text in a formal way to write an email for a client"
+											}
+										/>
 									</Flex>
 								</Suspense>
 							</Flex>

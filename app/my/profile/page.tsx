@@ -20,10 +20,7 @@ import UserDetailsCard from "./_components/UserDetailsCard";
 import BookmarkedArticles from "./_components/BookmarkedArticles";
 
 const MyProfile = async () => {
-	const [
-		user,
-		assessment,
-	] = await Promise.all([
+	const [user, assessment] = await Promise.all([
 		fetchApi(`/my/profile`),
 		fetchApi(`/my/assessment`),
 	]);
@@ -45,11 +42,6 @@ const MyProfile = async () => {
 				<Flex direction={"column"}>
 					<Heading size="4">Assessements</Heading>
 					<LatestAssessment assessment={assessment} />
-				</Flex>
-				<Flex direction={"column"} gap="3">
-					<Heading size="4">Articles</Heading>
-					<Text size="2">Here you can find the articles you bookmarked</Text>
-					<BookmarkedArticles />
 				</Flex>
 			</Grid>
 		</Container>

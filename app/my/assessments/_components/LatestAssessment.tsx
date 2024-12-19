@@ -11,11 +11,10 @@ type Assessment = {
 	name: string;
 };
 
-const LatestAssessment = ({ assessment }: Props) => {
-	console.log(assessment);
+const LatestAssessment = ({ assessment }: { assessment: Assessment }) => {
 	return (
 		<Flex direction={"column"} gap="3">
-			{!assessment ? (
+			{assessment === undefined ? (
 				<Flex direction={"column"} gap="2" mt="3">
 					<Text>There are no assessments. Take your first quiz</Text>
 					<Link href="/my/assessments/new">
