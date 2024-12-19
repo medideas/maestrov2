@@ -2,7 +2,6 @@ import { Box, Flex, Grid, Skeleton } from "@radix-ui/themes";
 import React from "react";
 import ArticleCard from "../articles/_components/ArticleCard";
 import FilterSideBar from "./FilterSideBar";
-import fetchInterceptor from "../utils/fetchInterceptor";
 
 const MyLibrary = async () => {
 	return (
