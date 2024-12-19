@@ -12,7 +12,7 @@ const MobileChatsMenu = () => {
 	useOnMount(() => {
 		fetchApi("/my/chats/")
 			.then((json) => setChats(json));
-	});
+	}, []);
 
 	return (
 		<Flex
