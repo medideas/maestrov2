@@ -14,31 +14,17 @@ import { useRouter } from "next/navigation";
 import assessmentQuestions from "@/app/utils/assessmentQuestions";
 import { getCookie } from "cookies-next";
 import { MdOutlineQuiz } from "react-icons/md";
+import GoBack from "@/app/components/GoBack";
 
 type AssessmenTQuestionSet = {
 	question: string;
 	Answer_1: string;
 };
 
-type JobTitleSkill = {
-	id: string;
-};
-
-type User = {
-	id: string;
-	jobTitleId: string;
-	jobTitle: JobTitle;
-};
-
 interface Props {
 	jobTitleSkills: JobTitleSkill[];
 	user: User;
 }
-
-type JobTitle = {
-	id: String;
-	name: String;
-};
 
 const AssessmentForm = ({ jobTitleSkills, user }: Props) => {
 	const jwt = getCookie("jwt");
@@ -148,7 +134,10 @@ const AssessmentForm = ({ jobTitleSkills, user }: Props) => {
 							</Grid>
 						</div>
 					))}
-					<Button type="submit">Save assessment</Button>
+					<Flex gap="5" align={"center"}>
+						<Button type="submit">Save assessment</Button>
+						<GoBack />
+					</Flex>
 				</Form>
 			</Formik>
 		</Container>
