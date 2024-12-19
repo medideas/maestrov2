@@ -8,16 +8,12 @@ import { Carousel } from "../components/carousel/Carousel";
 import carouselStyles from "../components/carousel/carousel.module.css";
 
 const Home = async () => {
-	const [
-		competencies,
-		articles,
-		myArticles,
-	] = await Promise.all([
+	const [competencies, articles, myArticles] = await Promise.all([
 		fetchApi("/competencies"),
 		fetchApi("/articles"),
-		fetchApi("/my/articles/pinned")
+		fetchApi("/my/articles/pinned"),
 	]);
-	
+
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
 	return (
 		<main className="flex flex-col p-5">
@@ -47,7 +43,7 @@ const Home = async () => {
 			<Flex mt="5" mb="3">
 				<Box>
 					<Heading>Recommended for you</Heading>
-					<Text>Grouped by Competency</Text>
+					<Text>Based on your assessment and interests</Text>
 				</Box>
 			</Flex>
 			<Carousel>
