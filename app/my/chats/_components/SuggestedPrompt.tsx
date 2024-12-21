@@ -1,12 +1,12 @@
 "use client";
-import { fetchApi } from "@/app/utils/fetchInterceptor";
+
 import { Box, Card, Flex, Link, Text } from "@radix-ui/themes";
 import { getCookie } from "cookies-next";
-import { redirect } from "next/dist/server/api-utils";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useCallback } from "react";
 import { FaMagic } from "react-icons/fa";
 import { FaCar, FaGamepad } from "react-icons/fa6";
+import { startNewChat } from "@/app/utils/api/chats";
 
 const SuggestedPrompt = ({
 	promptTitle,
@@ -19,35 +19,20 @@ const SuggestedPrompt = ({
 }) => {
 	const jwt = getCookie("jwt");
 	const router = useRouter();
-	const handleClick = (prompt: string, promptTitle: string) => () => {
-		console.log(prompt);
-		console.log(promptTitle);
-		fetchApi("/my/chats/", {
-			method: "POST",
-			headers: {
-				"Content-type": "application/json",
-			},
-			body: JSON.stringify({ name: promptTitle }),
-		})
-			.then((json) => console.log(json))
-			.then((newChat) =>
-				fetchApi("/chatbot/ask/", {
-					method: "POST",
-					headers: {
-						"Content-type": "application/json",
-					},
-					body: JSON.stringify({ prompt: prompt }),
-				})
-			)
-			.then((json) => console.log(json))
-			.then((json) => router.push(`/my/chats/${json.chatId}`));
-	};
+	const handleClick = useCallback(async () => {
+		const chat = await startNewChat(prompt, promptTitle);
+
+		if (chat?.id) {
+			router.push(`/my/chats/${chat?.id}`);
+		}
+	}, []);
+
 	return (
 		<Box
 			width="350px"
 			className="align-middle hover:scale-105 transition-all duration-200"
 		>
-			<Link onClick={handleClick(prompt, promptTitle)} color="gray">
+			<Link onClick={handleClick} color="gray">
 				<Card className="shadow-lg md:h-[150px] h-[80px] bg-slate-300 hover:bg-slate-100 duration-200">
 					<Flex
 						direction={{ initial: "row", md: "column" }}

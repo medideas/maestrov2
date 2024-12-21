@@ -15,7 +15,6 @@ type Message = {
 
 const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const id = (await params).id;
-	console.log(id);
 	const chat = await fetchApi(`/my/chats/${id}`);
 	return (
 		<Flex className="w-[100%] min-w-[100%]" width={"100%"} minHeight={"80vh"}>

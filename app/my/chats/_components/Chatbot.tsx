@@ -1,10 +1,14 @@
 "use client";
+
+import { askChatbot } from "@/app/utils/api/chats";
+import { ClientError } from "@/app/utils/api/errors";
 import { Button, Flex, Spinner, Text } from "@radix-ui/themes";
 import { getCookie } from "cookies-next";
 import { Field, Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
+import { toast } from "react-toastify";
 
 interface Props {
 	chatId: string;
@@ -36,38 +40,19 @@ const Chatbot = ({ chatId }: Props) => {
 					prompt: "",
 					chatId: chatId,
 				}}
-				onSubmit={async (values) => {
+				onSubmit={async ({ prompt }) => {
 					setSubmitting(true);
 					try {
-						const req = await fetch(
-							process.env.NEXT_PUBLIC_APIBASE + "/chatbot/ask/ ",
-							{
-								headers: {
-									"Content-type": "application/json",
-									Authorization: `Bearer ${jwt}`,
-								},
-								method: "POST",
-								body: JSON.stringify(values),
-							}
-						);
-						console.log(req);
-						if (req.ok) {
-							const answer = await req.json();
-							setSubmitting(false);
+						const answer = await askChatbot(chatId, prompt);
+						if (answer?.chatId) {
 							router.push(`/my/chats/${answer.chatId}`);
-						} else {
-							console.log(req.status, req.statusText);
-							setSubmitting(false);
-							alert(
-								"Something went wrong: we had some issues. Try again in a moment"
-							);
 						}
 					} catch (error) {
-						setSubmitting(false);
-						console.log(error);
+						if (error instanceof ClientError) {
+							toast.error(`Question failed: ${error?.body?.message}`);
+						}
 					}
-
-					// window.location.href = "/my/chats/" + answer.chatId;
+					setSubmitting(false);
 				}}
 			>
 				<Form className="w-[100%]" style={{ width: "100%" }}>

@@ -101,8 +101,12 @@ interface JobTitle {
 }
 
 interface Chat {
-	id: String;
-	name: String;
+	id: string;
+	name: string;
+	createdAt: string;
+	deletedAt: string | null;
+	updatedAt: string;
+	userId: string;
 }
 
 interface Message{
