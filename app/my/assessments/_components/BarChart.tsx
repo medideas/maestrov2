@@ -24,6 +24,7 @@ const BarChart = ({ competency, assessmentValues }: Props) => {
 	const labels = [""];
 	const assessmentValuesForChart = assessmentValues;
 	chartCompetency.skills.map((skill) => labels.push(skill.name));
+	labels.shift();
 
 	useEffect(() => {
 		if (chartRef.current) {
