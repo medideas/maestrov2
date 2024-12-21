@@ -5,10 +5,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Flex, Box, Grid, Section, Theme, Text } from "@radix-ui/themes";
 import Navbar from "./Navbar";
-import AskMaestro from "./components/AskMaestro";
 import { fetchApi } from "./utils/fetchInterceptor";
 import { Suspense } from "react";
-import NewChat from "./my/chats/_components/NewChat";
 import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {

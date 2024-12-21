@@ -1,12 +1,11 @@
 "use client";
 
 import { Box, Card, Flex, Link, Text } from "@radix-ui/themes";
-import { getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import React, { useCallback } from "react";
 import { FaMagic } from "react-icons/fa";
 import { FaCar, FaGamepad } from "react-icons/fa6";
-import { startNewChat } from "@/app/utils/api/chats";
+import { askMaestro } from "@/app/utils/api/chats";
 
 const SuggestedPrompt = ({
 	promptTitle,
@@ -17,13 +16,12 @@ const SuggestedPrompt = ({
 	promptIcon: string;
 	prompt: string;
 }) => {
-	const jwt = getCookie("jwt");
 	const router = useRouter();
 	const handleClick = useCallback(async () => {
-		const chat = await startNewChat(prompt, promptTitle);
+		const chatId = await askMaestro({ prompt, chatName: promptTitle });
 
-		if (chat?.id) {
-			router.push(`/my/chats/${chat?.id}`);
+		if (chatId) {
+			router.push(`/my/chats/${chatId}`);
 		}
 	}, []);
 
