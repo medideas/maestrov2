@@ -153,8 +153,8 @@ select {
 /* Circles */
 .tabs li a:after,
 .tabs li a:before {
-	width: 30px;
-	height: 30px;
+	width: 20px;
+	height: 20px;
 	/* Circles are circular */
 	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
@@ -175,10 +175,10 @@ select {
 	background: #ece5e0;
 }
 .tabs li a:before {
-	left: -30px;
+	left: -20px;
 }
 .tabs li a:after {
-	right: -30px;
+	right: -20px;
 }
 
 .tabs li a:after :last-of-type {
