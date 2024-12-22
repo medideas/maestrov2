@@ -1,16 +1,18 @@
 "use client";
 import { Dialog, Flex, Separator, Text } from "@radix-ui/themes";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { PiChatsDuotone } from "react-icons/pi";
 import MobileChatsLink from "./MobileChatsLink";
 import { fetchApi } from "@/app/utils/fetchInterceptor";
+import { useOnMount } from "@/app/utils/hooks/useOnMount";
 
 const MobileChatsMenu = () => {
 	const [chats, setChats] = useState<Chat[]>([]);
-	useEffect(() => {
+
+	useOnMount(() => {
 		fetchApi("/my/chats/")
 			.then((json) => setChats(json));
-	}, []);
+	});
 
 	return (
 		<Flex
