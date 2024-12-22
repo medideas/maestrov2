@@ -84,7 +84,7 @@ select {
 	/* Make them block level
        and only as wide as they need */
 	float: left;
-	padding: 10px 30px;
+	padding: 10px 20px;
 	text-decoration: none;
 	font-size: 15px;
 
