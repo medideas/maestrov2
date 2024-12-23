@@ -184,15 +184,3 @@ select {
 .tabs li a:after :last-of-type {
 	display: none;
 }
-
-.chatbot {
-	display: flex;
-	align-items: center;
-	background-color: #f5f2f0;
-	border-radius: 2em;
-	padding: 0.4em 0.8em;
-}
-
-.chatbot:focus {
-	border: none;
-}

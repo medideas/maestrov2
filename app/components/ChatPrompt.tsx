@@ -8,6 +8,7 @@ import React, { useCallback, useState } from "react";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
 import { askMaestro } from "@/app/utils/api/chats";
 import { ClientError } from "@/app/utils/api/errors";
+import styles from './chatPrompt.module.css';
 
 interface ChatPromptProps {
 	chatId?: string;
@@ -62,13 +63,12 @@ const ChatPrompt = ({
 				}}
 				onSubmit={onSubmit}
 			>
-				<Form className={`w-[100%] chatbot ${shadow ? "shadow-md" : ""}`}>
+				<Form className={`w-[100%] ${styles.chatbot} ${shadow ? "shadow-md" : ""}`}>
 					<HiOutlineDocumentSearch size="30" color="aaa" />
 					<Field
 						name="prompt"
 						id="prompt"
-						className="w-[100%] chatbot border-none"
-						style={{ width: "100%" }}
+						className={`w-[100%] ${styles.chatbot} border-none`}
 						autoFocus="true"
 						placeholder="Ask me something"
 					/>
