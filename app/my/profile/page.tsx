@@ -22,7 +22,7 @@ import BookmarkedArticles from "./_components/BookmarkedArticles";
 const MyProfile = async () => {
 	const [user, assessment] = await Promise.all([
 		fetchApi(`/my/profile`),
-		fetchApi(`/my/assessment`),
+		fetchApi(`/my/assessments`),
 	]);
 
 	let roles = [""];
