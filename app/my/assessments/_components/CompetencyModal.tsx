@@ -63,7 +63,7 @@ const CompetencyModal = async ({ params, assessmentResults, color }: Props) => {
 					<Flex mb="3" align="center" gap="3">
 						<Flex align="center" gap="3">
 							<Heading size="6" weight="medium">
-								{average(assessmentValues)}
+								{Math.round(average(assessmentValues))}
 							</Heading>
 							<Text as="p">OVERALL SCORE</Text>
 						</Flex>
