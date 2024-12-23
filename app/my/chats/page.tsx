@@ -7,6 +7,7 @@ import { PiMagicWandBold } from "react-icons/pi";
 import NewChat from "./_components/NewChat";
 import MobileChatsMenu from "./_components/MobileChatsMenu";
 import SuggestedPrompt from "./_components/SuggestedPrompt";
+import ChatPrompt from "@/app/components/ChatPrompt";
 
 const Chatbox = async () => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -14,7 +15,7 @@ const Chatbox = async () => {
 		<>
 			<Flex height={"80vh"}>
 				<Sidebar />
-				<Flex align="center" width="100%" height="100%">
+				<Flex align="center" width="100%" height="100%" overflowY={"scroll"}>
 					<Flex
 						direction="column"
 						justify="between"
@@ -82,7 +83,7 @@ const Chatbox = async () => {
 						</Flex>
 
 						<Flex direction="column" mb="5" px="5">
-							<NewChat />
+							<ChatPrompt ask={false} />
 							<Text size="1" mt="2" align="center">
 								Maestro can make mistakes. Check important info.
 							</Text>

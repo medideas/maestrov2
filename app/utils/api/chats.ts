@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { ClientError } from "./errors";
 import { fetchApi } from "../fetchInterceptor";
 
-export const createChat = (name: string): Promise<Chat> => fetchApi(
+const createChat = (name: string): Promise<Chat> => fetchApi(
     "/my/chats/",
     {
         method: "POST",
@@ -12,7 +12,7 @@ export const createChat = (name: string): Promise<Chat> => fetchApi(
     }
 );
 
-export const askChatbot = (chatId: string, prompt: string) => fetchApi(
+const askChatbot = (chatId: string, prompt: string) => fetchApi(
     "/chatbot/ask",
     {
         method: "POST",
@@ -20,10 +20,28 @@ export const askChatbot = (chatId: string, prompt: string) => fetchApi(
     }
 );
 
-export const startNewChat = async (prompt: string, promptTitle?: string) => {
+const getOrCreateChatId = async (chatName: string, chatId?: string) => {
+    if (chatId) return chatId;
+
+    const chat = await createChat(chatName);
+    return chat?.id;
+}
+
+type AskMaestroParams = {
+    existingChatId?: string;
+    prompt: string;
+    chatName: string;
+    ask?: boolean;
+};
+
+export const askMaestro = async ({
+    existingChatId,
+    prompt,
+	chatName,
+    ask = true
+}: AskMaestroParams) => {
     try {
-        const chat = await createChat(promptTitle || prompt);
-        const chatId = chat?.id;
+        const chatId = await getOrCreateChatId(chatName || prompt, existingChatId);
 
         if (!chatId) {
             toast.error('Chat could not be created');
@@ -31,9 +49,11 @@ export const startNewChat = async (prompt: string, promptTitle?: string) => {
             return;
         }
 
-        await askChatbot(chatId, prompt);
+        if (ask) {
+            await askChatbot(chatId, prompt);
+        }
 
-        return chat;
+        return chatId;
     } catch (error) {
         if (error instanceof ClientError) {
             const errorMessage = `Failed to start chat: ${errors}`;
