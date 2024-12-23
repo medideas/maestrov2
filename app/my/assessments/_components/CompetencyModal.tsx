@@ -26,14 +26,38 @@ type AssessmentResult = {
 };
 
 const CompetencyModal = async ({ params, assessmentResults, color }: Props) => {
-	const results: AssessmentResult[] = assessmentResults;
-	const id = params.id;
-	const competency = await fetchApi("/competencies/" + id);
-	const assessmentValues = [];
+	const competency = await fetchApi("/competencies/" + (await params.id));
+	const jobTitleSkills = await fetchApi("/job-title-skills");
+	const results: number[] = [];
+	const expectedesults: number[] = [];
+	jobTitleSkills.map((jobTitleSkill) =>
+		competency.skills.map(
+			(skill) =>
+				jobTitleSkill.skillId === skill.id &&
+				assessmentResults.map(
+					(result) =>
+						result.jobTitleSkillId === jobTitleSkill.id &&
+						results.push(Number(result.value))
+				)
+		)
+	);
+	jobTitleSkills.map((jobTitleSkill) =>
+		competency.skills.map(
+			(skill) =>
+				jobTitleSkill.skillId === skill.id &&
+				assessmentResults.map(
+					(result) =>
+						result.jobTitleSkillId === jobTitleSkill.id &&
+						expectedesults.push(Number(jobTitleSkill.target))
+				)
+		)
+	);
+	console.log(expectedesults);
+
 	const average = (array) =>
 		array.reduce((sum, currentValue) => sum + currentValue, 0) / array.length;
-	console.log(average);
-	assessmentResults.map((answer) => assessmentValues.push(answer.value));
+	const assessmentValues: string[] | Number[] = [];
+	assessmentResults.map((answer) => competency.skills.map((skill) => skill.id));
 	return (
 		<Dialog.Root key={competency.id}>
 			<Dialog.Trigger>
@@ -57,20 +81,21 @@ const CompetencyModal = async ({ params, assessmentResults, color }: Props) => {
 					<Flex maxWidth={"100%"} minWidth={"100%"}>
 						<BarChart
 							competency={competency}
-							assessmentValues={assessmentValues}
+							assessmentValues={results}
+							expectedValues={expectedesults}
 						/>
 					</Flex>
 					<Flex mb="3" align="center" gap="3">
 						<Flex align="center" gap="3">
 							<Heading size="6" weight="medium">
-								{Math.round(average(assessmentValues))}
+								{Math.round(average(results))}
 							</Heading>
 							<Text as="p">OVERALL SCORE</Text>
 						</Flex>
 						<Separator mx="3" orientation="vertical" />
 						<Flex align="center" gap="3">
 							<Heading size="6" weight="medium">
-								2.3
+								{Math.round(average(expectedesults))}
 							</Heading>
 							<Text as="p">TARGET SCORE</Text>
 						</Flex>

@@ -1,6 +1,7 @@
 import { fetchApi } from "@/app/utils/fetchInterceptor";
-import { Grid, Text, Tooltip } from "@radix-ui/themes";
+import { Grid, Flex, Text, Tooltip } from "@radix-ui/themes";
 import React from "react";
+import Skillbar from "./Skillbar";
 
 const Skill = async ({ params, assessmentResults }: Props) => {
 	const userJobTitleId = "5b53f32b-5a49-402d-a146-480cd49e14e6";
@@ -17,19 +18,24 @@ const Skill = async ({ params, assessmentResults }: Props) => {
 				(jobTitleSkill: JobTitleSkill, index: number) =>
 					jobTitleSkill.jobTitleId == userJobTitleId && (
 						<div key={index} className="flex flex-col border-b-2 col-span-1">
-							<Tooltip content={`Expected value: ${jobTitleSkill.target}`}>
-								<div
-									className={`bg-gray-400 w-4 h-4 rounded-full my-[-8px] ml-[${jobTitleSkill.target}0px]`}
-								></div>
-							</Tooltip>
+							<Flex position={"relative"}>
+								<Tooltip content={jobTitleSkill.target}>
+									<Flex
+										position={"absolute"}
+										style={{ backgroundColor: "gray" }}
+										width={"16px"}
+										height={"16px"}
+										className="rounded-full"
+										left={`${jobTitleSkill.target * 7}0px`}
+										top="-8px"
+										ml="1"
+									></Flex>
+								</Tooltip>
+							</Flex>
 							{assessmentResults.map(
 								(result: AssessmentResult) =>
 									result.jobTitleSkillId == jobTitleSkill.id && (
-										<Tooltip content={`Your result: ${result.value}`}>
-											<div
-												className={`bg-red-400 w-4 h-4 rounded-full my-[-8px] ml-[${result.value}0px]`}
-											></div>
-										</Tooltip>
+										<Skillbar result={result.value} color="#c9a5a5" />
 									)
 							)}
 						</div>

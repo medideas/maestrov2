@@ -13,6 +13,8 @@ import CompetencyModal from "./_components/CompetencyModal";
 import React from "react";
 import Link from "next/link";
 import { fetchApi } from "@/app/utils/fetchInterceptor";
+import Skillbar from "./_components/Skillbar";
+import { execOnce } from "next/dist/shared/lib/utils";
 
 type tParams = Promise<{ slug: string[] }>;
 
@@ -22,9 +24,8 @@ const AssessmentPage = async (props: { params: tParams }) => {
 		fetchApi(`/competencies`),
 		fetchApi(`/my/assessments/`),
 	]);
-
-	// const competencies: any[] = [];
-	// const assessment: any[] = [];
+	const avarages = [4, 3, 5, 3];
+	const expected = [3, 2, 3, 4];
 
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];
 	return (
@@ -72,7 +73,7 @@ const AssessmentPage = async (props: { params: tParams }) => {
 							My Progress
 						</Heading>
 					</Flex>
-					{competencies.map((competency: Competency) => (
+					{competencies.map((competency: Competency, index: number) => (
 						<Grid
 							key={competency.id}
 							columns={{ initial: "1", md: "5" }}
@@ -87,12 +88,8 @@ const AssessmentPage = async (props: { params: tParams }) => {
 							</Box>
 							<Box className="lg:col-span-3">
 								<div className="flex flex-col border-b-2 max-w-100">
-									<Tooltip content="50% compared to before">
-										<div className="bg-gray-400 w-4 h-4 rounded-full my-[-8px] ml-[40px]"></div>
-									</Tooltip>
-									<Tooltip content="50% compared to others">
-										<div className="bg-red-300 w-4 h-4 rounded-full my-[-8px] ml-[80px]"></div>
-									</Tooltip>
+									<Skillbar result={avarages[index]} color="lightgray" />
+									<Skillbar result={expected[index]} color="#c9a5a5" />
 								</div>
 							</Box>
 						</Grid>

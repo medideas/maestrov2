@@ -16,13 +16,15 @@ type Skill = {
 interface Props {
 	competency: Competency;
 	assessmentValues: Number[];
+	expectedValues: Number[];
 }
 
-const BarChart = ({ competency, assessmentValues }: Props) => {
+const BarChart = ({ competency, assessmentValues, expectedValues }: Props) => {
 	const chartRef = useRef(null);
 	const chartCompetency = competency;
 	const labels = [""];
 	const assessmentValuesForChart = assessmentValues;
+	const expectedValuesForChart = expectedValues;
 	chartCompetency.skills.map((skill) => labels.push(skill.name));
 	labels.shift();
 
@@ -42,7 +44,13 @@ const BarChart = ({ competency, assessmentValues }: Props) => {
 					{
 						data: assessmentValuesForChart,
 						backgroundColor: "rgba(0,0,0,0)",
-						borderColor: "bg-primary",
+						borderColor: "#db837d",
+						borderWidth: 2,
+					},
+					{
+						data: expectedValuesForChart,
+						backgroundColor: "rgba(0,0,0,0)",
+						borderColor: "#d6d0d0",
 						borderWidth: 2,
 					},
 				],
