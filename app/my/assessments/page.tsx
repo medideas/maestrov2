@@ -4,7 +4,6 @@ import {
 	Grid,
 	Button,
 	Box,
-	Tooltip,
 	Card,
 	Separator,
 	Text,
@@ -14,7 +13,6 @@ import React from "react";
 import Link from "next/link";
 import { fetchApi } from "@/app/utils/fetchInterceptor";
 import Skillbar from "./_components/Skillbar";
-import { execOnce } from "next/dist/shared/lib/utils";
 
 type tParams = Promise<{ slug: string[] }>;
 
