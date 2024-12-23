@@ -1,29 +1,27 @@
 "use client";
 import { Badge, Button, Flex } from "@radix-ui/themes";
-import { getCookie } from "cookies-next";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const SyncKnowledge = ({ ingestionJob }: { ingestionJob: IngestionJob }) => {
-	const jwt = getCookie("jwt");
 	const [submitting, setSubmitting] = useState(false);
+	useEffect(() => {
+		console.log("ingestionJob", ingestionJob);
+		if (!ingestionJob || Object.keys(ingestionJob).length === 0) {
+			toast.error("Failed to fetch ingestion job status");
+		}
+	}, [ingestionJob]);
+
 	const handleClick = async () => {
 		try {
-			const req = await fetch(
-				`${process.env.NEXT_PUBLIC_APIBASE}/chatbot/knowledge-base/sync`,
-				{
-					method: "GET",
-					headers: {
-						Accept: "application/json",
-						Authorization: "Bearer " + jwt,
-					},
-				}
-			);
-			console.log(req);
-			setSubmitting(false);
+			await fetchApi('/chatbot/knowledge-base/sync');
+			toast.success("Knowledge base sync started");
 		} catch (error) {
-			console.log(error);
+			toast.error("Failed to sync knowledge base");
 		}
+		setSubmitting(false);
 	};
+
 	return (
 		<Flex justify={"center"}>
 			{ingestionJob.locked || submitting ? (

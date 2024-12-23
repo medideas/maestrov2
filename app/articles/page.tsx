@@ -17,14 +17,28 @@ import ArticlesTable from "./_components/ArticlesTable";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import SyncKnowledge from "../my/chats/_components/SyncKnowledge";
 
+const getArticles = async () => {
+	try {
+		return await fetchApi("/articles");
+	} catch (error) {
+		console.error("Error fetching articles", error);
+		return [];
+	}
+};
+
+const getLastIngestionJob = async () => {
+	try {
+		return await fetchApi("/chatbot/ingestion-jobs/last");
+	} catch (error) {
+		console.error("Error fetching ingestion job status", error);
+		return {};
+	}
+};
+
 const ArticlesPage = async () => {
-	const articles = await fetchApi("/articles");
+	const articles = await getArticles();
+	const ingestionJob = await getLastIngestionJob();
 
-	let ingestionJob = await fetchApi(`/chatbot/ingestion-jobs/last`);
-
-	const fetchStatus = () => {
-		ingestionJob = fetchApi(`/chatbot/ingestion-jobs/last`);
-	};
 	return (
 		<Flex direction="column" gap="4" p="5">
 			<Flex
