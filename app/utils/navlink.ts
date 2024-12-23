@@ -2,27 +2,27 @@ const links = [
     {
         label: "Home",
         href: "/home",
-        for: "all",
+        for: "Learner",
     },
     {
         label: "My Profile",
         href: "/my/profile",
-        for: "all",
+        for: ["Learner", "Editor"],
     },
     {
         label: "ChatMaestro",
         href: "/my/chats",
-        for: "all",
+        for: ["Learner", "Editor", "User Manager"],
     },
     {
         label: "Library",
         href: "/mylibrary",
-        for: "all",
+        for: "Learner",
     },
     {
         label: "Manage users",
         href: "/users",
-        for: "User Manager",
+        for: ["User Manager"],
     },
     {
         label: "Articles",
