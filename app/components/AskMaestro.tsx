@@ -1,16 +1,15 @@
 "use client";
+
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Box, Button, Flex, TextField } from "@radix-ui/themes";
-import { getCookie } from "cookies-next";
 import { Formik, Form, Field } from "formik";
 import { usePathname, useRouter } from "next/navigation";
-import router from "next/router";
-import React from "react";
+import React, { useCallback } from "react";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
+import { startNewChat } from "../utils/api/chats";
 
 const AskMaestro = () => {
 	const router = useRouter();
-	const jwt = getCookie("jwt");
 	const pathname = usePathname();
 	const blockedRoutes = ["/my/chats", "/login", "/logout"];
 
@@ -22,48 +21,22 @@ const AskMaestro = () => {
 		console.log(result);
 		return result;
 	};
+
+	const onSubmit = useCallback(async ({ name: prompt } : { name: string }) => {
+		const chat = await startNewChat(prompt);
+
+		if (chat?.id) {
+			router.push(`/my/chats/${chat?.id}`);
+		}
+	}, []);
+
 	return (
 		<Flex mb="3" px="3">
 			<Formik
 				initialValues={{
 					name: "",
 				}}
-				onSubmit={async (values) => {
-					console.log(JSON.stringify(values));
-					const newChat = await fetch(
-						process.env.NEXT_PUBLIC_APIBASE + "/my/chats/",
-						{
-							headers: {
-								"Content-type": "application/json",
-								Authorization: "Bearer " + jwt,
-							},
-							method: "POST",
-							body: JSON.stringify(values),
-							cache: "no-store",
-						}
-					);
-					const chat = await newChat.json();
-					console.log(chat);
-					console.log(JSON.stringify({ chatId: chat.id, prompt: values.name }));
-					try {
-						const question = await fetch(
-							`${process.env.NEXT_PUBLIC_APIBASE}/chatbot/ask`,
-							{
-								headers: {
-									"Content-type": "application/json",
-									Authorization: "Bearer " + jwt,
-								},
-								method: "POST",
-								body: JSON.stringify({ chatId: chat.id, prompt: values.name }),
-								cache: "no-store",
-							}
-						);
-					} catch (error) {
-						console.log(error);
-					}
-					router.push(`/my/chats/${chat.id}`);
-					// if (newChat) redirect("/my/chats");
-				}}
+				onSubmit={onSubmit}
 			>
 				<Form className="w-[100%]">
 					<Flex

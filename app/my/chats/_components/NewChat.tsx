@@ -1,10 +1,12 @@
 "use client";
+
 import { Flex } from "@radix-ui/themes";
 import { getCookie } from "cookies-next";
 import { Field, Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
+import { startNewChat } from "@/app/utils/api/chats";
 
 const NewChat = () => {
 	const router = useRouter();
@@ -15,24 +17,12 @@ const NewChat = () => {
 				initialValues={{
 					name: "",
 				}}
-				onSubmit={async (values) => {
-					console.log(JSON.stringify(values));
-					const newChat = await fetch(
-						process.env.NEXT_PUBLIC_APIBASE + "/my/chats/",
-						{
-							headers: {
-								"Content-type": "application/json",
-								Authorization: "Bearer " + jwt,
-							},
-							method: "POST",
-							body: JSON.stringify(values),
-							cache: "no-store",
-						}
-					);
-					const chatId = await newChat.json();
-					console.log(chatId);
-					router.push(`/my/chats/${chatId.id}`);
-					// if (newChat) redirect("/my/chats");
+				onSubmit={async ({ name: prompt }) => {
+					const chat = await startNewChat(prompt);
+
+					if (chat?.id) {
+						router.push(`/my/chats/${chat?.id}`);
+					}
 				}}
 			>
 				<Form className="w-[100%]">
