@@ -1,4 +1,5 @@
 import "@radix-ui/themes/styles.css";
+import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -22,13 +23,12 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const user = await fetchApi("/my/profile/");
 	return (
 		<html lang="en" className="dm_sans.className">
 			<body className={"flex flex-col m-0 p-0"}>
 				<ToastContainer />
 				<Theme accentColor="red" radius="small" appearance="light">
-					<Navbar user={user} />
+					<Navbar />
 					<main className="flex-auto min-h-[80vh]">
 						<Suspense>{children}</Suspense>
 					</main>

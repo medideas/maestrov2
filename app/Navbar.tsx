@@ -7,10 +7,11 @@ import AvatarBox from "./components/navbar/AvatarBox";
 import { fetchApi } from "./utils/fetchInterceptor";
 import { hasCookie } from "cookies-next";
 import { cookies } from "next/headers";
+import { getJwt, hasJwtExpired, mightBeLoggedIn } from "./utils/auth";
+import { Toast } from "./components/ClientToast";
 
 const Navbar = async () => {
-	const userSession = await hasCookie("jwt", { cookies });
-	if (userSession) {
+	if (await mightBeLoggedIn()) {
 		const loggedUser = await fetchApi(`/my/profile`);
 		const userRoles = loggedUser.roleUsers;
 		let roles: string[] = [];
@@ -50,6 +51,12 @@ const Navbar = async () => {
 				</Flex>
 			</nav>
 		);
+	}
+
+	const hasJwt = await getJwt();
+	const isJwtExpired = await hasJwtExpired();
+	if (hasJwt && isJwtExpired) {
+		return <Toast type="warning" message="Login has expired" />;
 	}
 };
 
