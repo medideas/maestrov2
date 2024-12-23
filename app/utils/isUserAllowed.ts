@@ -1,36 +1,12 @@
-const isUserAllowed = (roles: string[], url: string) => {
-    let result = false;
-    if (url === "Manage users" && roles.includes("User Manager")) {
-        result = true;
-        return result;
+const isUserAllowed = (userRoles: string[], allowedRoles: string[] | string) => {
+    if (allowedRoles == "all") {
+        return true;
+    } else if (typeof allowedRoles == "string") {
+        return userRoles.includes(allowedRoles);
+    } else if (Array.isArray(allowedRoles)) {
+        return userRoles.some(role => allowedRoles.includes(role));
     }
-    if (url === "Articles" && roles.includes("Editor")) {
-        result = true;
-        return result;
-    }
-    if (url === "Home" && roles.includes("Learner")) {
-        result = true;
-        return result;
-    }
-    if (
-        url === "My Profile" &&
-        (roles.includes("Learner") || roles.includes("Editor"))
-    ) {
-        result = true;
-        return result;
-    }
-    if (url === "Library" && roles.includes("Learner")) {
-        result = true;
-        return result;
-    }
-    if (
-        url === "ChatMaestro" &&
-        (roles.includes("Learner") ||
-            roles.includes("Editor") ||
-            roles.includes("User Manager"))
-    ) {
-        result = true;
-        return result;
-    }
+
+    return false;
 };
 export default isUserAllowed;

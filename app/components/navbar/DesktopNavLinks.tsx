@@ -26,7 +26,7 @@ const DesktopNavLinks = ({ roles }: { roles: string[] }) => {
 			<ul className="flex-col tabs group">
 				{links.map(
 					(link) =>
-						isUserAllowed(roles, link.label) && (
+						isUserAllowed(roles, link.for) && (
 							<li
 								key={link.href}
 								className={

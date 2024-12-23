@@ -42,7 +42,7 @@ const MobileNavLinks = ({ roles, user }: { roles: string[]; user: User }) => {
 					<ul className="flex-col flex-1 text-right">
 						{links.map(
 							(link) =>
-								isUserAllowed(roles, link.label) && (
+								isUserAllowed(roles, link.for) && (
 									<li key={link.href} className="py-2 pr-5">
 										<Link
 											href={link.href}
@@ -57,7 +57,6 @@ const MobileNavLinks = ({ roles, user }: { roles: string[]; user: User }) => {
 										</Link>
 									</li>
 								)
-							// )
 						)}
 						<li className="py-2 pr-5">
 							<Link
