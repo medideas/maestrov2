@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { hasCookie, deleteCookie, setCookie } from 'cookies-next/server';
-import { cookies } from 'next/headers';
 import currentUser from './app/utils/currentUser';
 import isUserAllowed from './app/utils/isUserAllowed';
+import { mightBeLoggedIn } from './app/utils/auth';
 
 // 1. Specify protected and public routes
 const publicRoutes = ["/login", "/login/log-me-in"]
@@ -11,7 +10,7 @@ const publicRoutes = ["/login", "/login/log-me-in"]
 export default async function middleware(req: NextRequest) {
     const path = req.nextUrl.pathname;
     const isPublicRoute = publicRoutes.includes(path);
-    const userLoggedIn = await hasCookie('jwt', { cookies });
+    const userLoggedIn = await mightBeLoggedIn();
     
     // check if the route is protected
     if (!userLoggedIn && !isPublicRoute){ 
