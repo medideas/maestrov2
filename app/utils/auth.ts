@@ -1,5 +1,7 @@
 import { getCookie } from "./cookies";
 
+export const PUBLIC_ROUTES = ["/login"];
+
 export const getJwt = () => getCookie("jwt");
 
 export const hasJwtExpired = async () => {

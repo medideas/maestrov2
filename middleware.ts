@@ -1,13 +1,12 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { mightBeLoggedIn } from './app/utils/auth';
+import { mightBeLoggedIn, PUBLIC_ROUTES } from './app/utils/auth';
 
 // 1. Specify protected and public routes
-const publicRoutes = ["/login", "/login/log-me-in"]
 
 export default async function middleware(req: NextRequest) {
     const path = req.nextUrl.pathname;
-    const isPublicRoute = publicRoutes.includes(path);
+    const isPublicRoute = PUBLIC_ROUTES.includes(path);
     const userLoggedIn = await mightBeLoggedIn();
     
     // check if the route is protected
