@@ -9,28 +9,27 @@ import { RiRobot3Line } from "react-icons/ri";
 const Message = ({ message, user }: { message: Message; user: boolean }) => {
 	let formattedMessage = [];
 	formattedMessage.push(message.text.split("\n"));
-	console.log(formattedMessage);
 	return (
 		<Flex
 			direction={"column"}
 			className={
 				user
 					? "bg-slate-50 rounded-2xl hover:shadow-md duration-150 hover:translate-y-[-2px] border-slate-100 border-2 mr-3"
-					: "border-slate-200 border-[1px] rounded-3xl mb-3 mr-3"
+					: "bg-white border-slate-200 border-[1px] rounded-3xl my-3 mr-3"
 			}
 		>
 			<Flex
-				p="2"
-				px="4"
+				p="4"
+				pl="6"
 				gap="4"
 				align="center"
 				justify={"start"}
-				direction={"row"}
+				direction={user ? "row" : "row-reverse"}
 			>
 				<Box width={"50px"}>
 					{user ? <RiRobot3Line size="20" /> : <CiUser size="20" />}
 				</Box>
-				<Flex direction={"column"}>
+				<Flex direction={"column"} align={user ? "start" : "end"}>
 					{formattedMessage[0].map((message) => (
 						<Text as="p" style={{ lineHeight: "2em" }}>
 							{message}
@@ -40,6 +39,7 @@ const Message = ({ message, user }: { message: Message; user: boolean }) => {
 			</Flex>
 			{message.citations.length > 0 && (
 				<Flex direction={"column"} px="5" mb="2">
+					<Separator size="4" my="3" />
 					<Flex>
 						{message.citations.map(
 							(citation) =>
@@ -51,10 +51,9 @@ const Message = ({ message, user }: { message: Message; user: boolean }) => {
 										direction={"column"}
 										align="center"
 									>
-										<Separator size="4" mb="3" />
 										<Flex>
-											<Box width={"50px"} m="2">
-												<IoDocumentTextOutline size="30" color="bbb" />
+											<Box width={"30px"} m="2">
+												<IoDocumentTextOutline size="24" color="bbb" />
 											</Box>
 											<Flex direction={"column"}>
 												<Link

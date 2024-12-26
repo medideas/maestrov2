@@ -25,7 +25,7 @@ const links = [
         for: "User Manager",
     },
     {
-        label: "Articles",
+        label: "Content",
         href: "/articles",
         for: "Editor",
     },

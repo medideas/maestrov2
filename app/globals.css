@@ -194,3 +194,7 @@ select {
 .chatbot:focus {
 	border: none;
 }
+
+#chatarea {
+	width: 10000px !important;
+}

@@ -1,12 +1,13 @@
 "use client";
 
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { ArrowUpIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Box, Button, Flex, TextField } from "@radix-ui/themes";
 import { Formik, Form, Field } from "formik";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useCallback } from "react";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
 import { startNewChat } from "../utils/api/chats";
+import { FaArrowCircleUp } from "react-icons/fa";
 
 const AskMaestro = () => {
 	const router = useRouter();
@@ -22,7 +23,7 @@ const AskMaestro = () => {
 		return result;
 	};
 
-	const onSubmit = useCallback(async ({ name: prompt } : { name: string }) => {
+	const onSubmit = useCallback(async ({ name: prompt }: { name: string }) => {
 		const chat = await startNewChat(prompt);
 
 		if (chat?.id) {
@@ -53,6 +54,9 @@ const AskMaestro = () => {
 							autoFocus="true"
 							placeholder="Ask me something"
 						/>
+						<Button variant={"ghost"} color="gray">
+							<FaArrowCircleUp size="24" />
+						</Button>
 					</Flex>
 				</Form>
 			</Formik>

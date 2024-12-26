@@ -16,18 +16,30 @@ const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const chat = await fetchApi(`/my/chats/${id}`);
 	console.log(chat);
 	return (
-		<Flex className="w-[100%] min-w-[100%]" width={"100%"} minHeight={"80vh"}>
+		<Flex minHeight={"80vh"}>
 			<Sidebar />
-			<Suspense>
-				<Flex
-					direction="column"
-					p={{ initial: "2", md: "5" }}
-					justify="between"
-					className="col-span-3"
-					width={"100%"}
-					minHeight={"100%"}
-				>
-					<Flex direction="column" height={"100%"}>
+
+			<Flex
+				direction="column"
+				p={{ initial: "2", md: "5" }}
+				justify="between"
+				className="col-span-3"
+				width={"100%"}
+				minHeight={"100%"}
+				style={{ backgroundColor: "white" }}
+			>
+				<Suspense>
+					<Flex
+						direction="column"
+						height={"100%"}
+						style={{
+							backgroundImage: "url(/bgchat.jpg)",
+							backgroundRepeat: "no-repeat",
+							backgroundSize: "contain",
+							backgroundColor: "white",
+							backgroundPositionY: "100px",
+						}}
+					>
 						<Flex justify={"between"} align={"center"} px="3">
 							<Flex direction={"column"}>
 								<Heading mb="2" size="4">
@@ -67,11 +79,11 @@ const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 							</Flex>
 						</Flex>
 					</Flex>
-					<Flex className="w-[100%]" justify={"between"}>
-						<Chatbot chatId={chat.id} />
-					</Flex>
+				</Suspense>
+				<Flex className="w-[100%]" justify={"between"}>
+					<Chatbot chatId={chat.id} />
 				</Flex>
-			</Suspense>
+			</Flex>
 		</Flex>
 	);
 };

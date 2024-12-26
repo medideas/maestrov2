@@ -64,12 +64,18 @@ const CompetencyModal = async ({ params, assessmentResults, color }: Props) => {
 				<Flex
 					className={`hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out ${color} min-h-[120px] w-[100%] max-w-[100%]`}
 					align="center"
+					justify={"center"}
 				>
 					<Card
 						size="2"
 						className={`${competency.color} h-[100%] w-[100%] max-w-[100%]`}
 					>
-						<Heading as="h4" weight="light" size="5" className=" py-[30px]">
+						<Heading
+							as="h4"
+							weight="light"
+							size="6"
+							className="text-center py-[30px]"
+						>
 							{competency.name}
 						</Heading>
 					</Card>
@@ -84,6 +90,21 @@ const CompetencyModal = async ({ params, assessmentResults, color }: Props) => {
 							assessmentValues={results}
 							expectedValues={expectedesults}
 						/>
+					</Flex>
+					<Flex my="4" gap="2" align={"center"}>
+						<Flex
+							width={"20px"}
+							height={"20px"}
+							className="bg-red-400 rounded-sm"
+						></Flex>
+						<Text>Your score</Text>
+						<Separator mx="3" orientation="vertical" />
+						<Flex
+							width={"20px"}
+							height={"20px"}
+							className="bg-gray-300 rounded-sm"
+						></Flex>
+						<Text>Target score</Text>
 					</Flex>
 					<Flex mb="3" align="center" gap="3">
 						<Flex align="center" gap="3">

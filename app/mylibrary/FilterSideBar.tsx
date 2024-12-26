@@ -1,5 +1,13 @@
 "use client";
-import { CheckboxGroup, Flex, Heading, Separator } from "@radix-ui/themes";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import {
+	Button,
+	CheckboxGroup,
+	Flex,
+	Heading,
+	Separator,
+	TextField,
+} from "@radix-ui/themes";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -21,7 +29,21 @@ const FilterSideBar = ({ competencies }: { competencies: Competency[] }) => {
 
 	return (
 		<div className="border-[1px] rounded-md shadow-md bg-gray-100 py-5">
-			<Heading as="h2" size="4" className="py-2 px-5">
+			<Flex direction={"column"} p="4" gap="2">
+				<Heading size="4">Search</Heading>
+				<Flex justify={"between"}>
+					<TextField.Root placeholder="Search the docs…" className="w-[100%]">
+						<TextField.Slot>
+							<MagnifyingGlassIcon height="16" width="16" />
+						</TextField.Slot>
+					</TextField.Root>
+					<Button variant="outline" color="gray" ml="1">
+						Search
+					</Button>
+				</Flex>
+				<Separator my="3" size="4" />
+			</Flex>
+			<Heading as="h2" size="4" className="pb-2 px-5">
 				Filters
 			</Heading>
 			<ul>
@@ -61,7 +83,6 @@ const FilterSideBar = ({ competencies }: { competencies: Competency[] }) => {
 								{option.name}
 							</CheckboxGroup.Item>
 						))}
-						<Separator my="3" size="4" />
 					</CheckboxGroup.Root>
 				</Flex>
 			</div>

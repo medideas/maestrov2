@@ -50,13 +50,13 @@ const ArticlesPage = async () => {
 			>
 				<Flex align={"center"} gap="5">
 					<Flex direction="column">
-						<Heading>Articles</Heading>
+						<Heading>Content</Heading>
 						<Text>In this section you can find all the articles</Text>
 					</Flex>
 					<Separator orientation="vertical" size="3" />
 					<Flex>
 						<Link href="/articles/new">
-							<Button>Add a new article</Button>
+							<Button>Add a new piece of content</Button>
 						</Link>
 					</Flex>
 				</Flex>

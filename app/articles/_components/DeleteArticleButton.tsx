@@ -24,7 +24,9 @@ const DeleteArticleButton = ({ articleId }: Props) => {
 		router.push("/articles");
 	};
 	return (
-		<Button onClick={() => deleteArticle(articleId)}>Delete article</Button>
+		<Button onClick={() => deleteArticle(articleId)} className="min-w-[100px]">
+			Delete article
+		</Button>
 	);
 };
 

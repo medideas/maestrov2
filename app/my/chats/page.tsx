@@ -14,12 +14,15 @@ const Chatbox = async () => {
 		<>
 			<Flex height={"80vh"}>
 				<Sidebar />
-				<Flex align="center" width="100%" height="100%">
+				<Flex id="chatArea" align="center" height="100%">
 					<Flex
 						direction="column"
 						justify="between"
-						style={{ backgroundImage: "url(/bgchat.jpg)" }}
-						align={"stretch"}
+						style={{
+							backgroundImage: "url(/bgchat.jpg)",
+							backgroundRepeat: "no-repeat",
+							backgroundSize: "cover",
+						}}
 						height={"100%"}
 					>
 						<Flex position={"absolute"} top="120px" right={"5"}>
@@ -32,6 +35,7 @@ const Chatbox = async () => {
 							align={{ initial: "start", md: "center" }}
 							px="5"
 							mt={{ initial: "10px", md: "150px" }}
+							minWidth={"1400px"}
 						>
 							<Heading
 								as="h1"

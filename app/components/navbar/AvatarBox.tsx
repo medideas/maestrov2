@@ -12,7 +12,7 @@ const AvatarBox = ({ user }: { user: User }) => {
 	const currentPath = usePathname();
 	const currentLink = (url: string, path: string) => {};
 	return (
-		<Flex align="center">
+		<Flex align="center" mt="3" ml="4">
 			<Link href={`/my/profile`}>
 				<Avatar fallback={user.firstName[0]} radius="full" size="5" />
 			</Link>

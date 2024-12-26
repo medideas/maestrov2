@@ -7,7 +7,7 @@ const LoginButton = () => {
 	return (
 		<Link href={`${process.env.NEXT_PUBLIC_APIBASE}/auth/sso/saml/login`}>
 			<Button type="submit" mt="3" variant="outline">
-				Login
+				Log in with SSO
 			</Button>
 		</Link>
 	);

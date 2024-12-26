@@ -4,7 +4,7 @@ import React from "react";
 
 const EditItemButton = ({ kind, id }: { kind: string; id: string }) => {
 	return (
-		<Link href={"/" + kind + "s/" + id + "/edit"}>
+		<Link href={"/" + kind + "s/" + id + "/edit"} className="min-w-[100px]">
 			<Button variant="outline">{`Edit ${kind}`}</Button>
 		</Link>
 	);

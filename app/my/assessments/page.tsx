@@ -87,7 +87,7 @@ const AssessmentPage = async (props: { params: tParams }) => {
 							<Box className="lg:col-span-3">
 								<div className="flex flex-col border-b-2 max-w-100">
 									<Skillbar result={avarages[index]} color="lightgray" />
-									<Skillbar result={expected[index]} color="#c9a5a5" />
+									<Skillbar result={expected[index]} color="#F87171" />
 								</div>
 							</Box>
 						</Grid>

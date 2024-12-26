@@ -35,7 +35,7 @@ const Skill = async ({ params, assessmentResults }: Props) => {
 							{assessmentResults.map(
 								(result: AssessmentResult) =>
 									result.jobTitleSkillId == jobTitleSkill.id && (
-										<Skillbar result={result.value} color="#c9a5a5" />
+										<Skillbar result={result.value} color="#F87171" />
 									)
 							)}
 						</div>

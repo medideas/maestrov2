@@ -30,9 +30,15 @@ const Home = async () => {
 							width="100"
 							minHeight={"150px"}
 							align={"center"}
+							justify={"center"}
 							className={`border-none w-100 p-6 ${colors[index]} rounded-md hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out md:py-10`}
 						>
-							<Text weight="light" className="px-1 py-1 text-lg font-bold">
+							<Text
+								weight="light"
+								size="6"
+								align={"center"}
+								className="py-1 text-lg font-bold"
+							>
 								{competency.name}
 							</Text>
 						</Flex>
@@ -59,8 +65,8 @@ const Home = async () => {
 
 			<Flex mt="5" mb="3">
 				<Box>
-					<Heading>My Articles</Heading>
-					<Text>The articles you saved for later</Text>
+					<Heading>Trending content</Heading>
+					<Text>Trending now among maestro's users</Text>
 				</Box>
 			</Flex>
 			<Carousel>

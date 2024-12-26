@@ -4,7 +4,7 @@ const isUserAllowed = (roles: string[], url: string) => {
         result = true;
         return result;
     }
-    if (url === "Articles" && roles.includes("Editor")) {
+    if (url === "Content" && roles.includes("Editor")) {
         result = true;
         return result;
     }
@@ -25,6 +25,15 @@ const isUserAllowed = (roles: string[], url: string) => {
     }
     if (
         url === "ChatMaestro" &&
+        (roles.includes("Learner") ||
+            roles.includes("Editor") ||
+            roles.includes("User Manager"))
+    ) {
+        result = true;
+        return result;
+    }
+    if (
+        url === "Help" &&
         (roles.includes("Learner") ||
             roles.includes("Editor") ||
             roles.includes("User Manager"))
