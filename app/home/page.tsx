@@ -6,6 +6,7 @@ import ArticleCard from "../articles/_components/ArticleCard";
 import { fetchApi } from "../utils/fetchInterceptor";
 import { Carousel } from "../components/carousel/Carousel";
 import carouselStyles from "../components/carousel/carousel.module.css";
+import { AuthenticatedPage } from "../utils/authenticatedPage";
 
 const Home = async () => {
 	const [competencies, suggestedArticles, myArticles] = await Promise.all([
@@ -74,4 +75,4 @@ const Home = async () => {
 	);
 };
 
-export default Home;
+export default AuthenticatedPage(Home);

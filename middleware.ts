@@ -14,7 +14,15 @@ export default async function middleware(req: NextRequest) {
         return NextResponse.redirect(new URL('/login', req.nextUrl))
     }
 
-    return NextResponse.next()
+    // Ensure server components can access the current pathname
+    const requestHeaders = new Headers(req.headers);
+    requestHeaders.set('x-pathname', path);
+
+    return NextResponse.next({
+        request: {
+            headers: requestHeaders,
+        }
+    });
 }
 
 // Routes Middleware should not run on

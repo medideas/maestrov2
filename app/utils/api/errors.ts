@@ -15,6 +15,7 @@ export class ApiError extends Error {
 	}
 }
 export class ClientError extends ApiError {}
+export class UnauthorizedError extends ApiError {}
 export class ServerError extends ApiError {}
 export class OfflineError extends Error {}
 export class ServerConnectionError extends Error {}
