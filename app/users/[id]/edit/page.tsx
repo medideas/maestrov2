@@ -44,4 +44,4 @@ const EditUserPage = async (props: { params: Promise<{ id: string }> }) => {
 	);
 };
 
-export default EditUserPage;
+export default AuthenticatedPage(EditUserPage);

@@ -2,6 +2,7 @@ import { Container, Heading, Text } from "@radix-ui/themes";
 import React from "react";
 import { fetchApi } from "@/app/utils/fetchInterceptor";
 import NewArticleForm from "../_components/NewArticleForm";
+import { AuthenticatedPage } from "@/app/utils/authenticatedPage";
 
 const NewArticle = async () => {
 	const [
@@ -53,4 +54,4 @@ const NewArticle = async () => {
 	);
 };
 
-export default NewArticle;
+export default AuthenticatedPage(NewArticle);

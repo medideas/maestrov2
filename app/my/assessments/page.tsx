@@ -13,6 +13,7 @@ import React from "react";
 import Link from "next/link";
 import { fetchApi } from "@/app/utils/fetchInterceptor";
 import Skillbar from "./_components/Skillbar";
+import { AuthenticatedPage } from "@/app/utils/authenticatedPage";
 
 type tParams = Promise<{ slug: string[] }>;
 
@@ -98,4 +99,4 @@ const AssessmentPage = async (props: { params: tParams }) => {
 	);
 };
 
-export default AssessmentPage;
+export default AuthenticatedPage(AssessmentPage);

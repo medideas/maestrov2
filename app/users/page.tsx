@@ -41,4 +41,4 @@ const Users = async (props: {
 	);
 };
 
-export default Users;
+export default AuthenticatedPage(Users);

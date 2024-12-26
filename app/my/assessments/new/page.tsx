@@ -2,6 +2,7 @@ import { Flex } from "@radix-ui/themes";
 import React from "react";
 import AssessmentForm from "../_components/AssessmentForm";
 import { fetchApi } from "@/app/utils/fetchInterceptor";
+import { AuthenticatedPage } from "@/app/utils/authenticatedPage";
 
 const NewAssessment = async () => {
 	const userId = "d637ba80-30a1-477e-9e07-0894795344c9";
@@ -21,4 +22,4 @@ const NewAssessment = async () => {
 	);
 };
 
-export default NewAssessment;
+export default AuthenticatedPage(NewAssessment);

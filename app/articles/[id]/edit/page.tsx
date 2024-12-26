@@ -58,4 +58,4 @@ const EditArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	);
 };
 
-export default EditArticlePage;
+export default AuthenticatedPage(EditArticlePage);
