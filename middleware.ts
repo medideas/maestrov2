@@ -8,10 +8,10 @@ export default async function middleware(req: NextRequest) {
     const path = req.nextUrl.pathname;
     const isPublicRoute = PUBLIC_ROUTES.includes(path);
     const userLoggedIn = await mightBeLoggedIn();
-    
+
     // check if the route is protected
-    if (!userLoggedIn && !isPublicRoute){ 
-        return NextResponse.redirect(new URL('/login', req.nextUrl))
+    if (!userLoggedIn && !isPublicRoute){
+        return NextResponse.redirect(new URL('/login?unauthorized=true', req.nextUrl))
     }
 
     // Ensure server components can access the current pathname
