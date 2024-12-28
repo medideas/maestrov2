@@ -14,7 +14,7 @@ export const hasJwtExpired = async () => {
         const expiryTimestamp = exp * 1000;
         return expiryTimestamp <= Date.now();
     } catch (error) {
-        console.error("Can't decode JWT token");
+        console.warn("Can't decode JWT token");
         return true;
     }
 }
