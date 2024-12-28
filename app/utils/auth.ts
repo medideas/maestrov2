@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { getCookie } from "./cookies";
 
 export const getJwt = () => getCookie("jwt");

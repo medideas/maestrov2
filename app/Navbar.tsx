@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { Flex } from "@radix-ui/themes";
 import DesktopNavLinks from "./components/navbar/DesktopNavLinks";
 import MobileNavLinks from "./components/navbar/MobileNavLinks";
 import AvatarBox from "./components/navbar/AvatarBox";
 import { fetchApi } from "./utils/fetchInterceptor";
-import { hasCookie } from "cookies-next";
-import { cookies } from "next/headers";
 import { getJwt, hasJwtExpired, mightBeLoggedIn } from "./utils/auth";
 import { Toast } from "./components/ClientToast";
 

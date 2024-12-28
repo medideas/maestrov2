@@ -1,7 +1,5 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
-import currentUser from './app/utils/currentUser';
-import isUserAllowed from './app/utils/isUserAllowed';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 import { mightBeLoggedIn } from './app/utils/auth';
 
 // 1. Specify protected and public routes
@@ -15,13 +13,7 @@ export default async function middleware(req: NextRequest) {
     // check if the route is protected
     if (!userLoggedIn && !isPublicRoute){ 
         return NextResponse.redirect(new URL('/login', req.nextUrl))
-    } 
-
-    // check user roles and redirec if needed
-    // const loggedUser = await currentUser();
-	// if (await isUserAllowed(path, loggedUser)) {
-    //     return NextResponse.redirect(new URL('/login', req.nextUrl))
-    // } 
+    }
 
     return NextResponse.next()
 }
