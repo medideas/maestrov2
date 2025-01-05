@@ -48,13 +48,13 @@ const MobileNavLinks = ({ roles, user }: { roles: string[]; user: User }) => {
 		<Dialog.Root open={isOpen} onOpenChange={setOpen}>
 			<>
 				<Dialog.Trigger asChild>
-					<Flex px="5" pb="5" className="absolute top-10 right-10">
+					<button type="button" className="p-5">
 						<SlMenu
 							size="30"
 							className={isOpen ? "hidden" : "md:hidden visible"}
 						/>
 						<SlClose size="30" className={isOpen ? "visible" : "hidden"} />
-					</Flex>
+					</button>
 				</Dialog.Trigger>
 				<Dialog.Portal forceMount>
 					{shouldRender && (
@@ -64,7 +64,7 @@ const MobileNavLinks = ({ roles, user }: { roles: string[]; user: User }) => {
 					)}
 					{shouldRender && (
 						<Dialog.Content
-							className={`md:hidden bg-navbar h-dvh w-[85%] shadow-xl absolute ${
+							className={`md:hidden bg-navbar h-dvh w-[85%] shadow-xl absolute p-5 ${
 								styles.content
 							} ${isOpen ? styles.contentShow : styles.contentHide}`}
 							onAnimationEnd={onAnimationEnd}
@@ -76,12 +76,12 @@ const MobileNavLinks = ({ roles, user }: { roles: string[]; user: User }) => {
 							</Dialog.Description>
 							<DefaultTheme hasBackground={false}>
 								<AvatarBox user={user} />
-								<Flex pb="5">
+								<nav>
 									<ul className="flex-col flex-1 text-right">
 										{links.map(
 											(link) =>
 												isUserAllowed(roles, link.label) && (
-													<li key={link.href} className="py-2 pr-5">
+													<li key={link.href} className="py-2">
 														<Link
 															href={link.href}
 															className={classnames({
@@ -96,7 +96,7 @@ const MobileNavLinks = ({ roles, user }: { roles: string[]; user: User }) => {
 													</li>
 												)
 										)}
-										<li className="py-2 pr-5">
+										<li className="py-2">
 											<Link
 												href="/logout"
 												className={classnames({
@@ -107,7 +107,7 @@ const MobileNavLinks = ({ roles, user }: { roles: string[]; user: User }) => {
 											</Link>
 										</li>
 									</ul>
-								</Flex>
+								</nav>
 							</DefaultTheme>
 						</Dialog.Content>
 					)}

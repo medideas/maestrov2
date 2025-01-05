@@ -18,8 +18,8 @@ const Navbar = async () => {
 		userRoles.map((r) => roles.push(r.role.name));
 		return (
 			<nav className="p-0 m-0 overflow-x-hidden">
-				<Flex direction="column">
-					<Flex justify="between" className="bg-navbar p-5">
+				<Flex direction={{ initial: "row", sm: "column" }} justify="between" align={{ initial: "center", sm: "end" }} className="bg-navbar">
+					<Flex justify="between" className="p-5 w-full">
 						<Flex display={{ initial: "none", sm: "flex" }}>
 							<AvatarBox user={loggedUser} />
 						</Flex>
@@ -37,14 +37,12 @@ const Navbar = async () => {
 					<Flex
 						display={{ initial: "none", sm: "flex" }}
 						justify="end"
-						className="bg-navbar"
 					>
 						<DesktopNavLinks roles={roles} />
 					</Flex>
 					<Flex
 						display={{ initial: "flex", sm: "none" }}
 						justify="end"
-						className="bg-navbar"
 					>
 						<MobileNavLinks user={loggedUser} roles={roles} />
 					</Flex>
