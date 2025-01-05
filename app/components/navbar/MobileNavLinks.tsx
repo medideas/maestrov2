@@ -1,5 +1,5 @@
 "use client";
-import { Flex, Box, Heading, Avatar } from "@radix-ui/themes";
+import { Flex } from "@radix-ui/themes";
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,10 +10,6 @@ import AvatarBox from "./AvatarBox";
 import { SlClose, SlMenu } from "react-icons/sl";
 import isUserAllowed from "@/app/utils/isUserAllowed";
 import styles from "./mobile-nav-links.module.css";
-
-type User = {
-	firstName: String;
-};
 
 const MobileNavLinks = ({ roles, user }: { roles: string[]; user: User }) => {
 	const [isOpen, setOpen] = useState(false);

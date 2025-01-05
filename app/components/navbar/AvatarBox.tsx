@@ -1,16 +1,9 @@
 "use client";
-import { Avatar, Button, Dialog, Flex, Heading, Box } from "@radix-ui/themes";
+import { Avatar, Flex, Heading, Box } from "@radix-ui/themes";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import React from "react";
 
-type User = {
-	firstName: String;
-};
-
 const AvatarBox = ({ user }: { user: User }) => {
-	const currentPath = usePathname();
-	const currentLink = (url: string, path: string) => {};
 	return (
 		<Flex align="center" mt="3" ml="4">
 			<Link href={`/my/profile`}>
