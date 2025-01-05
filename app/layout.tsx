@@ -3,10 +3,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Flex, Box, Grid, Section, Theme, Text } from "@radix-ui/themes";
+import { Flex, Box, Grid, Section, Text } from "@radix-ui/themes";
 import Navbar from "./Navbar";
 import { Suspense } from "react";
 import { ToastContainer } from "react-toastify";
+import { DefaultTheme } from "./components/DefaultTheme";
 
 export const metadata: Metadata = {
 	title: "Maestro",
@@ -24,7 +25,7 @@ export default async function RootLayout({
 		<html lang="en" className="dm_sans.className">
 			<body className={"flex flex-col m-0 p-0"}>
 				<ToastContainer />
-				<Theme accentColor="red" radius="small" appearance="light">
+				<DefaultTheme>
 					<Navbar />
 					<main className="flex-auto min-h-[80vh]">
 						<Suspense>{children}</Suspense>
@@ -47,7 +48,7 @@ export default async function RootLayout({
 							<Box></Box>
 						</Grid>
 					</Section>
-				</Theme>
+				</DefaultTheme>
 			</body>
 		</html>
 	);
