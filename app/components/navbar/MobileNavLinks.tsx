@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect, useCallback } from "react";
 import classnames from "classnames";
+import { DefaultTheme } from "../DefaultTheme";
 import links from "../../utils/navlink";
 import AvatarBox from "./AvatarBox";
 import { SlClose, SlMenu } from "react-icons/sl";
@@ -69,41 +70,45 @@ const MobileNavLinks = ({ roles, user }: { roles: string[]; user: User }) => {
 							onAnimationEnd={onAnimationEnd}
 							onOpenAutoFocus={(event) => event.preventDefault()}
 						>
-							<Dialog.Title>Site Menu</Dialog.Title>
-							<Dialog.Description>Site Menu</Dialog.Description>
-							<AvatarBox user={user} />
-							<Flex pb="5">
-								<ul className="flex-col flex-1 text-right">
-									{links.map(
-										(link) =>
-											isUserAllowed(roles, link.label) && (
-												<li key={link.href} className="py-2 pr-5">
-													<Link
-														href={link.href}
-														className={classnames({
-															"text-red-800": link.href === currentPath,
-															"text-zinc-500": link.href != currentPath,
-															"font-semibold text-l": true,
-														})}
-														onClick={() => setOpen(false)}
-													>
-														{link.label}
-													</Link>
-												</li>
-											)
-									)}
-									<li className="py-2 pr-5">
-										<Link
-											href="/logout"
-											className={classnames({
-												"font-semibold text-l": true,
-											})}
-										>
-											Logout
-										</Link>
-									</li>
-								</ul>
-							</Flex>
+							<Dialog.Title className="sr-only">Site Menu</Dialog.Title>
+							<Dialog.Description className="sr-only">
+								Site Menu
+							</Dialog.Description>
+							<DefaultTheme hasBackground={false}>
+								<AvatarBox user={user} />
+								<Flex pb="5">
+									<ul className="flex-col flex-1 text-right">
+										{links.map(
+											(link) =>
+												isUserAllowed(roles, link.label) && (
+													<li key={link.href} className="py-2 pr-5">
+														<Link
+															href={link.href}
+															className={classnames({
+																"text-red-800": link.href === currentPath,
+																"text-zinc-500": link.href != currentPath,
+																"font-semibold text-l": true,
+															})}
+															onClick={() => setOpen(false)}
+														>
+															{link.label}
+														</Link>
+													</li>
+												)
+										)}
+										<li className="py-2 pr-5">
+											<Link
+												href="/logout"
+												className={classnames({
+													"font-semibold text-l": true,
+												})}
+											>
+												Logout
+											</Link>
+										</li>
+									</ul>
+								</Flex>
+							</DefaultTheme>
 						</Dialog.Content>
 					)}
 				</Dialog.Portal>
