@@ -1,11 +1,9 @@
 "use client";
-import { Flex, Box, Heading, Avatar } from "@radix-ui/themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import classnames from "classnames";
 import links from "../../utils/navlink";
-import { boolean } from "yup";
 import isUserAllowed from "@/app/utils/isUserAllowed";
 
 const currentNavLink = function (url: string, linkPath: string) {
@@ -17,12 +15,10 @@ const currentNavLink = function (url: string, linkPath: string) {
 };
 
 const DesktopNavLinks = ({ roles }: { roles: string[] }) => {
-	const [isOpen, setOpen] = useState(false);
 	const currentPath = usePathname();
-	let userIsLoggedIn = true;
 
 	return (
-		<div>
+		<nav>
 			<ul className="flex-col tabs group">
 				{links.map(
 					(link) =>
@@ -55,7 +51,7 @@ const DesktopNavLinks = ({ roles }: { roles: string[] }) => {
 					</Link>
 				</li>
 			</ul>
-		</div>
+		</nav>
 	);
 };
 
