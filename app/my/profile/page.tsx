@@ -18,6 +18,7 @@ import LatestAssessment from "../assessments/_components/LatestAssessment";
 import UserAvatar from "./_components/UserAvatar";
 import UserDetailsCard from "./_components/UserDetailsCard";
 import BookmarkedArticles from "./_components/BookmarkedArticles";
+import { AuthenticatedPage } from "@/app/utils/authenticatedPage";
 
 const MyProfile = async () => {
 	const [user, assessment] = await Promise.all([
@@ -48,4 +49,4 @@ const MyProfile = async () => {
 	);
 };
 
-export default MyProfile;
+export default AuthenticatedPage(MyProfile);

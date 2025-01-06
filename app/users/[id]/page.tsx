@@ -39,4 +39,4 @@ const UserPage = async (props: { params: Promise<{ id: string }> }) => {
 	);
 };
 
-export default UserPage;
+export default AuthenticatedPage(UserPage);

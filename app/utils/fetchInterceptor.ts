@@ -4,8 +4,10 @@ import {
 	ServerConnectionError,
 	OfflineError,
 	ServerError,
-	ClientError
+	ClientError,
+	UnauthorizedError
 } from './api/errors'
+import { HttpStatusCode } from "./api/httpStatusCodes";
 
 const fetchInterceptor = async (url: string, options?: RequestInit) => {
 	let res;
@@ -46,6 +48,10 @@ const fetchInterceptor = async (url: string, options?: RequestInit) => {
 	}
 
 	if (status >= 400) {
+		if (status === HttpStatusCode.UNAUTHORIZED) {
+			throw new UnauthorizedError(res, data, pathname);
+		}
+
 		throw new ClientError(res, data, pathname);
 	}
 

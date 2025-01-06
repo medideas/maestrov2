@@ -1,30 +1,28 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
-import { hasCookie, deleteCookie, setCookie } from 'cookies-next/server';
-import { cookies } from 'next/headers';
-import currentUser from './app/utils/currentUser';
-import isUserAllowed from './app/utils/isUserAllowed';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { mightBeLoggedIn, PUBLIC_ROUTES } from './app/utils/auth';
 
 // 1. Specify protected and public routes
-const publicRoutes = ["/login", "/login/log-me-in"]
 
 export default async function middleware(req: NextRequest) {
     const path = req.nextUrl.pathname;
-    const isPublicRoute = publicRoutes.includes(path);
-    const userLoggedIn = await hasCookie('jwt', { cookies });
-    
+    const isPublicRoute = PUBLIC_ROUTES.includes(path);
+    const userLoggedIn = await mightBeLoggedIn();
+
     // check if the route is protected
-    if (!userLoggedIn && !isPublicRoute){ 
-        return NextResponse.redirect(new URL('/login', req.nextUrl))
-    } 
+    if (!userLoggedIn && !isPublicRoute){
+        return NextResponse.redirect(new URL('/login?unauthorized=true', req.nextUrl))
+    }
 
-    // check user roles and redirec if needed
-    // const loggedUser = await currentUser();
-	// if (await isUserAllowed(path, loggedUser)) {
-    //     return NextResponse.redirect(new URL('/login', req.nextUrl))
-    // } 
+    // Ensure server components can access the current pathname
+    const requestHeaders = new Headers(req.headers);
+    requestHeaders.set('x-pathname', path);
 
-    return NextResponse.next()
+    return NextResponse.next({
+        request: {
+            headers: requestHeaders,
+        }
+    });
 }
 
 // Routes Middleware should not run on

@@ -1,21 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { Flex } from "@radix-ui/themes";
 import DesktopNavLinks from "./components/navbar/DesktopNavLinks";
 import MobileNavLinks from "./components/navbar/MobileNavLinks";
 import AvatarBox from "./components/navbar/AvatarBox";
 import { fetchApi } from "./utils/fetchInterceptor";
-import { hasCookie } from "cookies-next";
-import { cookies } from "next/headers";
 import { getJwt, hasJwtExpired, mightBeLoggedIn } from "./utils/auth";
 import { Toast } from "./components/ClientToast";
+import { UnauthorizedError } from "./utils/api/errors";
 
-const Navbar = async () => {
-	if (await mightBeLoggedIn()) {
+const getRoles = async () => {
+	if (!await mightBeLoggedIn()) {
+		return false;
+	}
+
+	try {
 		const loggedUser = await fetchApi(`/my/profile`);
 		const userRoles = loggedUser.roleUsers;
-		let roles: string[] = [];
-		userRoles.map((r) => roles.push(r.role.name));
+		return userRoles.map((r: any) => r.role.name);
+	} catch (error) {
+		if (error instanceof UnauthorizedError) {
+			return false;
+		}
+	}
+};
+
+const Navbar = async () => {
+	const roles = await getRoles();
+
+	if (roles) {
+		const loggedUser = await fetchApi(`/my/profile`);
+		const userRoles = loggedUser.roleUsers;
+		const roles = userRoles.map((r: any) => r.role.name);
 		return (
 			<nav className="p-0 m-0 overflow-x-hidden">
 				<Flex direction="column">
@@ -53,11 +69,8 @@ const Navbar = async () => {
 		);
 	}
 
-	const hasJwt = await getJwt();
-	const isJwtExpired = await hasJwtExpired();
-	if (hasJwt && isJwtExpired) {
-		return <Toast type="warning" message="Login has expired" />;
-	}
+	// Logged out, don't show navbar
+	return null;
 };
 
 export default Navbar;

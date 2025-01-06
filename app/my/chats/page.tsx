@@ -7,6 +7,7 @@ import { PiMagicWandBold } from "react-icons/pi";
 import NewChat from "./_components/NewChat";
 import MobileChatsMenu from "./_components/MobileChatsMenu";
 import SuggestedPrompt from "./_components/SuggestedPrompt";
+import { AuthenticatedPage } from "@/app/utils/authenticatedPage";
 
 const Chatbox = async () => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -101,4 +102,4 @@ const Chatbox = async () => {
 	);
 };
 
-export default Chatbox;
+export default AuthenticatedPage(Chatbox);

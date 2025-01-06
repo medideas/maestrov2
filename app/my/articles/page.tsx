@@ -7,6 +7,7 @@ import { fetchApi } from "../../utils/fetchInterceptor";
 import { headers } from "next/headers";
 import { FaBookmark } from "react-icons/fa6";
 import { Carousel } from "@/app/components/carousel/Carousel";
+import { AuthenticatedPage } from "@/app/utils/authenticatedPage";
 
 interface Article {
 	id: string;
@@ -25,7 +26,7 @@ interface Competency {
 	color: string;
 }
 
-export default async function MyArticles() {
+const MyArticles = async () => {
 	const [
 		competencies,
 		myArticles,
@@ -111,3 +112,5 @@ export default async function MyArticles() {
 		</>
 	);
 }
+
+export default AuthenticatedPage(MyArticles);

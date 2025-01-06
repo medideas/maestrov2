@@ -2,6 +2,7 @@ import { Container, Flex } from "@radix-ui/themes";
 import React from "react";
 import UserForm from "../_components/UserForm";
 import { fetchApi } from "@/app/utils/fetchInterceptor";
+import { AuthenticatedPage } from "@/app/utils/authenticatedPage";
 
 const NewUser = async () => {
 	const [
@@ -31,4 +32,4 @@ const NewUser = async () => {
 	);
 };
 
-export default NewUser;
+export default AuthenticatedPage(NewUser);

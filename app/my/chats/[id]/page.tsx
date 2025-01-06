@@ -5,6 +5,7 @@ import Chatbot from "../_components/Chatbot";
 import { fetchApi } from "@/app/utils/fetchInterceptor";
 import Message from "../_components/Message";
 import MobileChatsMenu from "../_components/MobileChatsMenu";
+import { AuthenticatedPage } from "@/app/utils/authenticatedPage";
 
 type Message = {
 	id: string;
@@ -14,7 +15,7 @@ type Message = {
 const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const id = (await params).id;
 	const chat = await fetchApi(`/my/chats/${id}`);
-	console.log(chat);
+
 	return (
 		<Flex minHeight={"80vh"}>
 			<Sidebar />
@@ -88,4 +89,4 @@ const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 	);
 };
 
-export default ChatPage;
+export default AuthenticatedPage(ChatPage);

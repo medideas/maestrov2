@@ -17,6 +17,7 @@ import { PiFolderPlusThin } from "react-icons/pi";
 import { MdWifiTethering } from "react-icons/md";
 import { GoRocket } from "react-icons/go";
 import * as Accordion from "@radix-ui/react-accordion";
+import { AuthenticatedPage } from "../utils/authenticatedPage";
 
 const HelpPage = async () => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -428,4 +429,4 @@ const HelpPage = async () => {
 	);
 };
 
-export default HelpPage;
+export default AuthenticatedPage(HelpPage);

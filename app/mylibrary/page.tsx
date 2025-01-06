@@ -3,6 +3,7 @@ import React, { Suspense } from "react";
 import ArticleCard from "../articles/_components/ArticleCard";
 import FilterSideBar from "./FilterSideBar";
 import { fetchApi } from "../utils/fetchInterceptor";
+import { AuthenticatedPage } from "../utils/authenticatedPage";
 
 const MyLibrary = async () => {
 	await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -46,4 +47,4 @@ const MyLibrary = async () => {
 	);
 };
 
-export default MyLibrary;
+export default AuthenticatedPage(MyLibrary);

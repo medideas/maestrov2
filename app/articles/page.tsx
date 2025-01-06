@@ -16,6 +16,7 @@ import { fetchApi } from "../utils/fetchInterceptor";
 import ArticlesTable from "./_components/ArticlesTable";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import SyncKnowledge from "../my/chats/_components/SyncKnowledge";
+import { AuthenticatedPage } from "../utils/authenticatedPage";
 
 const getArticles = async () => {
 	try {
@@ -85,4 +86,4 @@ const ArticlesPage = async () => {
 	);
 };
 
-export default ArticlesPage;
+export default AuthenticatedPage(ArticlesPage);

@@ -8,10 +8,24 @@ import {
 	Text,
 } from "@radix-ui/themes";
 import React, { Suspense } from "react";
+import { redirect } from "next/navigation";
+import { mightBeLoggedIn } from "../utils/auth";
 import LoginButton from "./_components/LoginButton";
 
-const LoginPage = async () => {
-	// await new Promise((resolve) => setTimeout(resolve, 2000));
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
+
+const LoginPage = async ({
+	searchParams,
+}: {
+	searchParams: SearchParams;
+}) => {
+	const unauthorized = (await searchParams).unauthorized;
+	if (!unauthorized && await mightBeLoggedIn()) {
+		// Is probably logged in already, redirect to home
+		// If not, redirect to login will occur with ?unauthorized=true
+		redirect("/home");
+	}
+
 	return (
 		<Flex
 			justify="center"
@@ -23,7 +37,7 @@ const LoginPage = async () => {
 					<AspectRatio ratio={16 / 9}>
 						<img
 							src="/login.jpg"
-							alt="Edwards login"
+							alt="Login"
 							style={{
 								objectFit: "cover",
 								width: "100%",

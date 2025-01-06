@@ -198,4 +198,4 @@ const ArticlePage = async (props: { params: Promise<{ id: string }> }) => {
 	);
 };
 
-export default ArticlePage;
+export default AuthenticatedPage(ArticlePage);
