@@ -1,21 +1,9 @@
-import {
-	Badge,
-	Box,
-	Button,
-	Card,
-	Flex,
-	Grid,
-	Heading,
-	Separator,
-	Text,
-	Tooltip,
-} from "@radix-ui/themes";
+import { Button, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
 import React, { Suspense } from "react";
 import Link from "next/link";
 import { fetchApi } from "../utils/fetchInterceptor";
 import ArticlesTable from "./_components/ArticlesTable";
-import { InfoCircledIcon } from "@radix-ui/react-icons";
-import SyncKnowledge from "../my/chats/_components/SyncKnowledge";
+import IngestionJob from "./_components/IngestionJob";
 
 const getArticles = async () => {
 	try {
@@ -26,18 +14,8 @@ const getArticles = async () => {
 	}
 };
 
-const getLastIngestionJob = async () => {
-	try {
-		return await fetchApi("/chatbot/ingestion-jobs/last");
-	} catch (error) {
-		console.error("Error fetching ingestion job status", error);
-		return {};
-	}
-};
-
 const ArticlesPage = async () => {
 	const articles = await getArticles();
-	const ingestionJob = await getLastIngestionJob();
 
 	return (
 		<Flex direction="column" gap="4" p="5">
@@ -61,21 +39,7 @@ const ArticlesPage = async () => {
 					</Flex>
 				</Flex>
 				<Card>
-					<Flex direction={"column"} gap="2" px="3" py="2">
-						<Flex align="center" gap="2">
-							<Tooltip
-								content="Status of the syncronization of Maestro's knowledgebase with the
-							Vector DB"
-							>
-								<InfoCircledIcon />
-							</Tooltip>
-							<Heading size="3" align={"right"}>
-								Knowledgebase syncronization
-							</Heading>
-						</Flex>
-
-						<SyncKnowledge ingestionJob={ingestionJob} />
-					</Flex>
+					<IngestionJob />
 				</Card>
 			</Flex>
 			<Suspense>
