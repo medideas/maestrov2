@@ -14,11 +14,16 @@ const Navbar = async () => {
 	if (await mightBeLoggedIn()) {
 		const loggedUser = await fetchApi(`/my/profile`);
 		const userRoles = loggedUser.roleUsers;
-		let roles: string[] = [];
-		userRoles.map((r) => roles.push(r.role.name));
+		const roles: string[] = [];
+		userRoles.map((r: Role) => roles.push(r.role.name));
 		return (
 			<nav className="p-0 m-0 overflow-x-hidden">
-				<Flex direction={{ initial: "row", sm: "column" }} justify="between" align={{ initial: "center", sm: "end" }} className="bg-navbar">
+				<Flex
+					direction={{ initial: "row", sm: "column" }}
+					justify="between"
+					align={{ initial: "center", sm: "end" }}
+					className="bg-navbar"
+				>
 					<Flex justify="between" className="p-5 w-full">
 						<Flex display={{ initial: "none", sm: "flex" }}>
 							<AvatarBox user={loggedUser} />
@@ -34,16 +39,10 @@ const Navbar = async () => {
 							</Link>
 						</Flex>
 					</Flex>
-					<Flex
-						display={{ initial: "none", sm: "flex" }}
-						justify="end"
-					>
+					<Flex display={{ initial: "none", sm: "flex" }} justify="end">
 						<DesktopNavLinks roles={roles} />
 					</Flex>
-					<Flex
-						display={{ initial: "flex", sm: "none" }}
-						justify="end"
-					>
+					<Flex display={{ initial: "flex", sm: "none" }} justify="end">
 						<MobileNavLinks user={loggedUser} roles={roles} />
 					</Flex>
 				</Flex>

@@ -10,8 +10,8 @@ import carouselStyles from "../components/carousel/carousel.module.css";
 const Home = async () => {
 	const [competencies, suggestedArticles, myArticles] = await Promise.all([
 		fetchApi("/competencies"),
-		fetchApi("/articles"),
-		fetchApi("/my/articles/pinned"),
+		fetchApi("/my/articles/suggested"),
+		fetchApi("/my/articles"),
 	]);
 
 	const colors = ["bg-primary", "bg-secondary", "bg-tertiary", "bg-quartery"];

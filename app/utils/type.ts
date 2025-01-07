@@ -79,6 +79,7 @@ interface RoleUser{
 }
 
 interface Role {
+	role: any;
 	id: String;
 	name: String;
 };
