@@ -30,12 +30,13 @@ const Chatbox = async () => {
 						</Flex>
 						<Flex
 							direction="column"
+							overflow={"hidden"}
 							gap="2"
 							justify={{ initial: "start", md: "center" }}
 							align={{ initial: "start", md: "center" }}
-							px="5"
+							px={{ initial: "0", md: "5" }}
 							mt={{ initial: "10px", md: "150px" }}
-							minWidth={"1400px"}
+							minWidth={{ initial: "100%", md: "80vw" }}
 						>
 							<Heading
 								as="h1"

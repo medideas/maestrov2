@@ -1,6 +1,5 @@
-import { BookmarkIcon, LightningBoltIcon } from "@radix-ui/react-icons";
-import { Flex, Box, Card, Text, Heading } from "@radix-ui/themes";
-import React, { cache } from "react";
+import { Flex, Box, Text, Heading } from "@radix-ui/themes";
+import React from "react";
 import Chatslist from "./ChatsList";
 import { fetchApi } from "@/app/utils/fetchInterceptor";
 
@@ -22,7 +21,14 @@ const Sidebar = async () => {
 					<Heading mb="3" size="4" weight="light">
 						Recent Chats
 					</Heading>
-					<Box>
+					<Flex
+						direction={"column"}
+						position={"absolute"}
+						overflowY={"auto"}
+						maxWidth={"300px"}
+						height={"74vh"}
+						pr="4"
+					>
 						{chats.length === 0 && (
 							<Text size="2">
 								No chats in here yet
@@ -35,7 +41,7 @@ const Sidebar = async () => {
 								<Chatslist chat={chat} key={chat.id} />
 							))}
 						</ul>
-					</Box>
+					</Flex>
 				</Box>
 			</Flex>
 		</>

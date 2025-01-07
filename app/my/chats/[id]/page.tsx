@@ -25,7 +25,6 @@ const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 				justify="between"
 				className="col-span-3"
 				width={"100%"}
-				minHeight={"100%"}
 				style={{ backgroundColor: "white" }}
 			>
 				<Suspense>
@@ -66,7 +65,6 @@ const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 								position={"absolute"}
 								width={"100%"}
 								minWidth={"100%"}
-								height={"100%"}
 								overflowY={"scroll"}
 							>
 								{chat.messages.map((message: Message, index: number) => (
