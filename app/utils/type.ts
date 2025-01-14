@@ -142,6 +142,11 @@ type JobTitleSkill = {
 	jobTitle: JobTitle;
 };
 
+type Assessment = {
+	id: string;
+	name: string;
+}
+
 interface Props {
 	params: { id: string };
 	assessmentResults: AssessmentResult[];

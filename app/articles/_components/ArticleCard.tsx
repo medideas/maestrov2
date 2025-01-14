@@ -11,21 +11,11 @@ import {
 } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
-import { FaBookmark } from "react-icons/fa6";
 
 interface Props {
 	article: Article;
 	className?: string;
 }
-
-type Article = {
-	id: string;
-	title: string;
-	description: string;
-	cover: string;
-	aiGenerated: boolean;
-	internalUseOnly: boolean;
-};
 
 const ArticleCard = ({ article, className }: Props) => {
 	console.log(article);

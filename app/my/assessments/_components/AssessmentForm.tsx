@@ -68,7 +68,8 @@ const AssessmentForm = ({ jobTitleSkills, user }: Props) => {
 					fetch(process.env.NEXT_PUBLIC_APIBASE + "/my/assessments/", {
 						headers: {
 							Accept: "application/json",
-							Authorization: `Bearer ${jwt}`,
+							Authorization: "Bearer " + jwt,
+							"Content-Type": "application/json",
 						},
 						method: "POST",
 						body: JSON.stringify(submitQuiz),

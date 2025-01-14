@@ -1,29 +1,29 @@
 import { fetchApi } from "@/app/utils/fetchInterceptor";
-import AssessementsTable from "../assessments/_components/LatestAssessment";
-import {
-	Avatar,
-	Badge,
-	Box,
-	Card,
-	Container,
-	DataList,
-	Flex,
-	Grid,
-	Heading,
-	Separator,
-	Text,
-} from "@radix-ui/themes";
-import React, { Suspense } from "react";
+import { Container, Flex, Grid, Heading, Separator } from "@radix-ui/themes";
+import React from "react";
 import LatestAssessment from "../assessments/_components/LatestAssessment";
 import UserAvatar from "./_components/UserAvatar";
 import UserDetailsCard from "./_components/UserDetailsCard";
-import BookmarkedArticles from "./_components/BookmarkedArticles";
+import { getCookie } from "cookies-next";
+import TakeNewAssessment from "../assessments/_components/TakeNewAssessment";
 
 const MyProfile = async () => {
-	const [user, assessment] = await Promise.all([
-		fetchApi(`/my/profile`),
-		fetchApi(`/my/assessments`),
-	]);
+	const jwt = getCookie("jwt");
+	const [user] = await Promise.all([fetchApi(`/my/profile`)]);
+
+	const assessment = await fetch(
+		`${process.env.NEXT_PUBLIC_APIBASE}/my/asessements`,
+		{
+			headers: {
+				Authorization: `Bearer ${jwt}`,
+				"Content-Type": "application/json",
+				Accept: "*/*",
+			},
+			method: "GET",
+		}
+	).catch((error) => {
+		console.error("Error fetching assessment:", error);
+	});
 
 	let roles = [""];
 	user.roleUsers.map((role: { role: { name: any } }) =>
@@ -41,7 +41,7 @@ const MyProfile = async () => {
 			<Grid columns={{ initial: "1", sm: "2" }} gap="5">
 				<Flex direction={"column"}>
 					<Heading size="4">Assessements</Heading>
-					<LatestAssessment assessment={assessment} />
+					{assessment.length > 0 ? <LatestAssessment /> : <TakeNewAssessment />}
 				</Flex>
 			</Grid>
 		</Container>

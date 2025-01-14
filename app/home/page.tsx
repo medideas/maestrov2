@@ -1,7 +1,6 @@
 import { Flex, Box, Heading, Text, Grid } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
-import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import ArticleCard from "../articles/_components/ArticleCard";
 import { fetchApi } from "../utils/fetchInterceptor";
 import { Carousel } from "../components/carousel/Carousel";
@@ -54,10 +53,10 @@ const Home = async () => {
 			</Flex>
 			<Carousel>
 				{suggestedArticles &&
-					suggestedArticles.map((article: Article) => (
+					suggestedArticles.map((suggestedArticle: Article) => (
 						<ArticleCard
-							key={article.id}
-							article={article}
+							key={suggestedArticle.id}
+							article={suggestedArticle}
 							className={carouselStyles.item}
 						/>
 					))}
