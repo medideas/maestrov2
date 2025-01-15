@@ -607,9 +607,9 @@ const NewArticleForm = ({
 							<Heading size="3">Relevance per Job Title</Heading>
 							<Grid my="3" columns={"2"} gap="5">
 								{jobTitles.map((jobTitle) => (
-									<Flex direction={"column"}>
+									<Flex key={String(jobTitle.id)} direction={"column"}>
 										<Heading size="2">{jobTitle.name}</Heading>
-										<ul key={jobTitle.id}>
+										<ul>
 											{jobTitleSkills.map(
 												(jobTitleSkill, index) =>
 													jobTitleSkill.jobTitle.name === jobTitle.name && (
@@ -621,7 +621,9 @@ const NewArticleForm = ({
 																<option value="0">0</option>
 																<option value="1">1</option>
 																<option value="2">2</option>
-																<option value="3">3</option>
+																<option value="3" selected defaultValue={"3"}>
+																	3
+																</option>
 															</Field>
 														</Flex>
 													)
