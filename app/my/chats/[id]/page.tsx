@@ -56,6 +56,7 @@ const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 							direction="column"
 							gap="3"
 							position={"relative"}
+							overflowY={"auto"}
 							minWidth={"100%"}
 							width={"100%"}
 							height={"100%"}
@@ -65,7 +66,6 @@ const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 								position={"absolute"}
 								width={"100%"}
 								minWidth={"100%"}
-								overflowY={"scroll"}
 							>
 								{chat.messages.map((message: Message, index: number) => (
 									<Message

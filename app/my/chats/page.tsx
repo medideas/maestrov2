@@ -1,9 +1,6 @@
 import React, { Suspense } from "react";
 import Sidebar from "./_components/Sidebar";
-import { Box, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
-import { FaCar } from "react-icons/fa6";
-import { GrGamepad } from "react-icons/gr";
-import { PiMagicWandBold } from "react-icons/pi";
+import { Flex, Heading, Separator, Text } from "@radix-ui/themes";
 import NewChat from "./_components/NewChat";
 import MobileChatsMenu from "./_components/MobileChatsMenu";
 import SuggestedPrompt from "./_components/SuggestedPrompt";
@@ -12,7 +9,7 @@ const Chatbox = async () => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
 	return (
 		<>
-			<Flex height={"80vh"}>
+			<Flex height={"80vh"} overflowX={"hidden"}>
 				<Sidebar />
 				<Flex id="chatArea" align="center" height="100%">
 					<Flex
@@ -32,8 +29,8 @@ const Chatbox = async () => {
 							direction="column"
 							overflow={"hidden"}
 							gap="2"
-							justify={{ initial: "start", md: "center" }}
-							align={{ initial: "start", md: "center" }}
+							justify={"center"}
+							align={"center"}
 							px={{ initial: "0", md: "5" }}
 							mt={{ initial: "10px", md: "150px" }}
 							minWidth={{ initial: "100%", md: "80vw" }}

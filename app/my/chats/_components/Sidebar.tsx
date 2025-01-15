@@ -26,6 +26,7 @@ const Sidebar = async () => {
 						position={"absolute"}
 						overflowY={"auto"}
 						maxWidth={"300px"}
+						width={"100%"}
 						height={"74vh"}
 						pr="4"
 					>

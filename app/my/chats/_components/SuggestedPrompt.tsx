@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Card, Flex, Link, Text } from "@radix-ui/themes";
+import { Flex, Card, Link, Text } from "@radix-ui/themes";
 import { getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import React, { useCallback } from "react";
@@ -28,8 +28,9 @@ const SuggestedPrompt = ({
 	}, []);
 
 	return (
-		<Box
-			width="350px"
+		<Flex
+			direction={"column"}
+			maxWidth="300px"
 			className="align-middle hover:scale-105 transition-all duration-200"
 		>
 			<Link onClick={handleClick} color="gray">
@@ -48,7 +49,7 @@ const SuggestedPrompt = ({
 					</Flex>
 				</Card>
 			</Link>
-		</Box>
+		</Flex>
 	);
 };
 
