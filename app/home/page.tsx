@@ -1,10 +1,11 @@
-import { Flex, Box, Heading, Text, Grid } from "@radix-ui/themes";
+import { Flex, Box, Heading, Text, Grid, Tooltip } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 import ArticleCard from "../articles/_components/ArticleCard";
 import { fetchApi } from "../utils/fetchInterceptor";
 import { Carousel } from "../components/carousel/Carousel";
 import carouselStyles from "../components/carousel/carousel.module.css";
+import CompetencyCard from "./CompetencyCard";
 
 const Home = async () => {
 	const [competencies, suggestedArticles, myArticles] = await Promise.all([
@@ -23,26 +24,28 @@ const Home = async () => {
 				</Box>
 			</Flex>
 			<Grid columns={{ initial: "2", sm: "4" }} gap="3" width="auto">
-				{competencies.map((competency: Competency, index: number) => (
-					<Link href={`/mylibrary`} key={competency.id}>
-						<Flex
-							width="100"
-							minHeight={"150px"}
-							align={"center"}
-							justify={"center"}
-							className={`border-none w-100 p-6 ${colors[index]} rounded-md hover:scale-105 hover:shadow-md transition-all duration-300 ease-in-out md:py-10`}
+				{competencies.map((competency: Competency, index: number) =>
+					index === 0 ? (
+						<Link href={`/mylibrary`} key={competency.id}>
+							<CompetencyCard
+								competency={competency}
+								colors={colors}
+								index={index}
+							/>
+						</Link>
+					) : (
+						<Tooltip
+							key={competency.id.toString()}
+							content={"Now available yet: coming soon"}
 						>
-							<Text
-								weight="light"
-								size="6"
-								align={"center"}
-								className="py-1 text-lg font-bold"
-							>
-								{competency.name}
-							</Text>
-						</Flex>
-					</Link>
-				))}
+							<CompetencyCard
+								competency={competency}
+								colors={colors}
+								index={index}
+							/>
+						</Tooltip>
+					)
+				)}
 			</Grid>
 
 			<Flex mt="5" mb="3">
@@ -65,7 +68,7 @@ const Home = async () => {
 			<Flex mt="5" mb="3">
 				<Box>
 					<Heading>Trending content</Heading>
-					<Text>Trending now among maestro's users</Text>
+					<Text>Trending now among maestro&apos;s users</Text>
 				</Box>
 			</Flex>
 			<Carousel>
