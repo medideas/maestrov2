@@ -55,7 +55,7 @@ const Home = async () => {
 				{suggestedArticles &&
 					suggestedArticles.map((suggestedArticle: Article) => (
 						<ArticleCard
-							key={suggestedArticle.id}
+							key={suggestedArticle.id.toString()}
 							article={suggestedArticle}
 							className={carouselStyles.item}
 						/>
@@ -71,7 +71,7 @@ const Home = async () => {
 			<Carousel>
 				{myArticles &&
 					myArticles.map((article: Article) => (
-						<ArticleCard key={article.id} article={article} />
+						<ArticleCard key={article.id.toString()} article={article} />
 					))}
 			</Carousel>
 			<div className="flex flex-col-mt-10"></div>
