@@ -1,10 +1,11 @@
 "use client";
-import { fetchApi } from "@/app/utils/fetchInterceptor";
 import { Badge, Button, Flex, Spinner } from "@radix-ui/themes";
+import { getCookie } from "cookies-next";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const SyncKnowledge = ({ ingestionJob }: { ingestionJob: IngestionJob }) => {
+	const jwt = getCookie("jwt");
 	const [submitting, setSubmitting] = useState(false);
 	useEffect(() => {
 		// console.log("ingestionJob", ingestionJob);
@@ -16,7 +17,17 @@ const SyncKnowledge = ({ ingestionJob }: { ingestionJob: IngestionJob }) => {
 	const handleClick = async () => {
 		try {
 			if (!ingestionJob.locked) {
-				await fetchApi("/chatbot/knowledge-base/sync");
+				// await fetchApi("/chatbot/knowledge-base/sync");
+				await fetch(
+					process.env.NEXT_PUBLIC_APIBASE + "/chatbot/knowledge-base/sync",
+					{
+						headers: {
+							Accept: "application/json",
+							Authorization: "Bearer " + jwt,
+						},
+						method: "POST",
+					}
+				);
 				toast.success("Knowledge base sync started");
 			}
 		} catch (error) {
