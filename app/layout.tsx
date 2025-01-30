@@ -1,5 +1,5 @@
 import "@radix-ui/themes/styles.css";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -31,7 +31,7 @@ export default async function RootLayout({
 						<Suspense>{children}</Suspense>
 					</main>
 
-					<Section className="bg-primary">
+					<Section className="bg-navbar">
 						<Grid columns={{ initial: "1", sm: "3" }} gap="4">
 							<Box></Box>
 							<Flex

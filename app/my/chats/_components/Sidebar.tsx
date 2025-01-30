@@ -2,6 +2,7 @@ import { Flex, Box, Text, Heading } from "@radix-ui/themes";
 import React from "react";
 import Chatslist from "./ChatsList";
 import { fetchApi } from "@/app/utils/fetchInterceptor";
+import StartNewChatButton from "./StartNewChatButton";
 
 const Sidebar = async () => {
 	const chats = await fetchApi("/my/chats");
@@ -13,14 +14,17 @@ const Sidebar = async () => {
 				py="2"
 				width={"340px"}
 				minWidth={"340px"}
-				className="min-h-80 border-r-[1px] border-gray-300 bg-stone-200"
+				className="min-h-80 border-r-[1px] border-gray-300 bg-navbar"
 				direction="column"
 				justify="between"
 			>
-				<Box className="min-h-[500px]">
-					<Heading mb="3" size="4" weight="light">
-						Recent Chats
-					</Heading>
+				<Flex className="min-h-[500px]" direction={"column"}>
+					<Flex justify={"between"} align={"center"}>
+						<Heading mb="3" size="4" weight="light">
+							Recent Chats
+						</Heading>
+						{chats.length === 0 && <StartNewChatButton />}
+					</Flex>
 					<Flex
 						direction={"column"}
 						position={"absolute"}
@@ -43,7 +47,7 @@ const Sidebar = async () => {
 							))}
 						</ul>
 					</Flex>
-				</Box>
+				</Flex>
 			</Flex>
 		</>
 	);

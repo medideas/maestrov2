@@ -36,7 +36,7 @@ const Home = async () => {
 					) : (
 						<Tooltip
 							key={competency.id.toString()}
-							content={"Now available yet: coming soon"}
+							content={"Not available yet: coming soon"}
 						>
 							<CompetencyCard
 								competency={competency}
@@ -68,7 +68,7 @@ const Home = async () => {
 			<Flex mt="5" mb="3">
 				<Box>
 					<Heading>Trending content</Heading>
-					<Text>Trending now among maestro&apos;s users</Text>
+					<Text>Trending now among Maestro&apos;s users</Text>
 				</Box>
 			</Flex>
 			<Carousel>

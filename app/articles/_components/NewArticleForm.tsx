@@ -432,7 +432,7 @@ const NewArticleForm = ({
 										</div>
 
 										<div className="form-section">
-											<label htmlFor="articleRegions">Courses</label>
+											<label htmlFor="articleRegions">Regions</label>
 											{regions.map((r, index) => (
 												<Flex key={index}>
 													<Text>

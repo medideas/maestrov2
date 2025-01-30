@@ -76,6 +76,7 @@ const FilterSideBar = ({ competencies }: { competencies: Competency[] }) => {
 								key={index}
 								value={option.name}
 								className="pb-2"
+								disabled={!index}
 								onChange={() => {
 									console.log("ciao");
 								}}

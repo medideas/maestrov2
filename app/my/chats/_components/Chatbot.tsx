@@ -31,7 +31,7 @@ const Chatbot = ({ chatId }: Props) => {
 					display={submitting}
 				>
 					<Spinner size="3" />
-					<Text>Interrogating the knowledgbase...</Text>
+					<Text>Interrogating the knowledge base...</Text>
 				</Flex>
 			)}
 
