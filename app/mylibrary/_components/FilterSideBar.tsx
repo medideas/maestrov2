@@ -50,6 +50,18 @@ const FilterSideBar = ({ competencies }: { competencies: Competency[] }) => {
 				Filters
 			</Heading>
 			<ul>
+				<Link
+					href="/mylibrary"
+					key="all"
+					onClick={() => {
+						router.push("/mylibrary");
+						setActiveTag("");
+					}}
+				>
+					<li className={"first-letter:capitalize py-2 px-5 hover:bg-gray-300"}>
+						Reset filters
+					</li>
+				</Link>
 				{menuItems.map((item, index) => (
 					<Link
 						href={`?tag=${item.replace(/\s+/g, "-").toLowerCase()}`}

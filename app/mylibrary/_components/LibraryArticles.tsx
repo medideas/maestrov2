@@ -9,7 +9,6 @@ const LibraryArticles = () => {
 	const [articles, setArticles] = useState<Article[]>([]);
 	const [loading, setLoading] = useState(true);
 	const searchParams = useSearchParams();
-	console.log(searchParams.get("tag"));
 
 	const fetchArticles = async () => {
 		if (searchParams.get("tag") === null) {
@@ -33,7 +32,6 @@ const LibraryArticles = () => {
 			setLoading(false);
 		}
 	};
-
 	useEffect(() => {
 		fetchArticles();
 	}, []);
