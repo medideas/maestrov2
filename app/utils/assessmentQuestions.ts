@@ -1,11 +1,11 @@
 const assessmentQuestions = 
     [
-    {"jobTitleId": "5b53f32b-5a49-402d-a146-480cd49e14e6",
+    {"jobTitleId": "ce73eb56-7ea5-40e8-9557-752564988b10",
      "name": "Sales Specialist",
      "jobTitleSkillIds": [
         {
-            "jobTitleSkillid": "f7b05807-6a1a-4ba5-b2bd-1e1bd7ed3846",
-            "skillId": "06ba9591-9bad-4b3d-9ec9-765292dde8ad",
+            "jobTitleSkillid": "e31f237d-39b8-4604-adb3-b7ecf9fca695",
+            "skillId": "8f22d68e-9547-4731-a43e-cc7bfcb02fb5",
             "Skill": "Business analytics ",
             "target": 2,
             "target_check": "",
@@ -16,8 +16,8 @@ const assessmentQuestions =
             "Answer_4": "Has an expert knowledge on tools and processes leading to “super champions” role.                              Proactively provides systems ideas towards to more user’s effectiveness.                                                           Teaches others how to use analytics for business decisions and commercial plan."
         },
         {
-            "jobTitleSkillid": "7ec37395-8441-4bac-8468-9b477f3f8b7b",
-            "skillId": "1c40879f-50ec-48fe-8fc6-c1eaeaf55081",
+            "jobTitleSkillid": "66506ac1-a060-4e42-960c-3a0e9b31757e",
+            "skillId": "92b2b061-2155-4fb1-9a20-e764d80169b0",
             "Skill": "Clinical data expertise ",
             "target": 5,
             "target_check": "",
@@ -27,8 +27,8 @@ const assessmentQuestions =
             "Answer_3": "Has an in-depth knowledge of our strategically important studies and registries.                                                                       Understands the differences between RCT, Registries, adjudicated and core labs in the importance and weight given to scientific data.",
             "Answer_4": "Is fully aware of published data and trial designs that are ongoing.                                       Confidently gives quotes and backs up claims with clinical papers and scientific opinions.           Offers an expert opinion on work and is able to propose further clinicl work that needs to be done.       "
         },{
-            "jobTitleSkillid": "1868cea8-c7dd-4161-885a-b691245ac661",
-            "skillId": "d44257b5-d888-4fda-9590-ec728f48f4d7",
+            "jobTitleSkillid": "49f0c414-eb91-4c58-87d6-365e89a6d271",
+            "skillId": "e575132a-0159-4061-9e3a-ffe265081ba2",
             "Skill": "Communication (Objection handing) ",
             "target": 3,
             "target_check": "",
@@ -38,8 +38,8 @@ const assessmentQuestions =
             "Answer_3": "Tailors communication with insights gathered by active listening and maximizes the impact of the message with clarity and conciseness in speaking.                          Addresses and responds effectively to objections during a conversation, negotiation or sales pitch and Understands the root cause of the objection, and presents clear and convincing counterpoints or solutions.",
             "Answer_4": "Adapts to different communication styles, and uses appropriate non-verbal cues.                                                               Maintains a constructive relationships when being confronted with objections and reaches a mutually beneficial outcome."
         },{
-            "jobTitleSkillid": "4d442e81-230f-4b3c-902a-2a54a68d032c",
-            "skillId": "34cf65ef-a07c-4367-a71a-59cbb3500f12",
+            "jobTitleSkillid": "fd825292-fd36-4123-8be5-972756dd99d3",
+            "skillId": "e25e5c4f-b94d-4e20-a9dc-ce18cd7d0bbc",
             "Skill": "Competitive surgical products knowledge ",
             "target": 3,
             "target_check": "",
@@ -49,8 +49,8 @@ const assessmentQuestions =
             "Answer_3": "Has an in-depth  knowledge of our major competitor portfolios.   Confidently presents the value proposition of surgical and aligns with the patient’s and client’s needs.                                                       Can explain the benefits and pitfalls of tissue valves versus mechanical valves.                                                                           Can explain  the difference between valve repair and valve replacement.     ",
             "Answer_4": "Has an in-depth  knowledge of our major competitor portfolios.                                                                  Is able to leverage deep clinical expertise to ask strategic questions and to influence customer decisions both clinically and economically.                                                                                                                    Is expert and can train others of  the benefits and pitfalls of tissue valves versus mechanical valves.         Knows the advantages of valve repair and to make a case for when to repair or replace."
         },{
-            "jobTitleSkillid": "a0963362-5fd0-4ae7-8a58-c973584f8606",
-            "skillId": "77e26f6d-41a8-49be-af6d-607e02e47700",
+            "jobTitleSkillid": "ddb5bb88-48dd-4b89-b6c6-99a0218bfe16",
+            "skillId": "55fe9064-5661-4783-ab74-9fa92f145183",
             "Skill": "Customer Leadership ",
             "target": 1,
             "target_check": "",
@@ -60,8 +60,8 @@ const assessmentQuestions =
             "Answer_3": "Leverages relationships to provide solutions to KOLs in the given territory.                                       Provides material and information about structural heart for external use.\n          \n",
             "Answer_4": "Knows national and international KOLs personally.    Identifies new influencers.                                           Searches actively for new trends and trends in the cardiovascular area.                                                 Can evaluate the impact on EW and communicate to marketing and strategy."
         }, {
-            "jobTitleSkillid": "82446208-876c-4e56-88fc-523c55719b74",
-            "skillId": "e154bb33-f4b9-43fd-90c8-bb543c078e5e",
+            "jobTitleSkillid": "82792d30-eac7-4302-a451-8ba191a41e45",
+            "skillId": "b88e950d-3239-421d-976d-33c8527faa7c",
             "Skill": "Economic drivers & future trends oof the business and industry ",
             "target": 4,
             "target_check": "",
@@ -71,8 +71,8 @@ const assessmentQuestions =
             "Answer_3": "Is able to use knowledge for deep dive discussions with given accounts.                                                                                                               Can draw insights from economic drivers' discussions.\n             ",
             "Answer_4": "Can deal with challenging conversation about economic drivers and innovation.                                       Has a thorough understanding  of the healthcare system  and its  development.                                         Can support and educate others.          "
         }, {
-            "jobTitleSkillid": "9a1663f4-41c7-4070-9688-eb968b4f452b",
-            "skillId": "80f37781-9a41-4e66-8c82-a7c078cea992",
+            "jobTitleSkillid": "4dfcbc5c-5bf2-4177-aef8-8eb9e41c3d46",
+            "skillId": "7584cb54-6e51-4141-af8b-80a450dafc6a",
             "Skill": "Edwards and Surgical strategy ",
             "target": 3,
             "target_check": "",
@@ -82,8 +82,8 @@ const assessmentQuestions =
             "Answer_3": "Understands implications of EW strategy for self and the business.                                                      Integrates EW Surgical Strategy into stakeholder conversation about structural heart disease.           Articulates customer questions in terms of EW solutions.             ",
             "Answer_4": "Can proactively promote EW strategy towards the market.                                                                                   Communicates potential future strategies adjustment back to management.                                                         Can train others on EW strategy."
         },{
-            "jobTitleSkillid": "ea0565b0-c0a9-40a6-bb59-89c2b060edf8",
-            "skillId": "1d395afd-713a-4aa2-96e3-1f5ad92d788a",
+            "jobTitleSkillid": "0f236ae7-60d2-4dcf-b5c9-4eeb6b929b11",
+            "skillId": "8e1ad45e-be99-416d-964c-565ab9b75f89",
             "Skill": "Operational effectiveness",
             "target": 1,
             "target_check": "",
@@ -93,8 +93,8 @@ const assessmentQuestions =
             "Answer_3": "Ensures that Quality and Compliance are enforced for self and team.                                                              Optimizes use of operational dynamics towards field excellence  for self and team (Customers, Portfolio, Pricing, Bid & Tenders, Inventory, Organizational dynamics) and ensures execution accordingly.\n                ",
             "Answer_4": "Trains others on Quality and Compliance applicable rules and processes.                                                Can train other on all  operational dynamics.           Can support enhancement towards more efficiency and shares it with the organization.                        "
         }, {
-            "jobTitleSkillid": "ff23ff5a-6e14-4f90-8fa6-cc49c71a6b2c",
-            "skillId": "bdcc4bf0-536d-4546-a9a0-08c503f5692f",
+            "jobTitleSkillid": "ace73275-1046-4309-a267-8018d9d1764d",
+            "skillId": "4ba4e4c9-fa7e-400c-907f-f66eb5dea4af",
             "Skill": "Partnership building ",
             "target": 2,
             "target_check": "",
@@ -104,8 +104,8 @@ const assessmentQuestions =
             "Answer_3": "Consistently maintains stakeholders map and knows how to activate stakeholders.                                    Connects the right people to accomplish strategic goals.      ",
             "Answer_4": "Actively manages network of stakeholders.               Takes a proactive approach to shape and influence stakeholder expectations.                       "
         }, {
-            "jobTitleSkillid": "fca7e789-233f-416d-835c-e0a81c4b924b",
-            "skillId": "04462db8-471b-4797-bb64-469dd6435bc2",
+            "jobTitleSkillid": "c9c383f8-40d0-43c6-9ddc-243f22277763",
+            "skillId": "c5e157b9-2d4f-4a65-abfc-b8e9add495f8",
             "Skill": "Procedural expertise ",
             "target": 1,
             "target_check": "",
@@ -115,8 +115,8 @@ const assessmentQuestions =
             "Answer_3": "Has an in-depth knowledge of main valve procedures (AVR, MVR, More, TVrep) and a good knowledge of complex procedures and techniques (Bental, combined procedures, MIS and robotic surgery). Understands indications for valve repair or replacement.                                                    Has in-depth knowledge on Mitral and Tricuspid valve repair and is able to support cases and detail tra products.                   ",
             "Answer_4": "Perceived as a technical expert on cardiac procedures and is consulted for advice.                                                             Has an in-depht knowledge of main valve procedures (AVR, MVR, More, TVrep) and a good knowledge of complex procedures and techniques (Bentall, combined procedures, MIS and robotic surgery). Understands indications for valve repair or replacement.                                                                                                                                             Can support EW product use during cases & helps HCPs manage problems or issues.                                                                                                                                Able to support Mitral Valve cases.           "
         }, {
-            "jobTitleSkillid": "6a3403ab-9c95-44d5-933d-fce047d01c23",
-            "skillId": "4d427af3-b3a7-48a3-b3e8-5713c92eb539",
+            "jobTitleSkillid": "fa29a72f-0090-419c-b5f7-8bc1c80c9db5",
+            "skillId": "a48286df-be68-4082-af77-2ca6e55795e5",
             "Skill": "Reimbursement, tendering and GHER proficiency ",
             "target": 5,
             "target_check": "",
@@ -126,8 +126,8 @@ const assessmentQuestions =
             "Answer_3": "Engage with medical societies on Healthcare related topics, advancements and/or changes.                                                                                              Support PA requests and engage with PA on reimbursement related topics.                           Knowledge and understanding the value of involving medical societies in reimbursement activities and the necessity when to involve these stakeholders.                                                                                                     Understanding of value based healthcare approach in the context of Edwards SURG.",
             "Answer_4": "Up-to date on healthcare reforms, planned funding changes and future developments impacting the SHD landscape.                                                       Proactive engagement with PA on healthcare topics if a costomer need is identified in the field.\n \n"
         }, {
-            "jobTitleSkillid": "9a011a49-870f-42a4-be2a-f5ce2ad0eee5",
-            "skillId": "ed9badbb-88ee-432b-92ba-d61ed76a9c92",
+            "jobTitleSkillid": "41980b0e-26d8-4ee3-beca-8fe623daebce",
+            "skillId": "7e609b49-b491-465b-95af-6b50e9c21296",
             "Skill": "Sales call planning ",
             "target": 4,
             "target_check": "",
@@ -137,8 +137,8 @@ const assessmentQuestions =
             "Answer_3": "Autonomously sets clear goals and objective for the Sales calls, for self and team and develops a structured approach to communicate information.   Gathers relevant information about how things are going and identifies and seizes new opportunities.  Anticipates potential challenges or objections.        Stages activities with relevant milestones and schedules.                     ",
             "Answer_4": "Trains team on  setting clear goals and objective for the Sales calls and has a structured approach to communicate information.                                                                                                                              Is consistently on top of what is going on and knows where things stand.                                                    Looks for obstacles and develops excellent contingency plans.                                                                    Coaches his/her team to stages activities with relevant milestones and schedules."
         }, {
-            "jobTitleSkillid": "aee77c2c-0c3e-4d9a-97a7-088d1fe8d27f",
-            "skillId": "751f386c-7eef-4f8b-a9bb-a41b29a8c3be",
+            "jobTitleSkillid": "86712a8f-3dbf-4aea-ac8f-8bd51b1bc98a",
+            "skillId": "62399416-1c34-4baf-96af-7e8e0405646a",
             "Skill": "Strategic thinking Insight Development",
             "target": 5,
             "target_check": "",
@@ -148,8 +148,8 @@ const assessmentQuestions =
             "Answer_3": "Expands analytical insights to build and share strategic narratives.                                                                       Monitors and presents results among own team.           Can support/educate own team on strategy execution.                  ",
             "Answer_4": "Develops collaboration, identifies and anticipates strategic needs, co-creates strategic solutions.             Is expert on how to translate keys analytical into field action according to EW Strategy.                                   Long term thinking.                "
         }, {
-            "jobTitleSkillid": "f42c0ad2-1601-4fa7-aaf9-2049c744387c",
-            "skillId": "ecd06096-fa2f-42f8-a20b-68644a2586e1",
+            "jobTitleSkillid": "db1e3701-eded-41fe-8c6b-89ec2c5bcb84",
+            "skillId": "a4b40c6b-e459-4f41-ba03-62b355bb35ab",
             "Skill": "Structural hearth disease knowledge",
             "target": 5,
             "target_check": "",
@@ -159,8 +159,8 @@ const assessmentQuestions =
             "Answer_3": "Has a good knowledge of anatomy of the cardiovascular system and of the aortic, mitral and tricuspid valve with emphasis on valve function.\nUnderstands patient condition, including specific sub-groups, and can proactively apply this knowledge when interacting with implanters\nUnderstands the guidelines and the levels of evidence and able to compare guidelines between the USA and EU.",
             "Answer_4": "Has an in-depth knowledge of anatomy including reference points to observe during implantation of our Surgical products. Able to give guidance on how to avoid technical pitfalls related to anatomical variance.\nUnderstands patient condition, including specific sub-groups, and can proactively apply this knowledge when interacting with implanters\nUnderstands how the Heart Team puts guidelines into practice. Can have a discussion with physicians on timing of referral and treatment options – surgical, transcatheter or other – for specific patient groups."
         }, {
-            "jobTitleSkillid": "3523e75e-f13e-4a8b-a8aa-a94621b8a9c5",
-            "skillId": "e78f7d0a-da3f-4a00-a80e-ca9bc477860d",
+            "jobTitleSkillid": "38dbc2bb-ba24-409b-946f-67db59e476ba",
+            "skillId": "c00f8f35-cddb-4c2c-9732-a4e735150348",
             "Skill": "Surgical product portfolio knowledge ",
             "target": 4,
             "target_check": "",
@@ -170,8 +170,8 @@ const assessmentQuestions =
             "Answer_3": "Has an in-depth knowledge of the surgical products and is able to use clinical evidence to differentiate our product offering from competition across Aortic and Mitral Replacement.                     Has a strong knowledge of both our Mitral Repair / replace Portfolio and appropriate use.                      In-depth knowledge of our Tricuspid solutions and indications for surgery.                                              Regularly train nurses and support HCPs on the use of our Aortic Portfolio.",
             "Answer_4": "Regularly provides advice to colleagues regarding all technical and clinical aspects of surgical and competitors' products.                                                          Is considered a 'Trainer' & source of expertise.    Has a strong knowledge of both our Mitral Repair / replace Portfolio and appropriate use.                                  In-depht knowledge of our Tricuspid solutions and indications for surgery."
         }, {
-            "jobTitleSkillid": "f2f338a9-0dbc-4d56-84d5-a7c66267d53e",
-            "skillId": "695c96c6-53a6-4b85-ae14-16a0264f49ff",
+            "jobTitleSkillid": "48db4ec7-e17c-4c62-9543-aae31c2a4423",
+            "skillId": "46037095-96c4-4b28-8c42-b254f3b633ce",
             "Skill": "Tender/contract management ",
             "target": 3,
             "target_check": "",
@@ -181,8 +181,8 @@ const assessmentQuestions =
             "Answer_3": "Manages independently major aspects of the tender process.                                                                                                                Works closely with internal stakeholders to prepare the submission.\n  ",
             "Answer_4": "Anticipate future trends.                                                                                       Searches for opportunities to drive patient care in heart valve disease.                                                              Works with KOLs to support further development."
         }, {
-            "jobTitleSkillid": "25a62be8-f451-4c57-a143-4885359c72e8",
-            "skillId": "76604a06-8d77-48ab-9973-0d9bea32bbeb",
+            "jobTitleSkillid": "12de349a-c1ab-472f-93c6-17b05f602345",
+            "skillId": "a4930ac0-6520-48c8-8da3-6ffb0aa4ee00",
             "Skill": "Territory planning ",
             "target": 5,
             "target_check": "",
@@ -192,8 +192,8 @@ const assessmentQuestions =
             "Answer_3": "Integrates & anticipates customers structure changes.                                                                     Leverages centers & stakeholders dynamics as part of your strategy and translates into commercial plan.               ",
             "Answer_4": "Can bring thoughts, ideas and opportunities to the organization with a broader scope than own territory/team.\n"
         },{
-            "jobTitleSkillid": "c7bcd9df-31b4-4863-9e5c-3fe38f5ab66d",
-            "skillId": "2847fd97-4c3b-403a-92d8-4b82ec6093f9",
+            "jobTitleSkillid": "6381075f-d621-4f73-a753-dbfba3ebc4ac",
+            "skillId": "09973710-37ff-48cf-8911-40bb6da62383",
             "Skill": "Transcatheter solution knowledge ",
             "target": 3,
             "target_check": "",
@@ -204,8 +204,8 @@ const assessmentQuestions =
             "Answer_4": "Can explain transcatheter options, indications and clinical results.                                                        Understand Valve in Valve Treatment options and their limitations.                                                         Follows regularly Edwards Partner Studies and ongoing publications.                                             Knows latest TMTT study data and efforts being made for Mitral & tricuspid therapies.              "
         }, {
 
-            "jobTitleSkillid": "0d7077d9-d06d-4abf-9a76-beb25be09fa0",
-            "skillId": "5b53f32b-5a49-402d-a146-480cd49e14e6",
+            "jobTitleSkillid": "e9445483-aee7-4159-9d40-5f2436993d9c",
+            "skillId": "3b555e7c-9692-4fb2-a6bb-419235f8530c",
             "Skill": "Value & Solution selling (Persuasion & Negotiation)",
             "target": 2,
             "target_check": "",
@@ -218,12 +218,12 @@ const assessmentQuestions =
      ]
     },
     {
-     "jobTitleId": "b39188c5-147b-42d0-a766-e48c7cc760df",
+     "jobTitleId": "2493f176-953d-4ed0-844f-23f7a798c4ea",
      "name": "Senior Sales Specialist",
      "jobTitleSkillIds": [
         {
-            "jobTitleSkillid": "a9c84f93-425d-4bb2-aa5b-651a02bea725",
-            "skillId": "06ba9591-9bad-4b3d-9ec9-765292dde8ad",
+            "jobTitleSkillid": "936b16a1-b46d-476a-9201-055f0bb62842",
+            "skillId": "8f22d68e-9547-4731-a43e-cc7bfcb02fb5",
             "Skill": "Business analytics ",
             "target": 4,
             "target check": "",
@@ -234,8 +234,8 @@ const assessmentQuestions =
             "Answer_4": "Has an expert knowledge on tools and processes leading to “super champions” role.                          Proactively provides systems ideas towards to more user’s effectiveness.                                        Teaches others how to use analytics for business decisions and commercial plan.         "
           },
           {
-            "jobTitleSkillid": "3af3be80-373f-4703-81e6-c56a15ee8c33",
-            "skillId": "1c40879f-50ec-48fe-8fc6-c1eaeaf55081",
+            "jobTitleSkillid": "cd1d2c7c-c1ce-492d-be07-86e844c4d1ab",
+            "skillId": "92b2b061-2155-4fb1-9a20-e764d80169b0",
             "Skill": "Clinical data expertise ",
             "target": 2,
             "target check": "",
@@ -246,8 +246,8 @@ const assessmentQuestions =
             "Answer_4": "Is fully aware of published data and trial designs that are ongoing.                                                                Confidently gives quotes and backs up claims with clinical papers and scientific opinions.                        Offers an expert opinion on work and is able to propose further clinical work that needs to be done.                            "
           },
           {
-            "jobTitleSkillid": "01dc7115-d9df-4f47-8fe9-f216402b6e62",
-            "skillId": "d44257b5-d888-4fda-9590-ec728f48f4d7",
+            "jobTitleSkillid": "259daf64-37a1-4899-8050-6c38dcd820f5",
+            "skillId": "e575132a-0159-4061-9e3a-ffe265081ba2",
             "Skill": "Communication (Objection handing) ",
             "target": 2,
             "target check": "",
@@ -258,8 +258,8 @@ const assessmentQuestions =
             "Answer_4": "Adapts to different communication styles, and uses appropriate non-verbal cues.                                      Maintains a constructive relationships when being confronted with objections and reaches a mutually beneficial outcome.             "
           },
           {
-            "jobTitleSkillid": "2dcb021a-49f5-40cd-9da9-7499588cd1e1",
-            "skillId": "34cf65ef-a07c-4367-a71a-59cbb3500f12",
+            "jobTitleSkillid": "b35703b2-2899-4712-9c0b-e979d86c1c66",
+            "skillId": "e25e5c4f-b94d-4e20-a9dc-ce18cd7d0bbc",
             "Skill": "Competitive surgical products knowledge ",
             "target": 5,
             "target check": "",
@@ -270,8 +270,8 @@ const assessmentQuestions =
             "Answer_4": "Has an in-depth knowledge of our major competitor portfolios.                                                                   Is able to leverage deep clinical expertise to ask strategic questions and to influence customer decisions both clinically and economically.               Is expert and can train others of  the benefits and pitfalls of tissue valves versus mechanical valves.    Knows the advantages of valve repair and to make a case for when to repair or replace.                      "
           },
           {
-            "jobTitleSkillid": "b35d9308-fffd-428f-9e62-09fe763b76ee",
-            "skillId": "77e26f6d-41a8-49be-af6d-607e02e47700",
+            "jobTitleSkillid": "9843c556-3938-4bb5-bde1-bd6cd8ae2262",
+            "skillId": "55fe9064-5661-4783-ab74-9fa92f145183",
             "Skill": "Customer Leadership ",
             "target": 2,
             "target check": "",
@@ -282,8 +282,8 @@ const assessmentQuestions =
             "Answer_4": "Knows national and international KOLs personally.     Identifies new influencers.                                            Searches actively for new trends and trends in the cardiovascular area.                                                Can evaluate the impact on EW and communicate to marketing and strategy.                                 "
           },
           {
-            "jobTitleSkillid": "f743fd5c-eab3-4188-a0f9-caccd1f6522f",
-            "skillId": "e154bb33-f4b9-43fd-90c8-bb543c078e5e",
+            "jobTitleSkillid": "87a8de5f-badc-4ef5-9e51-03edc5bd7f84",
+            "skillId": "b88e950d-3239-421d-976d-33c8527faa7c",
             "Skill": "Economic drivers & future trends oof the business and industry ",
             "target": 2,
             "target check": "",
@@ -294,8 +294,8 @@ const assessmentQuestions =
             "Answer_4": "Can deal with challenging conversation about economic drivers and innovation.                            Has a thorough understanding  of the healthcare system  and its  development.                                  Can support and educate others.           "
           },
           {
-            "jobTitleSkillid": "f1155948-75f5-4928-9a59-1daa8d544503",
-            "skillId": "80f37781-9a41-4e66-8c82-a7c078cea992",
+            "jobTitleSkillid": "1c512b23-6878-4b7f-ad49-b4a64fa2b8a0",
+            "skillId": "7584cb54-6e51-4141-af8b-80a450dafc6a",
             "Skill": "Edwards and Surgical strategy ",
             "target": 1,
             "target check": "",
@@ -306,8 +306,8 @@ const assessmentQuestions =
             "Answer_4": "Can proactively promote EW strategy towards the market.                                                                      Communicates potential future strategies adjustment back to management.                           Can train others on EW strategy.              "
           },
           {
-            "jobTitleSkillid": "19da5e72-5b9a-4553-89d6-9abacc9c2b7a",
-            "skillId": "1d395afd-713a-4aa2-96e3-1f5ad92d788a",
+            "jobTitleSkillid": "793dfd21-b3d2-4f10-91fd-6199fc7ae708",
+            "skillId": "8e1ad45e-be99-416d-964c-565ab9b75f89",
             "Skill": "Operational effectiveness",
             "target": 5,
             "target check": "",
@@ -318,8 +318,8 @@ const assessmentQuestions =
             "Answer_4": "Trains others on Quality and Compliance applicable rules and processes.                                               Can train other on all  operational dynamics.            Can support enhancement towards more efficiency and shares it with the organization.                  "
           },
           {
-            "jobTitleSkillid": "b70c07bd-d3dd-46bc-b33f-b1fb44132e32",
-            "skillId": "bdcc4bf0-536d-4546-a9a0-08c503f5692f",
+            "jobTitleSkillid": "32dfb43d-3e26-4b49-8e78-aefd4b7fbd0d",
+            "skillId": "4ba4e4c9-fa7e-400c-907f-f66eb5dea4af",
             "Skill": "Partnership building ",
             "target": 1,
             "target check": "",
@@ -330,8 +330,8 @@ const assessmentQuestions =
             "Answer_4": "Actively manages network of stakeholders.             Takes a proactive approach to shape and influence stakeholder expectations.           "
           },
           {
-            "jobTitleSkillid": "75961cb1-964b-48ff-ad56-9cfaaf18ffed",
-            "skillId": "04462db8-471b-4797-bb64-469dd6435bc2",
+            "jobTitleSkillid": "e169f25e-41ed-4433-9f05-a17ecaa4f47b",
+            "skillId": "c5e157b9-2d4f-4a65-abfc-b8e9add495f8",
             "Skill": "Procedural expertise ",
             "target": 5,
             "target check": "",
@@ -342,8 +342,8 @@ const assessmentQuestions =
             "Answer_4": "Perceived as a technical expert on cardiac procedures and is consulted for advice.                    Has an in-depth knowledge of main  valve procedures (AVR,MVR, More, TVrep) and a good knowledge of complex procedures and techniques (Bentall, combined procedures, MIS and robotic surgery). Understands indications for valve repair or replacement.                                               Can support EW product use during cases & helps HCPs manage problems or issues.                           Able to support Mitral Valve cases.                       "
           },
           {
-            "jobTitleSkillid": "4a19ec12-24d4-48e5-87eb-6872e5668d87",
-            "skillId": "4d427af3-b3a7-48a3-b3e8-5713c92eb539",
+            "jobTitleSkillid": "41c56fd2-780b-489a-8062-1d83c40edcda",
+            "skillId": "a48286df-be68-4082-af77-2ca6e55795e5",
             "Skill": "Reimbursement, tendering and GHER proficiency ",
             "target": 1,
             "target check": "",
@@ -354,8 +354,8 @@ const assessmentQuestions =
             "Answer_4": "Up-to date on healthcare reforms, planned funding changes and future developments impacting the SHD landscape.\nProactive engagement with PA on healthcare topics if a costomer need is identified in the field.\n"
           },
           {
-            "jobTitleSkillid": "574189d7-e147-410b-b346-b0f162ff9a07",
-            "skillId": "ed9badbb-88ee-432b-92ba-d61ed76a9c92",
+            "jobTitleSkillid": "1495c58a-c964-4a03-8bb3-36c192a7f1b1",
+            "skillId": "7e609b49-b491-465b-95af-6b50e9c21296",
             "Skill": "Sales call planning ",
             "target": 1,
             "target check": "",
@@ -366,8 +366,8 @@ const assessmentQuestions =
             "Answer_4": "Trains team on  setting clear goals and objective for the Sales calls and has a structured approach to communicate information.                                         Is consistently on top of what is going on and knows where things stand.                                      Looks for obstacles and develops excellent contingency plans.                                                   Coaches his/her team to stages activities with relevant milestones and schedules.                     "
           },
           {
-            "jobTitleSkillid": "bd6e0674-972e-4475-984d-6b5dafa63888",
-            "skillId": "751f386c-7eef-4f8b-a9bb-a41b29a8c3be",
+            "jobTitleSkillid": "a3e86273-8a1b-4bc5-b550-0492d8269902",
+            "skillId": "62399416-1c34-4baf-96af-7e8e0405646a",
             "Skill": "Strategic thinking Insights Development",
             "target": 1,
             "target check": "",
@@ -378,8 +378,8 @@ const assessmentQuestions =
             "Answer_4": "Develops collaboration, identifies and anticipates strategic needs, co-creates strategic solutions.            Is expert on how to translate keys analytical into field action according to EW Strategy.                               Long term thinking.                    "
           },
           {
-            "jobTitleSkillid": "a0519158-4c63-4428-8552-4df252f331c4",
-            "skillId": "ecd06096-fa2f-42f8-a20b-68644a2586e1",
+            "jobTitleSkillid": "56d65633-e783-428e-bab9-8faf37b869d2",
+            "skillId": "a4b40c6b-e459-4f41-ba03-62b355bb35ab",
             "Skill": "Structural hearth disease knowledge",
             "target": 1,
             "target check": "",
@@ -390,8 +390,8 @@ const assessmentQuestions =
             "Answer_4": "Has an in-depth knowledge of anatomy including reference points to observe during implantation of our Surgical products. Able to give guidance on how to avoid technical pitfalls related to anatomical variance.                                                                    Understands patient condition, including specific sub-groups, and can proactively apply this knowledge when interacting with implanters.           Understands how the Heart Team puts guidelines into practice. Can have a discussion with physicians on timing of referral and treatment options – surgical, transcatheter or other – for specific patient groups.                                     "
           },
           {
-            "jobTitleSkillid": "65f2dd8e-a0ed-4641-85c2-d5b59bcdb3ba",
-            "skillId": "e78f7d0a-da3f-4a00-a80e-ca9bc477860d",
+            "jobTitleSkillid": "d5a09e37-1663-42d8-b3d3-0dfefd84e585",
+            "skillId": "c00f8f35-cddb-4c2c-9732-a4e735150348",
             "Skill": "Surgical product portfolio knowledge ",
             "target": 1,
             "target check": "",
@@ -402,8 +402,8 @@ const assessmentQuestions =
             "Answer_4": "Regularly provides advice to colleagues regarding all technical and clinical aspects of surgical and competitors’ products.                                              Is considered a 'Trainer' & source of expertise.          Has a strong knowledge of both our Mitral Repair / replace Portfolio and appropriate use.                      In-depth knowledge of our Tricuspid solutions and indications for surgery.                                            "
           },
           {
-            "jobTitleSkillid": "804c7998-dbeb-4cc7-91d8-ca7426781a25",
-            "skillId": "695c96c6-53a6-4b85-ae14-16a0264f49ff",
+            "jobTitleSkillid": "e60f4327-fe50-4c94-8b66-0292a4687ee6",
+            "skillId": "46037095-96c4-4b28-8c42-b254f3b633ce",
             "Skill": "Tender/contract management ",
             "target": 5,
             "target check": "",
@@ -414,8 +414,8 @@ const assessmentQuestions =
             "Answer_4": "Anticipate future trends.                                              Searches for opportunities to drive patient care in heart valve disease.                                                    Works with KOLs to support further development.                          "
           },
           {
-            "jobTitleSkillid": "538502cb-2cee-4da2-9f3d-45aea83ad185",
-            "skillId": "76604a06-8d77-48ab-9973-0d9bea32bbeb",
+            "jobTitleSkillid": "bbc234b0-dab8-430d-b772-84f88cfc83d3",
+            "skillId": "a4930ac0-6520-48c8-8da3-6ffb0aa4ee00",
             "Skill": "Territory planning ",
             "target": 1,
             "target check": "",
@@ -426,8 +426,8 @@ const assessmentQuestions =
             "Answer_4": "Can bring thoughts, ideas and opportunities to the organization with a broader scope than own territory/team.\n"
           },
           {
-            "jobTitleSkillid": "e1efcb17-ceff-4100-a440-ecd742be5499",
-            "skillId": "2847fd97-4c3b-403a-92d8-4b82ec6093f9",
+            "jobTitleSkillid": "866c5652-edb9-4f68-836b-8e755d8dbcff",
+            "skillId": "09973710-37ff-48cf-8911-40bb6da62383",
             "Skill": "Transcatheter solution knowledge ",
             "target": 2,
             "target check": "",
@@ -438,8 +438,8 @@ const assessmentQuestions =
             "Answer_4": "Can explain transcatheter options, indications and clinical results.                                                           Understand Valve in Valve Treatment options and their limitations.                                                                 Follows regularly Edwards Partner Studies and ongoing publications.                                                        Knows latest TMTT study data and efforts being made for Mitral & tricuspid therapies."
           },
           {
-            "jobTitleSkillid": "67b18126-7e5d-45a7-997e-c06fe2282e8c",
-            "skillId": "f8688f98-caac-42ee-b764-96872afcf43e",
+            "jobTitleSkillid": "c99bf60a-e797-438d-b2ce-5c0e05842760",
+            "skillId": "3b555e7c-9692-4fb2-a6bb-419235f8530c",
             "Skill": "Value & Solution selling (Persuasion & Negotiation)",
             "target": 1,
             "target check": "",
@@ -451,12 +451,12 @@ const assessmentQuestions =
           },
      ]
     },{
-     "jobTitleId": "13d0807a-363a-4898-a1e7-8779c0682556",
+     "jobTitleId": "79d3fecf-1405-4606-ae17-780c6e83d0db",
      "name": "Sales Manager",
      "jobTitleSkillIds": [
         {
-            "jobTitleSkillid": "e05edf52-f594-4760-9708-f1c672b3f143",
-            "skillId": "79edc0cf-ce60-47c7-a001-cdbc4db550c0",
+            "jobTitleSkillid": "2d459b60-4366-4c73-9a51-7d3499022cea",
+            "skillId": "8f22d68e-9547-4731-a43e-cc7bfcb02fb5",
             "Skill": "Business analytics ",
             "target": 4,
             "target check": "",
@@ -467,8 +467,8 @@ const assessmentQuestions =
             "Answer_4": "Has an expert knowledge on tools and processes leading to “super champions” role.                           Proactively provides systems ideas towards to more user’s effectiveness.                                        Teaches others how to use analytics for business decisions and commercial plan.              "
           },
           {
-            "jobTitleSkillid": "eac2c2fb-4685-4fac-8216-a9f6cf78e336",
-            "skillId": "d0ee29ba-80e2-4311-a2c3-cbc9578b887a",
+            "jobTitleSkillid": "66499b9f-1456-42ed-bdfa-4c2c0b152f5f",
+            "skillId": "92b2b061-2155-4fb1-9a20-e764d80169b0",
             "Skill": "Clinical data expertise ",
             "target": 1,
             "target check": "",
@@ -479,8 +479,8 @@ const assessmentQuestions =
             "Answer_4": "Is fully aware of published data and trial designs that are ongoing.                                                       Confidently gives quotes and backs up claims with clinical papers and scientific opinions.                       Offers an expert opinion on work and is able to propose further clinical work that needs to be done.        "
           },
           {
-            "jobTitleSkillid": "bb4f97f3-4660-402d-be1d-357f5f6daff2",
-            "skillId": "723f3f43-e18e-4b00-9ded-91993640db3b",
+            "jobTitleSkillid": "3784a22d-2e46-449f-b2a0-6df196971137",
+            "skillId": "e575132a-0159-4061-9e3a-ffe265081ba2",
             "Skill": "Communication (Objection handing) ",
             "target": 5,
             "target check": "",
@@ -491,8 +491,8 @@ const assessmentQuestions =
             "Answer_4": "Adapts to different communication styles, and uses appropriate non-verbal cues.                                      Maintains a constructive relationships when being confronted with objections and reaches a mutually beneficial outcome.      "
           },
           {
-            "jobTitleSkillid": "3bd3a465-14db-4d04-a370-0b0e25d6b1ca",
-            "skillId": "5f101c61-d68e-45f1-b3c1-127bf65eb7d1",
+            "jobTitleSkillid": "b61b99d8-636a-4c64-b00c-5f1c8212e1ad",
+            "skillId": "e25e5c4f-b94d-4e20-a9dc-ce18cd7d0bbc",
             "Skill": "Competitive surgical products knowledge ",
             "target": 2,
             "target check": "",
@@ -503,8 +503,8 @@ const assessmentQuestions =
             "Answer_4": "Has an in-depth knowledge of our major competitor portfolios.                                                Is able to leverage deep clinical expertise to ask strategic questions and to influence customer decisions both clinically and economically.               Is expert and can train others of  the benefits and pitfalls of tissue valves versus mechanical valves.   Knows the advantages of valve repair and to make a case for when to repair or replace.          "
           },
           {
-            "jobTitleSkillid": "52bf1d31-508c-4468-ac67-4a0fdc606bc5",
-            "skillId": "feb86590-3ab1-4755-bc9e-7d4a3f12c354",
+            "jobTitleSkillid": "67375811-dc1f-4706-9ec2-b3ded0434485",
+            "skillId": "55fe9064-5661-4783-ab74-9fa92f145183",
             "Skill": "Customer Leadership ",
             "target": 5,
             "target check": "",
@@ -515,8 +515,8 @@ const assessmentQuestions =
             "Answer_4": "Knows national and international KOLs personally.      Identifies new influencers.                                           Searches actively for new trends and trends in the cardiovascular area.                                               Can evaluate the impact on EW and communicate to marketing and strategy.                  "
           },
           {
-            "jobTitleSkillid": "62e4b95a-f248-4626-b81b-60f4dad44564",
-            "skillId": "7929a325-52fc-47f1-9d08-4486014efd88",
+            "jobTitleSkillid": "03daad68-0e07-466e-bd72-e17f954118ad",
+            "skillId": "b88e950d-3239-421d-976d-33c8527faa7c",
             "Skill": "Economic drivers & future trends oof the business and industry ",
             "target": 5,
             "target check": "",
@@ -527,8 +527,8 @@ const assessmentQuestions =
             "Answer_4": "Can deal with challenging conversation about economic drivers and innovation.                             Has a thorough understanding  of the healthcare system  and its  development.                                          Can support and educate others.                "
           },
           {
-            "jobTitleSkillid": "bd0649e7-dd42-45b9-b468-f4ffe78f0457",
-            "skillId": "0d509511-d39c-43dd-a3dd-fef40900241b",
+            "jobTitleSkillid": "b5ddd880-1732-41c0-a736-bf55028bedf6",
+            "skillId": "7584cb54-6e51-4141-af8b-80a450dafc6a",
             "Skill": "Edwards and Surgical strategy ",
             "target": 3,
             "target check": "",
@@ -539,8 +539,8 @@ const assessmentQuestions =
             "Answer_4": "Can proactively promote EW strategy towards the market.                                                                        Communicates potential future strategies adjustment back to management.                                                 Can train others on EW strategy.         "
           },
           {
-            "jobTitleSkillid": "4471ab69-949d-4e43-8ff3-341b9ed8393f",
-            "skillId": "b725268a-6704-4ab9-9008-0fd7b4942fc0",
+            "jobTitleSkillid": "6dafd8c5-c7c9-42e1-8e79-1e115987e24a",
+            "skillId": "8e1ad45e-be99-416d-964c-565ab9b75f89",
             "Skill": "Operational effectiveness",
             "target": 3,
             "target check": "",
@@ -551,8 +551,8 @@ const assessmentQuestions =
             "Answer_4": "Trains others on Quality and Compliance applicable rules and processes.                                                  Can train other on all  operational dynamics.             Can support enhancement towards more efficiency and shares it with the organization.           "
           },
           {
-            "jobTitleSkillid": "6d18d012-eba4-4079-8f76-bd7aed63cbb2",
-            "skillId": "7ea2283c-a6c5-4c1c-a0dd-d798c2f3b6ec -",
+            "jobTitleSkillid": "243bc76e-c540-4b1e-a17e-b924109e3c1e",
+            "skillId": "4ba4e4c9-fa7e-400c-907f-f66eb5dea4af",
             "Skill": "Partnership building ",
             "target": 2,
             "target check": "",
@@ -563,8 +563,8 @@ const assessmentQuestions =
             "Answer_4": "Actively manages network of stakeholders.             Takes a proactive approach to shape and influence stakeholder expectations.        "
           },
           {
-            "jobTitleSkillid": "e3e547cb-4312-411a-a32b-c40f0e71c771",
-            "skillId": "7ff782ba-fa6d-4f0e-a7c2-33fbcdaa8ace",
+            "jobTitleSkillid": "0a3d95ac-ce7e-4f2d-82a2-4c2fc084a69e",
+            "skillId": "c5e157b9-2d4f-4a65-abfc-b8e9add495f8",
             "Skill": "Procedural expertise ",
             "target": 4,
             "target check": "",
@@ -575,8 +575,8 @@ const assessmentQuestions =
             "Answer_4": "Perceived as a technical expert on cardiac procedures and is consulted for advice.                   Has an in-depth knowledge of main  valve procedures (AVR,MVR, More, TVrep) and a good knowledge of complex procedures and techniques (Bentall, combined procedures, MIS and robotic surgery). Understands indications for valve repair or replacement.                                                Can support EW product use during cases & helps HCPs manage problems or issues.                           Able to support Mitral Valve cases.                               "
           },
           {
-            "jobTitleSkillid": "4da6aac3-b5a0-4bdd-920e-4bbcec282112",
-            "skillId": "2178838c-0aa4-46dc-910a-07d677564a43",
+            "jobTitleSkillid": "1c14ceb6-9117-4eb2-96c4-1e2d874ae2c3",
+            "skillId": "a48286df-be68-4082-af77-2ca6e55795e5",
             "Skill": "Reimbursement, tendering and GHER proficiency ",
             "target": 4,
             "target check": "",
@@ -587,8 +587,8 @@ const assessmentQuestions =
             "Answer_4": "Up-to date on healthcare reforms, planned funding changes and future developments impacting the SHD landscape.                                                        Proactive engagement with PA on healthcare topics if a costomer need is identified in the field.\n       \n"
           },
           {
-            "jobTitleSkillid": "d48d3b64-2ebf-4c0e-af5b-e8fb3624ce1e",
-            "skillId": "4b3256b4-b3fc-4408-b99f-ebb1e5849e9e",
+            "jobTitleSkillid": "55006e62-ef7b-4987-a9c8-d18635295132",
+            "skillId": "7e609b49-b491-465b-95af-6b50e9c21296",
             "Skill": "Sales call planning ",
             "target": 4,
             "target check": "",
@@ -599,8 +599,8 @@ const assessmentQuestions =
             "Answer_4": "Trains team on  setting clear goals and objective for the Sales calls and has a structured approach to communicate information.                                         Is consistently on top of what is going on and knows where things stand.                                        Looks for obstacles and develops excellent contingency plans.                                                    Coaches his/her team to stages activities with relevant milestones and schedules.                    "
           },
           {
-            "jobTitleSkillid": "86fab83c-0f4b-46c5-bf8e-1a4a6974e786",
-            "skillId": "7ee8dab7-e121-4c8a-ba66-546014ffb331",
+            "jobTitleSkillid": "25991f34-cba2-46f9-a841-f7dd0e6a7c8a",
+            "skillId": "62399416-1c34-4baf-96af-7e8e0405646a",
             "Skill": "Strategic thinking Insights Development",
             "target": 1,
             "target check": "",
@@ -611,8 +611,8 @@ const assessmentQuestions =
             "Answer_4": "Develops collaboration, identifies and anticipates strategic needs, co-creates strategic solutions.        Is expert on how to translate keys analytical into field action according to EW Strategy.                       Long term thinking.                    "
           },
           {
-            "jobTitleSkillid": "1364ffef-bcbd-4e51-a05f-33f229227ebb",
-            "skillId": "339018fe-37b9-426d-9db1-10315b069e4b",
+            "jobTitleSkillid": "f63f2898-a6e1-44d6-b681-352f8e6c1b1e",
+            "skillId": "a4b40c6b-e459-4f41-ba03-62b355bb35ab",
             "Skill": "Structural hearth disease knowledge",
             "target": 1,
             "target check": "",
@@ -623,8 +623,8 @@ const assessmentQuestions =
             "Answer_4": "Has an in-depth knowledge of anatomy including reference points to observe during implantation of our Surgical products. Able to give guidance on how to avoid technical pitfalls related to anatomical variance.  Understands patient condition, including specific sub-groups, and can proactively apply this knowledge when interacting with implanters.                                   Understands how the Heart Team puts guidelines into practice. Can have a discussion with physicians on timing of referral and treatment options – surgical, transcatheter or other – for specific patient groups.                     "
           },
           {
-            "jobTitleSkillid": "20c5f0d4-68ed-4984-ae20-60a8e9f8c0d2",
-            "skillId": "2067d763-2742-4d6d-b470-a8bf981b62c4",
+            "jobTitleSkillid": "700eaefc-b81e-415a-8e16-180836231111",
+            "skillId": "c00f8f35-cddb-4c2c-9732-a4e735150348",
             "Skill": "Surgical product portfolio knowledge ",
             "target": 3,
             "target check": "",
@@ -635,8 +635,8 @@ const assessmentQuestions =
             "Answer_4": "Regularly provides advice to colleagues regarding all technical and clinical aspects of surgical and competitors’ products.                                                     Is considered a 'Trainer' & source of expertise.                Has a strong knowledge of both our Mitral Repair / replace Portfolio and appropriate use.                             In-depth knowledge of our Tricuspid solutions and indications for surgery.                "
           },
           {
-            "jobTitleSkillid": "17b3b00e-e46d-41f3-b47a-e34bd297362a",
-            "skillId": "1bf2502c-3b1b-430b-b684-0c5edea7906c",
+            "jobTitleSkillid": "2c795991-f3c1-46bd-8349-b389ffd38e7c",
+            "skillId": "46037095-96c4-4b28-8c42-b254f3b633ce",
             "Skill": "Tender/contract management ",
             "target": 2,
             "target check": "",
@@ -647,8 +647,8 @@ const assessmentQuestions =
             "Answer_4": "Anticipate future trends.                                            Searches for opportunities to drive patient care in heart valve disease.                                                  Works with KOLs to support further development.            "
           },
           {
-            "jobTitleSkillid": "9f6660c7-8e24-40b2-8618-9090f40e3404",
-            "skillId": "55d3974a-2299-44cd-86da-8b0065b6d244",
+            "jobTitleSkillid": "79cb490d-8e2d-4ae3-b267-8b52ee2ff6af",
+            "skillId": "a4930ac0-6520-48c8-8da3-6ffb0aa4ee00",
             "Skill": "Territory planning ",
             "target": 4,
             "target check": "",
@@ -659,8 +659,8 @@ const assessmentQuestions =
             "Answer_4": "Can bring thoughts, ideas and opportunities to the organization with a broader scope than own territory/team.\n"
           },
           {
-            "jobTitleSkillid": "37201764-9795-439e-90da-89d680136079",
-            "skillId": "14f7d493-3033-44eb-b6dd-39b7f86ab84c",
+            "jobTitleSkillid": "b5df20c8-acea-4f72-80bc-a189c31ec031",
+            "skillId": "09973710-37ff-48cf-8911-40bb6da62383",
             "Skill": "Transcatheter solution knowledge ",
             "target": 3,
             "target check": "",
@@ -671,8 +671,8 @@ const assessmentQuestions =
             "Answer_4": "Can explain transcatheter options, indications and clinical results.                                                          Understand Valve in Valve Treatment options and their limitations.                                                         Follows regularly Edwards Partner Studies and ongoing publications.                                               Knows latest TMTT study data and efforts being made for Mitral & tricuspid therapies.                      "
           },
           {
-            "jobTitleSkillid": "2c1b6fa9-b471-41e0-aecd-a33c69261f5a",
-            "skillId": "355c6331-91b3-4304-8bee-5e41e30ff7ba",
+            "jobTitleSkillid": "544b7b1d-1f59-4e93-a34d-9ad66fcfd400",
+            "skillId": "3b555e7c-9692-4fb2-a6bb-419235f8530c",
             "Skill": "Value & Solution selling (Persuasion & Negotiation)",
             "target": 3,
             "target check": "",
@@ -684,12 +684,12 @@ const assessmentQuestions =
           },
      ]  
     },{
-     "jobTitleId": "4da6b68c-4400-4711-bcb8-55636a1674e5",
+     "jobTitleId": "b164c0d1-82ac-467e-a1f5-b56adc7e1dc7",
      "name": "Senior Sales Manager",
      "jobTitleSkillIds": [
         {
-            "jobTitleSkillid": "255d1fce-bf45-4c34-bde4-5a75dbf63daa",
-            "skillId": "79edc0cf-ce60-47c7-a001-cdbc4db550c0",
+            "jobTitleSkillid": "73bc1ab5-2e43-4294-ada4-05400ba858ed",
+            "skillId": "8f22d68e-9547-4731-a43e-cc7bfcb02fb5",
             "Skill": "Business analytics ",
             "target": 5,
             "target check": "",
@@ -700,8 +700,8 @@ const assessmentQuestions =
             "Answer_4": "Has an expert knowledge on tools and processes leading to “super champions” role.                           Proactively provides systems ideas towards to more user’s effectiveness.                                         Teaches others how to use analytics for business decisions and commercial plan.                                                                  "
           },
           {
-            "jobTitleSkillid": "a46d0f7b-5a12-4bbd-8ead-0a2ed77a6c34",
-            "skillId": "d0ee29ba-80e2-4311-a2c3-cbc9578b887a",
+            "jobTitleSkillid": "3696e126-dada-4ba1-8ae0-9155ab25a92e",
+            "skillId": "92b2b061-2155-4fb1-9a20-e764d80169b0",
             "Skill": "Clinical data expertise ",
             "target": 2,
             "target check": "",
@@ -712,8 +712,8 @@ const assessmentQuestions =
             "Answer_4": "Is fully aware of published data and trial designs that are ongoing.                                                        Confidently gives quotes and backs up claims with clinical papers and scientific opinions.                     Offers an expert opinion on work and is able to propose further clinical work that needs to be done.                "
           },
           {
-            "jobTitleSkillid": "dc808cc4-2143-4951-87aa-0d2a825362b7",
-            "skillId": "723f3f43-e18e-4b00-9ded-91993640db3b",
+            "jobTitleSkillid": "5dcdebcb-acb7-4369-8b5a-3fa6976fc4cb",
+            "skillId": "e575132a-0159-4061-9e3a-ffe265081ba2",
             "Skill": "Communication (Objection handing) ",
             "target": 1,
             "target check": "",
@@ -724,8 +724,8 @@ const assessmentQuestions =
             "Answer_4": "Adapts to different communication styles, and uses appropriate non-verbal cues.                                    Maintains a constructive relationships when being confronted with objections and reaches a mutually beneficial outcome.                                     "
           },
           {
-            "jobTitleSkillid": "d3ae4734-23c8-4b10-aea0-6e75e96864f2",
-            "skillId": "5f101c61-d68e-45f1-b3c1-127bf65eb7d1",
+            "jobTitleSkillid": "1901962c-322a-44e4-ba46-01b27391ecc7",
+            "skillId": "e25e5c4f-b94d-4e20-a9dc-ce18cd7d0bbc",
             "Skill": "Competitive surgical products knowledge ",
             "target": 4,
             "target check": "",
@@ -736,8 +736,8 @@ const assessmentQuestions =
             "Answer_4": "Has an in-depth knowledge of our major competitor portfolios.                                                                     Is able to leverage deep clinical expertise to ask strategic questions and to influence customer decisions both clinically and economically.                  Is expert and can train others of  the benefits and pitfalls of tissue valves versus mechanical valves.       Knows the advantages of valve repair and to make a case for when to repair or replace.               "
           },
           {
-            "jobTitleSkillid": "291018d8-3df2-4776-a9eb-44bf05a91be0",
-            "skillId": "feb86590-3ab1-4755-bc9e-7d4a3f12c354",
+            "jobTitleSkillid": "423f55be-568a-4478-bba3-3dc72d10cf0d",
+            "skillId": "55fe9064-5661-4783-ab74-9fa92f145183",
             "Skill": "Customer Leadership ",
             "target": 1,
             "target check": "",
@@ -748,8 +748,8 @@ const assessmentQuestions =
             "Answer_4": "Knows national and international KOLs personally.   Identifies new influencers.                                         Searches actively for new trends and trends in the cardiovascular area.                                            Can evaluate the impact on EW and communicate to marketing and strategy.                 "
           },
           {
-            "jobTitleSkillid": "58f982b1-ef0e-43a3-b11d-e1fb8494f02c",
-            "skillId": "7929a325-52fc-47f1-9d08-4486014efd88",
+            "jobTitleSkillid": "e37c0191-dd16-464d-bb80-ccc204e0f4b8",
+            "skillId": "b88e950d-3239-421d-976d-33c8527faa7c",
             "Skill": "Economic drivers & future trends oof the business and industry ",
             "target": 2,
             "target check": "",
@@ -760,8 +760,8 @@ const assessmentQuestions =
             "Answer_4": "Can deal with challenging conversation about economic drivers and innovation.                                   Has a thorough understanding  of the healthcare system  and its development.                                          Can support and educate others.          "
           },
           {
-            "jobTitleSkillid": "b9b3174f-8ab1-4779-95f5-2244dd4c39cd",
-            "skillId": "0d509511-d39c-43dd-a3dd-fef40900241b",
+            "jobTitleSkillid": "4daa1cd0-f5a6-4311-bf26-b21129a33c13",
+            "skillId": "7584cb54-6e51-4141-af8b-80a450dafc6a",
             "Skill": "Edwards and Surgical strategy ",
             "target": 5,
             "target check": "",
@@ -772,8 +772,8 @@ const assessmentQuestions =
             "Answer_4": "Can proactively promote EW strategy towards the market.                                                                     Communicates potential future strategies adjustment back to management.                            Can train others on EW strategy.                                 "
           },
           {
-            "jobTitleSkillid": "6e45a80f-26f4-4638-8025-55c84453b1cb",
-            "skillId": "b725268a-6704-4ab9-9008-0fd7b4942fc0",
+            "jobTitleSkillid": "7c1c57bc-0c8d-4e4a-ad8a-50db41800a43",
+            "skillId": "8e1ad45e-be99-416d-964c-565ab9b75f89",
             "Skill": "Operational effectiveness",
             "target": 3,
             "target check": "",
@@ -784,8 +784,8 @@ const assessmentQuestions =
             "Answer_4": "Trains others on Quality and Compliance applicable rules and processes.                                                 Can train other on all  operational dynamics.           Can support enhancement towards more efficiency and shares it with the organization.                                                        "
           },
           {
-            "jobTitleSkillid": "eb16b2dc-76f5-42db-99b9-f586d1e06949",
-            "skillId": "7ea2283c-a6c5-4c1c-a0dd-d798c2f3b6ec -",
+            "jobTitleSkillid": "e0843d05-c7c1-4d2a-856f-e8a70f74712f",
+            "skillId": "4ba4e4c9-fa7e-400c-907f-f66eb5dea4af",
             "Skill": "Partnership building ",
             "target": 4,
             "target check": "",
@@ -796,8 +796,8 @@ const assessmentQuestions =
             "Answer_4": "Actively manages network of stakeholders.             Takes a proactive approach to shape and influence stakeholder expectations.                                                           "
           },
           {
-            "jobTitleSkillid": "2f82debe-324f-4edb-ba5b-3b51d4c0c8ae",
-            "skillId": "7ff782ba-fa6d-4f0e-a7c2-33fbcdaa8ace",
+            "jobTitleSkillid": "8711fc5c-9f28-413f-befe-ef222e7e1b6b",
+            "skillId": "c5e157b9-2d4f-4a65-abfc-b8e9add495f8",
             "Skill": "Procedural expertise ",
             "target": 2,
             "target check": "",
@@ -808,8 +808,8 @@ const assessmentQuestions =
             "Answer_4": "Perceived as a technical expert on cardiac procedures and is consulted for advice.                       Has an in-depth knowledge of main  valve procedures (AVR,MVR, More, TVrep) and a good knowledge of complex procedures and techniques (Bentall, combined procedures, MIS and robotic surgery). Understands indications for valve repair or replacement.                                                                 Can support EW product use during cases & helps HCPs manage problems or issues.                              Able to support Mitral Valve cases.                            "
           },
           {
-            "jobTitleSkillid": "6a18bc0d-8b02-4ce2-aec0-52d5f08b91f0",
-            "skillId": "2178838c-0aa4-46dc-910a-07d677564a43",
+            "jobTitleSkillid": "95ddedea-70f7-4806-b86c-580bdfd2a778",
+            "skillId": "a48286df-be68-4082-af77-2ca6e55795e5",
             "Skill": "Reimbursement, tendering and GHER proficiency ",
             "target": 1,
             "target check": "",
@@ -820,8 +820,8 @@ const assessmentQuestions =
             "Answer_4": "Up-to date on healthcare reforms, planned funding changes and future developments impacting the SHD landscape.                                                            Proactive engagement with PA on healthcare topics if a costomer need is identified in the field.\n       \n"
           },
           {
-            "jobTitleSkillid": "495ae791-ade1-46c4-bcf5-b6f6ad0541ab",
-            "skillId": "4b3256b4-b3fc-4408-b99f-ebb1e5849e9e",
+            "jobTitleSkillid": "c09e3d6a-d39b-4757-bfa6-e1a5c8acf21b",
+            "skillId": "7e609b49-b491-465b-95af-6b50e9c21296",
             "Skill": "Sales call planning ",
             "target": 3,
             "target check": "",
@@ -832,8 +832,8 @@ const assessmentQuestions =
             "Answer_4": "Trains team on  setting clear goals and objective for the Sales calls and has a structured approach to communicate information.                                                          Is consistently on top of what is going on and knows where things stand.                                                                                                  Looks for obstacles and develops excellent contingency plans.                                                             Coaches his/her team to stages activities with relevant milestones and schedules.                    "
           },
           {
-            "jobTitleSkillid": "73732492-1704-4354-b892-3a626b8ae457",
-            "skillId": "7ee8dab7-e121-4c8a-ba66-546014ffb331",
+            "jobTitleSkillid": "d7cbc093-5cb6-4013-bccc-df2c5339af59",
+            "skillId": "62399416-1c34-4baf-96af-7e8e0405646a",
             "Skill": "Strategic thinking Insights Development",
             "target": 5,
             "target check": "",
@@ -844,8 +844,8 @@ const assessmentQuestions =
             "Answer_4": "Develops collaboration, identifies and anticipates strategic needs, co-creates strategic solutions.       Is expert on how to translate keys analytical into field action according to EW Strategy.                      Long term thinking.                                                                                                                "
           },
           {
-            "jobTitleSkillid": "feeddfa3-808a-4bd4-8cab-61e003690f1a",
-            "skillId": "339018fe-37b9-426d-9db1-10315b069e4b",
+            "jobTitleSkillid": "945b9816-cf36-45e4-a860-c29a7702980a",
+            "skillId": "a4b40c6b-e459-4f41-ba03-62b355bb35ab",
             "Skill": "Structural hearth disease knowledge",
             "target": 2,
             "target check": "",
@@ -856,8 +856,8 @@ const assessmentQuestions =
             "Answer_4": "Has an in-depth knowledge of anatomy including reference points to observe during implantation of our Surgical products. Able to give guidance on how to avoid technical pitfalls related to anatomical variance.                                                             Understands patient condition, including specific sub-groups, and can proactively apply this knowledge when interacting with implanters.                                                                Understands how the Heart Team puts guidelines into practice. Can have a discussion with physicians on timing of referral and treatment options – surgical, transcatheter or other – for specific patient groups.               "
           },
           {
-            "jobTitleSkillid": "c274f69e-d480-40f4-ac05-28b7a5a1b284",
-            "skillId": "2067d763-2742-4d6d-b470-a8bf981b62c4",
+            "jobTitleSkillid": "48b28ba2-0ff8-485e-9d87-3e04a84802a3",
+            "skillId": "c00f8f35-cddb-4c2c-9732-a4e735150348",
             "Skill": "Surgical product portfolio knowledge ",
             "target": 1,
             "target check": "",
@@ -868,8 +868,8 @@ const assessmentQuestions =
             "Answer_4": "Regularly provides advice to colleagues regarding all technical and clinical aspects of surgical and competitors’ products.                                                 Is considered a 'Trainer' & source of expertise.            Has a strong knowledge of both our Mitral Repair / replace Portfolio and appropriate use.                         In-depth knowledge of our Tricuspid solutions and indications for surgery.                    "
           },
           {
-            "jobTitleSkillid": "879a6457-4af4-446f-8aa3-f66a5f2a424f",
-            "skillId": "1bf2502c-3b1b-430b-b684-0c5edea7906c",
+            "jobTitleSkillid": "a0ed33a0-2ab5-47dd-9b34-dba96dd5c863",
+            "skillId": "46037095-96c4-4b28-8c42-b254f3b633ce",
             "Skill": "Tender/contract management ",
             "target": 5,
             "target check": "",
@@ -880,8 +880,8 @@ const assessmentQuestions =
             "Answer_4": "Anticipate future trends.                                              Searches for opportunities to drive patient care in heart valve disease.                                                     Works with KOLs to support further development.                               "
           },
           {
-            "jobTitleSkillid": "f311f1b5-cfe4-4fa1-baaf-38644e5173bf",
-            "skillId": "55d3974a-2299-44cd-86da-8b0065b6d244",
+            "jobTitleSkillid": "5f47058f-8f67-4d90-81f7-25d8c661bcd2",
+            "skillId": "a4930ac0-6520-48c8-8da3-6ffb0aa4ee00",
             "Skill": "Territory planning ",
             "target": 2,
             "target check": "",
@@ -892,8 +892,8 @@ const assessmentQuestions =
             "Answer_4": "Can bring thoughts, ideas and opportunities to the organization with a broader scope than own territory/team.\n"
           },
           {
-            "jobTitleSkillid": "3f462ee5-a492-481e-97dd-887e8b460276",
-            "skillId": "14f7d493-3033-44eb-b6dd-39b7f86ab84c",
+            "jobTitleSkillid": "97d831c1-b67b-4300-907e-ba4f6b416f00",
+            "skillId": "09973710-37ff-48cf-8911-40bb6da62383",
             "Skill": "Transcatheter solution knowledge ",
             "target": 2,
             "target check": "",
@@ -904,8 +904,8 @@ const assessmentQuestions =
             "Answer_4": "Can explain transcatheter options, indications and clinical results.                                                            Understand Valve in Valve Treatment options and their limitations.                                                         Follows regularly Edwards Partner Studies and ongoing publications.                                                Knows latest TMTT study data and efforts being made for Mitral & tricuspid therapies.                    "
           },
           {
-            "jobTitleSkillid": "2ebad1b0-e0bf-491d-bc5a-953a77e2e7e8",
-            "skillId": "355c6331-91b3-4304-8bee-5e41e30ff7ba",
+            "jobTitleSkillid": "12445341-eb79-4cc5-a4ff-3e3801c3be7e",
+            "skillId": "3b555e7c-9692-4fb2-a6bb-419235f8530c",
             "Skill": "Value & Solution selling (Persuasion & Negotiation)",
             "target": 4,
             "target check": "",
@@ -916,12 +916,12 @@ const assessmentQuestions =
             "Answer_4": "Trains others on the steps of solutions selling.         Can persuade others to take appropriate action.                                                             "
           }]
     },{
-    "jobTitleId": "fe141116-0629-4abc-9bdd-fc5a2ac789ac",
+    "jobTitleId": "efef79a8-c18b-474f-9307-02e38ba413a0",
     "name": "Business Unit Manager",
     "jobTitleSkillIds": [
     {
-        "jobTitleSkillid": "c5053fae-4652-4a8b-b324-95029408668d",
-        "skillId": "79edc0cf-ce60-47c7-a001-cdbc4db550c0",
+        "jobTitleSkillid": "9de9f18f-94c9-4ee4-a311-251779833d6c",
+        "skillId": "8f22d68e-9547-4731-a43e-cc7bfcb02fb5",
         "Skill": "Business analytics ",
         "target": 1,
         "target check": "",
@@ -932,8 +932,8 @@ const assessmentQuestions =
         "Answer_4": "Has an expert knowledge on tools and processes leading to “super champions” role.                            Proactively provides systems ideas towards to more user’s effectiveness.                                        Teaches others how to use analytics for business decisions and commercial plan.                                                               "
         },
         {
-        "jobTitleSkillid": "df7a0d15-2b02-41b0-83ec-29a46b6a2c0d",
-        "skillId": "d0ee29ba-80e2-4311-a2c3-cbc9578b887a",
+        "jobTitleSkillid": "2c5f816c-9497-48b3-aded-353db3553e2a",
+        "skillId": "92b2b061-2155-4fb1-9a20-e764d80169b0",
         "Skill": "Clinical data expertise ",
         "target": 5,
         "target check": "",
@@ -944,8 +944,8 @@ const assessmentQuestions =
         "Answer_4": "Is fully aware of published data and trial designs that are ongoing.                                                       Confidently gives quotes and backs up claims with clinical papers and scientific opinions.                      Offers an expert opinion on work and is able to propose further clinical work that needs to be done.                                                                                        "
         },
         {
-        "jobTitleSkillid": "1553978d-86c4-45d8-9a37-e1035fcbf794",
-        "skillId": "723f3f43-e18e-4b00-9ded-91993640db3b",
+        "jobTitleSkillid": "de7338fa-0473-4a83-80ab-e12e2be05bd9",
+        "skillId": "e575132a-0159-4061-9e3a-ffe265081ba2",
         "Skill": "Communication (Objection handing) ",
         "target": 4,
         "target check": "",
@@ -956,8 +956,8 @@ const assessmentQuestions =
         "Answer_4": "Adapts to different communication styles, and uses appropriate non-verbal cues.                                    Maintains a constructive relationships when being confronted with objections and reaches a mutually beneficial outcome.                                "
         },
         {
-        "jobTitleSkillid": "7f80b922-9ca6-49c2-b4ff-b872cd15efc8",
-        "skillId": "5f101c61-d68e-45f1-b3c1-127bf65eb7d1",
+        "jobTitleSkillid": "d168a3e6-b52e-4b0e-a0d7-12755cc6b79c",
+        "skillId": "e25e5c4f-b94d-4e20-a9dc-ce18cd7d0bbc",
         "Skill": "Competitive surgical products knowledge ",
         "target": 4,
         "target check": "",
@@ -968,8 +968,8 @@ const assessmentQuestions =
         "Answer_4": "Has an in-depth  knowledge of our major competitor portfolios.                                               Is able to leverage deep clinical expertise to ask strategic questions and to influence customer decisions both clinically and economically.              Is expert and can train others of  the benefits and pitfalls of tissue valves versus mechanical valves.   Knows the advantages of valve repair and to make a case for when to repair or replace.                                                                         "
         },
         {
-        "jobTitleSkillid": "f7a4bcf1-20be-4b5a-b0da-46e4c2c1789f",
-        "skillId": "feb86590-3ab1-4755-bc9e-7d4a3f12c354",
+        "jobTitleSkillid": "a1aa7ed7-f053-4784-bfe8-c02dd5c0fa83",
+        "skillId": "55fe9064-5661-4783-ab74-9fa92f145183",
         "Skill": "Customer Leadership ",
         "target": 1,
         "target check": "",
@@ -980,8 +980,8 @@ const assessmentQuestions =
         "Answer_4": "Knows national and international KOLs personally.  Identifies new influencers.                                         Searches actively for new trends and trends in the cardiovascular area.                                           Can evaluate the impact on EW and communicate to marketing and strategy.                                                                             "
         },
         {
-        "jobTitleSkillid": "0dbd518c-1aa9-456a-acf3-7141fd47cf8c",
-        "skillId": "7929a325-52fc-47f1-9d08-4486014efd88",
+        "jobTitleSkillid": "70bc1569-1fe9-4aba-b567-25ec3410ffc0",
+        "skillId": "b88e950d-3239-421d-976d-33c8527faa7c",
         "Skill": "Economic drivers & future trends oof the business and industry ",
         "target": 5,
         "target check": "",
@@ -992,8 +992,8 @@ const assessmentQuestions =
         "Answer_4": "Can deal with challenging conversation about economic drivers and innovation.                             Has a thorough understanding  of the healthcare system  and its  development.                                  Can support and educate others.                                                       "
         },
         {
-        "jobTitleSkillid": "9de43de8-a6e4-4471-9728-f2c8604c5f1f",
-        "skillId": "0d509511-d39c-43dd-a3dd-fef40900241b",
+        "jobTitleSkillid": "a7091526-6f19-414f-9708-6b039626962f",
+        "skillId": "7584cb54-6e51-4141-af8b-80a450dafc6a",
         "Skill": "Edwards and Surgical strategy ",
         "target": 4,
         "target check": "",
@@ -1004,8 +1004,8 @@ const assessmentQuestions =
         "Answer_4": "Can proactively promote EW strategy towards the market.                                                                      Communicates potential future strategies adjustment back to management.                            Can train others on EW strategy.                 "
         },
         {
-        "jobTitleSkillid": "d0b83552-24ca-4ceb-bce5-dc12f4f8bedf",
-        "skillId": "b725268a-6704-4ab9-9008-0fd7b4942fc0",
+        "jobTitleSkillid": "e6ba9a90-050a-4aae-ab3f-8c719ac2bf76",
+        "skillId": "8e1ad45e-be99-416d-964c-565ab9b75f89",
         "Skill": "Operational effectiveness",
         "target": 3,
         "target check": "",
@@ -1016,8 +1016,8 @@ const assessmentQuestions =
         "Answer_4": "Trains others on Quality and Compliance applicable rules and processes.                                                 Can train other on all  operational dynamics.            Can support enhancement towards more efficiency and shares it with the organization.                                                                                 "
         },
         {
-        "jobTitleSkillid": "a4aa03e8-74c8-4891-b021-f4b4bfa65c64",
-        "skillId": "7ea2283c-a6c5-4c1c-a0dd-d798c2f3b6ec -",
+        "jobTitleSkillid": "68278cd0-a0ea-4dab-a434-e6e2fe576aa2",
+        "skillId": "4ba4e4c9-fa7e-400c-907f-f66eb5dea4af",
         "Skill": "Partnership building ",
         "target": 2,
         "target check": "",
@@ -1028,8 +1028,8 @@ const assessmentQuestions =
         "Answer_4": "Actively manages network of stakeholders.             Takes a proactive approach to shape and influence stakeholder expectations.                                             "
         },
         {
-        "jobTitleSkillid": "701350e7-c0db-426e-91f1-bf8613874db6",
-        "skillId": "7ff782ba-fa6d-4f0e-a7c2-33fbcdaa8ace",
+        "jobTitleSkillid": "b09bc1fb-56b3-4a1e-90b0-de3960a70f9f",
+        "skillId": "c5e157b9-2d4f-4a65-abfc-b8e9add495f8",
         "Skill": "Procedural expertise ",
         "target": 1,
         "target check": "",
@@ -1040,8 +1040,8 @@ const assessmentQuestions =
         "Answer_4": "Perceived as a technical expert on cardiac procedures and is consulted for advice.                   Has an in-depth knowledge of main  valve procedures (AVR,MVR, More, TVrep) and a good knowledge of complex procedures and techniques (Bentall, combined procedures, MIS and robotic surgery). Understands indications for valve repair or replacement.                                      Can support EW product use during cases & helps HCPs manage problems or issues.                            Able to support Mitral Valve cases.                                                                                                                                                                                                           "
         },
         {
-        "jobTitleSkillid": "9c38fa41-ebfe-48c8-938a-8188d1919a46",
-        "skillId": "2178838c-0aa4-46dc-910a-07d677564a43",
+        "jobTitleSkillid": "7f722df4-dbf9-4c30-b1e8-2671aeb86d6c",
+        "skillId": "a48286df-be68-4082-af77-2ca6e55795e5",
         "Skill": "Reimbursement, tendering and GHER proficiency ",
         "target": 4,
         "target check": "",
@@ -1052,8 +1052,8 @@ const assessmentQuestions =
         "Answer_4": "Up-to date on healthcare reforms, planned funding changes and future developments impacting the SHD landscape.                                                        Proactive engagement with PA on healthcare topics if a costomer need is identified in the field.\n                   \n"
         },
         {
-        "jobTitleSkillid": "7d5dac19-615a-4894-a4ec-e7cb9fea80ac",
-        "skillId": "4b3256b4-b3fc-4408-b99f-ebb1e5849e9e",
+        "jobTitleSkillid": "fa7a7ba3-d8b9-42bd-8fe6-2b54aea9388a",
+        "skillId": "7e609b49-b491-465b-95af-6b50e9c21296",
         "Skill": "Sales call planning ",
         "target": 4,
         "target check": "",
@@ -1064,8 +1064,8 @@ const assessmentQuestions =
         "Answer_4": "Trains team on setting clear goals and objective for the Sales calls and has a structured approach to communicate information.                                         Is consistently on top of what is going on and knows where things stand.                                       Looks for obstacles and develops excellent contingency plans.                                                        Coaches his/her team to stages activities with relevant milestones and schedules."
         },
         {
-        "jobTitleSkillid": "53822791-00d8-4cf7-996f-ff92326da1a6",
-        "skillId": "7ee8dab7-e121-4c8a-ba66-546014ffb331",
+        "jobTitleSkillid": "2da2bf53-8325-4423-ad42-3e85cdba2fea",
+        "skillId": "62399416-1c34-4baf-96af-7e8e0405646a",
         "Skill": "Strategic thinking Insights Development",
         "target": 1,
         "target check": "",
@@ -1076,8 +1076,8 @@ const assessmentQuestions =
         "Answer_4": "Develops collaboration, identifies and anticipates strategic needs, co-creates strategic solutions.        Is expert on how to translate keys analytical into field action according to EW Strategy.                     Long term thinking.                                                                                                                                          "
         },
         {
-        "jobTitleSkillid": "b16f8b92-4203-4dcb-b0b9-bbdb60025c7b",
-        "skillId": "339018fe-37b9-426d-9db1-10315b069e4b",
+        "jobTitleSkillid": "d0410b2e-3034-4a27-b0ed-679a8ead4f66",
+        "skillId": "a4b40c6b-e459-4f41-ba03-62b355bb35ab",
         "Skill": "Structural hearth disease knowledge",
         "target": 2,
         "target check": "",
@@ -1088,8 +1088,8 @@ const assessmentQuestions =
         "Answer_4": "Has an in-depth knowledge of anatomy including reference points to observe during implantation of our Surgical products. Able to give guidance on how to avoid technical pitfalls related to anatomical variance.                                                                    Understands patient condition, including specific sub-groups, and can proactively apply this knowledge when interacting with implanters.          Understands how the Heart Team puts guidelines into practice. Can have a discussion with physicians on timing of referral and treatment options – surgical, transcatheter or other – for specific patient groups.                                                                                                                       "
         },
         {
-        "jobTitleSkillid": "201dd5e3-663d-475d-9e12-1ba3a0f5fc45",
-        "skillId": "2067d763-2742-4d6d-b470-a8bf981b62c4",
+        "jobTitleSkillid": "86af6b01-fb4e-4a54-8ee6-a88daeb91678",
+        "skillId": "c00f8f35-cddb-4c2c-9732-a4e735150348",
         "Skill": "Surgical product portfolio knowledge ",
         "target": 4,
         "target check": "",
@@ -1100,8 +1100,8 @@ const assessmentQuestions =
         "Answer_4": "Regularly provides advice to colleagues regarding all technical and clinical aspects of surgical and competitors’ products.                                             Is considered a 'Trainer' & source of expertise.         Has a strong knowledge of both our Mitral Repair / replace Portfolio and appropriate use.                       In-depth knowledge of our Tricuspid solutions and indications for surgery.                                                                                             "
         },
         {
-        "jobTitleSkillid": "ada33ec4-0549-4240-8ec3-8a55a3000dd3",
-        "skillId": "1bf2502c-3b1b-430b-b684-0c5edea7906c",
+        "jobTitleSkillid": "8491a42a-e3c1-4b98-b4d8-bbcd972aa976",
+        "skillId": "46037095-96c4-4b28-8c42-b254f3b633ce",
         "Skill": "Tender/contract management ",
         "target": 1,
         "target check": "",
@@ -1112,8 +1112,8 @@ const assessmentQuestions =
         "Answer_4": "Anticipate future trends.                                            Searches for opportunities to drive patient care in heart valve disease.                                                   Works with KOLs to support further development.                      "
         },
         {
-        "jobTitleSkillid": "087c6fb7-6d80-41ce-932a-df6447aa858e",
-        "skillId": "55d3974a-2299-44cd-86da-8b0065b6d244",
+        "jobTitleSkillid": "2aa5d19d-e7d1-4521-8a1d-609b1f9db51a",
+        "skillId": "a4930ac0-6520-48c8-8da3-6ffb0aa4ee00",
         "Skill": "Territory planning ",
         "target": 1,
         "target check": "",
@@ -1124,8 +1124,8 @@ const assessmentQuestions =
         "Answer_4": "Can bring thoughts, ideas and opportunities to the organization with a broader scope than own territory/team.\n"
         },
         {
-        "jobTitleSkillid": "adabe0d4-15d4-4711-b6a7-81cd307040be",
-        "skillId": "14f7d493-3033-44eb-b6dd-39b7f86ab84c",
+        "jobTitleSkillid": "200c4485-345c-410c-a391-b02f3b544588",
+        "skillId": "09973710-37ff-48cf-8911-40bb6da62383",
         "Skill": "Transcatheter solution knowledge ",
         "target": 3,
         "target check": "",
@@ -1136,8 +1136,8 @@ const assessmentQuestions =
         "Answer_4": "Can explain transcatheter options, indications and clinical results.                                                          Understand Valve in Valve Treatment options and their limitations.                                                         Follows regularly Edwards Partner Studies and ongoing publications.                                               Knows latest TMTT study data and efforts being made for Mitral & tricuspid therapies.                                                                        "
         },
         {
-        "jobTitleSkillid": "5efe0763-9248-4923-b165-a4877a4754e7",
-        "skillId": "355c6331-91b3-4304-8bee-5e41e30ff7ba",
+        "jobTitleSkillid": "f3064be0-f682-4fe5-9846-79b6e2e3416d",
+        "skillId": "3b555e7c-9692-4fb2-a6bb-419235f8530c",
         "Skill": "Value & Solution selling (Persuasion & Negotiation)",
         "target": 5,
         "target check": "",
@@ -1148,12 +1148,12 @@ const assessmentQuestions =
         "Answer_4": "Trains others on the steps of solutions selling.          Can persuade others to take appropriate action.                                                                           "
         }]
     },{
-    "jobTitleId": "e3742d23-249e-476a-a1f3-1bea6cdbf72c",
+    "jobTitleId": "56e939c3-3e58-4e4b-a314-ba355b9ed0fa",
     "name": "Business Unit Director",
     "jobTitleSkillIds": [
         {
-            "jobTitleSkillid": "7d2a8bca-31ce-41be-8296-7591aa07be95",
-            "skillId": "79edc0cf-ce60-47c7-a001-cdbc4db550c0",
+            "jobTitleSkillid": "dfb9e714-3278-47c5-b81f-3de7cded6aca",
+            "skillId": "8f22d68e-9547-4731-a43e-cc7bfcb02fb5",
             "Skill": "Business analytics ",
             "target": 2,
             "target check": "",
@@ -1164,8 +1164,8 @@ const assessmentQuestions =
             "Answer_4": "Has an expert knowledge on tools and processes leading to “super champions” role.                            Proactively provides systems ideas towards to more user’s effectiveness.                                        Teaches others how to use analytics for business decisions and commercial plan.                                                               "
           },
           {
-            "jobTitleSkillid": "0dc20e36-5a3b-47c5-80fc-9901808e8814",
-            "skillId": "d0ee29ba-80e2-4311-a2c3-cbc9578b887a",
+            "jobTitleSkillid": "6f81baf2-d6f5-423a-8b7f-92e19ec5f9c3",
+            "skillId": "92b2b061-2155-4fb1-9a20-e764d80169b0",
             "Skill": "Clinical data expertise ",
             "target": 2,
             "target check": "",
@@ -1176,8 +1176,8 @@ const assessmentQuestions =
             "Answer_4": "Is fully aware of published data and trial designs that are ongoing.                                                       Confidently gives quotes and backs up claims with clinical papers and scientific opinions.                      Offers an expert opinion on work and is able to propose further clinical work that needs to be done.                                                                                        "
           },
           {
-            "jobTitleSkillid": "795c2d61-8185-4329-bfe3-609c1d57e649",
-            "skillId": "723f3f43-e18e-4b00-9ded-91993640db3b",
+            "jobTitleSkillid": "8968463a-4803-4cce-87dc-6bf8a9fe6b43",
+            "skillId": "e575132a-0159-4061-9e3a-ffe265081ba2",
             "Skill": "Communication (Objection handing) ",
             "target": 3,
             "target check": "",
@@ -1188,8 +1188,8 @@ const assessmentQuestions =
             "Answer_4": "Adapts to different communication styles, and uses appropriate non-verbal cues.                                    Maintains a constructive relationships when being confronted with objections and reaches a mutually beneficial outcome.                                "
           },
           {
-            "jobTitleSkillid": "820dc65f-5b8b-41a6-b2ef-1f946054bb6f",
-            "skillId": "5f101c61-d68e-45f1-b3c1-127bf65eb7d1",
+            "jobTitleSkillid": "2a44c449-46bc-49ec-b5c0-93872584d1d2",
+            "skillId": "e25e5c4f-b94d-4e20-a9dc-ce18cd7d0bbc",
             "Skill": "Competitive surgical products knowledge ",
             "target": 1,
             "target check": "",
@@ -1200,8 +1200,8 @@ const assessmentQuestions =
             "Answer_4": "Has an in-depth  knowledge of our major competitor portfolios.                                               Is able to leverage deep clinical expertise to ask strategic questions and to influence customer decisions both clinically and economically.              Is expert and can train others of  the benefits and pitfalls of tissue valves versus mechanical valves.   Knows the advantages of valve repair and to make a case for when to repair or replace.                                                                         "
           },
           {
-            "jobTitleSkillid": "06575751-3019-470b-b650-2182bec9aabe",
-            "skillId": "feb86590-3ab1-4755-bc9e-7d4a3f12c354",
+            "jobTitleSkillid": "edf5038a-41ad-419f-8f72-55bd9f9861cb",
+            "skillId": "55fe9064-5661-4783-ab74-9fa92f145183",
             "Skill": "Customer Leadership ",
             "target": 4,
             "target check": "",
@@ -1212,8 +1212,8 @@ const assessmentQuestions =
             "Answer_4": "Knows national and international KOLs personally.  Identifies new influencers.                                         Searches actively for new trends and trends in the cardiovascular area.                                           Can evaluate the impact on EW and communicate to marketing and strategy.                                                                             "
           },
           {
-            "jobTitleSkillid": "05b567f5-f932-4082-80aa-5d9a631ef15a",
-            "skillId": "7929a325-52fc-47f1-9d08-4486014efd88",
+            "jobTitleSkillid": "dc26b3a4-0cac-4d2c-af13-64d3ba793fa1",
+            "skillId": "b88e950d-3239-421d-976d-33c8527faa7c",
             "Skill": "Economic drivers & future trends oof the business and industry ",
             "target": 1,
             "target check": "",
@@ -1224,8 +1224,8 @@ const assessmentQuestions =
             "Answer_4": "Can deal with challenging conversation about economic drivers and innovation.                             Has a thorough understanding  of the healthcare system  and its  development.                                  Can support and educate others.                                                       "
           },
           {
-            "jobTitleSkillid": "ae38c4ea-7a84-4582-9991-d3645156537b",
-            "skillId": "0d509511-d39c-43dd-a3dd-fef40900241b",
+            "jobTitleSkillid": "07be0829-38f6-449c-b9f3-cd6ea7196292",
+            "skillId": "7584cb54-6e51-4141-af8b-80a450dafc6a",
             "Skill": "Edwards and Surgical strategy ",
             "target": 5,
             "target check": "",
@@ -1236,8 +1236,8 @@ const assessmentQuestions =
             "Answer_4": "Can proactively promote EW strategy towards the market.                                                                      Communicates potential future strategies adjustment back to management.                            Can train others on EW strategy.                 "
           },
           {
-            "jobTitleSkillid": "0a3fef2f-c111-4815-b27d-e682f1a0fc46",
-            "skillId": "b725268a-6704-4ab9-9008-0fd7b4942fc0",
+            "jobTitleSkillid": "22607816-0bf2-43fc-8aeb-01a218fd809b",
+            "skillId": "8e1ad45e-be99-416d-964c-565ab9b75f89",
             "Skill": "Operational effectiveness",
             "target": 3,
             "target check": "",
@@ -1248,8 +1248,8 @@ const assessmentQuestions =
             "Answer_4": "Trains others on Quality and Compliance applicable rules and processes.                                                 Can train other on all  operational dynamics.            Can support enhancement towards more efficiency and shares it with the organization.                                                                                 "
           },
           {
-            "jobTitleSkillid": "ef641f54-fba3-4163-a92e-ea7b7a2c7a46",
-            "skillId": "7ea2283c-a6c5-4c1c-a0dd-d798c2f3b6ec -",
+            "jobTitleSkillid": "bfc4f0a6-7dcb-46ab-b3c0-a8b9acbad611",
+            "skillId": "4ba4e4c9-fa7e-400c-907f-f66eb5dea4af",
             "Skill": "Partnership building ",
             "target": 4,
             "target check": "",
@@ -1260,8 +1260,8 @@ const assessmentQuestions =
             "Answer_4": "Actively manages network of stakeholders.             Takes a proactive approach to shape and influence stakeholder expectations.                                             "
           },
           {
-            "jobTitleSkillid": "e1a9fceb-4de2-4fe8-a68f-ba2eff44197d",
-            "skillId": "7ff782ba-fa6d-4f0e-a7c2-33fbcdaa8ace",
+            "jobTitleSkillid": "4c75fa65-099a-418b-beea-7cc62c024be9",
+            "skillId": "c5e157b9-2d4f-4a65-abfc-b8e9add495f8",
             "Skill": "Procedural expertise ",
             "target": 4,
             "target check": "",
@@ -1272,8 +1272,8 @@ const assessmentQuestions =
             "Answer_4": "Perceived as a technical expert on cardiac procedures and is consulted for advice.                   Has an in-depth knowledge of main  valve procedures (AVR,MVR, More, TVrep) and a good knowledge of complex procedures and techniques (Bentall, combined procedures, MIS and robotic surgery). Understands indications for valve repair or replacement.                                      Can support EW product use during cases & helps HCPs manage problems or issues.                            Able to support Mitral Valve cases.                                                                                                                                                                                                           "
           },
           {
-            "jobTitleSkillid": "350b06dc-85ff-45bf-b6a0-94a6e653c68a",
-            "skillId": "2178838c-0aa4-46dc-910a-07d677564a43",
+            "jobTitleSkillid": "d779a9cc-c22a-42b4-bfc0-0ea7e00eef5f",
+            "skillId": "a48286df-be68-4082-af77-2ca6e55795e5",
             "Skill": "Reimbursement, tendering and GHER proficiency ",
             "target": 3,
             "target check": "",
@@ -1284,8 +1284,8 @@ const assessmentQuestions =
             "Answer_4": "Up-to date on healthcare reforms, planned funding changes and future developments impacting the SHD landscape.                                                        Proactive engagement with PA on healthcare topics if a costomer need is identified in the field.\n                   \n"
           },
           {
-            "jobTitleSkillid": "685b63a9-a481-41ca-a2cd-4b710d0af246",
-            "skillId": "4b3256b4-b3fc-4408-b99f-ebb1e5849e9e",
+            "jobTitleSkillid": "415d8585-57b2-4510-9817-02fbeba1202d",
+            "skillId": "7e609b49-b491-465b-95af-6b50e9c21296",
             "Skill": "Sales call planning ",
             "target": 5,
             "target check": "",
@@ -1296,8 +1296,8 @@ const assessmentQuestions =
             "Answer_4": "Trains team on setting clear goals and objective for the Sales calls and has a structured approach to communicate information.                                         Is consistently on top of what is going on and knows where things stand.                                       Looks for obstacles and develops excellent contingency plans.                                                        Coaches his/her team to stages activities with relevant milestones and schedules."
           },
           {
-            "jobTitleSkillid": "b3582520-3ca5-4927-b6bb-5529a42b9c90",
-            "skillId": "7ee8dab7-e121-4c8a-ba66-546014ffb331",
+            "jobTitleSkillid": "5704828f-9e3d-4115-ab70-344c56991232",
+            "skillId": "62399416-1c34-4baf-96af-7e8e0405646a",
             "Skill": "Strategic thinking Insights Development",
             "target": 3,
             "target check": "",
@@ -1308,8 +1308,8 @@ const assessmentQuestions =
             "Answer_4": "Develops collaboration, identifies and anticipates strategic needs, co-creates strategic solutions.        Is expert on how to translate keys analytical into field action according to EW Strategy.                     Long term thinking.                                                                                                                                          "
           },
           {
-            "jobTitleSkillid": "eb9394a4-cbe4-4466-8079-6688a784fd21",
-            "skillId": "339018fe-37b9-426d-9db1-10315b069e4b",
+            "jobTitleSkillid": "74a8c100-005c-4f60-8301-0f870b463131",
+            "skillId": "a4b40c6b-e459-4f41-ba03-62b355bb35ab",
             "Skill": "Structural hearth disease knowledge",
             "target": 5,
             "target check": "",
@@ -1320,8 +1320,8 @@ const assessmentQuestions =
             "Answer_4": "Has an in-depth knowledge of anatomy including reference points to observe during implantation of our Surgical products. Able to give guidance on how to avoid technical pitfalls related to anatomical variance.                                                                    Understands patient condition, including specific sub-groups, and can proactively apply this knowledge when interacting with implanters.          Understands how the Heart Team puts guidelines into practice. Can have a discussion with physicians on timing of referral and treatment options – surgical, transcatheter or other – for specific patient groups.                                                                                                                       "
           },
           {
-            "jobTitleSkillid": "6ca60cc0-9d86-4ea2-bccc-0337f8513b92",
-            "skillId": "2067d763-2742-4d6d-b470-a8bf981b62c4",
+            "jobTitleSkillid": "6a1b5d53-bd46-4fd5-94f5-38e126360c22",
+            "skillId": "c00f8f35-cddb-4c2c-9732-a4e735150348",
             "Skill": "Surgical product portfolio knowledge ",
             "target": 4,
             "target check": "",
@@ -1332,8 +1332,8 @@ const assessmentQuestions =
             "Answer_4": "Regularly provides advice to colleagues regarding all technical and clinical aspects of surgical and competitors’ products.                                             Is considered a 'Trainer' & source of expertise.         Has a strong knowledge of both our Mitral Repair / replace Portfolio and appropriate use.                       In-depth knowledge of our Tricuspid solutions and indications for surgery.                                                                                             "
           },
           {
-            "jobTitleSkillid": "eb20403e-8107-4455-b073-bc00cccd1ae1",
-            "skillId": "1bf2502c-3b1b-430b-b684-0c5edea7906c",
+            "jobTitleSkillid": "12bd549f-c0ca-4563-9a68-e8f1ece5e54e",
+            "skillId": "46037095-96c4-4b28-8c42-b254f3b633ce",
             "Skill": "Tender/contract management ",
             "target": 3,
             "target check": "",
@@ -1344,8 +1344,8 @@ const assessmentQuestions =
             "Answer_4": "Anticipate future trends.                                            Searches for opportunities to drive patient care in heart valve disease.                                                   Works with KOLs to support further development.                      "
           },
           {
-            "jobTitleSkillid": "25663a82-779f-4410-9852-3900300624c2",
-            "skillId": "55d3974a-2299-44cd-86da-8b0065b6d244",
+            "jobTitleSkillid": "79588ee7-afbc-46d2-a8a2-908f20302183",
+            "skillId": "a4930ac0-6520-48c8-8da3-6ffb0aa4ee00",
             "Skill": "Territory planning ",
             "target": 1,
             "target check": "",
@@ -1356,8 +1356,8 @@ const assessmentQuestions =
             "Answer_4": "Can bring thoughts, ideas and opportunities to the organization with a broader scope than own territory/team.\n"
           },
           {
-            "jobTitleSkillid": "43f5a4ef-fb77-449d-a010-fb8a18c3818b",
-            "skillId": "14f7d493-3033-44eb-b6dd-39b7f86ab84c",
+            "jobTitleSkillid": "5dca7e7a-2639-413d-af91-c57fa5b60533",
+            "skillId": "09973710-37ff-48cf-8911-40bb6da62383",
             "Skill": "Transcatheter solution knowledge ",
             "target": 3,
             "target check": "",
@@ -1368,8 +1368,8 @@ const assessmentQuestions =
             "Answer_4": "Can explain transcatheter options, indications and clinical results.                                                          Understand Valve in Valve Treatment options and their limitations.                                                         Follows regularly Edwards Partner Studies and ongoing publications.                                               Knows latest TMTT study data and efforts being made for Mitral & tricuspid therapies.                                                                        "
           },
           {
-            "jobTitleSkillid": "ff526f14-1bbe-483b-a47b-2106193130ea",
-            "skillId": "355c6331-91b3-4304-8bee-5e41e30ff7ba",
+            "jobTitleSkillid": "c4969280-7a6a-426b-a736-fd16ac699d50",
+            "skillId": "3b555e7c-9692-4fb2-a6bb-419235f8530c",
             "Skill": "Value & Solution selling (Persuasion & Negotiation)",
             "target": 1,
             "target check": "",
@@ -1381,12 +1381,12 @@ const assessmentQuestions =
           }
         ]
     },{
-    "jobTitleId": "07311205-89ea-4897-8008-2f6832d8b550",
+    "jobTitleId": "c1203609-bb30-4f8c-ac97-d673064c4d64",
     "name": "Senior Commercial Director",
     "jobTitleSkillIds": [
         {
-            "jobTitleSkillid": "cb236942-119b-4058-842b-92f977252255",
-            "skillId": "79edc0cf-ce60-47c7-a001-cdbc4db550c0",
+            "jobTitleSkillid": "bc90b059-52ad-4569-9bd4-1f0fc810faa3",
+            "skillId": "8f22d68e-9547-4731-a43e-cc7bfcb02fb5",
             "Skill": "Business analytics ",
             "target": 2,
             "target check": "",
@@ -1397,8 +1397,8 @@ const assessmentQuestions =
             "Answer_4": "Has an expert knowledge on tools and processes leading to “super champions” role.                           Proactively provides systems ideas towards to more user’s effectiveness.                                         Teaches others how to use analytics for business decisions and commercial plan.                                                                                                            "
           },
           {
-            "jobTitleSkillid": "07af4e91-3b50-441e-b7f1-bdad344a5b68",
-            "skillId": "d0ee29ba-80e2-4311-a2c3-cbc9578b887a",
+            "jobTitleSkillid": "ea00695d-073d-4f4c-a3a6-e4603f62bc18",
+            "skillId": "92b2b061-2155-4fb1-9a20-e764d80169b0",
             "Skill": "Clinical data expertise ",
             "target": 3,
             "target check": "",
@@ -1409,8 +1409,8 @@ const assessmentQuestions =
             "Answer_4": "Is fully aware of published data and trial designs that are ongoing.                                                       Confidently gives quotes and backs up claims with clinical papers and scientific opinions.                     Offers an expert opinion on work and is able to propose further clinical work that needs to be done.                                                                                 "
           },
           {
-            "jobTitleSkillid": "edd5a75d-d6b7-4db2-9790-0e979203da2a",
-            "skillId": "723f3f43-e18e-4b00-9ded-91993640db3b",
+            "jobTitleSkillid": "510fbaae-5759-4f6e-80c2-a0ce162cb4dd",
+            "skillId": "e575132a-0159-4061-9e3a-ffe265081ba2",
             "Skill": "Communication (Objection handing) ",
             "target": 2,
             "target check": "",
@@ -1421,8 +1421,8 @@ const assessmentQuestions =
             "Answer_4": "Adapts to different communication styles, and uses appropriate non-verbal cues.                                    Maintains a constructive relationships when being confronted with objections and reaches a mutually beneficial outcome.                                        "
           },
           {
-            "jobTitleSkillid": "0afa2530-9022-4210-8776-707d36a227b4",
-            "skillId": "5f101c61-d68e-45f1-b3c1-127bf65eb7d1",
+            "jobTitleSkillid": "7f7dc3c3-dd47-4f1c-bc75-d6a3c2e516b8",
+            "skillId": "e25e5c4f-b94d-4e20-a9dc-ce18cd7d0bbc",
             "Skill": "Competitive surgical products knowledge ",
             "target": 1,
             "target check": "",
@@ -1433,8 +1433,8 @@ const assessmentQuestions =
             "Answer_4": "Has an in-depth knowledge of our major competitor portfolios.                                                Is able to leverage deep clinical expertise to ask strategic questions and to influence customer decisions both clinically and economically.              Is expert and can train others of  the benefits and pitfalls of tissue valves versus mechanical valves.   Knows the advantages of valve repair and to make a case for when to repair or replace.                                                                 "
           },
           {
-            "jobTitleSkillid": "c2ecba16-cf98-4655-8a28-3d571c120202",
-            "skillId": "feb86590-3ab1-4755-bc9e-7d4a3f12c354",
+            "jobTitleSkillid": "bea20caf-1047-47bc-803e-5d7dba5be7e4",
+            "skillId": "55fe9064-5661-4783-ab74-9fa92f145183",
             "Skill": "Customer Leadership ",
             "target": 3,
             "target check": "",
@@ -1445,9 +1445,9 @@ const assessmentQuestions =
             "Answer_4": "Knows national and international KOLs personally.   Identifies new influencers.                                         Searches actively for new trends and trends in the cardiovascular area.                                            Can evaluate the impact on EW and communicate to marketing and strategy.                                                                                       "
           },
           {
-            "jobTitleSkillid": "e5282da4-e213-4ca4-9e26-b5e901f3387a",
-            "skillId": "7929a325-52fc-47f1-9d08-4486014efd88",
-            "Skill": "Economic drivers & future trends oof the business and industry ",
+            "jobTitleSkillid": "063e8287-98f5-4351-8e53-4a4f1abd4329",
+            "skillId": "b88e950d-3239-421d-976d-33c8527faa7c",
+            "Skill": "Economic drivers & future trends of the business and industry ",
             "target": 1,
             "target check": "",
             "Question": "Understanding the influencing factors shaping the future direction of change of our business and industry.\n\n",
@@ -1457,8 +1457,8 @@ const assessmentQuestions =
             "Answer_4": "Can deal with challenging conversation about economic drivers and innovation.                             Has a thorough understanding  of the healthcare system  and its development.                                 Can support and educate others.                                                                                   "
           },
           {
-            "jobTitleSkillid": "f04395fc-7b00-4698-8335-abd5eb3218dd",
-            "skillId": "0d509511-d39c-43dd-a3dd-fef40900241b",
+            "jobTitleSkillid": "f0eced3d-4be8-4070-be88-02dd15045129",
+            "skillId": "7584cb54-6e51-4141-af8b-80a450dafc6a",
             "Skill": "Edwards and Surgical strategy ",
             "target": 4,
             "target check": "",
@@ -1469,8 +1469,8 @@ const assessmentQuestions =
             "Answer_4": "Can proactively promote EW strategy towards the market.                                                                      Communicates potential future strategies adjustment back to management.                             Can train others on EW strategy.                                                                                                               "
           },
           {
-            "jobTitleSkillid": "14e92f17-ca47-4b21-b41c-b0da8a82fd0d",
-            "skillId": "b725268a-6704-4ab9-9008-0fd7b4942fc0",
+            "jobTitleSkillid": "98508ab4-f839-4f3c-b067-deb3663a5ddc",
+            "skillId": "8e1ad45e-be99-416d-964c-565ab9b75f89",
             "Skill": "Operational effectiveness",
             "target": 5,
             "target check": "",
@@ -1481,8 +1481,8 @@ const assessmentQuestions =
             "Answer_4": "Trains others on Quality and Compliance applicable rules and processes.                                                 Can train other on all  operational dynamics.            Can support enhancement towards more efficiency and shares it with the organization.                                                                                                                  "
           },
           {
-            "jobTitleSkillid": "560b31a2-93a0-4e10-97a7-038f83ce3fea",
-            "skillId": "7ea2283c-a6c5-4c1c-a0dd-d798c2f3b6ec -",
+            "jobTitleSkillid": "8072e6b8-d749-4c21-9116-41c3865937a3",
+            "skillId": "4ba4e4c9-fa7e-400c-907f-f66eb5dea4af",
             "Skill": "Partnership building ",
             "target": 5,
             "target check": "",
@@ -1493,8 +1493,8 @@ const assessmentQuestions =
             "Answer_4": "Actively manages network of stakeholders.              Takes a proactive approach to shape and influence stakeholder expectations.                                                                "
           },
           {
-            "jobTitleSkillid": "dbbe90ff-f6b4-4c6f-a0f5-5d788b25cbb9",
-            "skillId": "7ff782ba-fa6d-4f0e-a7c2-33fbcdaa8ace",
+            "jobTitleSkillid": "373c3577-48f2-4263-ac02-abb65c99d392",
+            "skillId": "c5e157b9-2d4f-4a65-abfc-b8e9add495f8",
             "Skill": "Procedural expertise ",
             "target": 5,
             "target check": "",
@@ -1505,8 +1505,8 @@ const assessmentQuestions =
             "Answer_4": "Perceived as a technical expert on cardiac procedures and is consulted for advice.                   Has an in-depth knowledge of main  valve procedures (AVR,MVR, More, TVrep) and a good knowledge of complex procedures and techniques (Bentall, combined procedures, MIS and robotic surgery). Understands indications for valve repair or replacement.                                      Can support EW product use during cases & helps HCPs manage problems or issues.                            Able to support Mitral Valve cases.                                                                                                                                 "
           },
           {
-            "jobTitleSkillid": "c92200a1-bdaa-4ba9-8f92-0399bc839fcf",
-            "skillId": "2178838c-0aa4-46dc-910a-07d677564a43",
+            "jobTitleSkillid": "c3160132-770a-483c-9fd5-913493640976",
+            "skillId": "a48286df-be68-4082-af77-2ca6e55795e5",
             "Skill": "Reimbursement, tendering and GHER proficiency ",
             "target": 4,
             "target check": "",
@@ -1517,8 +1517,8 @@ const assessmentQuestions =
             "Answer_4": "Up-to date on healthcare reforms, planned funding changes and future developments impacting the SHD landscape.                                                        Proactive engagement with PA on healthcare topics if a costomer need is identified in the field.\n                                                           \n"
           },
           {
-            "jobTitleSkillid": "11aff8f4-6c8b-478a-a0fa-51a6d4661ab0",
-            "skillId": "4b3256b4-b3fc-4408-b99f-ebb1e5849e9e",
+            "jobTitleSkillid": "1c1badb0-f7de-4493-9ebc-dedbc03fcf3d",
+            "skillId": "7e609b49-b491-465b-95af-6b50e9c21296",
             "Skill": "Sales call planning ",
             "target": 4,
             "target check": "",
@@ -1529,8 +1529,8 @@ const assessmentQuestions =
             "Answer_4": "Trains team on  setting clear goals and objective for the Sales calls and has a structured approach to communicate information.                                        Is consistently on top of what is going on and knows where things stand.                                        Looks for obstacles and develops excellent contingency plans.                                                    Coaches his/her team to stages activities with relevant milestones and schedules.                                                                                                                                                                           "
           },
           {
-            "jobTitleSkillid": "c5b6a88e-0707-488a-a402-537e18252802",
-            "skillId": "7ee8dab7-e121-4c8a-ba66-546014ffb331",
+            "jobTitleSkillid": "38ec0053-1597-4d6b-9a98-6501b633b1ba",
+            "skillId": "62399416-1c34-4baf-96af-7e8e0405646a",
             "Skill": "Strategic thinking Insights Development",
             "target": 2,
             "target check": "",
@@ -1541,8 +1541,8 @@ const assessmentQuestions =
             "Answer_4": "Develops collaboration, identifies and anticipates strategic needs, co-creates strategic solutions.           Is expert on how to translate keys analytical into field action according to EW Strategy.                       Long term thinking.                                                                                                              "
           },
           {
-            "jobTitleSkillid": "0edc2796-8bb1-4bf7-8370-4b3dea2fdddb",
-            "skillId": "339018fe-37b9-426d-9db1-10315b069e4b",
+            "jobTitleSkillid": "c17694f9-7864-43fa-89c1-3cbfc76b3382",
+            "skillId": "a4b40c6b-e459-4f41-ba03-62b355bb35ab",
             "Skill": "Structural hearth disease knowledge",
             "target": 2,
             "target check": "",
@@ -1553,8 +1553,8 @@ const assessmentQuestions =
             "Answer_4": "Has an in-depth knowledge of anatomy including reference points to observe during implantation of our Surgical products. Able to give guidance on how to avoid technical pitfalls related to anatomical variance.\nUnderstands patient condition, including specific sub-groups, and can proactively apply this knowledge when interacting with implanters\nUnderstands how the Heart Team puts guidelines into practice. Can have a discussion with physicians on timing of referral and treatment options – surgical, transcatheter or other – for specific patient groups."
           },
           {
-            "jobTitleSkillid": "831a380a-5582-4571-8e0c-6e4ce5d8c868",
-            "skillId": "2067d763-2742-4d6d-b470-a8bf981b62c4",
+            "jobTitleSkillid": "ddd026ef-6e03-4349-aee0-9afa53ff7524",
+            "skillId": "c00f8f35-cddb-4c2c-9732-a4e735150348",
             "Skill": "Surgical product portfolio knowledge ",
             "target": 4,
             "target check": "",
@@ -1565,8 +1565,8 @@ const assessmentQuestions =
             "Answer_4": "Regularly provides advice to colleagues regarding all technical and clinical aspects of surgical and competitors’ products.                                              Is considered a 'Trainer' & source of expertise.        Has a strong knowledge of both our Mitral Repair / replace Portfolio and appropriate use.                      In-depth knowledge of our Tricuspid solutions and indications for surgery.                                                                                                                                "
           },
           {
-            "jobTitleSkillid": "f9b8eb6d-0feb-4727-b28d-61da80a2c912",
-            "skillId": "1bf2502c-3b1b-430b-b684-0c5edea7906c",
+            "jobTitleSkillid": "5ad9969f-3df2-4eda-bede-62a0e4806e3f",
+            "skillId": "46037095-96c4-4b28-8c42-b254f3b633ce",
             "Skill": "Tender/contract management ",
             "target": 3,
             "target check": "",
@@ -1577,8 +1577,8 @@ const assessmentQuestions =
             "Answer_4": "Anticipate future trends.                                            Searches for opportunities to drive patient care in heart valve disease.                                                   Works with KOLs to support further development.                                                                                                 "
           },
           {
-            "jobTitleSkillid": "265d604e-26b4-4d92-b61a-8caf1a7faf58",
-            "skillId": "55d3974a-2299-44cd-86da-8b0065b6d244",
+            "jobTitleSkillid": "7f6d5a84-53a8-4234-8725-ad3afe01beb7",
+            "skillId": "a4930ac0-6520-48c8-8da3-6ffb0aa4ee00",
             "Skill": "Territory planning ",
             "target": 5,
             "target check": "",
@@ -1589,8 +1589,8 @@ const assessmentQuestions =
             "Answer_4": "Can bring thoughts, ideas and opportunities to the organization with a broader scope than own territory/team.\n"
           },
           {
-            "jobTitleSkillid": "a3bb694b-a489-4e2a-8207-67316816eaa7",
-            "skillId": "14f7d493-3033-44eb-b6dd-39b7f86ab84c",
+            "jobTitleSkillid": "9e56082b-7154-4324-84a9-804573b39871",
+            "skillId": "09973710-37ff-48cf-8911-40bb6da62383",
             "Skill": "Transcatheter solution knowledge ",
             "target": 5,
             "target check": "",
@@ -1601,8 +1601,8 @@ const assessmentQuestions =
             "Answer_4": "Can explain transcatheter options, indications and clinical results.                                                          Understand Valve in Valve Treatment options and their limitations.                                                         Follows regularly Edwards Partner Studies and ongoing publications.                                                Knows latest TMTT study data and efforts being made for Mitral & tricuspid therapies.                                                                                                                                           "
           },
           {
-            "jobTitleSkillid": "82be9b08-3223-48f0-90a8-93eff014cfb8",
-            "skillId": "355c6331-91b3-4304-8bee-5e41e30ff7ba",
+            "jobTitleSkillid": "580acfb4-2cf9-45c5-9957-2d8625fb3d38",
+            "skillId": "3b555e7c-9692-4fb2-a6bb-419235f8530c",
             "Skill": "Value & Solution selling (Persuasion & Negotiation)",
             "target": 2,
             "target check": "",

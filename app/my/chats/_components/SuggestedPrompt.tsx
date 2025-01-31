@@ -20,11 +20,9 @@ const SuggestedPrompt = ({
 	const jwt = getCookie("jwt");
 	const router = useRouter();
 	const handleClick = useCallback(async () => {
-		const chat = await startNewChat(prompt, promptTitle);
-
-		if (chat?.id) {
-			router.push(`/my/chats/${chat?.id}`);
-		}
+		startNewChat(prompt, promptTitle).then((chat) =>
+			router.push(`/my/chats/${chat?.id}`)
+		);
 	}, []);
 
 	return (

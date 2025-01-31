@@ -1,6 +1,7 @@
 import {
 	Box,
 	Card,
+	ChevronDownIcon,
 	Container,
 	Flex,
 	Grid,
@@ -17,6 +18,7 @@ import { PiFolderPlusThin } from "react-icons/pi";
 import { MdWifiTethering } from "react-icons/md";
 import { GoRocket } from "react-icons/go";
 import * as Accordion from "@radix-ui/react-accordion";
+import { ArrowDownIcon } from "@radix-ui/react-icons";
 
 const HelpPage = async () => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -286,10 +288,13 @@ const HelpPage = async () => {
 							>
 								<Accordion.Item value="item-1">
 									<Accordion.Header>
-										<Accordion.Trigger>
-											<Heading as="h3" size="5" weight="light">
-												1. How do I change my role in maestro
-											</Heading>
+										<Accordion.Trigger className="w-[100%]">
+											<Flex justify={"between"} align={"center"} width={"100%"}>
+												<Heading as="h3" size="5" weight="light">
+													1. How do I change my role in maestro
+												</Heading>
+												<ChevronDownIcon width={15} height={15} />
+											</Flex>
 										</Accordion.Trigger>
 									</Accordion.Header>
 									<Accordion.Content>
@@ -310,10 +315,13 @@ const HelpPage = async () => {
 							>
 								<Accordion.Item value="item-1">
 									<Accordion.Header>
-										<Accordion.Trigger>
-											<Heading as="h3" size="5" weight="light">
-												2. Can I use Maestro on a mobile device?
-											</Heading>
+										<Accordion.Trigger className="w-[100%]">
+											<Flex justify={"between"} align={"center"} width={"100%"}>
+												<Heading as="h3" size="5" weight="light">
+													2. Can I use Maestro on a mobile device?
+												</Heading>
+												<ChevronDownIcon width={15} height={15} />
+											</Flex>
 										</Accordion.Trigger>
 									</Accordion.Header>
 									<Accordion.Content>
@@ -333,10 +341,13 @@ const HelpPage = async () => {
 							>
 								<Accordion.Item value="item-1">
 									<Accordion.Header>
-										<Accordion.Trigger>
-											<Heading as="h3" size="5" weight="light">
-												3. How do I save content for future reference?
-											</Heading>
+										<Accordion.Trigger className="w-[100%]">
+											<Flex justify={"between"} align={"center"} width={"100%"}>
+												<Heading as="h3" size="5" weight="light">
+													3. How do I save content for future reference?
+												</Heading>
+												<ChevronDownIcon width={15} height={15} />
+											</Flex>
 										</Accordion.Trigger>
 									</Accordion.Header>
 									<Accordion.Content>
@@ -356,10 +367,13 @@ const HelpPage = async () => {
 							>
 								<Accordion.Item value="item-1">
 									<Accordion.Header>
-										<Accordion.Trigger>
-											<Heading as="h3" size="5" weight="light">
-												4. How does ChatMaestro work?
-											</Heading>
+										<Accordion.Trigger className="w-[100%]">
+											<Flex justify={"between"} align={"center"} width={"100%"}>
+												<Heading as="h3" size="5" weight="light">
+													4. How does ChatMaestro work?
+												</Heading>
+												<ChevronDownIcon width={15} height={15} />
+											</Flex>
 										</Accordion.Trigger>
 									</Accordion.Header>
 									<Accordion.Content>
@@ -381,10 +395,13 @@ const HelpPage = async () => {
 							>
 								<Accordion.Item value="item-1">
 									<Accordion.Header>
-										<Accordion.Trigger>
-											<Heading as="h3" size="5" weight="light">
-												5. Who can upload new content to Maestro?
-											</Heading>
+										<Accordion.Trigger className="w-[100%]">
+											<Flex justify={"between"} align={"center"} width={"100%"}>
+												<Heading as="h3" size="5" weight="light">
+													5. Who can upload new content to Maestro?
+												</Heading>
+												<ChevronDownIcon width={15} height={15} />
+											</Flex>
 										</Accordion.Trigger>
 									</Accordion.Header>
 									<Accordion.Content>
@@ -405,10 +422,13 @@ const HelpPage = async () => {
 							>
 								<Accordion.Item value="item-1">
 									<Accordion.Header>
-										<Accordion.Trigger>
-											<Heading as="h3" size="5" weight="light">
-												6. What should I do if I encounter technical issues?
-											</Heading>
+										<Accordion.Trigger className="w-[100%]">
+											<Flex justify={"between"} align={"center"} width={"100%"}>
+												<Heading as="h3" size="5" weight="light">
+													6. What should I do if I encounter technical issues?
+												</Heading>
+												<ChevronDownIcon width={15} height={15} />
+											</Flex>
 										</Accordion.Trigger>
 									</Accordion.Header>
 									<Accordion.Content>

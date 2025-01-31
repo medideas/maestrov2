@@ -4,7 +4,7 @@ import React from "react";
 
 const StartNewChatButton = () => {
 	return (
-		<Link href="/my/chats/new">
+		<Link href="/my/chats/">
 			<Button>New chat</Button>
 		</Link>
 	);

@@ -4,13 +4,14 @@ import { Flex } from "@radix-ui/themes";
 import { getCookie } from "cookies-next";
 import { Field, Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useRef } from "react";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
 import { startNewChat } from "@/app/utils/api/chats";
 
 const NewChat = () => {
 	const router = useRouter();
 	const jwt = getCookie("jwt");
+	const ref = useRef<HTMLFormElement>(null);
 	return (
 		<Flex>
 			<Formik
@@ -18,6 +19,7 @@ const NewChat = () => {
 					name: "",
 				}}
 				onSubmit={async ({ name: prompt }) => {
+					ref.current?.reset();
 					const chat = await startNewChat(prompt);
 
 					if (chat?.id) {
@@ -25,7 +27,7 @@ const NewChat = () => {
 					}
 				}}
 			>
-				<Form className="w-[100%]">
+				<Form className="w-[100%]" ref={ref}>
 					<Flex
 						className="w-[100%] chatbot"
 						align={"center"}

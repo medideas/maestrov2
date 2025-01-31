@@ -32,7 +32,6 @@ const ChatPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 						direction="column"
 						height={"100%"}
 						style={{
-							backgroundImage: "url(/bgchat.jpg)",
 							backgroundRepeat: "no-repeat",
 							backgroundSize: "contain",
 							backgroundColor: "white",

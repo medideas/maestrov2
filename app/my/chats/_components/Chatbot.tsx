@@ -6,7 +6,7 @@ import { Button, Flex, Spinner, Text } from "@radix-ui/themes";
 import { getCookie } from "cookies-next";
 import { Field, Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
 import { toast } from "react-toastify";
 
@@ -15,6 +15,7 @@ interface Props {
 }
 
 const Chatbot = ({ chatId }: Props) => {
+	const ref = useRef<HTMLFormElement>(null);
 	const [submitting, setSubmitting] = useState(false);
 	const jwt = getCookie("jwt");
 	const router = useRouter();
@@ -42,6 +43,7 @@ const Chatbot = ({ chatId }: Props) => {
 				}}
 				onSubmit={async ({ prompt }) => {
 					setSubmitting(true);
+					ref.current?.reset();
 					try {
 						const answer = await askChatbot(chatId, prompt);
 						if (answer?.chatId) {
@@ -55,7 +57,7 @@ const Chatbot = ({ chatId }: Props) => {
 					setSubmitting(false);
 				}}
 			>
-				<Form className="w-[100%]" style={{ width: "100%" }}>
+				<Form className="w-[100%]" style={{ width: "100%" }} ref={ref}>
 					<Flex align="center" style={{ width: "100%" }}>
 						<Flex direction="column" className="w-[100%]">
 							<Flex

@@ -74,6 +74,7 @@ const AssessmentForm = ({ jobTitleSkills, user }: Props) => {
 						method: "POST",
 						body: JSON.stringify(submitQuiz),
 					});
+					router.push("/my/profile");
 				}}
 			>
 				<Form>

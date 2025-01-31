@@ -41,7 +41,7 @@ const MyProfile = async () => {
 			<Grid columns={{ initial: "1", sm: "2" }} gap="5">
 				<Flex direction={"column"}>
 					<Heading size="4">Assessements</Heading>
-					{assessment.length > 0 ? <LatestAssessment /> : <TakeNewAssessment />}
+					{assessment.length > 0 ? <TakeNewAssessment /> : <LatestAssessment />}
 				</Flex>
 			</Grid>
 		</Container>

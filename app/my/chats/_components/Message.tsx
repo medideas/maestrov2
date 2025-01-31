@@ -1,9 +1,8 @@
 import { Box, Flex, Separator, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
-import { CiUser } from "react-icons/ci";
-import { IoChevronUpCircleSharp, IoDocumentTextOutline } from "react-icons/io5";
-import { PiRobotFill } from "react-icons/pi";
+import { FaUser } from "react-icons/fa";
+import { IoDocumentTextOutline } from "react-icons/io5";
 import { RiRobot3Line } from "react-icons/ri";
 
 const Message = ({ message, user }: { message: Message; user: boolean }) => {
@@ -27,11 +26,11 @@ const Message = ({ message, user }: { message: Message; user: boolean }) => {
 				direction={user ? "row" : "row-reverse"}
 			>
 				<Box width={"50px"}>
-					{user ? <RiRobot3Line size="20" /> : <CiUser size="20" />}
+					{user ? <RiRobot3Line size="20" /> : <FaUser size="20" />}
 				</Box>
 				<Flex direction={"column"} align={user ? "start" : "end"}>
 					{formattedMessage[0].map((message) => (
-						<Text as="p" style={{ lineHeight: "2em" }}>
+						<Text as="p" style={{ lineHeight: "2em" }} key={message}>
 							{message}
 						</Text>
 					))}
@@ -45,6 +44,7 @@ const Message = ({ message, user }: { message: Message; user: boolean }) => {
 							(citation) =>
 								citation.references.length > 0 && (
 									<Flex
+										key={citation.id.toString()}
 										gap="2"
 										pb="3"
 										pl="5"
