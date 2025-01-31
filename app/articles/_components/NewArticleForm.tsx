@@ -1,24 +1,13 @@
 //ATTENTION: TO UPLOAD THE FILES (cover and attachment) NEED TO CREATE A FORM DATA OBJECT AND PASS THE VALUES INTO IT, THEN PASS THE FORMDATA INTO THE BODY REQUEST
 
 "use client";
-import {
-	Box,
-	Button,
-	Callout,
-	Card,
-	Flex,
-	Grid,
-	Heading,
-	Text,
-} from "@radix-ui/themes";
+import { Box, Button, Card, Flex, Grid, Heading, Text } from "@radix-ui/themes";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { getCookie } from "cookies-next";
 import * as Yup from "yup";
 import FormCallout from "@/app/components/FormCallout";
-import { InfoCircledIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
 import GoBack from "@/app/components/GoBack";
 
 interface Props {
@@ -106,7 +95,7 @@ const NewArticleForm = ({
 					cover: "",
 					content: "",
 				}}
-				// validationSchema={articleSchema}
+				validationSchema={articleSchema}
 				onSubmit={async (values) => {
 					setSubmitting(true);
 					const formData = new FormData();

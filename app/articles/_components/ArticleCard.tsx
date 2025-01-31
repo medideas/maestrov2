@@ -20,7 +20,7 @@ interface Props {
 const ArticleCard = ({ article, className }: Props) => {
 	console.log(article);
 	return (
-		<Link href={`articles/${article.id}`} className={className}>
+		<Link href={`/my/articles/${article.id}`} className={className}>
 			<Box width="calc(100vw - 42px)" maxWidth="350px" pb="6">
 				<Card className="shadow-lg">
 					<Inset clip="padding-box" side="top" pb="current">

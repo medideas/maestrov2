@@ -1,17 +1,8 @@
 "use client";
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import {
-	Button,
-	CheckboxGroup,
-	Flex,
-	Heading,
-	Separator,
-	TextField,
-} from "@radix-ui/themes";
+import { CheckboxGroup, Flex, Heading } from "@radix-ui/themes";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import path from "path";
-import { use, useState } from "react";
+import { useState } from "react";
 
 const FilterSideBar = ({ competencies }: { competencies: Competency[] }) => {
 	const menuItems = ["recommended for you", "in progress", "saved"];
@@ -24,14 +15,23 @@ const FilterSideBar = ({ competencies }: { competencies: Competency[] }) => {
 	// ];
 	const searchParams = useSearchParams();
 	const pathname = usePathname();
-	const selectedTag = searchParams?.tag as string;
+	const selectedTag = searchParams?.get("tag") as string;
 	const selectedCompetency = searchParams?.get("competency");
 	console.log(selectedCompetency);
 
 	const [activeTag, setActiveTag] = useState(searchParams?.get("tag"));
+	const [loading, setLoading] = useState(false);
+
+	const handleTagChange = (tag: string) => {
+		setLoading(true);
+		router.push(`${pathname}?tag=${tag.replace(/\s+/g, "-").toLowerCase()}`);
+		setActiveTag(tag);
+		setLoading(false);
+	};
 
 	return (
 		<div className="border-[1px] rounded-md shadow-md bg-gray-100 py-5">
+			{loading && <div className="loading-indicator">Loading...</div>}
 			{/* <Flex direction={"column"} p="4" gap="2">
 				<Heading size="4">Search</Heading>
 				<Flex justify={"between"}>
@@ -54,8 +54,7 @@ const FilterSideBar = ({ competencies }: { competencies: Competency[] }) => {
 					href="/mylibrary"
 					key="all"
 					onClick={() => {
-						router.push("/mylibrary");
-						setActiveTag("");
+						handleTagChange("all");
 					}}
 				>
 					<li className={"first-letter:capitalize py-2 px-5 hover:bg-gray-300"}>
@@ -67,10 +66,7 @@ const FilterSideBar = ({ competencies }: { competencies: Competency[] }) => {
 						href={`?tag=${item.replace(/\s+/g, "-").toLowerCase()}`}
 						key={index}
 						onClick={() => {
-							setActiveTag(item);
-							router.push(
-								`${pathname}?tag=${item.replace(/\s+/g, "-").toLowerCase()}`
-							);
+							handleTagChange(item);
 						}}
 					>
 						<li
@@ -79,7 +75,6 @@ const FilterSideBar = ({ competencies }: { competencies: Competency[] }) => {
 								(activeTag === item && " border-l-8 ")
 							}
 						>
-							{selectedTag}
 							{item}
 						</li>
 					</Link>
