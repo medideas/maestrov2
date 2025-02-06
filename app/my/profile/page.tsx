@@ -7,6 +7,8 @@ import UserDetailsCard from "./_components/UserDetailsCard";
 import { getCookie } from "cookies-next";
 import TakeNewAssessment from "../assessments/_components/TakeNewAssessment";
 
+export const dynamic = "force-dynamic";
+
 const MyProfile = async () => {
 	const jwt = getCookie("jwt");
 	const [user] = await Promise.all([fetchApi(`/my/profile`)]);
@@ -21,9 +23,12 @@ const MyProfile = async () => {
 			},
 			method: "GET",
 		}
-	).catch((error) => {
-		console.error("Error fetching assessment:", error);
-	});
+	)
+		.then((res) => res.json())
+		.catch((error) => {
+			console.error("Error fetching assessment:", error);
+			return []; // Return empty array as fallback
+		});
 
 	let roles = [""];
 	user.roleUsers.map((role: { role: { name: any } }) =>
