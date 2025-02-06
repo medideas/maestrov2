@@ -119,14 +119,17 @@ const MyArticlePage = async ({
 								<Flex justify={"between"}>
 									<Heading size="2">Business Units</Heading>
 									<Flex gap="3">
-										{!article.articleBusinessUnits?.length && (
+										{!Array.isArray(article?.articleBusinessUnits) || article.articleBusinessUnits.length === 0 ? (
 											<Badge color="gray">Valid for all BU</Badge>
+										) : (
+											<Flex gap="3">
+												{article.articleBusinessUnits.map((bu) => (
+													<Badge key={bu?.id || crypto.randomUUID()} color="gray">
+														{bu?.businessUnit?.name || "Unknown BU"}
+													</Badge>
+												))}
+											</Flex>
 										)}
-										{article.articleBusinessUnits?.map((bu) => (
-											<Badge key={bu?.id || "unknown"} color="gray">
-												{bu?.businessUnit?.name || "Unknown BU"}
-											</Badge>
-										))}
 									</Flex>
 								</Flex>
 								<Separator my="3" size="4" />
@@ -134,14 +137,17 @@ const MyArticlePage = async ({
 								<Flex justify={"between"}>
 									<Heading size="2">Regions</Heading>
 									<Flex gap="3">
-										{!article.articleRegions?.length && (
+										{!Array.isArray(article?.articleRegions) || article.articleRegions.length === 0 ? (
 											<Badge color="grass">Valid for all Regions</Badge>
+										) : (
+											<Flex gap="3">
+												{article.articleRegions.map((r) => (
+													<Badge key={r?.id || crypto.randomUUID()} color="grass">
+														{r?.region?.name || "Unknown Region"}
+													</Badge>
+												))}
+											</Flex>
 										)}
-										{article.articleRegions?.map((r) => (
-											<Badge key={r?.id || "unknown"} color="grass">
-												{r?.region?.name || "Unknown Region"}
-											</Badge>
-										))}
 									</Flex>
 								</Flex>
 
@@ -152,14 +158,17 @@ const MyArticlePage = async ({
 										Courses
 									</Heading>
 									<Flex gap="3">
-										{!article.articleCourses?.length && (
+										{!Array.isArray(article?.articleCourses) || article.articleCourses.length === 0 ? (
 											<Badge color="gray">Not included in any course</Badge>
+										) : (
+											<Flex gap="3">
+												{article.articleCourses.map((c) => (
+													<Badge key={c?.id || crypto.randomUUID()} color="gold">
+														{c?.course?.name || "Unknown Course"}
+													</Badge>
+												))}
+											</Flex>
 										)}
-										{article.articleCourses?.map((c) => (
-											<Badge key={c?.id || "unknown"} color="gold">
-												{c?.course?.name || "Unknown Course"}
-											</Badge>
-										))}
 									</Flex>
 								</Flex>
 							</Box>

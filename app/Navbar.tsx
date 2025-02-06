@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { Flex } from "@radix-ui/themes";
 import DesktopNavLinks from "./components/navbar/DesktopNavLinks";
 import MobileNavLinks from "./components/navbar/MobileNavLinks";
 import AvatarBox from "./components/navbar/AvatarBox";
 import { fetchApi } from "./utils/fetchInterceptor";
-import { hasCookie } from "cookies-next";
-import { cookies } from "next/headers";
 import { getJwt, hasJwtExpired, mightBeLoggedIn } from "./utils/auth";
 import { Toast } from "./components/ClientToast";
 
 const Navbar = async () => {
 	if (await mightBeLoggedIn()) {
 		const loggedUser = await fetchApi(`/my/profile`);
-		const userRoles = loggedUser.roleUsers;
-		const roles: string[] = [];
-		userRoles.map((r: Role) => roles.push(r.role.name));
+		// Add null check and use proper array methods
+		const roles: string[] =
+			loggedUser?.roleUsers?.map((r: Role) => r?.role?.name).filter(Boolean) ||
+			[];
 		return (
 			<nav className="p-0 m-0 overflow-x-hidden">
 				<Flex
