@@ -12,9 +12,9 @@ const Navbar = async () => {
 	if (await mightBeLoggedIn()) {
 		const loggedUser = await fetchApi(`/my/profile`);
 		// Add null check and use proper array methods
-		const roles: string[] =
-			loggedUser?.roleUsers?.map((r: Role) => r?.role?.name).filter(Boolean) ||
-			[];
+		const roles: string[] = loggedUser?.roleUsers
+			?.map((r: Role) => r?.role?.name)
+			.filter(Boolean) || ["Learner"];
 		return (
 			<nav className="p-0 m-0 overflow-x-hidden">
 				<Flex

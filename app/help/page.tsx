@@ -18,10 +18,8 @@ import { PiFolderPlusThin } from "react-icons/pi";
 import { MdWifiTethering } from "react-icons/md";
 import { GoRocket } from "react-icons/go";
 import * as Accordion from "@radix-ui/react-accordion";
-import { ArrowDownIcon } from "@radix-ui/react-icons";
 
 const HelpPage = async () => {
-	// await new Promise((resolve) => setTimeout(resolve, 2000));
 	return (
 		<div>
 			<Suspense>
@@ -179,7 +177,7 @@ const HelpPage = async () => {
 									ChatMaestro
 								</Heading>
 								<Text className="readable">
-									One of Maestro's standout features is ChatMaestro, an
+									One of Maestro&apos;s standout features is ChatMaestro, an
 									AI-driven assistant available directly within the platform,
 									which provides instant, contextual answers to user queries,
 									doubts and requests. This feature promotes an interactive
@@ -353,8 +351,8 @@ const HelpPage = async () => {
 									<Accordion.Content>
 										<Separator my="3" size="4" />
 										<Text className="readable" mb="5">
-											You can mark content as "Saved" within the Library section
-											for easy access later.
+											You can mark content as &quot;Saved&quot; within the
+											Library section for easy access later.
 										</Text>
 									</Accordion.Content>
 								</Accordion.Item>
